@@ -73,6 +73,47 @@ Scheduling cannot recover information lost through compression or bypass physica
 
 This supersedes the earlier primary goal of beating Marlin with W4A16 across two models and two GPU architectures. The first milestone is now **70B quality under a strict 24 GB deployment budget**. Speed follows; broader model and architecture coverage comes after validation.
 
+## First compression experiment
+
+The FlashRun prototype explores a shared PCA representation of quantization residual blocks plus sparse index-value corrections for remaining errors. See [the experiment design and commands](EXPERIMENT.md).
+
 ## Current status
 
-Mission documented. No compression experiments, accepted representation, custom engine, or benchmark results exist yet. Evaluation datasets, perplexity tolerance, exact revisions, and development hardware remain to be selected.
+A real-model Python quality pipeline and reference compressed GPU runtime have been tested on Qwen2.5-0.5B using an NVIDIA L4. **The first PCA-plus-sparse configuration failed the quality gate.** Reconstruction correctness passed, but the quantized model's quality degraded severely. See [findings](results/REAL_MODEL_FINDINGS.md) and [reproduction details](REAL_MODEL.md).
+
+No 70B memory fit, BF16-quality retention, or RTX 3090 performance has been demonstrated. Final evaluation datasets and perplexity acceptance tolerance remain to be selected.
+
+## Work completed so far
+
+The first prototype was implemented in Python with NumPy and PyTorch. It includes:
+
+- A synthetic PCA-plus-sparse residual codec with save/load round-trip checks.
+- A real-model pipeline that downloads a model, creates a simple groupwise 2-bit and 4-bit baseline, computes BF16 residuals, fits shared rank-2 PCA blocks, selects sparse corrections, reconstructs candidates, and evaluates perplexity.
+- Bit-packing unit tests for 2-bit and 4-bit groups.
+- A reference GPU-resident runtime that reconstructs compressed linear weights and validates its output against the dense reconstruction.
+- Reproducibility notes, requirements, per-layer archives, and JSON reports.
+
+### First real-model result
+
+On 2026-09-11, the pipeline ran on **Qwen/Qwen2.5-0.5B**, revision `060db6499f32faf8b98477b0a26969ef7d8bb9987`, with an **NVIDIA L4**, PyTorch 2.8.0+cu128, and Transformers 4.51.3. The evaluation used 4,080 next-token predictions from the first 4,096 WikiText-2 test tokens. Lower perplexity is better.
+
+| Representation | Perplexity |
+| --- | ---: |
+| BF16 reference | 22.20 |
+| Naive groupwise 4-bit | 26.72 |
+| Naive groupwise 2-bit | 112,423 |
+| 2-bit + rank-2 PCA residual | 106,073 |
+| 2-bit + PCA + 1% sparse residual | 88,952 |
+| 2-bit + sparse residual at matched correction budget | 70,026 |
+
+This result is a failed quality gate for the initial configuration. PCA and sparse corrections reduce numerical weight error, but the model quality remains unusable. Sparse-only corrections performed better than the PCA hybrid at the same correction budget. The correction payload was approximately one additional bit per quantized weight before base metadata, so it also misses the 24 GB 70B budget.
+
+### What succeeded
+
+The codec, serialization, bit packing, GPU reconstruction, and evaluation pipeline all function. The GPU runtime matched the dense hybrid reconstruction exactly in the perplexity test, and a 32-token generation smoke test completed.
+
+### What remains unsolved
+
+The naive quantizer is not a strong baseline, rank-2 PCA captures too little useful residual structure, magnitude-based sparse selection does not identify model-sensitive errors, and the runtime reconstructs full matrices temporarily rather than using a fused compressed kernel. The 70B model, RTX 3090 deployment, BF16-quality retention, 24 GB fit, and speed targets remain unproven.
+
+See [REAL_MODEL_FINDINGS.md](results/REAL_MODEL_FINDINGS.md) for raw measurements and limitations. The next gate is a matched-byte comparison against stronger low-bit methods with sensitivity-aware corrections before any C++/CUDA implementation.

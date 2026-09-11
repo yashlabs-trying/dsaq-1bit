@@ -1,0 +1,4 @@
+# Install with an existing CUDA-compatible PyTorch environment.
+transformers==4.51.3
+datasets==3.5.0
+accelerate==1.6.0
