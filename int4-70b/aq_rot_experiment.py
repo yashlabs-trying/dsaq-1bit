@@ -14,7 +14,7 @@ OUT = Path('aqrot_results')
 OUT.mkdir(exist_ok=True)
 MODEL = 'Qwen/Qwen2.5-0.5B'
 M, K, G = 2, 256, 8
-INIT_ITERS, ITERS = 10, 20
+INIT_ITERS, ITERS, BEAM = 10, 20, 8
 NSAMPLES = 2048
 SEQLEN = 128
 
@@ -93,7 +93,7 @@ def main():
         if pad:
             ww = torch.cat([ww, torch.zeros(out_, pad, device=ww.device)], 1)
         blocks = ww.reshape(-1, G)
-        codebooks, idx = additive_vq(blocks, M, K, INIT_ITERS, ITERS)
+        codebooks, idx = additive_vq(blocks, M, K, INIT_ITERS, ITERS, BEAM)
         rec = decode(codebooks, idx, ww.shape)[:, :in_]
         rec = rec / d.sqrt()[None, :]
         rec = rec @ R.t()

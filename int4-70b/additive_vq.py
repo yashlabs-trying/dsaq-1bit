@@ -35,10 +35,32 @@ def _kmeans(X, K, iters, seed):
     return centers
 
 
-def additive_vq(X, M, K, init_iters=10, iters=20, seed=0):
+def _assign_beam2(X, C0, C1, beam):
+    """Joint beam assignment for M=2: best (k0, k1) per block."""
+    xn = (X ** 2).sum(-1, keepdim=True)
+    d0 = xn - 2 * X @ C0.t() + (C0 ** 2).sum(-1)  # [N, K]
+    top0 = torch.topk(d0, beam, dim=1, largest=False)  # [N, beam]
+    c1n = (C1 ** 2).sum(-1)
+    best_val = torch.full((X.shape[0],), float('inf'), device=X.device)
+    best_i0 = torch.zeros(X.shape[0], dtype=torch.long, device=X.device)
+    best_i1 = torch.zeros(X.shape[0], dtype=torch.long, device=X.device)
+    for b in range(beam):
+        k0 = top0.indices[:, b]
+        r = X - C0[k0]
+        d1 = (r ** 2).sum(-1, keepdim=True) - 2 * r @ C1.t() + c1n
+        v, k1 = d1.min(1)
+        better = v < best_val
+        best_val = torch.where(better, v, best_val)
+        best_i0 = torch.where(better, k0, best_i0)
+        best_i1 = torch.where(better, k1, best_i1)
+    return best_i0, best_i1
+
+
+def additive_vq(X, M, K, init_iters=10, iters=20, beam=1, seed=0):
     """Train M shared codebooks (each K entries of dim g) and per-block indices.
 
     X: [N, g] float32. Returns codebooks [M, K, g] and indices [N, M] (long).
+    beam=1 is greedy; beam>1 enables joint beam assignment (M=2 only).
     """
     N = X.shape[0]
     dev = X.device
@@ -51,18 +73,29 @@ def additive_vq(X, M, K, init_iters=10, iters=20, seed=0):
         a = _assign(resid, cb)
         idx[:, m] = a
         resid = resid - cb[a]
+
     for _ in range(iters):
+        if M == 2 and beam > 1:
+            i0, i1 = _assign_beam2(X, codebooks[0], codebooks[1], beam)
+            idx[:, 0] = i0
+            idx[:, 1] = i1
+        else:
+            for m in range(M):
+                rec = torch.zeros_like(X)
+                for m2 in range(M):
+                    if m2 != m:
+                        rec += codebooks[m2][idx[:, m2]]
+                idx[:, m] = _assign(X - rec, codebooks[m])
         for m in range(M):
             rec = torch.zeros_like(X)
             for m2 in range(M):
                 if m2 != m:
                     rec += codebooks[m2][idx[:, m2]]
             r = X - rec
-            a = _assign(r, codebooks[m])
-            idx[:, m] = a
-            A = torch.nn.functional.one_hot(a, K).float()
+            A = torch.nn.functional.one_hot(idx[:, m], K).float()
             cnt = A.sum(0).clamp_min(1)
             codebooks[m] = (A.t() @ r) / cnt.unsqueeze(1)
+
     return torch.stack(codebooks), idx
 
 
