@@ -11,7 +11,7 @@ OUT = Path('aqblock_results')
 OUT.mkdir(exist_ok=True)
 MODEL = 'Qwen/Qwen2.5-0.5B'
 M, K, G = 2, 256, 8
-INIT_ITERS, ITERS, BEAM = 10, 20, 8
+INIT_ITERS, ITERS, BEAM = 8, 10, 1
 NSAMPLES = 2048
 SEQLEN = 128
 
