@@ -117,3 +117,9 @@ The codec, serialization, bit packing, GPU reconstruction, and evaluation pipeli
 The naive quantizer is not a strong baseline, rank-2 PCA captures too little useful residual structure, magnitude-based sparse selection does not identify model-sensitive errors, and the runtime reconstructs full matrices temporarily rather than using a fused compressed kernel. The 70B model, RTX 3090 deployment, BF16-quality retention, 24 GB fit, and speed targets remain unproven.
 
 See [REAL_MODEL_FINDINGS.md](results/REAL_MODEL_FINDINGS.md) for raw measurements and limitations. The next gate is a matched-byte comparison against stronger low-bit methods with sensitivity-aware corrections before any C++/CUDA implementation.
+
+### Current 2-bit quality result
+
+Later no-finetuning experiments improved Qwen2.5-0.5B from the initial unusable 2-bit baseline to **66.0807 perplexity**, versus **22.1929 BF16**, using a learned four-weight/256-entry Hessian-aware codebook and per-row affine reconstruction. The fully counted transformer-linear payload is **2.03489 bits per compressed weight**, so this is the current quality baseline rather than a strict 2.00-bit result.
+
+On an NVIDIA A40, BlockLDLQ, randomized Hadamard processing, strict measured mixed allocation, grouped FP8 scales, and entropy-coded grouped scales all failed to improve that result. The strict mixed allocation reached 1.999943 bpw but degraded to 215.17 perplexity. See the [A40 2-bit findings](results/A40_2BIT_FINDINGS.md) for the complete table and conclusions.
