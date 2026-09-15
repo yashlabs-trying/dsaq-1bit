@@ -1,11 +1,61 @@
 import tempfile
 import unittest
+import os
+import subprocess
+import sys
 from pathlib import Path
 import torch
-from trellis_quant import decode_paths, viterbi, fixed_nodes, save_layer, load_layer, FORCED_BLOCKS, train_path_nodes
+from trellis_quant import (decode_paths, viterbi, fixed_nodes, save_layer, load_layer,
+                           FORCED_BLOCKS, train_path_nodes, metadata_allocation, METADATA_BYTES, PATH_BYTES)
 
 
 class TrellisTests(unittest.TestCase):
+    def test_global_metadata_allocation_pays_budget_and_protects_attention(self):
+        names = [f'model.layers.{i}.{kind}.{projection}' for i in range(24)
+                 for kind, projection in [('self_attn', 'q_proj'), ('self_attn', 'k_proj'),
+                    ('self_attn', 'v_proj'), ('self_attn', 'o_proj'), ('mlp', 'gate_proj'),
+                    ('mlp', 'up_proj'), ('mlp', 'down_proj')]]
+        allocation = metadata_allocation(names, 'global_mlp')
+        paid = sum(allocation.values()) * PATH_BYTES
+        required = len(names) * METADATA_BYTES
+        self.assertGreaterEqual(paid, required)
+        self.assertLess(paid - required, PATH_BYTES)
+        self.assertTrue(all(count == 0 for name, count in allocation.items() if 'self_attn' in name))
+        self.assertTrue(all(count > 0 for name, count in allocation.items() if '.mlp.' in name))
+
+    def test_uint64_paths_round_trip_including_sign_bit(self):
+        script = '''
+import tempfile
+from pathlib import Path
+import torch
+from trellis_quant import save_layer, load_layer, fixed_nodes, FORCED_BLOCKS, decode_paths
+ids = torch.tensor([-1, -(2**63), 12345]).repeat(100).reshape(100, 3)
+ids.reshape(-1)[-FORCED_BLOCKS:] = 0
+nodes = fixed_nodes('cpu')
+with tempfile.TemporaryDirectory() as directory:
+    path = Path(directory) / 'layer.bin'
+    save_layer(path, ids, nodes, 96, 17, .125)
+    restored, restored_nodes, seed, scale = load_layer(path)
+    torch.testing.assert_close(restored, ids, atol=0, rtol=0)
+    torch.testing.assert_close(decode_paths(restored, restored_nodes), decode_paths(ids, nodes))
+    assert path.stat().st_size * 8 / (100 * 96) <= 2
+'''
+        env = dict(os.environ, FLASHRUN_TRELLIS_WIDTH='32')
+        subprocess.run([sys.executable, '-c', script], env=env, check=True)
+
+    def test_full_metric_rerank_beats_single_diagonal_candidate(self):
+        torch.manual_seed(27)
+        nodes = fixed_nodes('cpu')
+        x = torch.randn(5, 16)
+        a = torch.randn(16, 16)
+        h = a.t() @ a + torch.eye(16)
+        basic, _ = viterbi(x, nodes, h.diag())
+        reranked, paths = viterbi(x, nodes, h.diag(), full_metric=h)
+        before = (((x - basic) @ h) * (x - basic)).sum(1)
+        after = (((x - reranked) @ h) * (x - reranked)).sum(1)
+        self.assertTrue(torch.all(after <= before + 1e-4))
+        torch.testing.assert_close(reranked, decode_paths(paths, nodes, width=16))
+
     def test_sixteen_weight_path_decode_and_optimality_lower_bound(self):
         torch.manual_seed(21)
         nodes = fixed_nodes('cpu')

@@ -1,7 +1,8 @@
 """Independent, reset-block bit-shift trellis prototype; not a QTIP reproduction.
 
-256 states, 16 transitions per pair of weights, four pairs per reset block.
-Each block stores a uint16 path. Viterbi is exact for additive pair costs only.
+256 states, 16 transitions per pair of weights, 8/16/32-weight reset blocks.
+Each block stores a uint16/32/64 path. Viterbi is exact for additive pair costs
+only; optional reranking scores selected endpoint winners with a full metric.
 """
 import struct
 import math
@@ -13,12 +14,27 @@ import torch
 HEADER = struct.Struct('<IIQe')
 STATES, VECTOR = 256, 2
 WIDTH = int(os.environ.get('FLASHRUN_TRELLIS_WIDTH', '8'))
-if WIDTH not in (8, 16):
-    raise ValueError('supported reset widths: 8, 16')
+if WIDTH not in (8, 16, 32):
+    raise ValueError('supported reset widths: 8, 16, 32')
 PATH_BYTES = WIDTH // 4
-PATH_DTYPE = '<u2' if WIDTH == 8 else '<u4'
+PATH_DTYPE = {8: '<u2', 16: '<u4', 32: '<u8'}[WIDTH]
 METADATA_BYTES = HEADER.size + STATES * VECTOR * 2
 FORCED_BLOCKS = math.ceil(METADATA_BYTES / PATH_BYTES)
+
+
+def metadata_allocation(names, mode='per_matrix'):
+    if mode == 'per_matrix':
+        return {name: FORCED_BLOCKS for name in names}
+    if mode != 'global_mlp':
+        raise ValueError('unknown metadata budget mode')
+    mlp = [name for name in names if '.mlp.' in name]
+    if not mlp:
+        raise ValueError('global MLP allocation requires MLP matrices')
+    total = math.ceil(len(names) * METADATA_BYTES / PATH_BYTES)
+    base, remainder = divmod(total, len(mlp))
+    allocations = dict.fromkeys(names, 0)
+    allocations.update({name: base + (i < remainder) for i, name in enumerate(mlp)})
+    return allocations
 
 
 def decode_paths(ids, nodes, width=WIDTH):
@@ -31,11 +47,11 @@ def decode_paths(ids, nodes, width=WIDTH):
     return torch.cat(values, dim=-1)
 
 
-def viterbi(x, nodes, diagonal=None):
-    """Optimal fixed-start path under diagonal, additive squared error."""
+def viterbi(x, nodes, diagonal=None, full_metric=None, top_paths=8):
+    """Optimal additive search; optional full-metric reranking is approximate."""
     width = x.shape[1]
-    if width not in (8, 16):
-        raise ValueError('expected eight- or sixteen-dimensional reset blocks')
+    if width not in (8, 16, 32):
+        raise ValueError('expected eight-, sixteen-, or thirty-two-dimensional reset blocks')
     batch = x.shape[0]
     cost = torch.full((batch, STATES), float('inf'), device=x.device)
     cost[:, 0] = 0
@@ -50,14 +66,24 @@ def viterbi(x, nodes, diagonal=None):
             error_cost = error.square().sum(-1)
         cost = best.repeat_interleave(16, dim=1) + error_cost
         traces.append(predecessor_high)
-    state = cost.argmin(dim=1)
-    ids = torch.zeros(batch, dtype=torch.long, device=x.device)
+    state = (cost.argmin(dim=1) if full_metric is None else
+             cost.topk(min(top_paths, STATES), dim=1, largest=False).indices)
+    ids = torch.zeros_like(state)
     rows = torch.arange(batch, device=x.device)
+    if full_metric is not None:
+        rows = rows[:, None].expand_as(state)
     for step in reversed(range(width // VECTOR)):
         ids |= (state & 15) << (4 * step)
         low = state >> 4
         state = 16 * traces[step][rows, low] + low
-    return decode_paths(ids, nodes, width), ids
+    decoded = decode_paths(ids, nodes, width)
+    if full_metric is not None:
+        error = decoded - x[:, None]
+        losses = ((error @ full_metric) * error).sum(-1)
+        selected = losses.argmin(1)
+        rows = torch.arange(batch, device=x.device)
+        decoded, ids = decoded[rows, selected], ids[rows, selected]
+    return decoded, ids
 
 
 def learn_nodes(w, seed, iterations=12, sample_pairs=32768):
@@ -133,13 +159,17 @@ def save_layer(path, ids, nodes, columns, seed, scale, forced=FORCED_BLOCKS):
     Path(path).write_bytes(data)
 
 
-def load_layer(path, forced=FORCED_BLOCKS):
+def load_layer(path, forced=None):
     data = Path(path).read_bytes()
     rows, columns, seed, scale = HEADER.unpack(data[:HEADER.size])
     nodes = torch.from_numpy(np.frombuffer(data[HEADER.size:METADATA_BYTES], dtype='<f2').astype(np.float32))
     nodes = nodes.reshape(STATES, VECTOR)
     stored = np.frombuffer(data[METADATA_BYTES:], dtype=PATH_DTYPE)
     ids = np.zeros(rows * columns // WIDTH, dtype=np.int64)
+    if forced is None:
+        forced = len(ids) - len(stored)
+    if forced < 0:
+        raise ValueError('stored path count exceeds matrix dimensions')
     ids[:len(stored)] = stored
     if len(stored) != len(ids) - forced:
         raise ValueError('incorrect serialized length')

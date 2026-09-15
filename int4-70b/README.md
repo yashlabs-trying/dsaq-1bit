@@ -81,6 +81,8 @@ The FlashRun prototype explores a shared PCA representation of quantization resi
 
 The current best Qwen2.5-0.5B experiment reached **39.33 perplexity versus 22.17 BF16**, with **exactly 2.00 serialized bits per compressed transformer-linear weight**, on an RTX 3090 without model finetuning. Fresh checkpoint reconstruction reproduced that result. On the next unused slice, perplexity was 55.95 versus 27.51 BF16. See the [3090 lattice findings](results/3090_LATTICE_FINDINGS.md).
 
+The controlled learned-trellis prototype initially regressed to 193.01 perplexity. Path-aware table fitting, 32-weight paths, and full-metric candidate reranking improved it to 61.17. Moving metadata payment from small attention matrices to larger MLP matrices further improved it to **43.92 / 59.23** on the two slices, at **exactly 2.00 serialized bpw**. Fresh reconstruction reproduced both scores. E8P remains better at **39.33 / 55.95** on the same pod. See the [trellis findings](results/TRELLIS_FINDINGS.md) and [raw reports](results/trellis_20260915.json).
+
 The first PCA-plus-sparse configuration failed the quality gate; see the historical [findings](results/REAL_MODEL_FINDINGS.md) and [reproduction details](REAL_MODEL.md).
 
 No 70B memory fit, BF16-quality retention, or RTX 3090 performance has been demonstrated. Final evaluation datasets and perplexity acceptance tolerance remain to be selected.
