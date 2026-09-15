@@ -45,6 +45,24 @@ def _assign(X, centers, H_blocks=None, block_pos=None):
         cn = (centers ** 2).sum(-1)
         return (xn - 2 * X @ centers.t() + cn).argmin(1)
     nb = H_blocks.shape[0]
+    if X.shape[0] % nb == 0 and torch.equal(
+            block_pos, torch.arange(X.shape[0], device=X.device) % nb):
+        # Linear weights arrive row-major with repeating column positions.
+        # Batch those positions instead of scanning N entries nb times.
+        rows = X.shape[0] // nb
+        grouped = X.reshape(rows, nb, X.shape[1]).transpose(0, 1)
+        grouped_assignments = torch.empty(
+            nb, rows, dtype=torch.long, device=X.device)
+        for start in range(0, nb, 32):
+            end = min(start + 32, nb)
+            metric = H_blocks[start:end]
+            weighted_x = torch.bmm(grouped[start:end], metric)
+            weighted_centers = torch.matmul(centers, metric)
+            norms = (weighted_centers * centers).sum(-1)
+            distances = -2 * torch.matmul(weighted_x, centers.t())
+            distances += norms[:, None, :]
+            grouped_assignments[start:end] = distances.argmin(-1)
+        return grouped_assignments.t().reshape(-1)
     assign = torch.empty(X.shape[0], dtype=torch.long, device=X.device)
     for b in range(nb):
         mask = block_pos == b
@@ -65,7 +83,7 @@ def _assign_metric(X, centers, metric):
     return (-2 * weighted_x @ centers.t() + center_norm).argmin(1)
 
 
-def block_ldlq(W, H, centers, buf_cols=128):
+def block_ldlq(W, H, centers, buf_cols=128, quantize_fn=None):
     """BlockLDLQ error propagation for one g-dimensional codebook."""
     out_features, in_features = W.shape
     g = centers.shape[1]
@@ -108,8 +126,12 @@ def block_ldlq(W, H, centers, buf_cols=128):
                 ].t() @ (block_w[local_end:] - block_q[local_end:])
             candidate = (block_w[local_start:local_end] + correction).t()
             group = column_start // g
-            assigned = _assign_metric(candidate, centers, D[group])
-            block_q[local_start:local_end] = centers[assigned].t()
+            if quantize_fn is None:
+                assigned = _assign_metric(candidate, centers, D[group])
+                selected_centers = centers[assigned]
+            else:
+                selected_centers, assigned = quantize_fn(candidate)
+            block_q[local_start:local_end] = selected_centers.t()
             indices_t[group] = assigned
         propagated += block_l.t() @ (block_w - block_q)
         quantized_t[start:end] = block_q
@@ -233,15 +255,50 @@ def _kmeans(X, K, iters, seed):
     return centers
 
 
+def _metric_kmeans(X, K, iters, seed, H_blocks, block_pos,
+                   sample_weight=None, restarts=1):
+    """Fit initial centers under the same activation metric as refinement."""
+    best_centers, best_error = None, float('inf')
+    for restart in range(restarts):
+        generator = torch.Generator(device=X.device)
+        generator.manual_seed(seed + 1009 * restart)
+        selected = torch.randperm(X.shape[0], generator=generator,
+                                  device=X.device)[:K]
+        centers = X[selected].clone()
+        for _ in range(iters):
+            assignments = _assign(X, centers, H_blocks, block_pos)
+            centers = _update_codebook(
+                X, assignments, K, centers, H_blocks, block_pos, sample_weight)
+        assignments = _assign(X, centers, H_blocks, block_pos)
+        residual = X - centers[assignments]
+        weighted = torch.bmm(residual[:, None, :],
+                             H_blocks[block_pos]).squeeze(1)
+        errors = (residual * weighted).sum(1)
+        if sample_weight is not None:
+            errors = errors * sample_weight
+        error = float(errors.sum())
+        if error < best_error:
+            best_centers, best_error = centers, error
+    return best_centers
+
+
 def additive_vq(X, M, K, init_iters=10, iters=20, beam=1, seed=0,
-                H_blocks=None, block_pos=None, sample_weight=None):
+                H_blocks=None, block_pos=None, sample_weight=None,
+                hessian_init=False, init_restarts=1):
     N = X.shape[0]
     dev = X.device
     codebooks = []
     idx = torch.zeros(N, M, dtype=torch.long, device=dev)
     resid = X.clone()
     for m in range(M):
-        cb = _kmeans(resid, K, init_iters, seed + m)
+        if hessian_init:
+            if H_blocks is None or block_pos is None:
+                raise ValueError('Hessian initialization requires block metrics')
+            cb = _metric_kmeans(
+                resid, K, init_iters, seed + m, H_blocks, block_pos,
+                sample_weight, init_restarts)
+        else:
+            cb = _kmeans(resid, K, init_iters, seed + m)
         codebooks.append(cb)
         a = _assign(resid, cb, H_blocks, block_pos)
         idx[:, m] = a

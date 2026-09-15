@@ -42,7 +42,7 @@ The repository name remains INT-4, but research is no longer restricted to INT4 
 
 1. Pin model/tokenizer revisions and establish a reproducible BF16 quality reference.
 2. Select task evaluations, perplexity data, prompt formats, seeds, and statistical methods before optimizing against them. Keep calibration data separate from held-out evaluation data.
-3. Compare established low-bit compression methods before developing our own. Investigate calibration, clipping, rounding, grouping, mixed precision, or quantization-aware training where justified.
+3. Compare established low-bit compression methods before developing our own. Investigate calibration, clipping, rounding, grouping, and mixed precision. Keep original model parameters frozen; no model finetuning is allowed in the current compression research.
 4. Measure effective bits per weight, including metadata and exceptions. Build a full runtime memory budget for the 4K-input/512-output workload.
 5. Evaluate perplexity, task scores, and individual failures. Fix a perplexity tolerance before acceptance testing; it is currently pending. Do not conceal per-task losses behind an average.
 6. Advance to speed optimization only when a candidate meets the quality criteria and has a credible full-memory fit. Validate actual peak device memory during integration.
@@ -79,7 +79,9 @@ The FlashRun prototype explores a shared PCA representation of quantization resi
 
 ## Current status
 
-A real-model Python quality pipeline and reference compressed GPU runtime have been tested on Qwen2.5-0.5B using an NVIDIA L4. **The first PCA-plus-sparse configuration failed the quality gate.** Reconstruction correctness passed, but the quantized model's quality degraded severely. See [findings](results/REAL_MODEL_FINDINGS.md) and [reproduction details](REAL_MODEL.md).
+The current best Qwen2.5-0.5B experiment reached **39.33 perplexity versus 22.17 BF16**, with **exactly 2.00 serialized bits per compressed transformer-linear weight**, on an RTX 3090 without model finetuning. Fresh checkpoint reconstruction reproduced that result. On the next unused slice, perplexity was 55.95 versus 27.51 BF16. See the [3090 lattice findings](results/3090_LATTICE_FINDINGS.md).
+
+The first PCA-plus-sparse configuration failed the quality gate; see the historical [findings](results/REAL_MODEL_FINDINGS.md) and [reproduction details](REAL_MODEL.md).
 
 No 70B memory fit, BF16-quality retention, or RTX 3090 performance has been demonstrated. Final evaluation datasets and perplexity acceptance tolerance remain to be selected.
 
@@ -120,6 +122,8 @@ See [REAL_MODEL_FINDINGS.md](results/REAL_MODEL_FINDINGS.md) for raw measurement
 
 ### Current 2-bit quality result
 
-Later no-finetuning experiments improved Qwen2.5-0.5B from the initial unusable 2-bit baseline to **66.0807 perplexity**, versus **22.1929 BF16**, using a learned four-weight/256-entry Hessian-aware codebook and per-row affine reconstruction. The fully counted transformer-linear payload is **2.03489 bits per compressed weight**, so this is the current quality baseline rather than a strict 2.00-bit result.
+The latest E8P lattice adaptation reached **39.3299 perplexity**, versus **22.1719 BF16**, using full two-sided DCT/Hadamard mixing, BlockLDLQ, one discrete Hessian refinement sweep, and 8,192 calibration tokens. The binary compressed payload is **89,456,640 bytes at exactly 2.00 bpw**. Embeddings remain BF16, so whole-model storage is 5.85984 bits per parameter. This adapts existing QuIP# components and is not an exact QuIP# reproduction.
+
+The fresh-checkpoint result and the worse result on a separate test slice are documented in the [3090 findings](results/3090_LATTICE_FINDINGS.md), with [raw JSON reports](results/3090_20260915.json). The previous learned-codebook method achieved 66.0807 at 2.03489 bpw; its same-pod reproduction was 66.3076.
 
 On an NVIDIA A40, BlockLDLQ, randomized Hadamard processing, strict measured mixed allocation, grouped FP8 scales, and entropy-coded grouped scales all failed to improve that result. The strict mixed allocation reached 1.999943 bpw but degraded to 215.17 perplexity. See the [A40 2-bit findings](results/A40_2BIT_FINDINGS.md) for the complete table and conclusions.

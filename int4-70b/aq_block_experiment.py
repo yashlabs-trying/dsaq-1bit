@@ -33,6 +33,10 @@ RHT_BLOCK_SIZE = int(os.environ.get('FLASHRUN_RHT_BLOCK_SIZE', '128'))
 SCALE_GROUP = int(os.environ.get('FLASHRUN_SCALE_GROUP', '0'))
 SCALE_BITS = int(os.environ.get('FLASHRUN_SCALE_BITS', '16'))
 ENTROPY_INDICES = os.environ.get('FLASHRUN_ENTROPY_INDICES', '0') == '1'
+HESSIAN_INIT = os.environ.get('FLASHRUN_HESSIAN_INIT', '0') == '1'
+INIT_RESTARTS = int(os.environ.get('FLASHRUN_INIT_RESTARTS', '1'))
+SEQUENTIAL_CAL = os.environ.get('FLASHRUN_SEQUENTIAL_CAL', '0') == '1'
+GPU_HESSIAN = os.environ.get('FLASHRUN_GPU_HESSIAN', '0') == '1'
 
 
 def encoded_payload_bytes(indices, codebooks):
@@ -48,21 +52,40 @@ def encoded_payload_bytes(indices, codebooks):
         total_bits += math.ceil(indices.shape[0] * entropy) + 32 * counts.numel() + 32
     return total_bits / 8
 
-def collect_H(model, layers, tokenizer, text, nsamples, seqlen):
+class _CalibrationComplete(Exception):
+    pass
+
+
+def collect_H(model, layers, tokenizer, text, nsamples, seqlen,
+              gpu_hessian=False, stop_after_last=False):
     buffers = {name: [] for name, _ in layers}
     handles = []
     for name, mod in layers:
         def hook(mod, args, output, name=name):
             buffers[name].append(args[0].reshape(-1, args[0].shape[-1]).detach().float().cpu())
+            if stop_after_last and name == layers[-1][0]:
+                raise _CalibrationComplete()
         handles.append(mod.register_forward_hook(hook))
     ids = tokenizer(text, return_tensors='pt')['input_ids'][0]
     total = ids.numel()
     nwin = min(nsamples // seqlen, total // seqlen)
     stride = (total - seqlen) // max(nwin, 1)
-    for k in range(nwin):
-        model(ids[k * stride:k * stride + seqlen][None].cuda(), use_cache=False)
-    for h in handles: h.remove()
-    return {name: 2 * torch.cat(buffers[name], 0).t() @ torch.cat(buffers[name], 0) for name, _ in layers}
+    try:
+        for k in range(nwin):
+            try:
+                model(ids[k * stride:k * stride + seqlen][None].cuda(), use_cache=False)
+            except _CalibrationComplete:
+                pass
+    finally:
+        for handle in handles:
+            handle.remove()
+    result = {}
+    for name, _ in layers:
+        activations = torch.cat(buffers[name], 0)
+        if gpu_hessian:
+            activations = activations.cuda()
+        result[name] = (2 * activations.t() @ activations).cpu()
+    return result
 
 @torch.inference_mode()
 def evaluate(model, ids):
@@ -89,7 +112,8 @@ def main():
     total_params = sum(p.numel() for p in model.parameters())
     compressed_params = sum(m.weight.numel() for _, m in names)
     uncomp = sum(p.numel() * p.element_size() for p in model.parameters()) - compressed_params * 2
-    report = dict(model=MODEL, gpu=torch.cuda.get_device_name(), torch=torch.__version__, M=M, K=K, g=G,
+    report = dict(model=MODEL, model_revision=model.config._commit_hash,
+                  gpu=torch.cuda.get_device_name(), torch=torch.__version__, M=M, K=K, g=G,
                   beam=BEAM, full_hessian=True, calibration_tokens=NSAMPLES,
                   calibration_sequence_length=SEQLEN,
                   nominal_index_bits_per_weight=M * math.log2(K) / G,
@@ -106,13 +130,29 @@ def main():
                   scale_group=SCALE_GROUP or None,
                   scale_bits=SCALE_BITS if SCALE_GROUP else 16,
                   entropy_coded_indices=ENTROPY_INDICES,
+                  hessian_initialization=HESSIAN_INIT,
+                  initialization_restarts=INIT_RESTARTS,
+                  sequential_block_calibration=SEQUENTIAL_CAL,
+                  gpu_hessian_products=GPU_HESSIAN,
                   evaluation='First 4096 WikiText-2 test tokens', variants={})
     report['variants']['bf16'] = evaluate(model, ids)
     print('bf16', report['variants']['bf16'], flush=True)
-    H = collect_H(model, names, tokenizer, cal_text, NSAMPLES, SEQLEN)
+    H = {} if SEQUENTIAL_CAL else collect_H(
+        model, names, tokenizer, cal_text, NSAMPLES, SEQLEN,
+        gpu_hessian=GPU_HESSIAN)
     payload = uncomp
     sparse_corrections = 0
     for i, (name, module) in enumerate(names):
+        if SEQUENTIAL_CAL and name not in H:
+            # Earlier blocks are already quantized, so these Hessians describe
+            # the actual deployment inputs rather than only BF16 inputs.
+            prefix = name.rsplit('.', 2)[0]
+            block_layers = [(n, m) for n, m in names
+                            if n.rsplit('.', 2)[0] == prefix]
+            H = collect_H(model, block_layers, tokenizer, cal_text,
+                          NSAMPLES, SEQLEN, gpu_hessian=GPU_HESSIAN,
+                          stop_after_last=True)
+            print('calibrated', prefix, flush=True)
         w = module.weight.detach().float().cuda()
         out_, in_ = w.shape
         layer_m, layer_k, layer_g, layer_beam = M, K, G, BEAM
@@ -170,7 +210,8 @@ def main():
         codebooks, idx = additive_vq(
             w_norm, layer_m, layer_k, INIT_ITERS, ITERS, layer_beam,
             H_blocks=H_blocks, block_pos=block_pos,
-            sample_weight=sample_weight)
+            sample_weight=sample_weight, hessian_init=HESSIAN_INIT,
+            init_restarts=INIT_RESTARTS)
         if USE_BLOCK_LDLQ:
             if layer_m != 1:
                 raise ValueError('BlockLDLQ currently requires one codebook')

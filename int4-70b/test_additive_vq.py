@@ -3,7 +3,7 @@ import unittest
 
 import torch
 
-from additive_vq import (_assign_beam2, _update_codebook, block_ldlq,
+from additive_vq import (_assign_beam2, _update_codebook, _metric_kmeans, _assign, block_ldlq,
                          hadamard_right, transform_hessian)
 
 
@@ -21,6 +21,31 @@ def weighted_error(x, centers, assignments, h_blocks, block_pos,
 
 
 class HessianAdditiveVQTests(unittest.TestCase):
+    def test_batched_metric_assignment_matches_direct_distances(self):
+        torch.manual_seed(15)
+        x = torch.randn(51, 4)
+        centers = torch.randn(9, 4)
+        positions = torch.arange(51) % 3
+        a = torch.randn(3, 4, 4)
+        h = a.transpose(1, 2) @ a + .1 * torch.eye(4)
+        assigned = _assign(x, centers, h, positions)
+        residual = x[:, None, :] - centers[None, :, :]
+        distances = torch.einsum('nki,nij,nkj->nk', residual,
+                                 h[positions], residual)
+        torch.testing.assert_close(assigned, distances.argmin(1))
+
+    def test_metric_restarts_keep_best_objective(self):
+        torch.manual_seed(5)
+        x = torch.randn(80, 4)
+        positions = torch.arange(80) % 2
+        a = torch.randn(2, 4, 4)
+        h = a.transpose(1, 2) @ a + .1 * torch.eye(4)
+        first = _metric_kmeans(x, 8, 4, 3, h, positions, restarts=1)
+        best = _metric_kmeans(x, 8, 4, 3, h, positions, restarts=2)
+        first_error = weighted_error(x, first, _assign(x, first, h, positions), h, positions)
+        best_error = weighted_error(x, best, _assign(x, best, h, positions), h, positions)
+        self.assertLessEqual(best_error, first_error + 1e-4)
+
     def test_randomized_hadamard_round_trip_and_metric(self):
         torch.manual_seed(4)
         x = torch.randn(3, 16)

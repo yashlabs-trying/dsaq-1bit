@@ -1,0 +1,6 @@
+# Observed environment: PyTorch 2.8.0+cu128, Python 3.12, RTX 3090.
+# Install into an existing CUDA-compatible PyTorch environment.
+transformers==4.51.3
+datasets==5.0.1
+accelerate==1.15.0
+numpy==2.1.2
