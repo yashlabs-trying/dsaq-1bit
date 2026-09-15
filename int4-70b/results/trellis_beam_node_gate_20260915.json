@@ -1,0 +1,56 @@
+{
+  "kind": "fixed_path_node_fit_only_not_model_eval",
+  "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "gpu": "NVIDIA RTX 2000 Ada Generation",
+  "reference": "beam2_rounds0",
+  "probes": [
+    {
+      "name": "model.layers.0.self_attn.q_proj",
+      "old_output_loss": 2353900.25,
+      "new_output_loss": 2348895.75,
+      "fractional_reduction": 0.0021260459103991103,
+      "solver": {
+        "fixed_path_output_loss_before": 2353900.25,
+        "fixed_path_output_loss_after": 2348895.75,
+        "cg_iterations": 12,
+        "accepted_step": 1.0
+      }
+    },
+    {
+      "name": "model.layers.0.self_attn.k_proj",
+      "old_output_loss": 305725.0,
+      "new_output_loss": 303379.28125,
+      "fractional_reduction": 0.007672642898029269,
+      "solver": {
+        "fixed_path_output_loss_before": 305725.0,
+        "fixed_path_output_loss_after": 303379.28125,
+        "cg_iterations": 12,
+        "accepted_step": 1.0
+      }
+    },
+    {
+      "name": "model.layers.0.self_attn.o_proj",
+      "old_output_loss": 45203.6484375,
+      "new_output_loss": 45117.125,
+      "fractional_reduction": 0.001914080842824628,
+      "solver": {
+        "fixed_path_output_loss_before": 45203.6484375,
+        "fixed_path_output_loss_after": 45117.125,
+        "cg_iterations": 12,
+        "accepted_step": 1.0
+      }
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj",
+      "old_output_loss": 16317484.0,
+      "new_output_loss": 16288954.0,
+      "fractional_reduction": 0.001748431314533505,
+      "solver": {
+        "fixed_path_output_loss_before": 16317484.0,
+        "fixed_path_output_loss_after": 16288954.0,
+        "cg_iterations": 6,
+        "accepted_step": 1.0
+      }
+    }
+  ]
+}

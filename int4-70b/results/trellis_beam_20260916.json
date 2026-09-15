@@ -1,0 +1,5531 @@
+{
+  "beam": {
+    "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+    "gpu": "NVIDIA RTX 2000 Ada Generation",
+    "torch": "2.8.0+cu128",
+    "full_model": true,
+    "variant": "beam2_rounds0",
+    "reset_width": 32,
+    "budget_mode": "global_mlp",
+    "beam_per_state": 2,
+    "node_fitting_rounds": 0,
+    "beam_row_batch": 2048,
+    "original_model_finetuned": false,
+    "reference": {
+      "first_4096": {
+        "nll": 3.727240636944771,
+        "perplexity": 41.5642589010658,
+        "scored_tokens": 4080
+      },
+      "next_4096": {
+        "nll": 4.081802815198898,
+        "perplexity": 59.252194375266015,
+        "scored_tokens": 4080
+      }
+    },
+    "bf16": {
+      "first_4096": {
+        "nll": 3.0998072028160095,
+        "perplexity": 22.193671991474996,
+        "scored_tokens": 4080
+      },
+      "next_4096": {
+        "nll": 3.3149330615997314,
+        "perplexity": 27.52055174120266,
+        "scored_tokens": 4080
+      }
+    },
+    "calibration_tokens": 8192,
+    "calibration_length": 256,
+    "matrices": [
+      {
+        "name": "model.layers.0.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.0011280474718660116,
+        "encoding_seconds": 7.324609756469727,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.0.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.001881012343801558,
+        "encoding_seconds": 0.9825937747955322,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.0.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.022468341514468193,
+        "encoding_seconds": 0.9823300838470459,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.0.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.003468145150691271,
+        "encoding_seconds": 6.988289833068848,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.0.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.019886473193764687,
+        "encoding_seconds": 41.055355072021484,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.0.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.04872395843267441,
+        "encoding_seconds": 41.264888763427734,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.0.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.011921861208975315,
+        "encoding_seconds": 38.71976685523987,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.1.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.011421656236052513,
+        "encoding_seconds": 7.090031147003174,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.1.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.011286070570349693,
+        "encoding_seconds": 0.9927968978881836,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.1.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.021042102947831154,
+        "encoding_seconds": 0.9935576915740967,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.1.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.007457084953784943,
+        "encoding_seconds": 7.074960708618164,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.1.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.0201120562851429,
+        "encoding_seconds": 41.46978783607483,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.1.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.04610142484307289,
+        "encoding_seconds": 41.59051871299744,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.1.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.024047836661338806,
+        "encoding_seconds": 38.899426221847534,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.2.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.014565140940248966,
+        "encoding_seconds": 7.120691776275635,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.2.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.012599472887814045,
+        "encoding_seconds": 0.9935176372528076,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.2.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.019343536347150803,
+        "encoding_seconds": 0.9935102462768555,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.2.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.018601473420858383,
+        "encoding_seconds": 7.108389377593994,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.2.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.02238892763853073,
+        "encoding_seconds": 44.98758840560913,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.2.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.04788642004132271,
+        "encoding_seconds": 33.75367856025696,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.2.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.003738601692020893,
+        "encoding_seconds": 33.945740938186646,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.3.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.011376592330634594,
+        "encoding_seconds": 6.258415460586548,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.3.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.007031318265944719,
+        "encoding_seconds": 0.8821403980255127,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.3.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.030657581984996796,
+        "encoding_seconds": 0.8821980953216553,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.3.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.018439512699842453,
+        "encoding_seconds": 6.239170789718628,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.3.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.020097630098462105,
+        "encoding_seconds": 33.94619655609131,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.3.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.051768649369478226,
+        "encoding_seconds": 33.981730699539185,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.3.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.0027791857719421387,
+        "encoding_seconds": 34.124555587768555,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.4.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.011720447801053524,
+        "encoding_seconds": 6.271383762359619,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.4.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.006747400853782892,
+        "encoding_seconds": 0.8836643695831299,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.4.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.01690742000937462,
+        "encoding_seconds": 0.8828818798065186,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.4.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.03096972033381462,
+        "encoding_seconds": 6.250408172607422,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.4.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.016172584146261215,
+        "encoding_seconds": 34.00714111328125,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.4.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.04795537889003754,
+        "encoding_seconds": 34.012717485427856,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.4.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.028920616954565048,
+        "encoding_seconds": 34.23370122909546,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.5.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.016402067616581917,
+        "encoding_seconds": 6.301785945892334,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.5.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.009538903832435608,
+        "encoding_seconds": 0.8831703662872314,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.5.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.0273663979023695,
+        "encoding_seconds": 0.8841888904571533,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.5.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.029884856194257736,
+        "encoding_seconds": 6.570461988449097,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.5.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.009884008206427097,
+        "encoding_seconds": 33.966495513916016,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.5.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.0446833074092865,
+        "encoding_seconds": 33.98652482032776,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.5.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.02342522144317627,
+        "encoding_seconds": 34.18850374221802,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.6.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.015496117062866688,
+        "encoding_seconds": 6.261905670166016,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.6.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.01028649415820837,
+        "encoding_seconds": 0.8827335834503174,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.6.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.01203172281384468,
+        "encoding_seconds": 0.8915624618530273,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.6.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.016467668116092682,
+        "encoding_seconds": 6.248394250869751,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.6.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.015322504565119743,
+        "encoding_seconds": 33.983006954193115,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.6.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.04475737363100052,
+        "encoding_seconds": 33.98543453216553,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.6.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.026356883347034454,
+        "encoding_seconds": 34.20141386985779,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.7.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.012342207133769989,
+        "encoding_seconds": 6.272088527679443,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.7.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.007041711825877428,
+        "encoding_seconds": 0.8830807209014893,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.7.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.028886109590530396,
+        "encoding_seconds": 0.8813900947570801,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.7.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.03298066183924675,
+        "encoding_seconds": 6.253479480743408,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.7.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.014351862482726574,
+        "encoding_seconds": 29.985435247421265,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.7.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.04424956440925598,
+        "encoding_seconds": 29.99118947982788,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.7.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.025746939703822136,
+        "encoding_seconds": 30.306039810180664,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.8.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.008701401762664318,
+        "encoding_seconds": 5.553160190582275,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.8.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.008602689020335674,
+        "encoding_seconds": 0.822026252746582,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.8.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.008700829930603504,
+        "encoding_seconds": 0.8224663734436035,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.8.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.022294143214821815,
+        "encoding_seconds": 5.539771318435669,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.8.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.013150086626410484,
+        "encoding_seconds": 30.181289434432983,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.8.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.04199632257223129,
+        "encoding_seconds": 30.145175218582153,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.8.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.02703671157360077,
+        "encoding_seconds": 30.34279489517212,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.9.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.01339348591864109,
+        "encoding_seconds": 5.554840326309204,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.9.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.005624561104923487,
+        "encoding_seconds": 0.8224079608917236,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.9.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.028268184512853622,
+        "encoding_seconds": 0.8222310543060303,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.9.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.023703932762145996,
+        "encoding_seconds": 5.5363593101501465,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.9.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.01655564270913601,
+        "encoding_seconds": 30.181411027908325,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.9.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.04456878826022148,
+        "encoding_seconds": 30.157373189926147,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.9.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.028593378141522408,
+        "encoding_seconds": 30.389602184295654,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.10.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.014605352655053139,
+        "encoding_seconds": 5.565070390701294,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.10.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.00751321017742157,
+        "encoding_seconds": 0.8237521648406982,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.10.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.026141878217458725,
+        "encoding_seconds": 0.8253452777862549,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.10.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.030275678262114525,
+        "encoding_seconds": 5.54730224609375,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.10.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.015240240842103958,
+        "encoding_seconds": 30.18191409111023,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.10.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.04004835709929466,
+        "encoding_seconds": 30.15560483932495,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.10.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.027158986777067184,
+        "encoding_seconds": 30.347044229507446,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.11.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.013617721386253834,
+        "encoding_seconds": 5.551729679107666,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.11.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.00648416206240654,
+        "encoding_seconds": 0.8216912746429443,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.11.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.024472437798976898,
+        "encoding_seconds": 0.8225712776184082,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.11.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.017830725759267807,
+        "encoding_seconds": 5.550669193267822,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.11.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.017773820087313652,
+        "encoding_seconds": 30.169751405715942,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.11.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.042135439813137054,
+        "encoding_seconds": 30.151485443115234,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.11.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.024563468992710114,
+        "encoding_seconds": 30.36083459854126,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.12.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.016656728461384773,
+        "encoding_seconds": 5.560685873031616,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.12.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.009611031040549278,
+        "encoding_seconds": 0.8240573406219482,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.12.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.025228455662727356,
+        "encoding_seconds": 0.8233449459075928,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.12.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.028235524892807007,
+        "encoding_seconds": 5.54820704460144,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.12.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.015688415616750717,
+        "encoding_seconds": 30.164130449295044,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.12.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.03764239326119423,
+        "encoding_seconds": 30.14031958580017,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.12.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.028176333755254745,
+        "encoding_seconds": 30.375619649887085,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.13.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.016885505989193916,
+        "encoding_seconds": 5.59521484375,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.13.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.008096673525869846,
+        "encoding_seconds": 0.8421101570129395,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.13.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.03032071329653263,
+        "encoding_seconds": 0.8268451690673828,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.13.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.036102503538131714,
+        "encoding_seconds": 5.557168245315552,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.13.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.01420797873288393,
+        "encoding_seconds": 30.180742740631104,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.13.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.03788204491138458,
+        "encoding_seconds": 30.150331020355225,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.13.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.027411989867687225,
+        "encoding_seconds": 30.37622356414795,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.14.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.02048397809267044,
+        "encoding_seconds": 5.562634229660034,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.14.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.009242240339517593,
+        "encoding_seconds": 0.8228728771209717,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.14.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.03421884402632713,
+        "encoding_seconds": 0.8229897022247314,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.14.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.034129224717617035,
+        "encoding_seconds": 5.549985885620117,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.14.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.012454697862267494,
+        "encoding_seconds": 30.17295241355896,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.14.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.032250627875328064,
+        "encoding_seconds": 30.146914958953857,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.14.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.025826552882790565,
+        "encoding_seconds": 30.359105825424194,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.15.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.018196195363998413,
+        "encoding_seconds": 5.563509225845337,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.15.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.0103152459487319,
+        "encoding_seconds": 0.8226847648620605,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.15.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.026683885604143143,
+        "encoding_seconds": 0.8224132061004639,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.15.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.02225274033844471,
+        "encoding_seconds": 5.539523124694824,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.15.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.01219127792865038,
+        "encoding_seconds": 30.153844833374023,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.15.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.03199063241481781,
+        "encoding_seconds": 30.13721537590027,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.15.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.022785156965255737,
+        "encoding_seconds": 30.35191798210144,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.16.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.026063157245516777,
+        "encoding_seconds": 5.564971208572388,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.16.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.005659567192196846,
+        "encoding_seconds": 0.8211863040924072,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.16.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.022666247561573982,
+        "encoding_seconds": 0.8219254016876221,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.16.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.0151753518730402,
+        "encoding_seconds": 5.5506911277771,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.16.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.012326636351644993,
+        "encoding_seconds": 30.138097047805786,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.16.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.030659368261694908,
+        "encoding_seconds": 30.111958980560303,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.16.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.020492834970355034,
+        "encoding_seconds": 30.35488200187683,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.17.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.022953737527132034,
+        "encoding_seconds": 5.560400009155273,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.17.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.011900143697857857,
+        "encoding_seconds": 0.8228442668914795,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.17.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.03205620124936104,
+        "encoding_seconds": 0.8222496509552002,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.17.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.00790222454816103,
+        "encoding_seconds": 5.54226016998291,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.17.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.00996745191514492,
+        "encoding_seconds": 30.145689010620117,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.17.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.03290194645524025,
+        "encoding_seconds": 30.124398708343506,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.17.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.02319709025323391,
+        "encoding_seconds": 30.322646617889404,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.18.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.021197499707341194,
+        "encoding_seconds": 5.551422119140625,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.18.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.009441439993679523,
+        "encoding_seconds": 0.8220674991607666,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.18.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.052743393927812576,
+        "encoding_seconds": 0.8230068683624268,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.18.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.024090329185128212,
+        "encoding_seconds": 5.544459581375122,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.18.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.013274162076413631,
+        "encoding_seconds": 30.126259088516235,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.18.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.03615408390760422,
+        "encoding_seconds": 30.10198664665222,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.18.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.026804164052009583,
+        "encoding_seconds": 30.334795713424683,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.19.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.01663496159017086,
+        "encoding_seconds": 5.5566205978393555,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.19.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.00727072823792696,
+        "encoding_seconds": 0.8228914737701416,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.19.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.029556654393672943,
+        "encoding_seconds": 0.8233160972595215,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.19.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.0205418448895216,
+        "encoding_seconds": 5.543983697891235,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.19.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.011772122234106064,
+        "encoding_seconds": 30.11122179031372,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.19.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.02943921647965908,
+        "encoding_seconds": 30.083829879760742,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.19.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.019405793398618698,
+        "encoding_seconds": 30.34803867340088,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.20.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.02476869523525238,
+        "encoding_seconds": 5.556521415710449,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.20.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.009469999000430107,
+        "encoding_seconds": 0.8241922855377197,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.20.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.020102156326174736,
+        "encoding_seconds": 0.8225572109222412,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.20.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.009780807420611382,
+        "encoding_seconds": 5.537057876586914,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.20.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.010659174993634224,
+        "encoding_seconds": 30.11810278892517,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.20.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.024609073996543884,
+        "encoding_seconds": 30.09713101387024,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.20.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.01669551432132721,
+        "encoding_seconds": 30.337190866470337,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.21.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.019032856449484825,
+        "encoding_seconds": 5.55639123916626,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.21.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.006976925767958164,
+        "encoding_seconds": 0.8221216201782227,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.21.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.013099152594804764,
+        "encoding_seconds": 0.8213553428649902,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.21.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.009401928633451462,
+        "encoding_seconds": 5.547046422958374,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.21.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.013049563392996788,
+        "encoding_seconds": 30.130415678024292,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.21.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.027325093746185303,
+        "encoding_seconds": 30.107434511184692,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.21.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.004066525027155876,
+        "encoding_seconds": 30.302285194396973,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.22.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.016584452241659164,
+        "encoding_seconds": 5.561056852340698,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.22.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.005947377998381853,
+        "encoding_seconds": 0.8309507369995117,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.22.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.007906275801360607,
+        "encoding_seconds": 0.8318789005279541,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.22.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.013680820353329182,
+        "encoding_seconds": 5.544723987579346,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.22.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.01416824571788311,
+        "encoding_seconds": 30.14028263092041,
+        "serialized_bytes": 1088154
+      },
+      {
+        "name": "model.layers.22.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.02629680559039116,
+        "encoding_seconds": 30.123096466064453,
+        "serialized_bytes": 1088154
+      },
+      {
+        "name": "model.layers.22.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.011956651695072651,
+        "encoding_seconds": 30.36520552635193,
+        "serialized_bytes": 1088154
+      },
+      {
+        "name": "model.layers.23.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.0157635435461998,
+        "encoding_seconds": 5.5575056076049805,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.23.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.007271094247698784,
+        "encoding_seconds": 0.8213887214660645,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.23.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.005289718043059111,
+        "encoding_seconds": 0.8218660354614258,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.23.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.006577116437256336,
+        "encoding_seconds": 5.552972793579102,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.23.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.008744674734771252,
+        "encoding_seconds": 30.12435245513916,
+        "serialized_bytes": 1088154
+      },
+      {
+        "name": "model.layers.23.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.015540417283773422,
+        "encoding_seconds": 30.086060047149658,
+        "serialized_bytes": 1088154
+      },
+      {
+        "name": "model.layers.23.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [],
+        "relative_hessian_error": 0.0032533679623156786,
+        "encoding_seconds": 30.31831932067871,
+        "serialized_bytes": 1088154
+      }
+    ],
+    "quantized": {
+      "first_4096": {
+        "nll": 3.7466230243444443,
+        "perplexity": 42.37773152306649,
+        "scored_tokens": 4080
+      },
+      "next_4096": {
+        "nll": 4.095144882798195,
+        "perplexity": 60.04803845508357,
+        "scored_tokens": 4080
+      }
+    },
+    "serialized_bpw": 2.0,
+    "whole_model_bpw": 5.859838932789171,
+    "elapsed_seconds": 1753.242483139038,
+    "total_matrix_encoding_seconds": 2629.093425512314
+  },
+  "beam_fresh": {
+    "quantized": {
+      "first_4096": {
+        "nll": 3.7466230243444443,
+        "perplexity": 42.37773152306649,
+        "scored_tokens": 4080
+      },
+      "next_4096": {
+        "nll": 4.095144882798195,
+        "perplexity": 60.04803845508357,
+        "scored_tokens": 4080
+      }
+    },
+    "compressed_payload_bytes": 89456640,
+    "serialized_bpw": 2.0,
+    "whole_model_bpw": 5.859838932789171,
+    "exact_perplexity_reproduction": true
+  },
+  "fixed_path_node_fit": {
+    "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+    "gpu": "NVIDIA RTX 2000 Ada Generation",
+    "torch": "2.8.0+cu128",
+    "full_model": true,
+    "variant": "beam2_fixed_node_fit",
+    "reset_width": 32,
+    "budget_mode": "global_mlp",
+    "beam_per_state": 2,
+    "node_fitting_rounds": 1,
+    "beam_row_batch": 2048,
+    "refit_only": true,
+    "reference_variant": "beam2_rounds0",
+    "original_model_finetuned": false,
+    "reference": {
+      "first_4096": {
+        "nll": 3.7466230243444443,
+        "perplexity": 42.37773152306649,
+        "scored_tokens": 4080
+      },
+      "next_4096": {
+        "nll": 4.095144882798195,
+        "perplexity": 60.04803845508357,
+        "scored_tokens": 4080
+      }
+    },
+    "bf16": {
+      "first_4096": {
+        "nll": 3.0998072028160095,
+        "perplexity": 22.193671991474996,
+        "scored_tokens": 4080
+      },
+      "next_4096": {
+        "nll": 3.3149330615997314,
+        "perplexity": 27.52055174120266,
+        "scored_tokens": 4080
+      }
+    },
+    "calibration_tokens": 8192,
+    "calibration_length": 256,
+    "matrices": [
+      {
+        "name": "model.layers.0.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2353900.25,
+            "fixed_path_output_loss_after": 2348895.75,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2348895.75,
+            "previous_output_loss": 2353900.25,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.001125649199821055,
+        "encoding_seconds": 0.23923969268798828,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.0.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 305725.0,
+            "fixed_path_output_loss_after": 303379.3125,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 303379.3125,
+            "previous_output_loss": 305725.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.001866580219939351,
+        "encoding_seconds": 0.01344609260559082,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.0.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 270598.375,
+            "fixed_path_output_loss_after": 268719.8125,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 268719.8125,
+            "previous_output_loss": 270598.375,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.022312361747026443,
+        "encoding_seconds": 0.012819528579711914,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.0.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 45203.6484375,
+            "fixed_path_output_loss_after": 45117.125,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 45117.125,
+            "previous_output_loss": 45203.6484375,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.0034615069162100554,
+        "encoding_seconds": 0.018204927444458008,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.0.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 1098392320.0,
+            "fixed_path_output_loss_after": 1096657024.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 1096657024.0,
+            "previous_output_loss": 1098392320.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.019855055958032608,
+        "encoding_seconds": 0.06895971298217773,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.0.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 1051992832.0,
+            "fixed_path_output_loss_after": 1050628864.0,
+            "cg_iterations": 7,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 1050628864.0,
+            "previous_output_loss": 1051992832.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.04866078495979309,
+        "encoding_seconds": 0.0649724006652832,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.0.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 16317484.0,
+            "fixed_path_output_loss_after": 16288954.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 16288954.0,
+            "previous_output_loss": 16317484.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.011901016347110271,
+        "encoding_seconds": 0.23843979835510254,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.1.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 129219520.0,
+            "fixed_path_output_loss_after": 128994976.0,
+            "cg_iterations": 7,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 128994976.0,
+            "previous_output_loss": 129219520.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.011401808820664883,
+        "encoding_seconds": 0.016077756881713867,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.1.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 18980454.0,
+            "fixed_path_output_loss_after": 18851624.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 18851624.0,
+            "previous_output_loss": 18980454.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.011209466494619846,
+        "encoding_seconds": 0.012299537658691406,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.1.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 18941138.0,
+            "fixed_path_output_loss_after": 18789432.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 18789432.0,
+            "previous_output_loss": 18941138.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.020873568952083588,
+        "encoding_seconds": 0.012248754501342773,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.1.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 4999780.5,
+            "fixed_path_output_loss_after": 4988225.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 4988225.0,
+            "previous_output_loss": 4999780.5,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.007439849898219109,
+        "encoding_seconds": 0.018550872802734375,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.1.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 1673154048.0,
+            "fixed_path_output_loss_after": 1671098112.0,
+            "cg_iterations": 7,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 1671098112.0,
+            "previous_output_loss": 1673154048.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.020087342709302902,
+        "encoding_seconds": 0.0636296272277832,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.1.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 1599336960.0,
+            "fixed_path_output_loss_after": 1597486592.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 1597486592.0,
+            "previous_output_loss": 1599336960.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.04604808986186981,
+        "encoding_seconds": 0.061731815338134766,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.1.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 15654183.0,
+            "fixed_path_output_loss_after": 15636388.0,
+            "cg_iterations": 5,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 15636388.0,
+            "previous_output_loss": 15654183.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.024020500481128693,
+        "encoding_seconds": 0.22163009643554688,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.2.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 247088304.0,
+            "fixed_path_output_loss_after": 246684976.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 246684976.0,
+            "previous_output_loss": 247088304.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.014541366137564182,
+        "encoding_seconds": 0.01697397232055664,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.2.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 36092640.0,
+            "fixed_path_output_loss_after": 35845400.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 35845400.0,
+            "previous_output_loss": 36092640.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.012513164430856705,
+        "encoding_seconds": 0.012952327728271484,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.2.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 35791152.0,
+            "fixed_path_output_loss_after": 35560336.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 35560336.0,
+            "previous_output_loss": 35791152.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.019218791276216507,
+        "encoding_seconds": 0.012975931167602539,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.2.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 8096630.0,
+            "fixed_path_output_loss_after": 8082918.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 8082918.0,
+            "previous_output_loss": 8096630.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.01856997236609459,
+        "encoding_seconds": 0.015443086624145508,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.2.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2236152320.0,
+            "fixed_path_output_loss_after": 2232917760.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2232917760.0,
+            "previous_output_loss": 2236152320.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.022356541827321053,
+        "encoding_seconds": 0.062178611755371094,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.2.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2110588928.0,
+            "fixed_path_output_loss_after": 2107877632.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2107877632.0,
+            "previous_output_loss": 2110588928.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.04782490432262421,
+        "encoding_seconds": 0.0621488094329834,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.2.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 166177184.0,
+            "fixed_path_output_loss_after": 166069056.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 166069056.0,
+            "previous_output_loss": 166177184.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.003736168844625354,
+        "encoding_seconds": 0.2752339839935303,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.3.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 330925696.0,
+            "fixed_path_output_loss_after": 330374880.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 330374880.0,
+            "previous_output_loss": 330925696.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.011357656680047512,
+        "encoding_seconds": 0.01778101921081543,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.3.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 48043664.0,
+            "fixed_path_output_loss_after": 47718520.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 47718520.0,
+            "previous_output_loss": 48043664.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.0069837323389947414,
+        "encoding_seconds": 0.012765884399414062,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.3.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 46139124.0,
+            "fixed_path_output_loss_after": 45864768.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 45864768.0,
+            "previous_output_loss": 46139124.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.030475283041596413,
+        "encoding_seconds": 0.012642145156860352,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.3.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 7564044.0,
+            "fixed_path_output_loss_after": 7553007.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 7553007.0,
+            "previous_output_loss": 7564044.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.018412606790661812,
+        "encoding_seconds": 0.016355514526367188,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.3.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 3045399296.0,
+            "fixed_path_output_loss_after": 3042022912.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 3042022912.0,
+            "previous_output_loss": 3045399296.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.020075347274541855,
+        "encoding_seconds": 0.06829595565795898,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.3.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2809995264.0,
+            "fixed_path_output_loss_after": 2806469376.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2806469376.0,
+            "previous_output_loss": 2809995264.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.051703691482543945,
+        "encoding_seconds": 0.06502294540405273,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.3.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 456429216.0,
+            "fixed_path_output_loss_after": 456390976.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 456390976.0,
+            "previous_output_loss": 456429216.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.002778952941298485,
+        "encoding_seconds": 0.28305625915527344,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.4.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 308804960.0,
+            "fixed_path_output_loss_after": 308342784.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 308342784.0,
+            "previous_output_loss": 308804960.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.011702906340360641,
+        "encoding_seconds": 0.0187380313873291,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.4.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 45241228.0,
+            "fixed_path_output_loss_after": 44966176.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 44966176.0,
+            "previous_output_loss": 45241228.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.006706378888338804,
+        "encoding_seconds": 0.01266622543334961,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.4.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 45806272.0,
+            "fixed_path_output_loss_after": 45467996.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 45467996.0,
+            "previous_output_loss": 45806272.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.01678255945444107,
+        "encoding_seconds": 0.012655973434448242,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.4.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 12903107.0,
+            "fixed_path_output_loss_after": 12882822.0,
+            "cg_iterations": 7,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 12882822.0,
+            "previous_output_loss": 12903107.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.030921032652258873,
+        "encoding_seconds": 0.014949321746826172,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.4.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2880305664.0,
+            "fixed_path_output_loss_after": 2877075712.0,
+            "cg_iterations": 7,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2877075712.0,
+            "previous_output_loss": 2880305664.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.016154449433088303,
+        "encoding_seconds": 0.062381744384765625,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.4.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2737530368.0,
+            "fixed_path_output_loss_after": 2734278144.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2734278144.0,
+            "previous_output_loss": 2737530368.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.04789840802550316,
+        "encoding_seconds": 0.06104755401611328,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.4.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 40328256.0,
+            "fixed_path_output_loss_after": 40279088.0,
+            "cg_iterations": 5,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 40279088.0,
+            "previous_output_loss": 40328256.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.028885357081890106,
+        "encoding_seconds": 0.22822213172912598,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.5.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 438619584.0,
+            "fixed_path_output_loss_after": 437890688.0,
+            "cg_iterations": 11,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 437890688.0,
+            "previous_output_loss": 438619584.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.01637481153011322,
+        "encoding_seconds": 0.017952919006347656,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.5.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 64597016.0,
+            "fixed_path_output_loss_after": 64195048.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 64195048.0,
+            "previous_output_loss": 64597016.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.00947954598814249,
+        "encoding_seconds": 0.012715578079223633,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.5.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 62651492.0,
+            "fixed_path_output_loss_after": 62295088.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 62295088.0,
+            "previous_output_loss": 62651492.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.027210719883441925,
+        "encoding_seconds": 0.012746334075927734,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.5.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 14214572.0,
+            "fixed_path_output_loss_after": 14189776.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 14189776.0,
+            "previous_output_loss": 14214572.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.02983272634446621,
+        "encoding_seconds": 0.015651702880859375,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.5.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 4547123200.0,
+            "fixed_path_output_loss_after": 4543072768.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 4543072768.0,
+            "previous_output_loss": 4547123200.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.009875204414129257,
+        "encoding_seconds": 0.06746578216552734,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.5.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 3679437056.0,
+            "fixed_path_output_loss_after": 3676056576.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 3676056576.0,
+            "previous_output_loss": 3679437056.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.04464225471019745,
+        "encoding_seconds": 0.06674909591674805,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.5.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 42901928.0,
+            "fixed_path_output_loss_after": 42857280.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 42857280.0,
+            "previous_output_loss": 42901928.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.023400843143463135,
+        "encoding_seconds": 0.23627614974975586,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.6.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 324528896.0,
+            "fixed_path_output_loss_after": 324061280.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 324061280.0,
+            "previous_output_loss": 324528896.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.015473788604140282,
+        "encoding_seconds": 0.017233848571777344,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.6.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 46804656.0,
+            "fixed_path_output_loss_after": 46488472.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 46488472.0,
+            "previous_output_loss": 46804656.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.010217004455626011,
+        "encoding_seconds": 0.012702703475952148,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.6.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 45924436.0,
+            "fixed_path_output_loss_after": 45614520.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 45614520.0,
+            "previous_output_loss": 45924436.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.011950528249144554,
+        "encoding_seconds": 0.012593984603881836,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.6.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 8136623.5,
+            "fixed_path_output_loss_after": 8123343.5,
+            "cg_iterations": 11,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 8123343.5,
+            "previous_output_loss": 8136623.5,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.01644079200923443,
+        "encoding_seconds": 0.016772985458374023,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.6.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2836686848.0,
+            "fixed_path_output_loss_after": 2833486848.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2833486848.0,
+            "previous_output_loss": 2836686848.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.015305220149457455,
+        "encoding_seconds": 0.06593656539916992,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.6.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2536671744.0,
+            "fixed_path_output_loss_after": 2534181376.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2534181376.0,
+            "previous_output_loss": 2536671744.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.04471343383193016,
+        "encoding_seconds": 0.06429100036621094,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.6.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 37832256.0,
+            "fixed_path_output_loss_after": 37785908.0,
+            "cg_iterations": 5,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 37785908.0,
+            "previous_output_loss": 37832256.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.026324592530727386,
+        "encoding_seconds": 0.2279829978942871,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.7.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 372449600.0,
+            "fixed_path_output_loss_after": 371921440.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 371921440.0,
+            "previous_output_loss": 372449600.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.012324705719947815,
+        "encoding_seconds": 0.016867399215698242,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.7.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 55184480.0,
+            "fixed_path_output_loss_after": 54770960.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 54770960.0,
+            "previous_output_loss": 55184480.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.006988945417106152,
+        "encoding_seconds": 0.012916803359985352,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.7.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 53291568.0,
+            "fixed_path_output_loss_after": 52935520.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 52935520.0,
+            "previous_output_loss": 53291568.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.028693117201328278,
+        "encoding_seconds": 0.012698888778686523,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.7.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 19938290.0,
+            "fixed_path_output_loss_after": 19897530.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 19897530.0,
+            "previous_output_loss": 19938290.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.03291323781013489,
+        "encoding_seconds": 0.015475273132324219,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.7.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2892214016.0,
+            "fixed_path_output_loss_after": 2889114112.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2889114112.0,
+            "previous_output_loss": 2892214016.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.01433647982776165,
+        "encoding_seconds": 0.06642389297485352,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.7.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2480262656.0,
+            "fixed_path_output_loss_after": 2477724928.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2477724928.0,
+            "previous_output_loss": 2480262656.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.044204287230968475,
+        "encoding_seconds": 0.0648193359375,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.7.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 40192084.0,
+            "fixed_path_output_loss_after": 40145696.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 40145696.0,
+            "previous_output_loss": 40192084.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.025717223063111305,
+        "encoding_seconds": 0.23511552810668945,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.8.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 267350544.0,
+            "fixed_path_output_loss_after": 267003360.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 267003360.0,
+            "previous_output_loss": 267350544.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.008690102025866508,
+        "encoding_seconds": 0.01863265037536621,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.8.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 38808384.0,
+            "fixed_path_output_loss_after": 38563752.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 38563752.0,
+            "previous_output_loss": 38808384.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.008548461832106113,
+        "encoding_seconds": 0.012951850891113281,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.8.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 39452780.0,
+            "fixed_path_output_loss_after": 39118824.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 39118824.0,
+            "previous_output_loss": 39452780.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.008627180010080338,
+        "encoding_seconds": 0.012653350830078125,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.8.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 26363052.0,
+            "fixed_path_output_loss_after": 26321152.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 26321152.0,
+            "previous_output_loss": 26363052.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.022258710116147995,
+        "encoding_seconds": 0.01630997657775879,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.8.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2224269824.0,
+            "fixed_path_output_loss_after": 2221899008.0,
+            "cg_iterations": 11,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2221899008.0,
+            "previous_output_loss": 2224269824.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.013136070221662521,
+        "encoding_seconds": 0.06977081298828125,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.8.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2072032000.0,
+            "fixed_path_output_loss_after": 2069345408.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2069345408.0,
+            "previous_output_loss": 2072032000.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.04194187372922897,
+        "encoding_seconds": 0.0683133602142334,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.8.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 31526900.0,
+            "fixed_path_output_loss_after": 31489502.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 31489502.0,
+            "previous_output_loss": 31526900.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.02700464054942131,
+        "encoding_seconds": 0.23544883728027344,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.9.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 551622272.0,
+            "fixed_path_output_loss_after": 550840832.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 550840832.0,
+            "previous_output_loss": 551622272.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.013374513015151024,
+        "encoding_seconds": 0.018663644790649414,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.9.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 81672640.0,
+            "fixed_path_output_loss_after": 80932448.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 80932448.0,
+            "previous_output_loss": 81672640.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.005573586095124483,
+        "encoding_seconds": 0.012694835662841797,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.9.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 79468112.0,
+            "fixed_path_output_loss_after": 78802528.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 78802528.0,
+            "previous_output_loss": 79468112.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.028031423687934875,
+        "encoding_seconds": 0.012703895568847656,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.9.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 15985165.0,
+            "fixed_path_output_loss_after": 15956601.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 15956601.0,
+            "previous_output_loss": 15985165.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.023661576211452484,
+        "encoding_seconds": 0.016632556915283203,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.9.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2347028736.0,
+            "fixed_path_output_loss_after": 2344565760.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2344565760.0,
+            "previous_output_loss": 2347028736.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.016538269817829132,
+        "encoding_seconds": 0.06915760040283203,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.9.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2130952576.0,
+            "fixed_path_output_loss_after": 2128235904.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2128235904.0,
+            "previous_output_loss": 2130952576.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.04451197013258934,
+        "encoding_seconds": 0.06664395332336426,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.9.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 31344154.0,
+            "fixed_path_output_loss_after": 31303580.0,
+            "cg_iterations": 4,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 31303580.0,
+            "previous_output_loss": 31344154.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.02855636365711689,
+        "encoding_seconds": 0.21615147590637207,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.10.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 367149888.0,
+            "fixed_path_output_loss_after": 366557696.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 366557696.0,
+            "previous_output_loss": 367149888.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.01458179485052824,
+        "encoding_seconds": 0.01890707015991211,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.10.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 54601472.0,
+            "fixed_path_output_loss_after": 54211248.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 54211248.0,
+            "previous_output_loss": 54601472.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.007459515240043402,
+        "encoding_seconds": 0.012699365615844727,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.10.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 54505856.0,
+            "fixed_path_output_loss_after": 54075720.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 54075720.0,
+            "previous_output_loss": 54505856.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.0259355790913105,
+        "encoding_seconds": 0.012617111206054688,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.10.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 20427598.0,
+            "fixed_path_output_loss_after": 20369860.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 20369860.0,
+            "previous_output_loss": 20427598.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.030190104618668556,
+        "encoding_seconds": 0.016397953033447266,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.10.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 1979138944.0,
+            "fixed_path_output_loss_after": 1976689920.0,
+            "cg_iterations": 11,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 1976689920.0,
+            "previous_output_loss": 1979138944.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.01522138249129057,
+        "encoding_seconds": 0.07012510299682617,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.10.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 1832310784.0,
+            "fixed_path_output_loss_after": 1830258432.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 1830258432.0,
+            "previous_output_loss": 1832310784.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.040003497153520584,
+        "encoding_seconds": 0.0690755844116211,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.10.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 25984540.0,
+            "fixed_path_output_loss_after": 25954760.0,
+            "cg_iterations": 5,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 25954760.0,
+            "previous_output_loss": 25984540.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.027127860113978386,
+        "encoding_seconds": 0.22499704360961914,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.11.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 655640896.0,
+            "fixed_path_output_loss_after": 654532608.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 654532608.0,
+            "previous_output_loss": 655640896.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.013594701886177063,
+        "encoding_seconds": 0.018938779830932617,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.11.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 96352768.0,
+            "fixed_path_output_loss_after": 95521888.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 95521888.0,
+            "previous_output_loss": 96352768.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.0064282468520104885,
+        "encoding_seconds": 0.01270437240600586,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.11.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 90733192.0,
+            "fixed_path_output_loss_after": 90028872.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 90028872.0,
+            "previous_output_loss": 90733192.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.024282468482851982,
+        "encoding_seconds": 0.012658357620239258,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.11.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 10640049.0,
+            "fixed_path_output_loss_after": 10623106.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 10623106.0,
+            "previous_output_loss": 10640049.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.01780233345925808,
+        "encoding_seconds": 0.016382217407226562,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.11.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2164079616.0,
+            "fixed_path_output_loss_after": 2161992960.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2161992960.0,
+            "previous_output_loss": 2164079616.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.017756681889295578,
+        "encoding_seconds": 0.06622695922851562,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.11.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2057208320.0,
+            "fixed_path_output_loss_after": 2054826880.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2054826880.0,
+            "previous_output_loss": 2057208320.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.04208666458725929,
+        "encoding_seconds": 0.0667579174041748,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.11.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 31369542.0,
+            "fixed_path_output_loss_after": 31336814.0,
+            "cg_iterations": 5,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 31336814.0,
+            "previous_output_loss": 31369542.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.024537842720746994,
+        "encoding_seconds": 0.22799062728881836,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.12.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 405566400.0,
+            "fixed_path_output_loss_after": 404838528.0,
+            "cg_iterations": 11,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 404838528.0,
+            "previous_output_loss": 405566400.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.016626833006739616,
+        "encoding_seconds": 0.01810145378112793,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.12.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 59384400.0,
+            "fixed_path_output_loss_after": 59003244.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 59003244.0,
+            "previous_output_loss": 59384400.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.009549343027174473,
+        "encoding_seconds": 0.012769222259521484,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.12.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 60313204.0,
+            "fixed_path_output_loss_after": 59827724.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 59827724.0,
+            "previous_output_loss": 60313204.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.0250253826379776,
+        "encoding_seconds": 0.012750387191772461,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.12.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 21286152.0,
+            "fixed_path_output_loss_after": 21233076.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 21233076.0,
+            "previous_output_loss": 21286152.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.028165120631456375,
+        "encoding_seconds": 0.0165407657623291,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.12.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 1987531392.0,
+            "fixed_path_output_loss_after": 1985676160.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 1985676160.0,
+            "previous_output_loss": 1987531392.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.015673771500587463,
+        "encoding_seconds": 0.06820106506347656,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.12.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 1794173056.0,
+            "fixed_path_output_loss_after": 1792048384.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 1792048384.0,
+            "previous_output_loss": 1794173056.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.037597816437482834,
+        "encoding_seconds": 0.06488704681396484,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.12.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 27950350.0,
+            "fixed_path_output_loss_after": 27919482.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 27919482.0,
+            "previous_output_loss": 27950350.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.028145216405391693,
+        "encoding_seconds": 0.23692774772644043,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.13.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 515965408.0,
+            "fixed_path_output_loss_after": 515163264.0,
+            "cg_iterations": 11,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 515163264.0,
+            "previous_output_loss": 515965408.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.016859255731105804,
+        "encoding_seconds": 0.018094301223754883,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.13.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 76092080.0,
+            "fixed_path_output_loss_after": 75560248.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 75560248.0,
+            "previous_output_loss": 76092080.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.008040083572268486,
+        "encoding_seconds": 0.012691259384155273,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.13.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 74928416.0,
+            "fixed_path_output_loss_after": 74409216.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 74409216.0,
+            "previous_output_loss": 74928416.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.030110612511634827,
+        "encoding_seconds": 0.012564420700073242,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.13.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 19654504.0,
+            "fixed_path_output_loss_after": 19613232.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 19613232.0,
+            "previous_output_loss": 19654504.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.036026693880558014,
+        "encoding_seconds": 0.015496492385864258,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.13.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2090030592.0,
+            "fixed_path_output_loss_after": 2088184576.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2088184576.0,
+            "previous_output_loss": 2090030592.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.014195430092513561,
+        "encoding_seconds": 0.06820130348205566,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.13.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 1930459392.0,
+            "fixed_path_output_loss_after": 1928495104.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 1928495104.0,
+            "previous_output_loss": 1930459392.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.0378434993326664,
+        "encoding_seconds": 0.06699681282043457,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.13.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 32953232.0,
+            "fixed_path_output_loss_after": 32918944.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 32918944.0,
+            "previous_output_loss": 32953232.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.02738346718251705,
+        "encoding_seconds": 0.23665738105773926,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.14.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 531797408.0,
+            "fixed_path_output_loss_after": 530758848.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 530758848.0,
+            "previous_output_loss": 531797408.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.020443974062800407,
+        "encoding_seconds": 0.017682790756225586,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.14.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 77005456.0,
+            "fixed_path_output_loss_after": 76500472.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 76500472.0,
+            "previous_output_loss": 77005456.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.009181631729006767,
+        "encoding_seconds": 0.012731790542602539,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.14.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 77732848.0,
+            "fixed_path_output_loss_after": 77188312.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 77188312.0,
+            "previous_output_loss": 77732848.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.0339791364967823,
+        "encoding_seconds": 0.012610435485839844,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.14.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 37865048.0,
+            "fixed_path_output_loss_after": 37805112.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 37805112.0,
+            "previous_output_loss": 37865048.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.03407520055770874,
+        "encoding_seconds": 0.016009092330932617,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.14.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 1874019584.0,
+            "fixed_path_output_loss_after": 1872055808.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 1872055808.0,
+            "previous_output_loss": 1874019584.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.012441646307706833,
+        "encoding_seconds": 0.06771612167358398,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.14.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 1784641152.0,
+            "fixed_path_output_loss_after": 1783057920.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 1783057920.0,
+            "previous_output_loss": 1784641152.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.032222017645835876,
+        "encoding_seconds": 0.06751894950866699,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.14.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 36527008.0,
+            "fixed_path_output_loss_after": 36492416.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 36492416.0,
+            "previous_output_loss": 36527008.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.025802094489336014,
+        "encoding_seconds": 0.23197293281555176,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.15.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 473749696.0,
+            "fixed_path_output_loss_after": 472968832.0,
+            "cg_iterations": 11,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 472968832.0,
+            "previous_output_loss": 473749696.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.018166203051805496,
+        "encoding_seconds": 0.01824498176574707,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.15.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 68547136.0,
+            "fixed_path_output_loss_after": 68051568.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 68051568.0,
+            "previous_output_loss": 68547136.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.01024067122489214,
+        "encoding_seconds": 0.012759208679199219,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.15.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 66879268.0,
+            "fixed_path_output_loss_after": 66418304.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 66418304.0,
+            "previous_output_loss": 66879268.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.026499968022108078,
+        "encoding_seconds": 0.012658834457397461,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.15.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 23892236.0,
+            "fixed_path_output_loss_after": 23836784.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 23836784.0,
+            "previous_output_loss": 23892236.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.022201092913746834,
+        "encoding_seconds": 0.015612602233886719,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.15.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2380327424.0,
+            "fixed_path_output_loss_after": 2378396928.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2378396928.0,
+            "previous_output_loss": 2380327424.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.012181391008198261,
+        "encoding_seconds": 0.06774020195007324,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.15.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2109877504.0,
+            "fixed_path_output_loss_after": 2107911680.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2107911680.0,
+            "previous_output_loss": 2109877504.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.031960826367139816,
+        "encoding_seconds": 0.0666196346282959,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.15.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 48356016.0,
+            "fixed_path_output_loss_after": 48317940.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 48317940.0,
+            "previous_output_loss": 48356016.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.022767215967178345,
+        "encoding_seconds": 0.23690533638000488,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.16.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 608348672.0,
+            "fixed_path_output_loss_after": 607373504.0,
+            "cg_iterations": 11,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 607373504.0,
+            "previous_output_loss": 608348672.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.026021379977464676,
+        "encoding_seconds": 0.017684221267700195,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.16.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 93364992.0,
+            "fixed_path_output_loss_after": 92632256.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 92632256.0,
+            "previous_output_loss": 93364992.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.005615150555968285,
+        "encoding_seconds": 0.012729883193969727,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.16.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 95852896.0,
+            "fixed_path_output_loss_after": 94454688.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 94454688.0,
+            "previous_output_loss": 95852896.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.022335615009069443,
+        "encoding_seconds": 0.012599945068359375,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.16.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 18178916.0,
+            "fixed_path_output_loss_after": 18141276.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 18141276.0,
+            "previous_output_loss": 18178916.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.015143930912017822,
+        "encoding_seconds": 0.01564812660217285,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.16.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2977705984.0,
+            "fixed_path_output_loss_after": 2975623936.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2975623936.0,
+            "previous_output_loss": 2977705984.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.012318016961216927,
+        "encoding_seconds": 0.0658879280090332,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.16.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 2659133440.0,
+            "fixed_path_output_loss_after": 2657091328.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 2657091328.0,
+            "previous_output_loss": 2659133440.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.03063582256436348,
+        "encoding_seconds": 0.06461811065673828,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.16.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 89031920.0,
+            "fixed_path_output_loss_after": 88950912.0,
+            "cg_iterations": 7,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 88950912.0,
+            "previous_output_loss": 89031920.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.020474188029766083,
+        "encoding_seconds": 0.24358224868774414,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.17.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 593459072.0,
+            "fixed_path_output_loss_after": 592449920.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 592449920.0,
+            "previous_output_loss": 593459072.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.0229147057980299,
+        "encoding_seconds": 0.016946077346801758,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.17.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 86061024.0,
+            "fixed_path_output_loss_after": 85558592.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 85558592.0,
+            "previous_output_loss": 86061024.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.011830669827759266,
+        "encoding_seconds": 0.012725830078125,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.17.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 87270512.0,
+            "fixed_path_output_loss_after": 86723480.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 86723480.0,
+            "previous_output_loss": 87270512.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.0318552665412426,
+        "encoding_seconds": 0.012654781341552734,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.17.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 22163152.0,
+            "fixed_path_output_loss_after": 22131440.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 22131440.0,
+            "previous_output_loss": 22163152.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.007890917360782623,
+        "encoding_seconds": 0.017797231674194336,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.17.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 3926568704.0,
+            "fixed_path_output_loss_after": 3923138560.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 3923138560.0,
+            "previous_output_loss": 3926568704.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.00995874498039484,
+        "encoding_seconds": 0.06937551498413086,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.17.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 3573886976.0,
+            "fixed_path_output_loss_after": 3570811904.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 3570811904.0,
+            "previous_output_loss": 3573886976.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.03287363797426224,
+        "encoding_seconds": 0.06732511520385742,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.17.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 84340912.0,
+            "fixed_path_output_loss_after": 84270424.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 84270424.0,
+            "previous_output_loss": 84340912.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.023177703842520714,
+        "encoding_seconds": 0.2318863868713379,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.18.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 551842752.0,
+            "fixed_path_output_loss_after": 550935488.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 550935488.0,
+            "previous_output_loss": 551842752.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.021162649616599083,
+        "encoding_seconds": 0.017241239547729492,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.18.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 79789272.0,
+            "fixed_path_output_loss_after": 79249552.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 79249552.0,
+            "previous_output_loss": 79789272.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.009377574548125267,
+        "encoding_seconds": 0.012729406356811523,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.18.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 77772096.0,
+            "fixed_path_output_loss_after": 77274664.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 77274664.0,
+            "previous_output_loss": 77772096.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.05240604653954506,
+        "encoding_seconds": 0.012669801712036133,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.18.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 21649968.0,
+            "fixed_path_output_loss_after": 21616548.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 21616548.0,
+            "previous_output_loss": 21649968.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.024053143337368965,
+        "encoding_seconds": 0.01766657829284668,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.18.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 4011389952.0,
+            "fixed_path_output_loss_after": 4008396288.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 4008396288.0,
+            "previous_output_loss": 4011389952.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.013264255598187447,
+        "encoding_seconds": 0.0661616325378418,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.18.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 3438604288.0,
+            "fixed_path_output_loss_after": 3435299328.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 3435299328.0,
+            "previous_output_loss": 3438604288.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.03611933812499046,
+        "encoding_seconds": 0.06671857833862305,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.18.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 89982488.0,
+            "fixed_path_output_loss_after": 89894448.0,
+            "cg_iterations": 5,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 89894448.0,
+            "previous_output_loss": 89982488.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.02677793800830841,
+        "encoding_seconds": 0.22884893417358398,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.19.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 466878048.0,
+            "fixed_path_output_loss_after": 466215488.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 466215488.0,
+            "previous_output_loss": 466878048.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.016611354425549507,
+        "encoding_seconds": 0.018651962280273438,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.19.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 68367440.0,
+            "fixed_path_output_loss_after": 67872776.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 67872776.0,
+            "previous_output_loss": 68367440.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.007218122016638517,
+        "encoding_seconds": 0.012761831283569336,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.19.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 66074340.0,
+            "fixed_path_output_loss_after": 65627256.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 65627256.0,
+            "previous_output_loss": 66074340.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.029356662184000015,
+        "encoding_seconds": 0.012796640396118164,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.19.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 33023616.0,
+            "fixed_path_output_loss_after": 32969878.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 32969878.0,
+            "previous_output_loss": 33023616.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.0205084178596735,
+        "encoding_seconds": 0.015518665313720703,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.19.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 5111639040.0,
+            "fixed_path_output_loss_after": 5107805184.0,
+            "cg_iterations": 11,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 5107805184.0,
+            "previous_output_loss": 5111639040.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.011763293296098709,
+        "encoding_seconds": 0.07042384147644043,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.19.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 4305899008.0,
+            "fixed_path_output_loss_after": 4301725696.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 4301725696.0,
+            "previous_output_loss": 4305899008.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.02941068448126316,
+        "encoding_seconds": 0.06750082969665527,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.19.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 146889792.0,
+            "fixed_path_output_loss_after": 146769184.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 146769184.0,
+            "previous_output_loss": 146889792.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.019389860332012177,
+        "encoding_seconds": 0.2370314598083496,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.20.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 617647104.0,
+            "fixed_path_output_loss_after": 615960960.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 615960960.0,
+            "previous_output_loss": 617647104.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.024701079353690147,
+        "encoding_seconds": 0.01768636703491211,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.20.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 93485584.0,
+            "fixed_path_output_loss_after": 92722680.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 92722680.0,
+            "previous_output_loss": 93485584.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.009392717853188515,
+        "encoding_seconds": 0.012691259384155273,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.20.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 97353680.0,
+            "fixed_path_output_loss_after": 96250264.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 96250264.0,
+            "previous_output_loss": 97353680.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.019874317571520805,
+        "encoding_seconds": 0.012536048889160156,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.20.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 33684856.0,
+            "fixed_path_output_loss_after": 33639272.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 33639272.0,
+            "previous_output_loss": 33684856.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.009767571464180946,
+        "encoding_seconds": 0.01717662811279297,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.20.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 4842906112.0,
+            "fixed_path_output_loss_after": 4839428096.0,
+            "cg_iterations": 9,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 4839428096.0,
+            "previous_output_loss": 4842906112.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.010651519522070885,
+        "encoding_seconds": 0.06617879867553711,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.20.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 4527113728.0,
+            "fixed_path_output_loss_after": 4523317760.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 4523317760.0,
+            "previous_output_loss": 4527113728.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.024588439613580704,
+        "encoding_seconds": 0.06506848335266113,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.20.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 214590560.0,
+            "fixed_path_output_loss_after": 214460016.0,
+            "cg_iterations": 7,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 214460016.0,
+            "previous_output_loss": 214590560.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.016685357317328453,
+        "encoding_seconds": 0.2391071319580078,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.21.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 525547872.0,
+            "fixed_path_output_loss_after": 524160608.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 524160608.0,
+            "previous_output_loss": 525547872.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.018982617184519768,
+        "encoding_seconds": 0.017838239669799805,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.21.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 79934208.0,
+            "fixed_path_output_loss_after": 79167368.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 79167368.0,
+            "previous_output_loss": 79934208.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.006909993477165699,
+        "encoding_seconds": 0.013076543807983398,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.21.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 82507816.0,
+            "fixed_path_output_loss_after": 81427216.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 81427216.0,
+            "previous_output_loss": 82507816.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.012927593663334846,
+        "encoding_seconds": 0.013076066970825195,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.21.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 70613744.0,
+            "fixed_path_output_loss_after": 70503408.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 70503408.0,
+            "previous_output_loss": 70613744.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.009387237951159477,
+        "encoding_seconds": 0.018474817276000977,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.21.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 5274554880.0,
+            "fixed_path_output_loss_after": 5270772736.0,
+            "cg_iterations": 7,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 5270772736.0,
+            "previous_output_loss": 5274554880.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.013040206395089626,
+        "encoding_seconds": 0.06232476234436035,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.21.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 4480062976.0,
+            "fixed_path_output_loss_after": 4476199936.0,
+            "cg_iterations": 7,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 4476199936.0,
+            "previous_output_loss": 4480062976.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.02730153314769268,
+        "encoding_seconds": 0.06392908096313477,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.21.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 1190323456.0,
+            "fixed_path_output_loss_after": 1190162176.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 1190162176.0,
+            "previous_output_loss": 1190323456.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.004065974149852991,
+        "encoding_seconds": 0.2857539653778076,
+        "serialized_bytes": 1088146
+      },
+      {
+        "name": "model.layers.22.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 436263712.0,
+            "fixed_path_output_loss_after": 435115360.0,
+            "cg_iterations": 10,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 435115360.0,
+            "previous_output_loss": 436263712.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.01654079742729664,
+        "encoding_seconds": 0.017838001251220703,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.22.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 67019288.0,
+            "fixed_path_output_loss_after": 66389580.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 66389580.0,
+            "previous_output_loss": 67019288.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.0058914972469210625,
+        "encoding_seconds": 0.013268470764160156,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.22.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 70267744.0,
+            "fixed_path_output_loss_after": 69309696.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 69309696.0,
+            "previous_output_loss": 70267744.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.007798479404300451,
+        "encoding_seconds": 0.013082742691040039,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.22.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 55344932.0,
+            "fixed_path_output_loss_after": 55253668.0,
+            "cg_iterations": 11,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 55253668.0,
+            "previous_output_loss": 55344932.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.013658260926604271,
+        "encoding_seconds": 0.018564701080322266,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.22.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 4351759872.0,
+            "fixed_path_output_loss_after": 4348342272.0,
+            "cg_iterations": 7,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 4348342272.0,
+            "previous_output_loss": 4351759872.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.014157119207084179,
+        "encoding_seconds": 0.06297922134399414,
+        "serialized_bytes": 1088154
+      },
+      {
+        "name": "model.layers.22.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 3898735872.0,
+            "fixed_path_output_loss_after": 3894830592.0,
+            "cg_iterations": 6,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 3894830592.0,
+            "previous_output_loss": 3898735872.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.026270464062690735,
+        "encoding_seconds": 0.06136274337768555,
+        "serialized_bytes": 1088154
+      },
+      {
+        "name": "model.layers.22.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 290100320.0,
+            "fixed_path_output_loss_after": 289918912.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 289918912.0,
+            "previous_output_loss": 290100320.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.011949175037443638,
+        "encoding_seconds": 0.252086877822876,
+        "serialized_bytes": 1088154
+      },
+      {
+        "name": "model.layers.23.self_attn.q_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 513204800.0,
+            "fixed_path_output_loss_after": 511854944.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 511854944.0,
+            "previous_output_loss": 513204800.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.015722081065177917,
+        "encoding_seconds": 0.018398761749267578,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.23.self_attn.k_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 76810928.0,
+            "fixed_path_output_loss_after": 75929416.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 75929416.0,
+            "previous_output_loss": 76810928.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.007187648210674524,
+        "encoding_seconds": 0.012806415557861328,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.23.self_attn.v_proj",
+        "shape": [
+          128,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 78384944.0,
+            "fixed_path_output_loss_after": 77521152.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 77521152.0,
+            "previous_output_loss": 78384944.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.0052314260974526405,
+        "encoding_seconds": 0.012764930725097656,
+        "serialized_bytes": 29714
+      },
+      {
+        "name": "model.layers.23.self_attn.o_proj",
+        "shape": [
+          896,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 113426200.0,
+            "fixed_path_output_loss_after": 113233008.0,
+            "cg_iterations": 11,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 113233008.0,
+            "previous_output_loss": 113426200.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.006565914023667574,
+        "encoding_seconds": 0.016917705535888672,
+        "serialized_bytes": 201746
+      },
+      {
+        "name": "model.layers.23.mlp.gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 5417943552.0,
+            "fixed_path_output_loss_after": 5414219264.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 5414219264.0,
+            "previous_output_loss": 5417943552.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.008738663978874683,
+        "encoding_seconds": 0.06473302841186523,
+        "serialized_bytes": 1088154
+      },
+      {
+        "name": "model.layers.23.mlp.up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 5048824320.0,
+            "fixed_path_output_loss_after": 5045569536.0,
+            "cg_iterations": 8,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 5045569536.0,
+            "previous_output_loss": 5048824320.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.015530399046838284,
+        "encoding_seconds": 0.06546854972839355,
+        "serialized_bytes": 1088154
+      },
+      {
+        "name": "model.layers.23.mlp.down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "node_rounds": [
+          {
+            "fixed_path_output_loss_before": 965845312.0,
+            "fixed_path_output_loss_after": 965572288.0,
+            "cg_iterations": 12,
+            "accepted_step": 1.0,
+            "post_update_output_loss": 965572288.0,
+            "previous_output_loss": 965845312.0,
+            "accepted_after_update": true
+          }
+        ],
+        "relative_hessian_error": 0.003252448281273246,
+        "encoding_seconds": 0.27938079833984375,
+        "serialized_bytes": 1088154
+      }
+    ],
+    "quantized": {
+      "first_4096": {
+        "nll": 3.7439373582601547,
+        "perplexity": 42.26407178115995,
+        "scored_tokens": 4080
+      },
+      "next_4096": {
+        "nll": 4.091603949666023,
+        "perplexity": 59.835788369645556,
+        "scored_tokens": 4080
+      }
+    },
+    "serialized_bpw": 2.0,
+    "whole_model_bpw": 5.859838932789171,
+    "elapsed_seconds": 18.51148247718811,
+    "total_matrix_encoding_seconds": 10.621750593185425
+  },
+  "fixed_path_node_fit_fresh": {
+    "quantized": {
+      "first_4096": {
+        "nll": 3.7439373582601547,
+        "perplexity": 42.26407178115995,
+        "scored_tokens": 4080
+      },
+      "next_4096": {
+        "nll": 4.091603949666023,
+        "perplexity": 59.835788369645556,
+        "scored_tokens": 4080
+      }
+    },
+    "compressed_payload_bytes": 89456640,
+    "serialized_bpw": 2.0,
+    "whole_model_bpw": 5.859838932789171,
+    "exact_perplexity_reproduction": true
+  },
+  "tests": ".........................\n----------------------------------------------------------------------\nRan 25 tests in 2.193s\n\nOK\n"
+}

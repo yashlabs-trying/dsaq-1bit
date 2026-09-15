@@ -17,7 +17,7 @@ def correlated_beam(x, nodes, metric, beam=2, fallback=True):
     paths = torch.zeros((batch, 256, beam), dtype=torch.long, device=x.device)
     # Cache prefix error projected through H. Updating this once per step avoids
     # repeatedly decoding every surviving prefix (quadratic kernel overhead).
-    projected = torch.zeros((batch, 256, beam, width), device=x.device)
+    projected = None
     symbols = torch.arange(16, device=x.device)[None, None, :, None]
     lows = torch.arange(16, device=x.device)[None, :, None, None]
     batch_rows = torch.arange(batch, device=x.device)[:, None]
@@ -29,15 +29,20 @@ def correlated_beam(x, nodes, metric, beam=2, fallback=True):
         local = ((error @ metric[start:end, start:end]) * error).sum(-1)
         candidates = previous_cost[:, :, None, :] + local[..., None]
         if start:
-            cross = projected[..., start:end]
+            cross = projected[..., :2]
             cross = cross.reshape(batch, 16, 16, beam, 2).permute(0, 2, 1, 3, 4).reshape(batch, 16, 16 * beam, 2)
             candidates = candidates + 2 * torch.einsum('blpc,blsc->blsp', cross, error)
         selected_cost, selected = candidates.topk(beam, dim=-1, largest=False)
         parent = previous_paths[:, :, None, :].expand(batch, 16, 16, 16 * beam).gather(-1, selected)
-        parent_index = ((selected // beam) * 16 + lows) * beam + selected % beam
-        parent_projection = projected.reshape(batch, 256 * beam, width)[batch_rows, parent_index.reshape(batch, -1)]
-        increment = (error.reshape(batch, 256, 2) @ metric[start:end])[:, :, None, :]
-        projected = parent_projection.reshape(batch, 256, beam, width) + increment
+        if end < width:
+            remaining = width - end
+            increment = (error.reshape(batch, 256, 2) @ metric[start:end, end:])[:, :, None, :]
+            if start:
+                parent_index = ((selected // beam) * 16 + lows) * beam + selected % beam
+                parent_projection = projected[..., 2:].reshape(batch, 256 * beam, remaining)[batch_rows, parent_index.reshape(batch, -1)]
+                projected = parent_projection.reshape(batch, 256, beam, remaining) + increment
+            else:
+                projected = increment.expand(batch, 256, beam, remaining)
         paths = (parent | (symbols << (4 * step))).reshape(batch, 256, beam)
         costs = selected_cost.reshape(batch, 256, beam)
     best = costs.reshape(batch, -1).argmin(1)

@@ -85,6 +85,8 @@ The controlled learned-trellis prototype initially regressed to 193.01 perplexit
 
 A subsequent four-way test on a **16 GB RTX 2000 Ada** measured **42.59 / 60.17** for the same current trellis. Refreshed Hessians alone and output-aware node fitting alone regressed. Combining them improved to **41.56 / 59.25**, still above the under-30 target, at exactly 2.00 serialized compressed-weight bpw. See the [controlled 2x2 findings](results/TRELLIS_2X2_FINDINGS.md). These same-pod comparisons should not be conflated with the earlier 3090 scores.
 
+A broader correlated per-state maze search then measured **42.38 / 60.05**, regressing against **41.56 / 59.25** despite reducing the local Hessian proxy in 167 of 168 matrices. Fixed-path node refitting modestly improved this to **42.26 / 59.84**, still worse than the combined reference. Fresh serialized decoding reproduced both new checkpoints exactly at the same two-bit compressed-weight budget. These trials did not deliver the hoped-for 12-point improvement. See the [beam-search findings](results/TRELLIS_BEAM_FINDINGS.md).
+
 The first PCA-plus-sparse configuration failed the quality gate; see the historical [findings](results/REAL_MODEL_FINDINGS.md) and [reproduction details](REAL_MODEL.md).
 
 No 70B memory fit, BF16-quality retention, or RTX 3090 performance has been demonstrated. Final evaluation datasets and perplexity acceptance tolerance remain to be selected.
