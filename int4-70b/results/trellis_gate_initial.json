@@ -1,0 +1,116 @@
+{
+  "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "gpu": "NVIDIA GeForce RTX 3090",
+  "torch": "2.8.0+cu128",
+  "calibration_tokens": 8192,
+  "calibration_length": 256,
+  "states": 256,
+  "vector_width": 2,
+  "reset_width": 8,
+  "index_bits_per_weight": 2,
+  "forced_blocks_per_matrix": 521,
+  "full_model": false,
+  "original_model_finetuned": false,
+  "matrices": [
+    {
+      "name": "model.layers.0.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "e8p_current": {
+          "relative_hessian_error": 0.0018475370018999106,
+          "normalized_mse": 0.22000153362751007,
+          "encoding_seconds": 0.5609643459320068,
+          "serialized_bytes": 200696
+        },
+        "fixed": {
+          "relative_hessian_error": 0.004584336916238447,
+          "normalized_mse": 0.29239848256111145,
+          "encoding_seconds": 0.36522841453552246,
+          "serialized_bytes": 200704
+        },
+        "learned": {
+          "relative_hessian_error": 0.004199908647652456,
+          "normalized_mse": 0.2608945369720459,
+          "encoding_seconds": 0.3581879138946533,
+          "serialized_bytes": 200704
+        },
+        "learned_weighted": {
+          "relative_hessian_error": 0.004213148467046621,
+          "normalized_mse": 0.2617398798465729,
+          "encoding_seconds": 0.37543201446533203,
+          "serialized_bytes": 200704
+        }
+      }
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "e8p_current": {
+          "relative_hessian_error": 0.010348770813045366,
+          "normalized_mse": 0.20575526356697083,
+          "encoding_seconds": 1.8516967296600342,
+          "serialized_bytes": 1089528
+        },
+        "fixed": {
+          "relative_hessian_error": 0.01600858850758728,
+          "normalized_mse": 0.3322301506996155,
+          "encoding_seconds": 1.9153404235839844,
+          "serialized_bytes": 1089536
+        },
+        "learned": {
+          "relative_hessian_error": 0.016215655205360887,
+          "normalized_mse": 0.3335520625114441,
+          "encoding_seconds": 1.9273948669433594,
+          "serialized_bytes": 1089536
+        },
+        "learned_weighted": {
+          "relative_hessian_error": 0.016237165159620603,
+          "normalized_mse": 0.33362358808517456,
+          "encoding_seconds": 2.0780832767486572,
+          "serialized_bytes": 1089536
+        }
+      }
+    },
+    {
+      "name": "model.layers.12.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "e8p_current": {
+          "relative_hessian_error": 0.01905993136072045,
+          "normalized_mse": 0.16112713515758514,
+          "encoding_seconds": 0.33513689041137695,
+          "serialized_bytes": 200698
+        },
+        "fixed": {
+          "relative_hessian_error": 0.03258374976681094,
+          "normalized_mse": 0.25928083062171936,
+          "encoding_seconds": 0.3577704429626465,
+          "serialized_bytes": 200704
+        },
+        "learned": {
+          "relative_hessian_error": 0.03249983146897246,
+          "normalized_mse": 0.2622552216053009,
+          "encoding_seconds": 0.3457038402557373,
+          "serialized_bytes": 200704
+        },
+        "learned_weighted": {
+          "relative_hessian_error": 0.03246578680087401,
+          "normalized_mse": 0.262487530708313,
+          "encoding_seconds": 0.37430644035339355,
+          "serialized_bytes": 200704
+        }
+      }
+    }
+  ],
+  "elapsed_seconds": 39.813183069229126
+}

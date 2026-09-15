@@ -4,20 +4,27 @@
 Each block stores a uint16 path. Viterbi is exact for additive pair costs only.
 """
 import struct
+import math
+import os
 from pathlib import Path
 import numpy as np
 import torch
 
 HEADER = struct.Struct('<IIQe')
-STATES, VECTOR, WIDTH = 256, 2, 8
+STATES, VECTOR = 256, 2
+WIDTH = int(os.environ.get('FLASHRUN_TRELLIS_WIDTH', '8'))
+if WIDTH not in (8, 16):
+    raise ValueError('supported reset widths: 8, 16')
+PATH_BYTES = WIDTH // 4
+PATH_DTYPE = '<u2' if WIDTH == 8 else '<u4'
 METADATA_BYTES = HEADER.size + STATES * VECTOR * 2
-FORCED_BLOCKS = METADATA_BYTES // 2
+FORCED_BLOCKS = math.ceil(METADATA_BYTES / PATH_BYTES)
 
 
-def decode_paths(ids, nodes):
+def decode_paths(ids, nodes, width=WIDTH):
     state = torch.zeros_like(ids, dtype=torch.long)
     values = []
-    for step in range(4):
+    for step in range(width // VECTOR):
         symbol = (ids.long() >> (4 * step)) & 15
         state = ((state << 4) | symbol) & 255
         values.append(nodes[state])
@@ -26,13 +33,14 @@ def decode_paths(ids, nodes):
 
 def viterbi(x, nodes, diagonal=None):
     """Optimal fixed-start path under diagonal, additive squared error."""
-    if x.shape[1] != WIDTH:
-        raise ValueError('expected eight-dimensional reset blocks')
+    width = x.shape[1]
+    if width not in (8, 16):
+        raise ValueError('expected eight- or sixteen-dimensional reset blocks')
     batch = x.shape[0]
     cost = torch.full((batch, STATES), float('inf'), device=x.device)
     cost[:, 0] = 0
     traces = []
-    for step in range(4):
+    for step in range(width // VECTOR):
         # Destination s has predecessors (s >> 4) + 16*j.
         best, predecessor_high = cost.reshape(batch, 16, 16).min(dim=1)
         error = x[:, None, 2 * step:2 * step + 2] - nodes[None]
@@ -45,11 +53,11 @@ def viterbi(x, nodes, diagonal=None):
     state = cost.argmin(dim=1)
     ids = torch.zeros(batch, dtype=torch.long, device=x.device)
     rows = torch.arange(batch, device=x.device)
-    for step in reversed(range(4)):
+    for step in reversed(range(width // VECTOR)):
         ids |= (state & 15) << (4 * step)
         low = state >> 4
         state = 16 * traces[step][rows, low] + low
-    return decode_paths(ids, nodes), ids
+    return decode_paths(ids, nodes, width), ids
 
 
 def learn_nodes(w, seed, iterations=12, sample_pairs=32768):
@@ -76,6 +84,40 @@ def fixed_nodes(device, seed=123):
     return torch.randn(STATES, VECTOR, device=device, generator=generator).half().float()
 
 
+def train_path_nodes(w, nodes, seed, iterations=8, sample_blocks=8192, neutral_zero=False):
+    """Alternate Viterbi path selection and shared-node least-squares updates.
+
+    Quantizer-only fitting under an additive Euclidean objective. Model weights
+    are unchanged. This explicitly trains the table for its restricted topology.
+    """
+    nodes = nodes.clone()
+    if neutral_zero:
+        nodes[0] = 0
+    generator = torch.Generator(device=w.device).manual_seed(seed)
+    blocks = w.reshape(-1, WIDTH)
+    selection = torch.randint(len(blocks), (min(sample_blocks, len(blocks)),),
+                              generator=generator, device=w.device)
+    x = blocks[selection]
+    history = []
+    for _ in range(iterations):
+        q, paths = viterbi(x, nodes)
+        history.append(float((x - q).square().mean()))
+        state = torch.zeros_like(paths)
+        sums = torch.zeros_like(nodes)
+        counts = torch.zeros(STATES, device=w.device)
+        for step in range(WIDTH // VECTOR):
+            state = ((state << 4) | ((paths >> (4 * step)) & 15)) & 255
+            sums.index_add_(0, state, x[:, 2 * step:2 * step + 2])
+            counts.index_add_(0, state, torch.ones_like(state, dtype=torch.float))
+        update = torch.where(counts[:, None] > 0, sums / counts.clamp_min(1)[:, None], nodes)
+        if neutral_zero:
+            update[0] = 0
+        nodes = update.half().float()
+    q, _ = viterbi(x, nodes)
+    history.append(float((x - q).square().mean()))
+    return nodes, history
+
+
 def force_mask(rows, groups, group, forced, device):
     return torch.arange(rows, device=device) * groups + group >= rows * groups - forced
 
@@ -87,7 +129,7 @@ def save_layer(path, ids, nodes, columns, seed, scale, forced=FORCED_BLOCKS):
     body = flat[:-forced] if forced else flat
     data = HEADER.pack(ids.shape[0], columns, seed, scale)
     data += nodes.cpu().numpy().astype('<f2').tobytes()
-    data += body.cpu().numpy().astype('<u2').tobytes()
+    data += body.cpu().numpy().astype(PATH_DTYPE).tobytes()
     Path(path).write_bytes(data)
 
 
@@ -96,7 +138,7 @@ def load_layer(path, forced=FORCED_BLOCKS):
     rows, columns, seed, scale = HEADER.unpack(data[:HEADER.size])
     nodes = torch.from_numpy(np.frombuffer(data[HEADER.size:METADATA_BYTES], dtype='<f2').astype(np.float32))
     nodes = nodes.reshape(STATES, VECTOR)
-    stored = np.frombuffer(data[METADATA_BYTES:], dtype='<u2')
+    stored = np.frombuffer(data[METADATA_BYTES:], dtype=PATH_DTYPE)
     ids = np.zeros(rows * columns // WIDTH, dtype=np.int64)
     ids[:len(stored)] = stored
     if len(stored) != len(ids) - forced:

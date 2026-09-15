@@ -1,6 +1,12 @@
 # Controlled learned-trellis experiment
 
-Status: implementation and correctness checks complete; GPU measurements pending.
+Status: basic full-model test complete; additional ablations in progress.
+
+The basic learned-node, sensitivity-weighted trellis **regressed** to 193.0078
+perplexity on the original slice and 434.0582 on the next slice. Our current
+E8P adaptation scored 39.3299 and 55.9547 respectively in the preceding run.
+BF16 reproduced exactly at 22.1719 and 27.5071 on this new pod. The basic
+trellis's serialized transformer-linear payload is exactly 2.00 bpw.
 
 This independent prototype tests the proposed combination of two-sided
 DCT/Hadamard mixing, activation Hessians, K-means patterns, a bit-shift trellis,
@@ -39,6 +45,30 @@ The first gate compares attention and MLP matrices with fixed nodes, learned
 nodes, learned nodes with weighted search, and the current E8P method. Its
 Hessian error is a calibration proxy, not model perplexity or a speed benchmark.
 
+## Initial measurements
+
+| Matrix | E8P relative Hessian error | Fixed trellis | K-means trellis | K-means + weighted search |
+| --- | ---: | ---: | ---: | ---: |
+| Layer 0 attention Q | 0.001848 | 0.004584 | 0.004200 | 0.004213 |
+| Layer 0 MLP down | 0.010349 | 0.016009 | 0.016216 | 0.016237 |
+| Layer 12 attention Q | 0.019060 | 0.032584 | 0.032500 | 0.032466 |
+
+The first gate took 39.81 seconds; the basic full-model run took 125.65 seconds.
+These are development encoding/evaluation durations, not compressed inference
+speed results. See [trellis_gate_initial.json](trellis_gate_initial.json).
+
+Path-aware node fitting alternates discrete Viterbi assignment with centroid
+least-squares updates. It improves all three matrix proxies relative to the
+basic learned trellis. This is quantizer fitting, not model finetuning. A
+second ablation pins node zero to zero, so implicit paths reconstruct a neutral
+vector. These upgrades are not yet accepted based on model perplexity.
+
+A 16-weight reset variant is also supported through
+`FLASHRUN_TRELLIS_WIDTH=16`. It stores uint32 paths; 261 omitted paths pay for
+1,042 metadata bytes, leaving two additional bytes of savings per matrix.
+Its total payload is slightly below 2.00 bpw. The reset width is an algorithm
+format setting required when decoding these files; it is recorded in reports.
+
 ## Reproduce
 
 ```bash
@@ -55,5 +85,5 @@ an independent prototype of established bit-shift trellis/Viterbi ideas:
 [QTIP](https://arxiv.org/abs/2406.11235),
 [QuIP#](https://arxiv.org/abs/2402.04396).
 
-Fourteen correctness tests passed on the pod, including exhaustive comparison
+Seventeen correctness tests passed on the pod, including exhaustive comparison
 of Viterbi with all 65,536 paths and exact two-bit serialization round trips.

@@ -159,9 +159,18 @@ def main():
     sequential = os.environ.get('FLASHRUN_SEQUENTIAL_CAL', '0') == '1'
     gpu_hessian = os.environ.get('FLASHRUN_GPU_HESSIAN', '0') == '1'
     scale_factor = float(os.environ.get('FLASHRUN_LATTICE_SCALE_FACTOR', '1'))
-    hessians = {} if sequential else collect_H(
-        model, layers, tokenizer, cal, cal_tokens, cal_length,
-        gpu_hessian=gpu_hessian)
+    cache = os.environ.get('FLASHRUN_HESSIAN_CACHE')
+    if cache and sequential:
+        raise ValueError('cached BF16 Hessians cannot be used with sequential calibration')
+    if cache:
+        expected = dict(model_revision=MODEL_REVISION, calibration_tokens=cal_tokens,
+                        calibration_length=cal_length, gpu_hessian=gpu_hessian)
+        if json.loads(Path(cache + '.json').read_text()) != expected:
+            raise ValueError('Hessian cache does not match the requested calibration')
+    hessians = (torch.load(cache, weights_only=True) if cache else
+                {} if sequential else collect_H(
+                    model, layers, tokenizer, cal, cal_tokens, cal_length,
+                    gpu_hessian=gpu_hessian))
     print('building official E8P codebook', flush=True)
     cb = official_codebook(root)
     print('E8P ready', flush=True)
@@ -238,6 +247,7 @@ def main():
                   strict_payload=strict, implicit_lattice_codes=implicit_total,
                   discrete_refinement_sweeps=tune_iters,
                   calibration_tokens=cal_tokens, calibration_length=cal_length,
+                  hessian_cache=cache,
                   sequential_calibration=sequential, scale_factor=scale_factor,
                   bf16=bf16, quantized=result,
                   elapsed_seconds=time.time() - started)

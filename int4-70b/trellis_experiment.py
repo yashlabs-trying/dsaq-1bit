@@ -13,7 +13,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from aq_block_experiment import collect_H, evaluate
 from additive_vq import block_ldlq
 from lattice_experiment import MODEL_REVISION, mixed_right, official_codebook, refine_codes
-from trellis_quant import (WIDTH, FORCED_BLOCKS, fixed_nodes, learn_nodes,
+from trellis_quant import (WIDTH, FORCED_BLOCKS, fixed_nodes, learn_nodes, train_path_nodes,
                            viterbi, decode_paths, force_mask, save_layer, load_layer)
 
 
@@ -85,17 +85,23 @@ def main():
     train = load_dataset('wikitext', 'wikitext-2-raw-v1', split='train')
     cal = '\n\n'.join(t for t in train['text'] if t.strip())
     cache = Path('/workspace/hessians_full.pt' if full else '/workspace/hessians_gate.pt')
+    cache_config = dict(model_revision=MODEL_REVISION, calibration_tokens=8192,
+                        calibration_length=256, gpu_hessian=True)
+    cache_metadata = Path(str(cache) + '.json')
     if cache.exists():
+        if not cache_metadata.exists() or json.loads(cache_metadata.read_text()) != cache_config:
+            raise ValueError('Hessian cache configuration is missing or inconsistent')
         hessians = torch.load(cache, weights_only=True)
     else:
         hessians = collect_H(model, selected, tokenizer, cal, 8192, 256,
                             gpu_hessian=True, stop_after_last=not full)
         torch.save(hessians, cache)
+        cache_metadata.write_text(json.dumps(cache_config))
     print('Hessians ready', flush=True)
     cb = official_codebook(Path('/workspace/quip-sharp')) if not full else None
     report = dict(model_revision=MODEL_REVISION, gpu=torch.cuda.get_device_name(),
                   torch=torch.__version__, calibration_tokens=8192, calibration_length=256,
-                  states=256, vector_width=2, reset_width=8, index_bits_per_weight=2,
+                  states=256, vector_width=2, reset_width=WIDTH, index_bits_per_weight=2,
                   forced_blocks_per_matrix=FORCED_BLOCKS, full_model=full,
                   original_model_finetuned=False, matrices=[])
     ids_eval = None
@@ -125,7 +131,9 @@ def main():
         print('learned nodes', name, round(time.time() - nodes_start, 2), flush=True)
         matrix = dict(name=name, shape=list(w.shape), variants={})
         denominator = float(((wr @ hr) * wr).sum())
-        variants = [variant] if full else ['e8p_current', 'fixed', 'learned', 'learned_weighted']
+        variants = [variant] if full else os.environ.get(
+            'FLASHRUN_TRELLIS_GATE_VARIANTS',
+            'e8p_current,fixed,learned,learned_weighted,path_trained,path_trained_zero').split(',')
         for method in variants:
             tick = time.time()
             if method == 'e8p_current':
@@ -146,7 +154,12 @@ def main():
                 # E8 shared grid accounted over the whole model, as in baseline.
             else:
                 nodes = fixed_nodes('cuda') if method == 'fixed' else learned
-                q, paths = trellis_encode(normalized, hr, nodes, weighted=method == 'learned_weighted')
+                if method in ('path_trained', 'path_trained_zero'):
+                    nodes, history = train_path_nodes(normalized, nodes, seed + 20000,
+                                                      neutral_zero=method == 'path_trained_zero')
+                    matrix[method + '_training_mse'] = history
+                q, paths = trellis_encode(normalized, hr, nodes,
+                                         weighted=method in ('learned_weighted', 'path_trained', 'path_trained_zero'))
                 path = out / f'{method}_layer_{index:03d}.bin'
                 save_layer(path, paths, nodes, columns, seed, float(scale))
                 restored, restored_nodes, restored_seed, restored_scale = load_layer(path)
@@ -156,7 +169,7 @@ def main():
                 torch.testing.assert_close(decoded, q, atol=0, rtol=0)
                 reconstructed = decoded * restored_scale
                 byte_count = path.stat().st_size
-                assert byte_count * 8 / w.numel() == 2
+                assert byte_count * 8 / w.numel() <= 2
                 if full:
                     rec = reconstruct(path)
                     module.weight.copy_(rec.to(module.weight.dtype))
@@ -175,6 +188,8 @@ def main():
         report['quantized'] = dict(first_4096=evaluate(model, ids_eval[:4096]),
                                     next_4096=evaluate(model, ids_eval[4096:]))
         report['serialized_bpw'] = total_bytes * 8 / total_weights
+        all_weights = sum(p.numel() for p in model.parameters())
+        report['whole_model_bpw'] = (8 * total_bytes + 16 * (all_weights - total_weights)) / all_weights
         report['variant'] = variant
     report['elapsed_seconds'] = time.time() - started
     (out / 'report.json').write_text(json.dumps(report, indent=2))
