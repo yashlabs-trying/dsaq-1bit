@@ -83,7 +83,7 @@ def _assign_metric(X, centers, metric):
     return (-2 * weighted_x @ centers.t() + center_norm).argmin(1)
 
 
-def block_ldlq(W, H, centers, buf_cols=128, quantize_fn=None):
+def block_ldlq(W, H, centers, buf_cols=128, quantize_fn=None, callback_metric=False):
     """BlockLDLQ error propagation for one g-dimensional codebook."""
     out_features, in_features = W.shape
     g = centers.shape[1]
@@ -130,7 +130,8 @@ def block_ldlq(W, H, centers, buf_cols=128, quantize_fn=None):
                 assigned = _assign_metric(candidate, centers, D[group])
                 selected_centers = centers[assigned]
             else:
-                selected_centers, assigned = quantize_fn(candidate)
+                selected_centers, assigned = (quantize_fn(candidate, D[group])
+                                              if callback_metric else quantize_fn(candidate))
             block_q[local_start:local_end] = selected_centers.t()
             indices_t[group] = assigned
         propagated += block_l.t() @ (block_w - block_q)
