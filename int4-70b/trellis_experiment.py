@@ -28,15 +28,20 @@ def reconstruct(path, device='cuda'):
     return mixed_right(mixed_right(q, su, inverse=True).t(), sv, inverse=True).t()
 
 
-def trellis_encode(w, h, nodes, weighted=False, sweeps=1, rerank=False, forced=FORCED_BLOCKS):
+def trellis_encode(w, h, nodes, weighted=False, sweeps=1, rerank=False, forced=FORCED_BLOCKS,
+                   search_fn=None):
     rows, columns = w.shape
     groups = columns // WIDTH
     calls = 0
+    def search(candidate, metric):
+        if search_fn is not None:
+            return search_fn(candidate, metric)
+        return viterbi(candidate, nodes, metric.diag() if weighted else None,
+                       full_metric=metric if rerank else None)
     def quantize(candidate, metric):
         nonlocal calls
         group = groups - 1 - calls
-        diagonal = metric.diag() if weighted else None
-        q, ids = viterbi(candidate, nodes, diagonal, full_metric=metric if rerank else None)
+        q, ids = search(candidate, metric)
         mask = force_mask(rows, groups, group, forced, w.device)
         q[mask] = decode_paths(torch.zeros(int(mask.sum()), device=w.device, dtype=torch.long), nodes)
         ids[mask] = 0
@@ -50,8 +55,7 @@ def trellis_encode(w, h, nodes, weighted=False, sweeps=1, rerank=False, forced=F
             start, end = group * WIDTH, (group + 1) * WIDTH
             metric = h[start:end, start:end]
             candidate = q[:, start:end] + error_h[:, start:end] @ torch.linalg.inv(metric)
-            update, paths = viterbi(candidate, nodes, metric.diag() if weighted else None,
-                                    full_metric=metric if rerank else None)
+            update, paths = search(candidate, metric)
             mask = force_mask(rows, groups, group, forced, w.device)
             update[mask] = q[mask, start:end]
             paths[mask] = ids[mask, group]
