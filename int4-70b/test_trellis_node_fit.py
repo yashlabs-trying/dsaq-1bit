@@ -5,6 +5,27 @@ from trellis_quant import decode_paths, fixed_nodes
 
 
 class OutputNodeFitTests(unittest.TestCase):
+    def test_solver_matches_independent_dense_least_squares_oracle(self):
+        torch.manual_seed(31)
+        nodes = fixed_nodes('cpu')
+        nodes[0] = 0
+        paths = torch.randint(65536, (4, 1))
+        w = torch.randn(4, 8)
+        a = torch.randn(8, 8)
+        h = a.t() @ a + torch.eye(8)
+        mapping = parameter_map(paths, 8)
+        active = mapping.unique()
+        active = active[active >= 2]
+        design = (mapping[..., None] == active).double()
+        residual = (w - nodes.reshape(-1)[mapping]).double()
+        normal = torch.einsum('rci,cd,rdj->ij', design, h.double(), design)
+        rhs = torch.einsum('rci,cd,rd->i', design, h.double(), residual)
+        optimum = torch.linalg.solve(normal, rhs)
+        oracle_error = residual - design @ optimum
+        oracle_loss = float(((oracle_error @ h.double()) * oracle_error).sum())
+        fitted, report = fit_output_nodes(w, h, paths, nodes, width=8, iterations=64)
+        self.assertLessEqual(report['fixed_path_output_loss_after'], oracle_loss + .005)
+
     def test_parameter_map_matches_decoder_including_signed_uint64_paths(self):
         nodes = fixed_nodes('cpu')
         paths = torch.tensor([[0, -1, -(2**63)], [123, 456, 789]])
