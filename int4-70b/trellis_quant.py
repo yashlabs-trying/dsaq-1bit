@@ -61,7 +61,9 @@ def viterbi(x, nodes, diagonal=None, full_metric=None, top_paths=8):
         best, predecessor_high = cost.reshape(batch, 16, 16).min(dim=1)
         error = x[:, None, 2 * step:2 * step + 2] - nodes[None]
         if diagonal is not None:
-            error_cost = (error.square() * diagonal[2 * step:2 * step + 2]).sum(-1)
+            pair_diagonal = (diagonal[2 * step:2 * step + 2] if diagonal.ndim == 1 else
+                             diagonal[:, None, 2 * step:2 * step + 2])
+            error_cost = (error.square() * pair_diagonal).sum(-1)
         else:
             error_cost = error.square().sum(-1)
         cost = best.repeat_interleave(16, dim=1) + error_cost
@@ -105,6 +107,59 @@ def learn_nodes(w, seed, iterations=12, sample_pairs=32768):
     return centers.half().float()
 
 
+def learn_outlier_nodes(w, h, seed, reserve=64, iterations=12, sample_pairs=32768):
+    """Seed part of the existing node table from Hessian-important weight tails.
+
+    This changes no serialized fields: ``reserve`` nodes come from the most
+    consequential sampled pairs and the remaining nodes model the bulk.  The
+    score is the diagonal-Hessian energy of a transformed weight pair.
+    """
+    if not 0 < reserve < STATES:
+        raise ValueError('reserve must be between zero and the node count')
+    rows, columns = w.shape
+    if columns % VECTOR:
+        raise ValueError('weight width must be divisible by the node width')
+    generator = torch.Generator(device=w.device).manual_seed(seed)
+    pairs = w.reshape(rows, columns // VECTOR, VECTOR)
+    count = min(sample_pairs, pairs.shape[0] * pairs.shape[1])
+    flat_ids = torch.randint(pairs.shape[0] * pairs.shape[1], (count,),
+                             generator=generator, device=w.device)
+    row_ids = flat_ids // pairs.shape[1]
+    pair_ids = flat_ids % pairs.shape[1]
+    x = pairs[row_ids, pair_ids]
+    diagonal = h.diag().reshape(-1, VECTOR)[pair_ids].clamp_min(1e-12)
+    importance = (x.square() * diagonal).sum(1)
+    tail_count = max(reserve * 8, math.ceil(.05 * count))
+    tail = importance.topk(min(tail_count, count)).indices
+
+    def fit(values, weights, clusters):
+        if len(values) < clusters:
+            raise ValueError('not enough node-training samples')
+        chosen = torch.multinomial(weights.clamp_min(1e-12), clusters,
+                                   replacement=False, generator=generator)
+        centers = values[chosen].clone()
+        for _ in range(iterations):
+            distance = (values.square().sum(1, keepdim=True) -
+                        2 * values @ centers.t() + centers.square().sum(1))
+            ids = distance.argmin(1)
+            weighted = values * weights[:, None]
+            sums = torch.zeros_like(centers).index_add_(0, ids, weighted)
+            counts = torch.zeros(clusters, device=w.device).index_add_(0, ids, weights)
+            centers = torch.where(counts[:, None] > 0,
+                                  sums / counts.clamp_min(1e-12)[:, None], centers)
+        return centers
+
+    # Mild weighting keeps the bulk useful; the dedicated tail fit gets the
+    # full importance score.  Random placement avoids concentrating tail nodes
+    # in one trellis predecessor bucket.
+    bulk_weights = importance.sqrt().clamp_min(1e-6)
+    bulk = fit(x, bulk_weights, STATES - reserve)
+    tail_nodes = fit(x[tail], importance[tail], reserve)
+    nodes = torch.cat((bulk, tail_nodes))
+    order = torch.randperm(STATES, generator=generator, device=w.device)
+    return nodes[order].half().float()
+
+
 def fixed_nodes(device, seed=123):
     generator = torch.Generator(device=device).manual_seed(seed)
     return torch.randn(STATES, VECTOR, device=device, generator=generator).half().float()
@@ -141,6 +196,42 @@ def train_path_nodes(w, nodes, seed, iterations=8, sample_blocks=8192, neutral_z
         nodes = update.half().float()
     q, _ = viterbi(x, nodes)
     history.append(float((x - q).square().mean()))
+    return nodes, history
+
+
+def train_importance_nodes(w, h, nodes, seed, iterations=8, sample_blocks=8192,
+                           neutral_zero=False):
+    """Fit paths and nodes with per-position diagonal-Hessian importance."""
+    nodes = nodes.clone()
+    if neutral_zero:
+        nodes[0] = 0
+    generator = torch.Generator(device=w.device).manual_seed(seed)
+    blocks = w.reshape(-1, WIDTH)
+    groups = w.shape[1] // WIDTH
+    selection = torch.randint(len(blocks), (min(sample_blocks, len(blocks)),),
+                              generator=generator, device=w.device)
+    x = blocks[selection]
+    group_ids = selection % groups
+    diagonal = h.diag().reshape(groups, WIDTH)[group_ids].clamp_min(1e-12)
+    history = []
+    for _ in range(iterations):
+        q, paths = viterbi(x, nodes, diagonal=diagonal)
+        history.append(float(((x - q).square() * diagonal).sum() / diagonal.sum()))
+        state = torch.zeros_like(paths)
+        sums = torch.zeros_like(nodes)
+        counts = torch.zeros_like(nodes)
+        for step in range(WIDTH // VECTOR):
+            state = ((state << 4) | ((paths >> (4 * step)) & 15)) & 255
+            values = x[:, 2 * step:2 * step + 2]
+            weights = diagonal[:, 2 * step:2 * step + 2]
+            sums.index_add_(0, state, values * weights)
+            counts.index_add_(0, state, weights)
+        update = torch.where(counts > 0, sums / counts.clamp_min(1e-12), nodes)
+        if neutral_zero:
+            update[0] = 0
+        nodes = update.half().float()
+    q, _ = viterbi(x, nodes, diagonal=diagonal)
+    history.append(float(((x - q).square() * diagonal).sum() / diagonal.sum()))
     return nodes, history
 
 

@@ -1,0 +1,4749 @@
+{
+  "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "gpu": "NVIDIA RTX 4000 Ada Generation",
+  "torch": "2.8.0+cu128",
+  "calibration_tokens": 8192,
+  "calibration_length": 256,
+  "states": 256,
+  "vector_width": 2,
+  "reset_width": 32,
+  "index_bits_per_weight": 2,
+  "forced_blocks_per_matrix": 131,
+  "full_model": true,
+  "budget_mode": "global_mlp",
+  "original_model_finetuned": false,
+  "matrices": [
+    {
+      "name": "model.layers.0.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0011636260475498302,
+          "normalized_mse": 0.17418234050273895,
+          "encoding_seconds": 0.5852162837982178,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11485257744789124,
+        0.10729581117630005,
+        0.10248880088329315,
+        0.09916216880083084,
+        0.09674348682165146,
+        0.09489250928163528,
+        0.09355543553829193,
+        0.09249000996351242,
+        0.09161139279603958
+      ]
+    },
+    {
+      "name": "model.layers.0.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0019705604153372087,
+          "normalized_mse": 0.16438503563404083,
+          "encoding_seconds": 0.36533689498901367,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11674951016902924,
+        0.10591356456279755,
+        0.09992265701293945,
+        0.0960586667060852,
+        0.09351769089698792,
+        0.09156884998083115,
+        0.090192049741745,
+        0.08902205526828766,
+        0.08811480551958084
+      ]
+    },
+    {
+      "name": "model.layers.0.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.023629563053472025,
+          "normalized_mse": 0.15066809952259064,
+          "encoding_seconds": 0.37578487396240234,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11337185651063919,
+        0.09992336481809616,
+        0.09295307844877243,
+        0.08871804177761078,
+        0.0859033390879631,
+        0.08387088775634766,
+        0.08241606503725052,
+        0.08123909682035446,
+        0.08025924116373062
+      ]
+    },
+    {
+      "name": "model.layers.0.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.003621991575530381,
+          "normalized_mse": 0.19587798416614532,
+          "encoding_seconds": 0.36408305168151855,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11287331581115723,
+        0.10249784588813782,
+        0.0963834747672081,
+        0.09257934242486954,
+        0.09005775302648544,
+        0.0883866548538208,
+        0.08715780824422836,
+        0.08629649132490158,
+        0.08560287952423096
+      ]
+    },
+    {
+      "name": "model.layers.0.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.020419144466867174,
+          "normalized_mse": 0.1341555267572403,
+          "encoding_seconds": 0.40456271171569824,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11814067512750626,
+        0.10660619288682938,
+        0.09973500669002533,
+        0.09554558247327805,
+        0.09284685552120209,
+        0.09102931618690491,
+        0.08970530331134796,
+        0.0887102410197258,
+        0.087974414229393
+      ]
+    },
+    {
+      "name": "model.layers.0.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.049894056090377996,
+          "normalized_mse": 0.13198895752429962,
+          "encoding_seconds": 0.3885660171508789,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11770474165678024,
+        0.10554134100675583,
+        0.09901382774114609,
+        0.09504817426204681,
+        0.09236576408147812,
+        0.09048988670110703,
+        0.08913028240203857,
+        0.08812206238508224,
+        0.08732633292675018
+      ]
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.012228151711566717,
+          "normalized_mse": 0.20957252383232117,
+          "encoding_seconds": 1.7495288848876953,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12232304364442825,
+        0.10958630591630936,
+        0.10243459790945053,
+        0.09808356314897537,
+        0.09529494494199753,
+        0.0933651551604271,
+        0.09195637702941895,
+        0.09093666821718216,
+        0.09012521058320999
+      ]
+    },
+    {
+      "name": "model.layers.1.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01282767674263174,
+          "normalized_mse": 0.1552765965461731,
+          "encoding_seconds": 0.3633763790130615,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11800512671470642,
+        0.10728952288627625,
+        0.10098405927419662,
+        0.09711497277021408,
+        0.09455496072769165,
+        0.09284483641386032,
+        0.09153962135314941,
+        0.09053730219602585,
+        0.08970529586076736
+      ]
+    },
+    {
+      "name": "model.layers.1.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.012397923245865292,
+          "normalized_mse": 0.15788157284259796,
+          "encoding_seconds": 0.3621673583984375,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12380892783403397,
+        0.10937225818634033,
+        0.10120712965726852,
+        0.09681885689496994,
+        0.09388012439012527,
+        0.0916510671377182,
+        0.09020761400461197,
+        0.08920532464981079,
+        0.0883558914065361
+      ]
+    },
+    {
+      "name": "model.layers.1.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.022234998121294404,
+          "normalized_mse": 0.1538512259721756,
+          "encoding_seconds": 0.3579730987548828,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12105114758014679,
+        0.10583382099866867,
+        0.09817343205213547,
+        0.09394092112779617,
+        0.09123992919921875,
+        0.08934448659420013,
+        0.08794708549976349,
+        0.08678789436817169,
+        0.0859503224492073
+      ]
+    },
+    {
+      "name": "model.layers.1.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.008147283745956217,
+          "normalized_mse": 0.16015025973320007,
+          "encoding_seconds": 0.36617469787597656,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11678636819124222,
+        0.10444441437721252,
+        0.09858923405408859,
+        0.09493374824523926,
+        0.09235174208879471,
+        0.09062059968709946,
+        0.0893348902463913,
+        0.08831072598695755,
+        0.08753682672977448
+      ]
+    },
+    {
+      "name": "model.layers.1.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.022845475066524488,
+          "normalized_mse": 0.1336470991373062,
+          "encoding_seconds": 0.3829989433288574,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11798197031021118,
+        0.10630901902914047,
+        0.09977564960718155,
+        0.09564236551523209,
+        0.09302657097578049,
+        0.09119993448257446,
+        0.08983892947435379,
+        0.08887666463851929,
+        0.0881437435746193
+      ]
+    },
+    {
+      "name": "model.layers.1.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.049898685426880376,
+          "normalized_mse": 0.13460291922092438,
+          "encoding_seconds": 0.3940732479095459,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11886943876743317,
+        0.10674386471509933,
+        0.10038726031780243,
+        0.09637333452701569,
+        0.09359022229909897,
+        0.09161382913589478,
+        0.09029098600149155,
+        0.08927503228187561,
+        0.08845318108797073
+      ]
+    },
+    {
+      "name": "model.layers.1.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.02617501654062867,
+          "normalized_mse": 0.1883719116449356,
+          "encoding_seconds": 1.7735161781311035,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12337038666009903,
+        0.10976926237344742,
+        0.10198561102151871,
+        0.09733062237501144,
+        0.09442745894193649,
+        0.092409148812294,
+        0.09097768366336823,
+        0.08994608372449875,
+        0.08915532380342484
+      ]
+    },
+    {
+      "name": "model.layers.2.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.017191249975033903,
+          "normalized_mse": 0.14646688103675842,
+          "encoding_seconds": 0.36084508895874023,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.124182790517807,
+        0.1090966984629631,
+        0.10127057880163193,
+        0.09687292575836182,
+        0.09418223053216934,
+        0.09224678575992584,
+        0.09085038304328918,
+        0.08981087058782578,
+        0.08899963647127151
+      ]
+    },
+    {
+      "name": "model.layers.2.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.014720159056787686,
+          "normalized_mse": 0.14603927731513977,
+          "encoding_seconds": 0.35828590393066406,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.126860111951828,
+        0.10918420553207397,
+        0.10042791813611984,
+        0.09560471773147583,
+        0.09267471730709076,
+        0.09057076275348663,
+        0.08914019167423248,
+        0.08803243935108185,
+        0.08714083582162857
+      ]
+    },
+    {
+      "name": "model.layers.2.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.02147541402765036,
+          "normalized_mse": 0.1453886181116104,
+          "encoding_seconds": 0.3612332344055176,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11738111078739166,
+        0.10568428039550781,
+        0.09907954931259155,
+        0.09471958130598068,
+        0.0917605608701706,
+        0.08976899087429047,
+        0.08829814940690994,
+        0.08706255257129669,
+        0.08616772294044495
+      ]
+    },
+    {
+      "name": "model.layers.2.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.021260600873843176,
+          "normalized_mse": 0.1686483472585678,
+          "encoding_seconds": 0.3674356937408447,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11763379722833633,
+        0.1064109280705452,
+        0.10018613189458847,
+        0.09627502411603928,
+        0.09372838586568832,
+        0.09184794872999191,
+        0.09040695428848267,
+        0.0892387256026268,
+        0.08829748630523682
+      ]
+    },
+    {
+      "name": "model.layers.2.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.025125677849921396,
+          "normalized_mse": 0.1317140907049179,
+          "encoding_seconds": 0.39516544342041016,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12427239865064621,
+        0.10981816798448563,
+        0.10174323618412018,
+        0.09706812351942062,
+        0.09419860690832138,
+        0.09226265549659729,
+        0.0908280611038208,
+        0.08978836983442307,
+        0.08898133039474487
+      ]
+    },
+    {
+      "name": "model.layers.2.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.05129822915468745,
+          "normalized_mse": 0.13121625781059265,
+          "encoding_seconds": 0.39732885360717773,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12125691026449203,
+        0.10945776104927063,
+        0.10230287909507751,
+        0.0977196916937828,
+        0.09468799829483032,
+        0.09263096004724503,
+        0.09116855263710022,
+        0.09006199240684509,
+        0.08917444199323654
+      ]
+    },
+    {
+      "name": "model.layers.2.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0033726295568036963,
+          "normalized_mse": 0.10238302499055862,
+          "encoding_seconds": 1.8909480571746826,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12543058395385742,
+        0.11265068501234055,
+        0.10529334098100662,
+        0.10063000023365021,
+        0.09738925099372864,
+        0.09497221559286118,
+        0.0932055190205574,
+        0.09182163327932358,
+        0.09079135954380035
+      ]
+    },
+    {
+      "name": "model.layers.3.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.013533649690772927,
+          "normalized_mse": 0.14478135108947754,
+          "encoding_seconds": 0.3788480758666992,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12229987233877182,
+        0.10985428839921951,
+        0.10274111479520798,
+        0.09811665862798691,
+        0.09511245787143707,
+        0.09300899505615234,
+        0.09147601574659348,
+        0.09032848477363586,
+        0.08945922553539276
+      ]
+    },
+    {
+      "name": "model.layers.3.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.008341082015274743,
+          "normalized_mse": 0.1437889039516449,
+          "encoding_seconds": 0.387676477432251,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12145025283098221,
+        0.106923408806324,
+        0.09900686144828796,
+        0.09429353475570679,
+        0.09134215861558914,
+        0.0893479436635971,
+        0.08804738521575928,
+        0.08704284578561783,
+        0.08612269163131714
+      ]
+    },
+    {
+      "name": "model.layers.3.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03471354574428488,
+          "normalized_mse": 0.14224371314048767,
+          "encoding_seconds": 0.36852002143859863,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12218519300222397,
+        0.10807374119758606,
+        0.10059965401887894,
+        0.09595144540071487,
+        0.09270498156547546,
+        0.09057072550058365,
+        0.08903063833713531,
+        0.08790414780378342,
+        0.08698271214962006
+      ]
+    },
+    {
+      "name": "model.layers.3.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.021939530775822082,
+          "normalized_mse": 0.17775332927703857,
+          "encoding_seconds": 0.3916161060333252,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11866369843482971,
+        0.10647591948509216,
+        0.09948988258838654,
+        0.09527107328176498,
+        0.09261095523834229,
+        0.09088989347219467,
+        0.08959334343671799,
+        0.08862648159265518,
+        0.08788447082042694
+      ]
+    },
+    {
+      "name": "model.layers.3.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.021963071010335948,
+          "normalized_mse": 0.12587225437164307,
+          "encoding_seconds": 0.4193136692047119,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12332511693239212,
+        0.11076410114765167,
+        0.10318262875080109,
+        0.09830664098262787,
+        0.09504567086696625,
+        0.0928686186671257,
+        0.0912599191069603,
+        0.08999663591384888,
+        0.0890532061457634
+      ]
+    },
+    {
+      "name": "model.layers.3.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.056864724193641136,
+          "normalized_mse": 0.12584568560123444,
+          "encoding_seconds": 0.4067966938018799,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11816005408763885,
+        0.10796477645635605,
+        0.10186585783958435,
+        0.09788081049919128,
+        0.09510408341884613,
+        0.09314863383769989,
+        0.09175160527229309,
+        0.0906352698802948,
+        0.08975902199745178
+      ]
+    },
+    {
+      "name": "model.layers.3.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0029139587541415135,
+          "normalized_mse": 0.11164447665214539,
+          "encoding_seconds": 1.9419026374816895,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.09247604012489319,
+        0.08430103212594986,
+        0.07896903902292252,
+        0.07539141178131104,
+        0.07293658703565598,
+        0.07114493101835251,
+        0.06987561285495758,
+        0.06883315742015839,
+        0.06797236204147339
+      ]
+    },
+    {
+      "name": "model.layers.4.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0149138317926107,
+          "normalized_mse": 0.1446596086025238,
+          "encoding_seconds": 0.39314913749694824,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12313331663608551,
+        0.1074773445725441,
+        0.09956207126379013,
+        0.09517869353294373,
+        0.09230393916368484,
+        0.09034479409456253,
+        0.08886540681123734,
+        0.08767782896757126,
+        0.08675503730773926
+      ]
+    },
+    {
+      "name": "model.layers.4.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.008587109659557265,
+          "normalized_mse": 0.1451493799686432,
+          "encoding_seconds": 0.4147677421569824,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11644179373979568,
+        0.10473267734050751,
+        0.09782187640666962,
+        0.0936933234333992,
+        0.0907745286822319,
+        0.08864323049783707,
+        0.08690660446882248,
+        0.08571033179759979,
+        0.0848548486828804
+      ]
+    },
+    {
+      "name": "model.layers.4.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.020387167048114253,
+          "normalized_mse": 0.1465149223804474,
+          "encoding_seconds": 0.39281702041625977,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11420135200023651,
+        0.1027568131685257,
+        0.09625520557165146,
+        0.09255718439817429,
+        0.09031276404857635,
+        0.08869073539972305,
+        0.08741715550422668,
+        0.08640052378177643,
+        0.08563411980867386
+      ]
+    },
+    {
+      "name": "model.layers.4.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0331977142108563,
+          "normalized_mse": 0.18555420637130737,
+          "encoding_seconds": 0.3827779293060303,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11586037278175354,
+        0.10554859787225723,
+        0.09952310472726822,
+        0.09570616483688354,
+        0.09311901032924652,
+        0.09121007472276688,
+        0.08984601497650146,
+        0.08881731331348419,
+        0.08804547786712646
+      ]
+    },
+    {
+      "name": "model.layers.4.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0172607490484626,
+          "normalized_mse": 0.12922509014606476,
+          "encoding_seconds": 0.41075658798217773,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11535979807376862,
+        0.10583185404539108,
+        0.09991951286792755,
+        0.09620179980993271,
+        0.09368766099214554,
+        0.09194555878639221,
+        0.090671107172966,
+        0.08962108194828033,
+        0.08880189061164856
+      ]
+    },
+    {
+      "name": "model.layers.4.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.05314532091397172,
+          "normalized_mse": 0.12834718823432922,
+          "encoding_seconds": 0.41362619400024414,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12327659875154495,
+        0.10997556149959564,
+        0.10206513106822968,
+        0.09716098755598068,
+        0.0941142588853836,
+        0.0919957384467125,
+        0.09044097363948822,
+        0.08926383405923843,
+        0.08827630430459976
+      ]
+    },
+    {
+      "name": "model.layers.4.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03130409312226948,
+          "normalized_mse": 0.1855923980474472,
+          "encoding_seconds": 1.853039264678955,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12063950300216675,
+        0.1104455217719078,
+        0.10379492491483688,
+        0.09957759082317352,
+        0.09676168859004974,
+        0.09479288011789322,
+        0.0933624878525734,
+        0.09223924577236176,
+        0.09137056767940521
+      ]
+    },
+    {
+      "name": "model.layers.5.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01913387809855268,
+          "normalized_mse": 0.14092589914798737,
+          "encoding_seconds": 0.37431764602661133,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11969801038503647,
+        0.1075892448425293,
+        0.10061990469694138,
+        0.09623677283525467,
+        0.09335088729858398,
+        0.09135394543409348,
+        0.08997814357280731,
+        0.0889272689819336,
+        0.08813392370939255
+      ]
+    },
+    {
+      "name": "model.layers.5.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.011188839456225081,
+          "normalized_mse": 0.14126017689704895,
+          "encoding_seconds": 0.35879015922546387,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1140577644109726,
+        0.10385532677173615,
+        0.098016157746315,
+        0.09417849034070969,
+        0.09162938594818115,
+        0.0897892639040947,
+        0.08840324729681015,
+        0.0872662216424942,
+        0.08636745065450668
+      ]
+    },
+    {
+      "name": "model.layers.5.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0304754749865312,
+          "normalized_mse": 0.13916264474391937,
+          "encoding_seconds": 0.36222410202026367,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11312757432460785,
+        0.10280430316925049,
+        0.09656976163387299,
+        0.09264539182186127,
+        0.08997339755296707,
+        0.088097482919693,
+        0.08673824369907379,
+        0.0856902003288269,
+        0.08488423377275467
+      ]
+    },
+    {
+      "name": "model.layers.5.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0345600931487437,
+          "normalized_mse": 0.168143168091774,
+          "encoding_seconds": 0.36334848403930664,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12033144384622574,
+        0.10974667966365814,
+        0.10297995060682297,
+        0.09837425500154495,
+        0.09538383036851883,
+        0.09326160699129105,
+        0.0917460098862648,
+        0.09057758748531342,
+        0.08968406915664673
+      ]
+    },
+    {
+      "name": "model.layers.5.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.010877346300174286,
+          "normalized_mse": 0.13088400661945343,
+          "encoding_seconds": 0.39680981636047363,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11148818582296371,
+        0.10221664607524872,
+        0.09679440408945084,
+        0.09351461380720139,
+        0.09126006066799164,
+        0.0895896628499031,
+        0.08832819014787674,
+        0.08735846728086472,
+        0.08660281449556351
+      ]
+    },
+    {
+      "name": "model.layers.5.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.04915284357768595,
+          "normalized_mse": 0.1300169974565506,
+          "encoding_seconds": 0.4087374210357666,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11796389520168304,
+        0.10518098622560501,
+        0.09827771037817001,
+        0.09400414675474167,
+        0.09120547771453857,
+        0.08928418904542923,
+        0.08796638995409012,
+        0.08697767555713654,
+        0.08622081577777863
+      ]
+    },
+    {
+      "name": "model.layers.5.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.026020552429226473,
+          "normalized_mse": 0.19014310836791992,
+          "encoding_seconds": 1.827953577041626,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12214775383472443,
+        0.11045725643634796,
+        0.10343538224697113,
+        0.09907170385122299,
+        0.096159428358078,
+        0.09411067515611649,
+        0.0926964282989502,
+        0.09163887798786163,
+        0.09080908447504044
+      ]
+    },
+    {
+      "name": "model.layers.6.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01777836113607718,
+          "normalized_mse": 0.1448320597410202,
+          "encoding_seconds": 0.37300586700439453,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11810477823019028,
+        0.10690829902887344,
+        0.10040318220853806,
+        0.09636528044939041,
+        0.09355852007865906,
+        0.09153757989406586,
+        0.09004134684801102,
+        0.08887158334255219,
+        0.0879489928483963
+      ]
+    },
+    {
+      "name": "model.layers.6.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.011470126946408582,
+          "normalized_mse": 0.14702321588993073,
+          "encoding_seconds": 0.37363672256469727,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11067115515470505,
+        0.1021241769194603,
+        0.0971546471118927,
+        0.09381687641143799,
+        0.09147129952907562,
+        0.08963940292596817,
+        0.088224858045578,
+        0.0871366560459137,
+        0.08628623932600021
+      ]
+    },
+    {
+      "name": "model.layers.6.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.013627220736393227,
+          "normalized_mse": 0.14335697889328003,
+          "encoding_seconds": 0.3568415641784668,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11483190953731537,
+        0.10349680483341217,
+        0.09707663208246231,
+        0.09323625266551971,
+        0.09059105068445206,
+        0.08876851201057434,
+        0.08733220398426056,
+        0.08617398142814636,
+        0.08522119373083115
+      ]
+    },
+    {
+      "name": "model.layers.6.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.021157825820771144,
+          "normalized_mse": 0.18115462362766266,
+          "encoding_seconds": 0.35756754875183105,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12305880337953568,
+        0.10957182943820953,
+        0.10176029056310654,
+        0.09703918546438217,
+        0.09394001215696335,
+        0.0917164757847786,
+        0.09007696807384491,
+        0.0888838917016983,
+        0.08800456672906876
+      ]
+    },
+    {
+      "name": "model.layers.6.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.016174538616132876,
+          "normalized_mse": 0.1326301246881485,
+          "encoding_seconds": 0.3927290439605713,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11839339137077332,
+        0.10740981251001358,
+        0.10066387057304382,
+        0.09638173878192902,
+        0.09362383186817169,
+        0.09170222282409668,
+        0.09026201069355011,
+        0.0891675055027008,
+        0.0883261039853096
+      ]
+    },
+    {
+      "name": "model.layers.6.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.04831179443065627,
+          "normalized_mse": 0.13141785562038422,
+          "encoding_seconds": 0.3910391330718994,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12131822854280472,
+        0.1071079894900322,
+        0.09974751621484756,
+        0.09537623077630997,
+        0.09246549755334854,
+        0.09050801396369934,
+        0.08915966004133224,
+        0.08817534148693085,
+        0.0874178409576416
+      ]
+    },
+    {
+      "name": "model.layers.6.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.028672523277368474,
+          "normalized_mse": 0.18441158533096313,
+          "encoding_seconds": 1.9538567066192627,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12300080806016922,
+        0.11057889461517334,
+        0.10324498265981674,
+        0.09854298830032349,
+        0.09536304324865341,
+        0.09313037246465683,
+        0.0915733203291893,
+        0.09041205048561096,
+        0.08953744173049927
+      ]
+    },
+    {
+      "name": "model.layers.7.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.014429774162498132,
+          "normalized_mse": 0.14248456060886383,
+          "encoding_seconds": 0.4284040927886963,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12038029730319977,
+        0.1061578243970871,
+        0.09913013130426407,
+        0.09502262622117996,
+        0.09226606786251068,
+        0.09029091894626617,
+        0.08876737952232361,
+        0.08764415234327316,
+        0.08675030618906021
+      ]
+    },
+    {
+      "name": "model.layers.7.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.00789840069603998,
+          "normalized_mse": 0.14374284446239471,
+          "encoding_seconds": 0.4222447872161865,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11416106671094894,
+        0.10335274785757065,
+        0.09690497070550919,
+        0.09297584742307663,
+        0.09049926698207855,
+        0.08875399082899094,
+        0.08731891214847565,
+        0.08617017418146133,
+        0.08512892574071884
+      ]
+    },
+    {
+      "name": "model.layers.7.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.031639332012303845,
+          "normalized_mse": 0.14199034869670868,
+          "encoding_seconds": 0.3979978561401367,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12385084480047226,
+        0.10790915787220001,
+        0.09952111542224884,
+        0.09457418322563171,
+        0.09128604829311371,
+        0.08909115195274353,
+        0.0876324251294136,
+        0.08653070777654648,
+        0.08566465973854065
+      ]
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03960238225256092,
+          "normalized_mse": 0.15757782757282257,
+          "encoding_seconds": 0.4266233444213867,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.13058830797672272,
+        0.1132630929350853,
+        0.10466570407152176,
+        0.09946072846651077,
+        0.0962388664484024,
+        0.094212606549263,
+        0.09276736527681351,
+        0.09167990833520889,
+        0.09084964543581009
+      ]
+    },
+    {
+      "name": "model.layers.7.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.015593330921551055,
+          "normalized_mse": 0.13166019320487976,
+          "encoding_seconds": 0.39127421379089355,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12120357900857925,
+        0.10793913155794144,
+        0.1004120260477066,
+        0.09574586898088455,
+        0.09265724569559097,
+        0.09049618989229202,
+        0.08897686749696732,
+        0.08791414648294449,
+        0.08714567124843597
+      ]
+    },
+    {
+      "name": "model.layers.7.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.048624895307601126,
+          "normalized_mse": 0.13150954246520996,
+          "encoding_seconds": 0.3933398723602295,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1202969178557396,
+        0.10770021378993988,
+        0.10058087110519409,
+        0.09603344649076462,
+        0.09300389140844345,
+        0.09089571237564087,
+        0.08941132575273514,
+        0.08829273283481598,
+        0.08740895986557007
+      ]
+    },
+    {
+      "name": "model.layers.7.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.028649235666986534,
+          "normalized_mse": 0.18391188979148865,
+          "encoding_seconds": 1.8492176532745361,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12140153348445892,
+        0.11001520603895187,
+        0.10333697497844696,
+        0.09913920611143112,
+        0.09640991687774658,
+        0.09440173953771591,
+        0.09290678054094315,
+        0.09184322506189346,
+        0.0910741463303566
+      ]
+    },
+    {
+      "name": "model.layers.8.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01061053898056976,
+          "normalized_mse": 0.1512245237827301,
+          "encoding_seconds": 0.3805110454559326,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11420019716024399,
+        0.10328274965286255,
+        0.09730810672044754,
+        0.09366443753242493,
+        0.09133090078830719,
+        0.08966003358364105,
+        0.088459812104702,
+        0.08757048845291138,
+        0.08688081055879593
+      ]
+    },
+    {
+      "name": "model.layers.8.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.009689207084560194,
+          "normalized_mse": 0.1519935429096222,
+          "encoding_seconds": 0.37620043754577637,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11566327512264252,
+        0.10353189706802368,
+        0.09690792858600616,
+        0.09315835684537888,
+        0.09067053347826004,
+        0.08898339420557022,
+        0.08760692179203033,
+        0.08652884513139725,
+        0.08557060360908508
+      ]
+    },
+    {
+      "name": "model.layers.8.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.00980739641986873,
+          "normalized_mse": 0.15006519854068756,
+          "encoding_seconds": 0.3777189254760742,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11599817872047424,
+        0.10332608222961426,
+        0.09692461043596268,
+        0.09266155958175659,
+        0.08971261978149414,
+        0.0874604731798172,
+        0.08577355742454529,
+        0.0846903845667839,
+        0.08380322903394699
+      ]
+    },
+    {
+      "name": "model.layers.8.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0254645782762418,
+          "normalized_mse": 0.17704591155052185,
+          "encoding_seconds": 0.3769950866699219,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12882649898529053,
+        0.11204978078603745,
+        0.10386933386325836,
+        0.09910482168197632,
+        0.09603073447942734,
+        0.09388341009616852,
+        0.09230215847492218,
+        0.09106874465942383,
+        0.09014993160963058
+      ]
+    },
+    {
+      "name": "model.layers.8.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.014011698347971063,
+          "normalized_mse": 0.13886845111846924,
+          "encoding_seconds": 0.3977169990539551,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12482807040214539,
+        0.10970821976661682,
+        0.10195335745811462,
+        0.09732690453529358,
+        0.09428120404481888,
+        0.09216418862342834,
+        0.09061412513256073,
+        0.08942806720733643,
+        0.08850397169589996
+      ]
+    },
+    {
+      "name": "model.layers.8.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.04493194462931479,
+          "normalized_mse": 0.1372103989124298,
+          "encoding_seconds": 0.41719985008239746,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11792488396167755,
+        0.10553806275129318,
+        0.09904169291257858,
+        0.09520833939313889,
+        0.09267200529575348,
+        0.09091317653656006,
+        0.08962138742208481,
+        0.08865378797054291,
+        0.0878908783197403
+      ]
+    },
+    {
+      "name": "model.layers.8.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.029798893722782948,
+          "normalized_mse": 0.17942900955677032,
+          "encoding_seconds": 1.852339744567871,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12193544954061508,
+        0.11011555045843124,
+        0.1029331162571907,
+        0.09832768887281418,
+        0.09529972821474075,
+        0.09313476085662842,
+        0.09166667610406876,
+        0.09063468873500824,
+        0.08991986513137817
+      ]
+    },
+    {
+      "name": "model.layers.9.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01500367009445335,
+          "normalized_mse": 0.15431755781173706,
+          "encoding_seconds": 0.3776364326477051,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12366334348917007,
+        0.11036308854818344,
+        0.10253981500864029,
+        0.09781628102064133,
+        0.09488086402416229,
+        0.09285984188318253,
+        0.09137194603681564,
+        0.0902300775051117,
+        0.08932425081729889
+      ]
+    },
+    {
+      "name": "model.layers.9.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.006522325536376211,
+          "normalized_mse": 0.15862202644348145,
+          "encoding_seconds": 0.38060760498046875,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12082259356975555,
+        0.10869842022657394,
+        0.10187434405088425,
+        0.09745873510837555,
+        0.09429798275232315,
+        0.09205658733844757,
+        0.09044286608695984,
+        0.08923152089118958,
+        0.08842291682958603
+      ]
+    },
+    {
+      "name": "model.layers.9.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.030901250893705625,
+          "normalized_mse": 0.1523822396993637,
+          "encoding_seconds": 0.3853919506072998,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11748319864273071,
+        0.1051410660147667,
+        0.09888876229524612,
+        0.09522797167301178,
+        0.09275804460048676,
+        0.09089761972427368,
+        0.08937781304121017,
+        0.08811532706022263,
+        0.08704157173633575
+      ]
+    },
+    {
+      "name": "model.layers.9.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.030027403632865365,
+          "normalized_mse": 0.21027714014053345,
+          "encoding_seconds": 0.3710958957672119,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12331599742174149,
+        0.11033827066421509,
+        0.10270258039236069,
+        0.09796255081892014,
+        0.09475355595350266,
+        0.09251658618450165,
+        0.09084654599428177,
+        0.08953629434108734,
+        0.08854103833436966
+      ]
+    },
+    {
+      "name": "model.layers.9.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01740028018130992,
+          "normalized_mse": 0.13644474744796753,
+          "encoding_seconds": 0.4081687927246094,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12038986384868622,
+        0.10831353068351746,
+        0.10134591907262802,
+        0.09702825546264648,
+        0.0940408706665039,
+        0.09192536026239395,
+        0.09036518633365631,
+        0.0892040953040123,
+        0.08829046040773392
+      ]
+    },
+    {
+      "name": "model.layers.9.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.048803277611105034,
+          "normalized_mse": 0.1380137950181961,
+          "encoding_seconds": 0.3994441032409668,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12167420238256454,
+        0.11069680005311966,
+        0.10391739010810852,
+        0.09951086342334747,
+        0.0964989885687828,
+        0.09427004307508469,
+        0.0926167443394661,
+        0.09139495342969894,
+        0.09038958698511124
+      ]
+    },
+    {
+      "name": "model.layers.9.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.031014350997120084,
+          "normalized_mse": 0.1758091300725937,
+          "encoding_seconds": 1.8498103618621826,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12305469065904617,
+        0.1097576767206192,
+        0.10276663303375244,
+        0.09842965751886368,
+        0.09545503556728363,
+        0.09337058663368225,
+        0.09195475280284882,
+        0.09098196774721146,
+        0.09029370546340942
+      ]
+    },
+    {
+      "name": "model.layers.10.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.015993286995200643,
+          "normalized_mse": 0.16097243130207062,
+          "encoding_seconds": 0.36199450492858887,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12627358734607697,
+        0.10993482172489166,
+        0.10157566517591476,
+        0.09660749137401581,
+        0.09351924061775208,
+        0.09139175713062286,
+        0.08993872255086899,
+        0.08890663087368011,
+        0.08814724534749985
+      ]
+    },
+    {
+      "name": "model.layers.10.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.007932314194446868,
+          "normalized_mse": 0.16145895421504974,
+          "encoding_seconds": 0.36136960983276367,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12166769802570343,
+        0.1070593073964119,
+        0.09949620068073273,
+        0.09501877427101135,
+        0.09213010966777802,
+        0.0900718942284584,
+        0.08853863179683685,
+        0.08746173977851868,
+        0.08658483624458313
+      ]
+    },
+    {
+      "name": "model.layers.10.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.027271324855295303,
+          "normalized_mse": 0.16151387989521027,
+          "encoding_seconds": 0.3654356002807617,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12111369520425797,
+        0.10680840909481049,
+        0.09939143061637878,
+        0.09511721134185791,
+        0.09224536269903183,
+        0.09006813913583755,
+        0.0885079950094223,
+        0.08736684173345566,
+        0.08636107295751572
+      ]
+    },
+    {
+      "name": "model.layers.10.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.035373613708844516,
+          "normalized_mse": 0.17752057313919067,
+          "encoding_seconds": 0.36616015434265137,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11946132034063339,
+        0.10823889076709747,
+        0.10161826014518738,
+        0.0973101332783699,
+        0.09442917257547379,
+        0.09247016906738281,
+        0.09100962430238724,
+        0.08988882601261139,
+        0.08903604745864868
+      ]
+    },
+    {
+      "name": "model.layers.10.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.015066258261491623,
+          "normalized_mse": 0.1386401206254959,
+          "encoding_seconds": 0.39853906631469727,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12168684601783752,
+        0.10861128568649292,
+        0.10150784254074097,
+        0.09711857885122299,
+        0.09409958124160767,
+        0.09204080700874329,
+        0.09059786796569824,
+        0.08950035274028778,
+        0.08860757946968079
+      ]
+    },
+    {
+      "name": "model.layers.10.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.041937981267377585,
+          "normalized_mse": 0.13869504630565643,
+          "encoding_seconds": 0.3886449337005615,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12394895404577255,
+        0.10983969271183014,
+        0.10205227881669998,
+        0.09724239259958267,
+        0.09407881647348404,
+        0.09181652963161469,
+        0.09026844799518585,
+        0.08908023685216904,
+        0.08815626055002213
+      ]
+    },
+    {
+      "name": "model.layers.10.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.02951282353696363,
+          "normalized_mse": 0.18033656477928162,
+          "encoding_seconds": 1.8207428455352783,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.13037066161632538,
+        0.11325918883085251,
+        0.10472829639911652,
+        0.09993696212768555,
+        0.09685514867305756,
+        0.09473392367362976,
+        0.09316739439964294,
+        0.09200534224510193,
+        0.0910818949341774
+      ]
+    },
+    {
+      "name": "model.layers.11.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01496858935492884,
+          "normalized_mse": 0.16192980110645294,
+          "encoding_seconds": 0.3877708911895752,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12572523951530457,
+        0.11060132086277008,
+        0.10297837108373642,
+        0.09851042926311493,
+        0.09557455778121948,
+        0.09349370002746582,
+        0.09195949137210846,
+        0.090833880007267,
+        0.08998779207468033
+      ]
+    },
+    {
+      "name": "model.layers.11.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.007335208278763952,
+          "normalized_mse": 0.16540013253688812,
+          "encoding_seconds": 0.37791013717651367,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11564695090055466,
+        0.10479537397623062,
+        0.0992717295885086,
+        0.0959496945142746,
+        0.09359453618526459,
+        0.09192652255296707,
+        0.0905936136841774,
+        0.08965984731912613,
+        0.08892877399921417
+      ]
+    },
+    {
+      "name": "model.layers.11.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0274866331485042,
+          "normalized_mse": 0.15936867892742157,
+          "encoding_seconds": 0.37691211700439453,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12183957546949387,
+        0.10790201276540756,
+        0.10030060261487961,
+        0.09572215378284454,
+        0.09298350661993027,
+        0.09135611355304718,
+        0.09010202437639236,
+        0.08910246193408966,
+        0.0882115289568901
+      ]
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.024864302424922515,
+          "normalized_mse": 0.20473021268844604,
+          "encoding_seconds": 0.3755159378051758,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12157674133777618,
+        0.10956311225891113,
+        0.10262195765972137,
+        0.09829158335924149,
+        0.09539777785539627,
+        0.09336180239915848,
+        0.09179498255252838,
+        0.09058702737092972,
+        0.0896201953291893
+      ]
+    },
+    {
+      "name": "model.layers.11.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.017891773751189742,
+          "normalized_mse": 0.13662387430667877,
+          "encoding_seconds": 0.40999436378479004,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11232452839612961,
+        0.10407759249210358,
+        0.09900642931461334,
+        0.0955856591463089,
+        0.09320170432329178,
+        0.09140083938837051,
+        0.09012134373188019,
+        0.08916221559047699,
+        0.08838348835706711
+      ]
+    },
+    {
+      "name": "model.layers.11.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.04485313873592337,
+          "normalized_mse": 0.13756099343299866,
+          "encoding_seconds": 0.38289904594421387,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12345393002033234,
+        0.10909757763147354,
+        0.10153600573539734,
+        0.09691718965768814,
+        0.09395192563533783,
+        0.091933973133564,
+        0.09047897160053253,
+        0.08941742777824402,
+        0.08864167332649231
+      ]
+    },
+    {
+      "name": "model.layers.11.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.02739265762845173,
+          "normalized_mse": 0.17134703695774078,
+          "encoding_seconds": 1.8941373825073242,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.13069535791873932,
+        0.11366331577301025,
+        0.1049375906586647,
+        0.09994542598724365,
+        0.09671894460916519,
+        0.09447212517261505,
+        0.09289208054542542,
+        0.0917285606265068,
+        0.09087385982275009
+      ]
+    },
+    {
+      "name": "model.layers.12.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.018864298032642297,
+          "normalized_mse": 0.16159623861312866,
+          "encoding_seconds": 0.37457990646362305,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11448600143194199,
+        0.10471902787685394,
+        0.09900502115488052,
+        0.09558264911174774,
+        0.09333939105272293,
+        0.09172910451889038,
+        0.09061291813850403,
+        0.08976587653160095,
+        0.08905908465385437
+      ]
+    },
+    {
+      "name": "model.layers.12.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.00957700598375331,
+          "normalized_mse": 0.16355057060718536,
+          "encoding_seconds": 0.379025936126709,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11568251252174377,
+        0.1045319139957428,
+        0.09817926585674286,
+        0.09438472241163254,
+        0.09193053096532822,
+        0.0901678130030632,
+        0.08873380720615387,
+        0.08752614259719849,
+        0.08657974004745483
+      ]
+    },
+    {
+      "name": "model.layers.12.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.027007858422619054,
+          "normalized_mse": 0.16056112945079803,
+          "encoding_seconds": 0.3754720687866211,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1170649304986,
+        0.1041208878159523,
+        0.09784857928752899,
+        0.09374359995126724,
+        0.09101136773824692,
+        0.08905661851167679,
+        0.08749758452177048,
+        0.08632101118564606,
+        0.08538458496332169
+      ]
+    },
+    {
+      "name": "model.layers.12.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03357365068114238,
+          "normalized_mse": 0.1882069706916809,
+          "encoding_seconds": 0.38628077507019043,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12605129182338715,
+        0.11115396022796631,
+        0.10307885706424713,
+        0.09822990745306015,
+        0.09521562606096268,
+        0.0931832417845726,
+        0.09166105836629868,
+        0.09052339941263199,
+        0.08963415771722794
+      ]
+    },
+    {
+      "name": "model.layers.12.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.015918852373849508,
+          "normalized_mse": 0.13725771009922028,
+          "encoding_seconds": 0.40199971199035645,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12121661752462387,
+        0.1074749156832695,
+        0.10006827116012573,
+        0.09545987099409103,
+        0.09253492206335068,
+        0.09056413918733597,
+        0.08920373022556305,
+        0.08818328380584717,
+        0.0873534083366394
+      ]
+    },
+    {
+      "name": "model.layers.12.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.039732244012571284,
+          "normalized_mse": 0.13706204295158386,
+          "encoding_seconds": 0.4075620174407959,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11509305238723755,
+        0.10475735366344452,
+        0.09871741384267807,
+        0.09491093456745148,
+        0.09236923605203629,
+        0.09062273055315018,
+        0.08940083533525467,
+        0.08849114924669266,
+        0.08777661621570587
+      ]
+    },
+    {
+      "name": "model.layers.12.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03142919337239833,
+          "normalized_mse": 0.17666247487068176,
+          "encoding_seconds": 1.8505058288574219,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12495313584804535,
+        0.10897697508335114,
+        0.10148735344409943,
+        0.09726043790578842,
+        0.09457322210073471,
+        0.09273405373096466,
+        0.09144704788923264,
+        0.09050408750772476,
+        0.08970332145690918
+      ]
+    },
+    {
+      "name": "model.layers.13.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01852270666034089,
+          "normalized_mse": 0.1533781737089157,
+          "encoding_seconds": 0.3722069263458252,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12399686872959137,
+        0.10912537574768066,
+        0.1013699471950531,
+        0.09678328037261963,
+        0.09383422136306763,
+        0.09177590161561966,
+        0.09021155536174774,
+        0.08903640508651733,
+        0.08816418796777725
+      ]
+    },
+    {
+      "name": "model.layers.13.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.008768075022124348,
+          "normalized_mse": 0.15590731799602509,
+          "encoding_seconds": 0.3814079761505127,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12798428535461426,
+        0.11072222888469696,
+        0.10190444439649582,
+        0.09692372381687164,
+        0.0936431810259819,
+        0.09149100631475449,
+        0.08989904820919037,
+        0.08860460668802261,
+        0.0876101404428482
+      ]
+    },
+    {
+      "name": "model.layers.13.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03103760241581147,
+          "normalized_mse": 0.15197880566120148,
+          "encoding_seconds": 0.3816182613372803,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11209969967603683,
+        0.10192418843507767,
+        0.09608069062232971,
+        0.09260925650596619,
+        0.0902424231171608,
+        0.08860520273447037,
+        0.08722344785928726,
+        0.08611471951007843,
+        0.0851493775844574
+      ]
+    },
+    {
+      "name": "model.layers.13.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.04090790608192288,
+          "normalized_mse": 0.1810530722141266,
+          "encoding_seconds": 0.39696693420410156,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11760660260915756,
+        0.10709153115749359,
+        0.10096796602010727,
+        0.09726716578006744,
+        0.09468521177768707,
+        0.09287568181753159,
+        0.09151791036128998,
+        0.09046865254640579,
+        0.08962005376815796
+      ]
+    },
+    {
+      "name": "model.layers.13.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.014322345972437051,
+          "normalized_mse": 0.13604691624641418,
+          "encoding_seconds": 0.41657352447509766,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12270218878984451,
+        0.10969118028879166,
+        0.10191114246845245,
+        0.09705153107643127,
+        0.0937616229057312,
+        0.09149892628192902,
+        0.08987482637166977,
+        0.0886833444237709,
+        0.08776659518480301
+      ]
+    },
+    {
+      "name": "model.layers.13.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03975094333163709,
+          "normalized_mse": 0.13543274998664856,
+          "encoding_seconds": 0.4211893081665039,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11732140928506851,
+        0.10597239434719086,
+        0.09921275079250336,
+        0.09488034248352051,
+        0.09199585020542145,
+        0.09008163958787918,
+        0.08874634653329849,
+        0.08774276077747345,
+        0.08695512264966965
+      ]
+    },
+    {
+      "name": "model.layers.13.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.029875733890429707,
+          "normalized_mse": 0.1762109100818634,
+          "encoding_seconds": 1.8592956066131592,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1326570361852646,
+        0.11406902223825455,
+        0.10480708628892899,
+        0.09974715858697891,
+        0.09662043303251266,
+        0.09443508088588715,
+        0.09287584573030472,
+        0.09163589775562286,
+        0.09066656231880188
+      ]
+    },
+    {
+      "name": "model.layers.14.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.021732722382022684,
+          "normalized_mse": 0.15774114429950714,
+          "encoding_seconds": 0.3672370910644531,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11483094841241837,
+        0.10468719154596329,
+        0.09889788180589676,
+        0.09532932937145233,
+        0.09291459619998932,
+        0.091204933822155,
+        0.08994623273611069,
+        0.08903012424707413,
+        0.08829449117183685
+      ]
+    },
+    {
+      "name": "model.layers.14.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.009170748536847701,
+          "normalized_mse": 0.16148687899112701,
+          "encoding_seconds": 0.3789517879486084,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12227392941713333,
+        0.1074696034193039,
+        0.10026080906391144,
+        0.09598227590322495,
+        0.093378946185112,
+        0.09157980978488922,
+        0.09011805057525635,
+        0.08909571170806885,
+        0.08815056830644608
+      ]
+    },
+    {
+      "name": "model.layers.14.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.034736058195806864,
+          "normalized_mse": 0.16038432717323303,
+          "encoding_seconds": 0.3579092025756836,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12467148900032043,
+        0.10778115689754486,
+        0.09975633025169373,
+        0.09557945281267166,
+        0.09281950443983078,
+        0.09071485698223114,
+        0.08904104679822922,
+        0.08781889826059341,
+        0.08688507974147797
+      ]
+    },
+    {
+      "name": "model.layers.14.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.04148584843549833,
+          "normalized_mse": 0.16964693367481232,
+          "encoding_seconds": 0.3858966827392578,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12031883746385574,
+        0.10819157212972641,
+        0.10129480808973312,
+        0.09700553864240646,
+        0.09415896236896515,
+        0.09215988963842392,
+        0.09062188863754272,
+        0.08949767053127289,
+        0.08860987424850464
+      ]
+    },
+    {
+      "name": "model.layers.14.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.013122543687955597,
+          "normalized_mse": 0.13836701214313507,
+          "encoding_seconds": 0.3874855041503906,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11713655292987823,
+        0.10539660602807999,
+        0.09875462204217911,
+        0.09475726634263992,
+        0.09207967668771744,
+        0.09015876799821854,
+        0.08879520744085312,
+        0.08775424212217331,
+        0.0869181826710701
+      ]
+    },
+    {
+      "name": "model.layers.14.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.034467408683864824,
+          "normalized_mse": 0.13879697024822235,
+          "encoding_seconds": 0.40018200874328613,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12094567716121674,
+        0.10876847803592682,
+        0.10153762251138687,
+        0.09706331789493561,
+        0.09404820948839188,
+        0.0919150710105896,
+        0.09030642360448837,
+        0.08911105990409851,
+        0.08814477920532227
+      ]
+    },
+    {
+      "name": "model.layers.14.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.027696852773870274,
+          "normalized_mse": 0.17877066135406494,
+          "encoding_seconds": 1.8483757972717285,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12124328315258026,
+        0.10852787643671036,
+        0.10156923532485962,
+        0.0972553938627243,
+        0.09439802169799805,
+        0.09238903224468231,
+        0.09091777354478836,
+        0.08982999622821808,
+        0.08903451263904572
+      ]
+    },
+    {
+      "name": "model.layers.15.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.019604728507319504,
+          "normalized_mse": 0.15310212969779968,
+          "encoding_seconds": 0.3746645450592041,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11505397409200668,
+        0.10490069538354874,
+        0.09898290038108826,
+        0.09502279758453369,
+        0.09241952747106552,
+        0.0905291959643364,
+        0.08912692964076996,
+        0.08805685490369797,
+        0.08724084496498108
+      ]
+    },
+    {
+      "name": "model.layers.15.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.011113342444202414,
+          "normalized_mse": 0.15490660071372986,
+          "encoding_seconds": 0.3575859069824219,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11840389668941498,
+        0.10588891804218292,
+        0.09883134812116623,
+        0.09440451115369797,
+        0.09155689179897308,
+        0.08969993889331818,
+        0.08851420879364014,
+        0.08745165914297104,
+        0.08661942183971405
+      ]
+    },
+    {
+      "name": "model.layers.15.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.029776061447789232,
+          "normalized_mse": 0.15320280194282532,
+          "encoding_seconds": 0.3534245491027832,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12195391207933426,
+        0.10822699218988419,
+        0.10092121362686157,
+        0.09626483917236328,
+        0.09321753680706024,
+        0.09108061343431473,
+        0.08959586918354034,
+        0.08849196135997772,
+        0.08765648305416107
+      ]
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.027666935589528274,
+          "normalized_mse": 0.1721038967370987,
+          "encoding_seconds": 0.3605504035949707,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12044695019721985,
+        0.10921692103147507,
+        0.10236837714910507,
+        0.09785396605730057,
+        0.0947115495800972,
+        0.09246709942817688,
+        0.09087073802947998,
+        0.08974695205688477,
+        0.08890232443809509
+      ]
+    },
+    {
+      "name": "model.layers.15.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.012826288643058459,
+          "normalized_mse": 0.13804961740970612,
+          "encoding_seconds": 0.3841729164123535,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11733686178922653,
+        0.1067972257733345,
+        0.10070778429508209,
+        0.09677252173423767,
+        0.09397858381271362,
+        0.09194014966487885,
+        0.09038285911083221,
+        0.08924027532339096,
+        0.08838796615600586
+      ]
+    },
+    {
+      "name": "model.layers.15.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03465751249073867,
+          "normalized_mse": 0.13586817681789398,
+          "encoding_seconds": 0.39786410331726074,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1193041130900383,
+        0.10692182183265686,
+        0.09971677511930466,
+        0.09525902569293976,
+        0.09230468422174454,
+        0.09032976627349854,
+        0.08892538398504257,
+        0.08785001933574677,
+        0.08704766631126404
+      ]
+    },
+    {
+      "name": "model.layers.15.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.02462745005324845,
+          "normalized_mse": 0.18176303803920746,
+          "encoding_seconds": 1.778893232345581,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12544991075992584,
+        0.1110084056854248,
+        0.10353866219520569,
+        0.09899119287729263,
+        0.09594501554965973,
+        0.09375228732824326,
+        0.09223176538944244,
+        0.09110914170742035,
+        0.0903078094124794
+      ]
+    },
+    {
+      "name": "model.layers.16.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.031207261401663546,
+          "normalized_mse": 0.15857429802417755,
+          "encoding_seconds": 0.3621335029602051,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12220494449138641,
+        0.10922550410032272,
+        0.102003313601017,
+        0.09755432605743408,
+        0.0946497768163681,
+        0.09270834177732468,
+        0.09126141667366028,
+        0.09020714461803436,
+        0.08935701102018356
+      ]
+    },
+    {
+      "name": "model.layers.16.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0065760844159113195,
+          "normalized_mse": 0.16309763491153717,
+          "encoding_seconds": 0.3570895195007324,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12317021936178207,
+        0.10957620292901993,
+        0.10166199505329132,
+        0.0966329351067543,
+        0.0934005007147789,
+        0.09114343672990799,
+        0.08972539007663727,
+        0.0886540561914444,
+        0.08784089237451553
+      ]
+    },
+    {
+      "name": "model.layers.16.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.025399592391372145,
+          "normalized_mse": 0.1612321436405182,
+          "encoding_seconds": 0.35477375984191895,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11793474853038788,
+        0.10479161143302917,
+        0.09771404415369034,
+        0.09335023164749146,
+        0.09048165380954742,
+        0.08854640275239944,
+        0.08726654201745987,
+        0.08626090735197067,
+        0.08542723953723907
+      ]
+    },
+    {
+      "name": "model.layers.16.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.020785290531601913,
+          "normalized_mse": 0.1969662308692932,
+          "encoding_seconds": 0.36496686935424805,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1268046796321869,
+        0.11113092303276062,
+        0.10299798846244812,
+        0.09818711131811142,
+        0.09519833326339722,
+        0.09321964532136917,
+        0.09177371859550476,
+        0.09067799150943756,
+        0.08980657905340195
+      ]
+    },
+    {
+      "name": "model.layers.16.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.013387390464045591,
+          "normalized_mse": 0.14126932621002197,
+          "encoding_seconds": 0.3897974491119385,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11442212760448456,
+        0.10496414452791214,
+        0.09880178421735764,
+        0.09478956460952759,
+        0.09215419739484787,
+        0.09030300378799438,
+        0.0889352411031723,
+        0.0878431499004364,
+        0.08701997250318527
+      ]
+    },
+    {
+      "name": "model.layers.16.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03401331085915245,
+          "normalized_mse": 0.14080548286437988,
+          "encoding_seconds": 0.39765214920043945,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11429273337125778,
+        0.10481785237789154,
+        0.09891194850206375,
+        0.09498892724514008,
+        0.0923507809638977,
+        0.09059824794530869,
+        0.08921229839324951,
+        0.0881110206246376,
+        0.08725042641162872
+      ]
+    },
+    {
+      "name": "model.layers.16.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0230030257347985,
+          "normalized_mse": 0.18388338387012482,
+          "encoding_seconds": 1.8165149688720703,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12713852524757385,
+        0.11229205131530762,
+        0.10385943204164505,
+        0.09886080771684647,
+        0.09569967538118362,
+        0.09359811246395111,
+        0.09209433943033218,
+        0.09095247089862823,
+        0.09001968055963516
+      ]
+    },
+    {
+      "name": "model.layers.17.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.02645676473308833,
+          "normalized_mse": 0.1471346616744995,
+          "encoding_seconds": 0.37477564811706543,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1253998726606369,
+        0.11047626286745071,
+        0.10250753909349442,
+        0.09787581861019135,
+        0.09492228925228119,
+        0.09278201311826706,
+        0.0911378338932991,
+        0.08992991596460342,
+        0.0889972597360611
+      ]
+    },
+    {
+      "name": "model.layers.17.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.013730606323943507,
+          "normalized_mse": 0.1526540368795395,
+          "encoding_seconds": 0.36798977851867676,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1251419186592102,
+        0.1113300696015358,
+        0.10397451370954514,
+        0.09934893250465393,
+        0.09611784666776657,
+        0.09377378225326538,
+        0.09196785092353821,
+        0.09050656855106354,
+        0.08943426609039307
+      ]
+    },
+    {
+      "name": "model.layers.17.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03760026000938579,
+          "normalized_mse": 0.14862273633480072,
+          "encoding_seconds": 0.35119104385375977,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.13196001946926117,
+        0.11238527297973633,
+        0.1027631014585495,
+        0.09754056483507156,
+        0.09404600411653519,
+        0.09167346358299255,
+        0.09005638211965561,
+        0.0888909325003624,
+        0.08789365738630295
+      ]
+    },
+    {
+      "name": "model.layers.17.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.009661830877852386,
+          "normalized_mse": 0.16679735481739044,
+          "encoding_seconds": 0.36061978340148926,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11921462416648865,
+        0.10675720870494843,
+        0.09990770369768143,
+        0.09576652944087982,
+        0.09292984008789062,
+        0.09077942371368408,
+        0.08910804986953735,
+        0.08778685331344604,
+        0.08681634068489075
+      ]
+    },
+    {
+      "name": "model.layers.17.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01113082145070308,
+          "normalized_mse": 0.13953009247779846,
+          "encoding_seconds": 0.3868565559387207,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11613079160451889,
+        0.10375810414552689,
+        0.09720048308372498,
+        0.09333664178848267,
+        0.09072648733854294,
+        0.08880840241909027,
+        0.08738090097904205,
+        0.08632609993219376,
+        0.0855163112282753
+      ]
+    },
+    {
+      "name": "model.layers.17.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03767023293934123,
+          "normalized_mse": 0.14139337837696075,
+          "encoding_seconds": 0.38472962379455566,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1221461296081543,
+        0.10831571370363235,
+        0.10068457573652267,
+        0.09620104730129242,
+        0.09325022995471954,
+        0.09116003662347794,
+        0.08964532613754272,
+        0.08848121017217636,
+        0.08762756735086441
+      ]
+    },
+    {
+      "name": "model.layers.17.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.027024880464544467,
+          "normalized_mse": 0.18611568212509155,
+          "encoding_seconds": 1.7631471157073975,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12974795699119568,
+        0.11324481666088104,
+        0.10458981990814209,
+        0.0993749275803566,
+        0.0960182249546051,
+        0.09371185302734375,
+        0.09204251319169998,
+        0.09090893715620041,
+        0.09005047380924225
+      ]
+    },
+    {
+      "name": "model.layers.18.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.025577173660799837,
+          "normalized_mse": 0.14017029106616974,
+          "encoding_seconds": 0.3592262268066406,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12205174565315247,
+        0.10914008319377899,
+        0.10192795097827911,
+        0.09734654426574707,
+        0.09420271217823029,
+        0.092045858502388,
+        0.09049883484840393,
+        0.08924855291843414,
+        0.08835893869400024
+      ]
+    },
+    {
+      "name": "model.layers.18.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.011638395288400313,
+          "normalized_mse": 0.14041626453399658,
+          "encoding_seconds": 0.34966588020324707,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11772799491882324,
+        0.1059676930308342,
+        0.09967812895774841,
+        0.09562758356332779,
+        0.09293708950281143,
+        0.09056834876537323,
+        0.08877674490213394,
+        0.08751790225505829,
+        0.08649026602506638
+      ]
+    },
+    {
+      "name": "model.layers.18.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.05684450897409814,
+          "normalized_mse": 0.13937807083129883,
+          "encoding_seconds": 0.3535614013671875,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12318817526102066,
+        0.10705801844596863,
+        0.09905393421649933,
+        0.0946306437253952,
+        0.0918826013803482,
+        0.09000241756439209,
+        0.08863727003335953,
+        0.08756648004055023,
+        0.08674495667219162
+      ]
+    },
+    {
+      "name": "model.layers.18.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03412499353163307,
+          "normalized_mse": 0.1587744653224945,
+          "encoding_seconds": 0.3639538288116455,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11650347709655762,
+        0.10655058920383453,
+        0.10057070851325989,
+        0.09689182043075562,
+        0.09442216157913208,
+        0.09256900101900101,
+        0.09118720889091492,
+        0.09012752771377563,
+        0.08936801552772522
+      ]
+    },
+    {
+      "name": "model.layers.18.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01553960201107741,
+          "normalized_mse": 0.13905367255210876,
+          "encoding_seconds": 0.3891763687133789,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1246478408575058,
+        0.11055507510900497,
+        0.10231348127126694,
+        0.09724690020084381,
+        0.09403111040592194,
+        0.09187407791614532,
+        0.09035605937242508,
+        0.08928525447845459,
+        0.0884484276175499
+      ]
+    },
+    {
+      "name": "model.layers.18.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.04130675184734838,
+          "normalized_mse": 0.13814356923103333,
+          "encoding_seconds": 0.3895888328552246,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1206236258149147,
+        0.10849492251873016,
+        0.10161475092172623,
+        0.09727048128843307,
+        0.09426425397396088,
+        0.09214738756418228,
+        0.09060057252645493,
+        0.08951644599437714,
+        0.08871890604496002
+      ]
+    },
+    {
+      "name": "model.layers.18.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.030436980123899605,
+          "normalized_mse": 0.18342305719852448,
+          "encoding_seconds": 1.7671117782592773,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1220366507768631,
+        0.1105031743645668,
+        0.1037464514374733,
+        0.09943072497844696,
+        0.09649484604597092,
+        0.09436303377151489,
+        0.0928114727139473,
+        0.09160470217466354,
+        0.09068088233470917
+      ]
+    },
+    {
+      "name": "model.layers.19.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.021074215879174373,
+          "normalized_mse": 0.14619572460651398,
+          "encoding_seconds": 0.3582940101623535,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11967578530311584,
+        0.10696335136890411,
+        0.09987980872392654,
+        0.09580127894878387,
+        0.0930657908320427,
+        0.09110225737094879,
+        0.0897434800863266,
+        0.08868414908647537,
+        0.08782729506492615
+      ]
+    },
+    {
+      "name": "model.layers.19.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.008979514403572815,
+          "normalized_mse": 0.14745467901229858,
+          "encoding_seconds": 0.35427236557006836,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1281847357749939,
+        0.11074583232402802,
+        0.10195648670196533,
+        0.09693868458271027,
+        0.09374842047691345,
+        0.09140300750732422,
+        0.08955149352550507,
+        0.08815865218639374,
+        0.08708302676677704
+      ]
+    },
+    {
+      "name": "model.layers.19.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0349858808213183,
+          "normalized_mse": 0.14282569289207458,
+          "encoding_seconds": 0.3560984134674072,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11523490399122238,
+        0.10333535820245743,
+        0.09682200103998184,
+        0.09304115921258926,
+        0.09053870290517807,
+        0.08884281665086746,
+        0.08746626228094101,
+        0.0862964615225792,
+        0.08541768789291382
+      ]
+    },
+    {
+      "name": "model.layers.19.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.027487417386981756,
+          "normalized_mse": 0.16056251525878906,
+          "encoding_seconds": 0.36055874824523926,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12522010505199432,
+        0.11016398668289185,
+        0.101917564868927,
+        0.0970030277967453,
+        0.09385267645120621,
+        0.09173040837049484,
+        0.09019400924444199,
+        0.08907600492238998,
+        0.08826462179422379
+      ]
+    },
+    {
+      "name": "model.layers.19.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.013552103628499276,
+          "normalized_mse": 0.13507339358329773,
+          "encoding_seconds": 0.39217591285705566,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1220095157623291,
+        0.10786762833595276,
+        0.10046213865280151,
+        0.09584151208400726,
+        0.09265010058879852,
+        0.09052514284849167,
+        0.08902538567781448,
+        0.08790938556194305,
+        0.08703911304473877
+      ]
+    },
+    {
+      "name": "model.layers.19.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03516187123793178,
+          "normalized_mse": 0.13578088581562042,
+          "encoding_seconds": 0.38526439666748047,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1186542958021164,
+        0.10739963501691818,
+        0.10069090873003006,
+        0.09623929858207703,
+        0.0932949110865593,
+        0.09123052656650543,
+        0.08970629423856735,
+        0.08852645754814148,
+        0.08757712692022324
+      ]
+    },
+    {
+      "name": "model.layers.19.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.024487381626701242,
+          "normalized_mse": 0.18662691116333008,
+          "encoding_seconds": 1.7396597862243652,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12176065146923065,
+        0.10995487123727798,
+        0.10330222547054291,
+        0.09910866618156433,
+        0.0963331088423729,
+        0.09427794069051743,
+        0.09283429384231567,
+        0.09169474989175797,
+        0.09082207828760147
+      ]
+    },
+    {
+      "name": "model.layers.20.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.02971582033487322,
+          "normalized_mse": 0.1613137274980545,
+          "encoding_seconds": 0.35608363151550293,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1288641095161438,
+        0.11231501400470734,
+        0.10408612340688705,
+        0.09920310229063034,
+        0.09608513116836548,
+        0.09397020936012268,
+        0.09245166927576065,
+        0.09130725264549255,
+        0.09046179056167603
+      ]
+    },
+    {
+      "name": "model.layers.20.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.011460946528509512,
+          "normalized_mse": 0.16155461966991425,
+          "encoding_seconds": 0.3582446575164795,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11894676834344864,
+        0.10648204386234283,
+        0.09970977157354355,
+        0.09542759507894516,
+        0.09264253824949265,
+        0.09046737849712372,
+        0.08884232491254807,
+        0.08774305135011673,
+        0.08687780052423477
+      ]
+    },
+    {
+      "name": "model.layers.20.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.024946730369069147,
+          "normalized_mse": 0.16146785020828247,
+          "encoding_seconds": 0.35134315490722656,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12764698266983032,
+        0.11017213761806488,
+        0.10061172395944595,
+        0.09560088068246841,
+        0.0926566794514656,
+        0.09055060893297195,
+        0.08897924423217773,
+        0.08776143938302994,
+        0.08687654882669449
+      ]
+    },
+    {
+      "name": "model.layers.20.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01154223670847006,
+          "normalized_mse": 0.1539226472377777,
+          "encoding_seconds": 0.3661317825317383,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12218295782804489,
+        0.10783853381872177,
+        0.10047291219234467,
+        0.09617471694946289,
+        0.09343933314085007,
+        0.09152629971504211,
+        0.09010603278875351,
+        0.08906348794698715,
+        0.08828495442867279
+      ]
+    },
+    {
+      "name": "model.layers.20.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.012819145500467775,
+          "normalized_mse": 0.1389293670654297,
+          "encoding_seconds": 0.3875091075897217,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12054356187582016,
+        0.10735315084457397,
+        0.09983089566230774,
+        0.09545284509658813,
+        0.0925581231713295,
+        0.09056222438812256,
+        0.0890715941786766,
+        0.08791697025299072,
+        0.08703631162643433
+      ]
+    },
+    {
+      "name": "model.layers.20.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.030164919522845376,
+          "normalized_mse": 0.1390017569065094,
+          "encoding_seconds": 0.38014745712280273,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11810673773288727,
+        0.10678167641162872,
+        0.10032322257757187,
+        0.09622592478990555,
+        0.09347467124462128,
+        0.09144026041030884,
+        0.08997933566570282,
+        0.08883769810199738,
+        0.08787555992603302
+      ]
+    },
+    {
+      "name": "model.layers.20.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.02091987288802856,
+          "normalized_mse": 0.18738161027431488,
+          "encoding_seconds": 1.771409034729004,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11903775483369827,
+        0.10863188654184341,
+        0.10211299359798431,
+        0.0978475958108902,
+        0.09493343532085419,
+        0.09294489771127701,
+        0.09149926900863647,
+        0.09036707133054733,
+        0.0895034670829773
+      ]
+    },
+    {
+      "name": "model.layers.21.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.024002874067175006,
+          "normalized_mse": 0.17008328437805176,
+          "encoding_seconds": 0.3565654754638672,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12518127262592316,
+        0.1114388108253479,
+        0.1032877266407013,
+        0.09835374355316162,
+        0.09521937370300293,
+        0.09298179298639297,
+        0.09134990721940994,
+        0.09012040495872498,
+        0.08919763565063477
+      ]
+    },
+    {
+      "name": "model.layers.21.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.008937320706895477,
+          "normalized_mse": 0.17298786342144012,
+          "encoding_seconds": 0.35549497604370117,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11817622184753418,
+        0.10739725828170776,
+        0.10107734054327011,
+        0.09678585827350616,
+        0.09378616511821747,
+        0.09172554314136505,
+        0.09032747149467468,
+        0.0894060879945755,
+        0.08867891877889633
+      ]
+    },
+    {
+      "name": "model.layers.21.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01568219420130859,
+          "normalized_mse": 0.17620772123336792,
+          "encoding_seconds": 0.36377501487731934,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1278834491968155,
+        0.11116573959589005,
+        0.10226691514253616,
+        0.09713190048933029,
+        0.0935111716389656,
+        0.09135932475328445,
+        0.08967088907957077,
+        0.08841916173696518,
+        0.08746358752250671
+      ]
+    },
+    {
+      "name": "model.layers.21.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.009906824579763515,
+          "normalized_mse": 0.1635400801897049,
+          "encoding_seconds": 0.3564300537109375,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11395395547151566,
+        0.10403060168027878,
+        0.09804855287075043,
+        0.09433716535568237,
+        0.09185070544481277,
+        0.09013711661100388,
+        0.08888515830039978,
+        0.08800108730792999,
+        0.08729079365730286
+      ]
+    },
+    {
+      "name": "model.layers.21.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.015848394471377012,
+          "normalized_mse": 0.14273907244205475,
+          "encoding_seconds": 0.38187146186828613,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11727982014417648,
+        0.10660422593355179,
+        0.10017608851194382,
+        0.09608018398284912,
+        0.09329524636268616,
+        0.09143619984388351,
+        0.09018956869840622,
+        0.0892225131392479,
+        0.08842455595731735
+      ]
+    },
+    {
+      "name": "model.layers.21.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.03315298637443931,
+          "normalized_mse": 0.14178909361362457,
+          "encoding_seconds": 0.38219428062438965,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11835042387247086,
+        0.10692748427391052,
+        0.09999638795852661,
+        0.09557648748159409,
+        0.0927533358335495,
+        0.09078846126794815,
+        0.08933907747268677,
+        0.08833641558885574,
+        0.08755496889352798
+      ]
+    },
+    {
+      "name": "model.layers.21.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.004380704855200375,
+          "normalized_mse": 0.13139140605926514,
+          "encoding_seconds": 1.7544069290161133,
+          "serialized_bytes": 1088146,
+          "serialized_bpw": 1.9974484551221805,
+          "implicit_blocks": 304
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.10248211771249771,
+        0.0922701358795166,
+        0.08670766651630402,
+        0.08329488337039948,
+        0.08104946464300156,
+        0.07943201065063477,
+        0.07820829749107361,
+        0.07721027731895447,
+        0.07637158781290054
+      ]
+    },
+    {
+      "name": "model.layers.22.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.021218670555635994,
+          "normalized_mse": 0.16519245505332947,
+          "encoding_seconds": 0.3644084930419922,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12029793113470078,
+        0.10995206981897354,
+        0.10378260910511017,
+        0.09956084936857224,
+        0.09661418199539185,
+        0.09460075944662094,
+        0.09311998635530472,
+        0.09194378554821014,
+        0.09100934863090515
+      ]
+    },
+    {
+      "name": "model.layers.22.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.007757681049317257,
+          "normalized_mse": 0.1692337840795517,
+          "encoding_seconds": 0.34996867179870605,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12283138930797577,
+        0.10927674174308777,
+        0.10172506421804428,
+        0.09722768515348434,
+        0.0944473072886467,
+        0.09243578463792801,
+        0.09084898233413696,
+        0.08964340388774872,
+        0.08865612000226974
+      ]
+    },
+    {
+      "name": "model.layers.22.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.010121469086968737,
+          "normalized_mse": 0.1692599207162857,
+          "encoding_seconds": 0.35583996772766113,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12509006261825562,
+        0.10822004079818726,
+        0.09949163347482681,
+        0.09482892602682114,
+        0.09193755686283112,
+        0.08994423598051071,
+        0.08849548548460007,
+        0.08743125945329666,
+        0.08653269708156586
+      ]
+    },
+    {
+      "name": "model.layers.22.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.017950527405202678,
+          "normalized_mse": 0.16534306108951569,
+          "encoding_seconds": 0.3611326217651367,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11727017909288406,
+        0.10506249219179153,
+        0.09857146441936493,
+        0.09458235651254654,
+        0.09195027500391006,
+        0.09000381827354431,
+        0.08852508664131165,
+        0.08738455176353455,
+        0.08649370819330215
+      ]
+    },
+    {
+      "name": "model.layers.22.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.018213731353276103,
+          "normalized_mse": 0.1399204134941101,
+          "encoding_seconds": 0.3813903331756592,
+          "serialized_bytes": 1088154,
+          "serialized_bpw": 1.9974631402725564,
+          "implicit_blocks": 303
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11917313933372498,
+        0.10697409510612488,
+        0.10044103860855103,
+        0.09652363508939743,
+        0.09389279782772064,
+        0.09195862710475922,
+        0.09052068740129471,
+        0.08943554759025574,
+        0.08856485038995743
+      ]
+    },
+    {
+      "name": "model.layers.22.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.032623332422798954,
+          "normalized_mse": 0.13895221054553986,
+          "encoding_seconds": 0.38637471199035645,
+          "serialized_bytes": 1088154,
+          "serialized_bpw": 1.9974631402725564,
+          "implicit_blocks": 303
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12039283663034439,
+        0.10810264199972153,
+        0.10050052404403687,
+        0.09592835605144501,
+        0.09302178025245667,
+        0.09096573293209076,
+        0.08948571979999542,
+        0.08842496573925018,
+        0.08764129877090454
+      ]
+    },
+    {
+      "name": "model.layers.22.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.01692971350353487,
+          "normalized_mse": 0.17883910238742828,
+          "encoding_seconds": 1.747467279434204,
+          "serialized_bytes": 1088154,
+          "serialized_bpw": 1.9974631402725564,
+          "implicit_blocks": 303
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12332002073526382,
+        0.10959379374980927,
+        0.10168206691741943,
+        0.09681389480829239,
+        0.09362819045782089,
+        0.09152186661958694,
+        0.09002742916345596,
+        0.08896812796592712,
+        0.08815505355596542
+      ]
+    },
+    {
+      "name": "model.layers.23.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.020230665083875082,
+          "normalized_mse": 0.16123037040233612,
+          "encoding_seconds": 0.36718058586120605,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12046802788972855,
+        0.10885333269834518,
+        0.10184096544981003,
+        0.09732858836650848,
+        0.09434588998556137,
+        0.09222115576267242,
+        0.09060762077569962,
+        0.08943992108106613,
+        0.08852241188287735
+      ]
+    },
+    {
+      "name": "model.layers.23.self_attn.k_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.009315296649888925,
+          "normalized_mse": 0.16317585110664368,
+          "encoding_seconds": 0.3482978343963623,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1213437095284462,
+        0.10697220265865326,
+        0.09970693290233612,
+        0.09547174721956253,
+        0.0927010178565979,
+        0.09083427488803864,
+        0.08941818028688431,
+        0.08836076408624649,
+        0.08744379878044128
+      ]
+    },
+    {
+      "name": "model.layers.23.self_attn.v_proj",
+      "shape": [
+        128,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0071444606323911655,
+          "normalized_mse": 0.16651369631290436,
+          "encoding_seconds": 0.3537023067474365,
+          "serialized_bytes": 29714,
+          "serialized_bpw": 2.0726841517857144,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11397316306829453,
+        0.10367774963378906,
+        0.09809395670890808,
+        0.09448187798261642,
+        0.09201502054929733,
+        0.09016831964254379,
+        0.08863399922847748,
+        0.08733080327510834,
+        0.08640585839748383
+      ]
+    },
+    {
+      "name": "model.layers.23.self_attn.o_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.006891999804373382,
+          "normalized_mse": 0.18704459071159363,
+          "encoding_seconds": 0.35591912269592285,
+          "serialized_bytes": 201746,
+          "serialized_bpw": 2.010383450255102,
+          "implicit_blocks": 0
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11602289229631424,
+        0.10550963133573532,
+        0.09932524710893631,
+        0.09560839831829071,
+        0.09316252917051315,
+        0.09151089936494827,
+        0.09031955152750015,
+        0.08940676599740982,
+        0.08869077265262604
+      ]
+    },
+    {
+      "name": "model.layers.23.mlp.gate_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.011574754056605303,
+          "normalized_mse": 0.13927175104618073,
+          "encoding_seconds": 0.3813302516937256,
+          "serialized_bytes": 1088154,
+          "serialized_bpw": 1.9974631402725564,
+          "implicit_blocks": 303
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.12030205130577087,
+        0.10719240456819534,
+        0.09985875338315964,
+        0.09526455402374268,
+        0.09231700003147125,
+        0.09034781903028488,
+        0.08894369006156921,
+        0.08785398304462433,
+        0.08705147355794907
+      ]
+    },
+    {
+      "name": "model.layers.23.mlp.up_proj",
+      "shape": [
+        4864,
+        896
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.020547334596180224,
+          "normalized_mse": 0.13762640953063965,
+          "encoding_seconds": 0.38643574714660645,
+          "serialized_bytes": 1088154,
+          "serialized_bpw": 1.9974631402725564,
+          "implicit_blocks": 303
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.1119770035147667,
+        0.10307839512825012,
+        0.09765218943357468,
+        0.09402117133140564,
+        0.0913771316409111,
+        0.08942355215549469,
+        0.08801610767841339,
+        0.08698185533285141,
+        0.0862324982881546
+      ]
+    },
+    {
+      "name": "model.layers.23.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "outlier_base_32": {
+          "relative_hessian_error": 0.004487589774149388,
+          "normalized_mse": 0.15152661502361298,
+          "encoding_seconds": 1.7824585437774658,
+          "serialized_bytes": 1088154,
+          "serialized_bpw": 1.9974631402725564,
+          "implicit_blocks": 303
+        }
+      },
+      "outlier_base_32_training_hessian_mse": [
+        0.11304531991481781,
+        0.09997448325157166,
+        0.09294251352548599,
+        0.08894146978855133,
+        0.08647304028272629,
+        0.08474162966012955,
+        0.08342146873474121,
+        0.08245278894901276,
+        0.08170485496520996
+      ]
+    }
+  ],
+  "bf16": {
+    "first_4096": {
+      "nll": 3.099435031414032,
+      "perplexity": 22.18541367830422,
+      "scored_tokens": 4080
+    },
+    "next_4096": {
+      "nll": 3.316697135567665,
+      "perplexity": 27.569142876689952,
+      "scored_tokens": 4080
+    }
+  },
+  "quantized": {
+    "first_4096": {
+      "nll": 3.753551572561264,
+      "perplexity": 42.672367199329045,
+      "scored_tokens": 4080
+    },
+    "next_4096": {
+      "nll": 4.080188825726509,
+      "perplexity": 59.15663909068321,
+      "scored_tokens": 4080
+    }
+  },
+  "serialized_bpw": 2.0,
+  "whole_model_bpw": 5.859838932789171,
+  "variant": "outlier_base_32",
+  "elapsed_seconds": 116.03499460220337
+}

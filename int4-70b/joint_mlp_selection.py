@@ -34,6 +34,15 @@ if extra:
     extra_path = Path(extra)
     extra_report = json.loads((extra_path / 'report.json').read_text())
     ARMS['previous_pass'] = (extra_path, extra_report['variant'])
+extras = os.environ.get('FLASHRUN_JOINT_EXTRAS')
+if extras:
+    for specification in extras.split(','):
+        arm, raw_path = specification.split('=', 1)
+        if arm in ARMS:
+            raise ValueError('duplicate candidate arm: ' + arm)
+        extra_path = Path(raw_path)
+        extra_report = json.loads((extra_path / 'report.json').read_text())
+        ARMS[arm] = (extra_path, extra_report['variant'])
 BASE_ARM = os.environ.get('FLASHRUN_JOINT_BASE', 'current')
 if BASE_ARM not in ARMS:
     raise ValueError('unknown base arm: ' + BASE_ARM)

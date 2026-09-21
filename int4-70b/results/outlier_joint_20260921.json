@@ -1,0 +1,1733 @@
+{
+  "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "gpu": "NVIDIA RTX 4000 Ada Generation",
+  "torch": "2.8.0+cu128",
+  "full_model": true,
+  "variant": "mlp_joint_select",
+  "reset_width": 32,
+  "budget_mode": "global_mlp",
+  "original_model_finetuned": false,
+  "selection_split": "WikiText-2 validation first 4096 tokens",
+  "candidate_arms": {
+    "current": "/workspace/ablation_current",
+    "hessian": "/workspace/ablation_hessian_only",
+    "node": "/workspace/ablation_layer_output_only",
+    "both": "/workspace/ablation_both",
+    "pass2": "/workspace/mlp_joint_pass2",
+    "outlier": "/workspace/outlier_base32"
+  },
+  "base_arm": "pass2",
+  "candidate_combinations_per_layer": 216,
+  "rollout_samples_per_layer": 256,
+  "baseline_validation": {
+    "nll": 3.405772775411606,
+    "perplexity": 30.137576305362934,
+    "scored_tokens": 4080
+  },
+  "final_validation": {
+    "nll": 3.4013043344020844,
+    "perplexity": 30.003208753787316,
+    "scored_tokens": 4080
+  },
+  "source_quantized": {
+    "first_4096": {
+      "nll": 3.7141442745923996,
+      "perplexity": 41.023467236840474,
+      "scored_tokens": 4080
+    },
+    "next_4096": {
+      "nll": 4.029431477189064,
+      "perplexity": 56.228934726271845,
+      "scored_tokens": 4080
+    }
+  },
+  "bf16": {
+    "first_4096": {
+      "nll": 3.099435031414032,
+      "perplexity": 22.18541367830422,
+      "scored_tokens": 4080
+    },
+    "next_4096": {
+      "nll": 3.316697135567665,
+      "perplexity": 27.569142876689952,
+      "scored_tokens": 4080
+    }
+  },
+  "quantized": {
+    "first_4096": {
+      "nll": 3.7054125666618347,
+      "perplexity": 40.66682163122723,
+      "scored_tokens": 4080
+    },
+    "next_4096": {
+      "nll": 4.031300142407417,
+      "perplexity": 56.33410601522065,
+      "scored_tokens": 4080
+    }
+  },
+  "selections": [
+    {
+      "layer": 0,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "outlier",
+        "down": "outlier"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.0026470362208783627,
+      "teacher_output_mse_best": 0.002606572350487113,
+      "teacher_output_energy": 0.03606303781270981,
+      "relative_teacher_mse_reduction": 0.015286481564586452,
+      "validation_before": {
+        "nll": 3.405772775411606,
+        "perplexity": 30.137576305362934,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.420256644487381,
+        "perplexity": 30.577261499732504,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.405772775411606,
+        "perplexity": 30.137576305362934,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 1,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.0021275102626532316,
+      "teacher_output_mse_best": 0.0020564787555485964,
+      "teacher_output_energy": 0.01520260889083147,
+      "relative_teacher_mse_reduction": 0.03338715133437309,
+      "validation_before": {
+        "nll": 3.405772775411606,
+        "perplexity": 30.137576305362934,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.430975615978241,
+        "perplexity": 30.906781195081965,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.405772775411606,
+        "perplexity": 30.137576305362934,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 2,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "outlier",
+        "down": "outlier"
+      },
+      "selected": {
+        "gate": "both",
+        "up": "outlier",
+        "down": "outlier"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.18553902208805084,
+      "teacher_output_mse_best": 0.17835552990436554,
+      "teacher_output_energy": 17.13845443725586,
+      "relative_teacher_mse_reduction": 0.038716880701657685,
+      "validation_before": {
+        "nll": 3.405772775411606,
+        "perplexity": 30.137576305362934,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 3,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "outlier",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.11710253357887268,
+      "teacher_output_mse_best": 0.11636742949485779,
+      "teacher_output_energy": 56.31056594848633,
+      "relative_teacher_mse_reduction": 0.006277439621063197,
+      "validation_before": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.416131228208542,
+        "perplexity": 30.4513774080554,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 4,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.004819964524358511,
+      "teacher_output_mse_best": 0.004819964524358511,
+      "teacher_output_energy": 0.035660795867443085,
+      "relative_teacher_mse_reduction": 0.0,
+      "validation_before": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 5,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "hessian",
+        "down": "current"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.005240485537797213,
+      "teacher_output_mse_best": 0.005234713200479746,
+      "teacher_output_energy": 0.09623125940561295,
+      "relative_teacher_mse_reduction": 0.0011014890272730282,
+      "validation_before": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.407750755548477,
+        "perplexity": 30.19724682676683,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 6,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.005128880031406879,
+      "teacher_output_mse_best": 0.005128880031406879,
+      "teacher_output_energy": 0.03778590261936188,
+      "relative_teacher_mse_reduction": 0.0,
+      "validation_before": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 7,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "current",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "current",
+        "up": "both",
+        "down": "both"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.00489065982401371,
+      "teacher_output_mse_best": 0.0047214641235768795,
+      "teacher_output_energy": 0.03893779218196869,
+      "relative_teacher_mse_reduction": 0.034595679627125175,
+      "validation_before": {
+        "nll": 3.4032325744628906,
+        "perplexity": 30.061117956338496,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4018322974443436,
+        "perplexity": 30.019053521516337,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4018322974443436,
+        "perplexity": 30.019053521516337,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 8,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "current",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.0035141981206834316,
+      "teacher_output_mse_best": 0.0034972329158335924,
+      "teacher_output_energy": 0.028021439909934998,
+      "relative_teacher_mse_reduction": 0.004827617643407001,
+      "validation_before": {
+        "nll": 3.4018322974443436,
+        "perplexity": 30.019053521516337,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4045538008213043,
+        "perplexity": 30.100861747236326,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4018322974443436,
+        "perplexity": 30.019053521516337,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 9,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.00328858126886189,
+      "teacher_output_mse_best": 0.00328858126886189,
+      "teacher_output_energy": 0.02699827402830124,
+      "relative_teacher_mse_reduction": 0.0,
+      "validation_before": {
+        "nll": 3.4018322974443436,
+        "perplexity": 30.019053521516337,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4018322974443436,
+        "perplexity": 30.019053521516337,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4018322974443436,
+        "perplexity": 30.019053521516337,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 10,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "both",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "both",
+        "up": "both",
+        "down": "hessian"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.0030761028174310923,
+      "teacher_output_mse_best": 0.002877716440707445,
+      "teacher_output_energy": 0.02364218793809414,
+      "relative_teacher_mse_reduction": 0.0644927651961007,
+      "validation_before": {
+        "nll": 3.4018322974443436,
+        "perplexity": 30.019053521516337,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 11,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.0037225503474473953,
+      "teacher_output_mse_best": 0.0034074231516569853,
+      "teacher_output_energy": 0.029713887721300125,
+      "relative_teacher_mse_reduction": 0.08465357520456296,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4041098803281784,
+        "perplexity": 30.087502323326394,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 12,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "both",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.003426535986363888,
+      "teacher_output_mse_best": 0.003070085309445858,
+      "teacher_output_energy": 0.0246612336486578,
+      "relative_teacher_mse_reduction": 0.10402653826971242,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.402795299887657,
+        "perplexity": 30.047975867313202,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 13,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "both",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.00407998263835907,
+      "teacher_output_mse_best": 0.0037307075690478086,
+      "teacher_output_energy": 0.03137588128447533,
+      "relative_teacher_mse_reduction": 0.08560699891893075,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4045354425907135,
+        "perplexity": 30.100309153747723,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 14,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.004928397946059704,
+      "teacher_output_mse_best": 0.004606479313224554,
+      "teacher_output_energy": 0.037175871431827545,
+      "relative_teacher_mse_reduction": 0.06531912324420286,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4039848893880844,
+        "perplexity": 30.08374189314067,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 15,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.006306711118668318,
+      "teacher_output_mse_best": 0.006306711118668318,
+      "teacher_output_energy": 0.05642693489789963,
+      "relative_teacher_mse_reduction": 0.0,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 16,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "hessian",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.0107703423127532,
+      "teacher_output_mse_best": 0.0107703423127532,
+      "teacher_output_energy": 0.10993829369544983,
+      "relative_teacher_mse_reduction": 0.0,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 17,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "hessian",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.010408378206193447,
+      "teacher_output_mse_best": 0.010408378206193447,
+      "teacher_output_energy": 0.09055345505475998,
+      "relative_teacher_mse_reduction": 0.0,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 18,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "both",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.012190071865916252,
+      "teacher_output_mse_best": 0.01216818019747734,
+      "teacher_output_energy": 0.09476590901613235,
+      "relative_teacher_mse_reduction": 0.0017958604903816067,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.40276600420475,
+        "perplexity": 30.047095604234208,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 19,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.021513549610972404,
+      "teacher_output_mse_best": 0.021513549610972404,
+      "teacher_output_energy": 0.21158617734909058,
+      "relative_teacher_mse_reduction": 0.0,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 20,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "hessian",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.036516718566417694,
+      "teacher_output_mse_best": 0.0343843512237072,
+      "teacher_output_energy": 0.38611188530921936,
+      "relative_teacher_mse_reduction": 0.058394276003526535,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4026909172534943,
+        "perplexity": 30.044839544132593,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 21,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "outlier",
+        "up": "hessian",
+        "down": "current"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.46640744805336,
+      "teacher_output_mse_best": 0.4241723418235779,
+      "teacher_output_energy": 115.65876770019531,
+      "relative_teacher_mse_reduction": 0.09055409900947842,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.404831141233444,
+        "perplexity": 30.109211090390687,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 22,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.07262793928384781,
+      "teacher_output_mse_best": 0.07262793928384781,
+      "teacher_output_energy": 0.851411759853363,
+      "relative_teacher_mse_reduction": 0.0,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 23,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.12616688013076782,
+      "teacher_output_mse_best": 0.12616688013076782,
+      "teacher_output_energy": 6.21961784362793,
+      "relative_teacher_mse_reduction": 0.0,
+      "validation_before": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4013043344020844,
+        "perplexity": 30.003208753787316,
+        "scored_tokens": 4080
+      }
+    }
+  ],
+  "matrices": [
+    {
+      "name": "model.layers.0.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.0.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.0.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.0.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.0.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.0.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.1.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.1.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.1.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.1.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.1.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.1.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.1.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.2.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.2.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.2.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.2.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.2.mlp.gate_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.2.mlp.up_proj",
+      "source_arm": "outlier",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.2.mlp.down_proj",
+      "source_arm": "outlier",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.3.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.3.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.3.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.3.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.3.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.3.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.3.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.4.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.4.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.4.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.4.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.4.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.4.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.4.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.5.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.5.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.5.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.5.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.5.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.5.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.5.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.6.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.6.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.6.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.6.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.6.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.6.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.6.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.7.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.7.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.7.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.7.mlp.gate_proj",
+      "source_arm": "current",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.7.mlp.up_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.7.mlp.down_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.8.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.8.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.8.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.8.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.8.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.8.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.8.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.9.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.9.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.9.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.9.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.9.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.9.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.9.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.10.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.10.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.10.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.10.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.10.mlp.gate_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.10.mlp.up_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.10.mlp.down_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.11.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.11.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.11.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.11.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.11.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.11.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.12.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.12.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.12.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.12.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.12.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.12.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.12.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.13.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.13.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.13.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.13.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.13.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.13.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.13.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.14.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.14.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.14.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.14.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.14.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.14.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.14.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.15.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.15.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.15.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.15.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.15.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.15.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.16.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.16.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.16.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.16.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.16.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.16.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.16.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.17.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.17.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.17.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.17.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.17.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.17.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.17.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.18.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.18.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.18.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.18.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.18.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.18.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.18.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.19.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.19.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.19.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.19.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.19.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.19.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.19.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.20.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.20.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.20.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.20.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.20.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.20.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.20.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.21.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.21.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.21.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.21.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.21.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.21.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.21.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.22.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.22.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.22.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.22.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.22.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088154
+    },
+    {
+      "name": "model.layers.22.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088154
+    },
+    {
+      "name": "model.layers.22.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088154
+    },
+    {
+      "name": "model.layers.23.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.23.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.23.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.23.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.23.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088154
+    },
+    {
+      "name": "model.layers.23.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088154
+    },
+    {
+      "name": "model.layers.23.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088154
+    }
+  ],
+  "accepted_layers": 3,
+  "compressed_payload_bytes": 89456640,
+  "serialized_bpw": 2.0,
+  "whole_model_bpw": 5.859838932789171,
+  "elapsed_seconds": 33.366007804870605
+}

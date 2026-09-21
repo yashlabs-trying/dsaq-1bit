@@ -6,7 +6,8 @@ import sys
 from pathlib import Path
 import torch
 from trellis_quant import (decode_paths, viterbi, fixed_nodes, save_layer, load_layer,
-                           FORCED_BLOCKS, train_path_nodes, metadata_allocation, METADATA_BYTES, PATH_BYTES)
+                           FORCED_BLOCKS, train_path_nodes, train_importance_nodes,
+                           learn_outlier_nodes, metadata_allocation, METADATA_BYTES, PATH_BYTES)
 
 
 class TrellisTests(unittest.TestCase):
@@ -56,6 +57,17 @@ with tempfile.TemporaryDirectory() as directory:
         self.assertTrue(torch.all(after <= before + 1e-4))
         torch.testing.assert_close(reranked, decode_paths(paths, nodes, width=16))
 
+    def test_batch_diagonal_matches_independent_viterbi(self):
+        torch.manual_seed(31)
+        nodes = fixed_nodes('cpu')
+        x = torch.randn(4, 8)
+        diagonal = torch.rand(4, 8) + .1
+        batched, paths = viterbi(x, nodes, diagonal)
+        separate = torch.cat([viterbi(x[i:i + 1], nodes, diagonal[i])[0]
+                              for i in range(len(x))])
+        torch.testing.assert_close(batched, separate)
+        torch.testing.assert_close(batched, decode_paths(paths, nodes))
+
     def test_sixteen_weight_path_decode_and_optimality_lower_bound(self):
         torch.manual_seed(21)
         nodes = fixed_nodes('cpu')
@@ -75,6 +87,19 @@ with tempfile.TemporaryDirectory() as directory:
         nodes, history = train_path_nodes(w, fixed_nodes('cpu'), seed=17, iterations=4)
         self.assertLess(history[-1], history[0])
         self.assertTrue(all(b <= a + 1e-6 for a, b in zip(history, history[1:])))
+        torch.testing.assert_close(w, original, atol=0, rtol=0)
+
+    def test_outlier_base_and_importance_fit_preserve_inputs(self):
+        torch.manual_seed(37)
+        w = torch.randn(32, 32)
+        h = torch.diag(torch.linspace(.1, 4, 32))
+        original = w.clone()
+        nodes = learn_outlier_nodes(w, h, seed=41, reserve=32,
+                                    iterations=2, sample_pairs=512)
+        self.assertEqual(tuple(nodes.shape), (256, 2))
+        fitted, history = train_importance_nodes(w, h, nodes, seed=43, iterations=3)
+        self.assertLessEqual(history[-1], history[0] + 1e-6)
+        self.assertEqual(tuple(fitted.shape), (256, 2))
         torch.testing.assert_close(w, original, atol=0, rtol=0)
 
     def test_neutral_implicit_path_remains_zero_after_training(self):

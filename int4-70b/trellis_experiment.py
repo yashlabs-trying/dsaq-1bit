@@ -13,7 +13,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from aq_block_experiment import collect_H, evaluate
 from additive_vq import block_ldlq
 from lattice_experiment import MODEL_REVISION, mixed_right, official_codebook, refine_codes
-from trellis_quant import (WIDTH, FORCED_BLOCKS, fixed_nodes, learn_nodes, train_path_nodes,
+from trellis_quant import (WIDTH, FORCED_BLOCKS, fixed_nodes, learn_nodes, learn_outlier_nodes,
+                           train_path_nodes, train_importance_nodes,
                            metadata_allocation, viterbi, decode_paths, force_mask, save_layer, load_layer)
 
 
@@ -109,7 +110,11 @@ def main():
         torch.save(hessians, cache)
         cache_metadata.write_text(json.dumps(cache_config))
     print('Hessians ready', flush=True)
-    cb = official_codebook(Path('/workspace/quip-sharp')) if not full else None
+    gate_variants = os.environ.get(
+        'FLASHRUN_TRELLIS_GATE_VARIANTS',
+        'e8p_current,fixed,learned,learned_weighted,path_trained,path_trained_zero').split(',')
+    cb = (official_codebook(Path('/workspace/quip-sharp'))
+          if not full and 'e8p_current' in gate_variants else None)
     report = dict(model_revision=MODEL_REVISION, gpu=torch.cuda.get_device_name(),
                   torch=torch.__version__, calibration_tokens=8192, calibration_length=256,
                   states=256, vector_width=2, reset_width=WIDTH, index_bits_per_weight=2,
@@ -143,9 +148,7 @@ def main():
         print('learned nodes', name, round(time.time() - nodes_start, 2), flush=True)
         matrix = dict(name=name, shape=list(w.shape), variants={})
         denominator = float(((wr @ hr) * wr).sum())
-        variants = [variant] if full else os.environ.get(
-            'FLASHRUN_TRELLIS_GATE_VARIANTS',
-            'e8p_current,fixed,learned,learned_weighted,path_trained,path_trained_zero').split(',')
+        variants = [variant] if full else gate_variants
         for method in variants:
             tick = time.time()
             if method == 'e8p_current':
@@ -165,15 +168,24 @@ def main():
                 byte_count = w.numel() // 4 + 18 - 2 * forced
                 # E8 shared grid accounted over the whole model, as in baseline.
             else:
-                nodes = fixed_nodes('cuda') if method == 'fixed' else learned
+                outlier_method = method.startswith('outlier_base_')
+                if outlier_method:
+                    reserve = int(method.rsplit('_', 1)[1])
+                    nodes = learn_outlier_nodes(normalized, hr, seed + 10000, reserve=reserve)
+                else:
+                    nodes = fixed_nodes('cuda') if method == 'fixed' else learned
                 implicit = 0 if method == 'path_trained_no_implicit' else allocations[name]
                 if method in ('path_trained', 'path_trained_zero', 'path_trained_rerank', 'path_trained_no_implicit'):
                     nodes, history = train_path_nodes(normalized, nodes, seed + 20000,
                                                       neutral_zero=method != 'path_trained')
                     matrix[method + '_training_mse'] = history
+                elif outlier_method:
+                    nodes, history = train_importance_nodes(
+                        normalized, hr, nodes, seed + 20000, neutral_zero=True)
+                    matrix[method + '_training_hessian_mse'] = history
                 q, paths = trellis_encode(normalized, hr, nodes,
-                                         weighted=method in ('learned_weighted', 'path_trained', 'path_trained_zero', 'path_trained_rerank', 'path_trained_no_implicit'),
-                                         rerank=method in ('path_trained_rerank', 'path_trained_no_implicit'), forced=implicit)
+                                         weighted=(method in ('learned_weighted', 'path_trained', 'path_trained_zero', 'path_trained_rerank', 'path_trained_no_implicit') or outlier_method),
+                                         rerank=(method in ('path_trained_rerank', 'path_trained_no_implicit') or outlier_method), forced=implicit)
                 path = out / f'{method}_layer_{index:03d}.bin'
                 save_layer(path, paths, nodes, columns, seed, float(scale), forced=implicit)
                 restored, restored_nodes, restored_seed, restored_scale = load_layer(path, forced=implicit)
