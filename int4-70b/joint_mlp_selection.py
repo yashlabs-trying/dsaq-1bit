@@ -97,7 +97,11 @@ def main():
 
     validation = load_dataset('wikitext', 'wikitext-2-raw-v1', split='validation')
     validation_text = '\n\n'.join(text for text in validation['text'] if text.strip())
-    validation_ids = tokenizer(validation_text, return_tensors='pt')['input_ids'][0][:4096].cuda()
+    validation_offset = int(os.environ.get('FLASHRUN_VALIDATION_OFFSET', '0'))
+    all_validation_ids = tokenizer(validation_text, return_tensors='pt')['input_ids'][0]
+    validation_ids = all_validation_ids[validation_offset:validation_offset + 4096].cuda()
+    if len(validation_ids) != 4096:
+        raise ValueError('validation window is shorter than 4096 tokens')
     test = load_dataset('wikitext', 'wikitext-2-raw-v1', split='test')
     test_text = '\n\n'.join(text for text in test['text'] if text.strip())
     test_ids = tokenizer(test_text, return_tensors='pt')['input_ids'][0][:8192].cuda()
@@ -199,7 +203,9 @@ def main():
     report = dict(
         model_revision=MODEL_REVISION, gpu=torch.cuda.get_device_name(), torch=torch.__version__,
         full_model=True, variant=variant, reset_width=32, budget_mode='global_mlp',
-        original_model_finetuned=False, selection_split='WikiText-2 validation first 4096 tokens',
+        original_model_finetuned=False,
+        selection_split=f'WikiText-2 validation tokens {validation_offset}:{validation_offset + 4096}',
+        validation_offset=validation_offset,
         candidate_arms={arm: str(path) for arm, (path, _) in ARMS.items()},
         base_arm=BASE_ARM, candidate_combinations_per_layer=len(ARMS) ** 3,
         rollout_samples_per_layer=256,

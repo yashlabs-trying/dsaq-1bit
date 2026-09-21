@@ -15,6 +15,7 @@ from additive_vq import block_ldlq
 from lattice_experiment import MODEL_REVISION, mixed_right, official_codebook, refine_codes
 from trellis_quant import (WIDTH, FORCED_BLOCKS, fixed_nodes, learn_nodes, learn_outlier_nodes,
                            train_path_nodes, train_importance_nodes,
+                           train_residual_specialists,
                            metadata_allocation, viterbi, decode_paths, force_mask, save_layer, load_layer)
 
 
@@ -169,6 +170,7 @@ def main():
                 # E8 shared grid accounted over the whole model, as in baseline.
             else:
                 outlier_method = method.startswith('outlier_base_')
+                residual_method = method.startswith('residual_base_')
                 if outlier_method:
                     reserve = int(method.rsplit('_', 1)[1])
                     nodes = learn_outlier_nodes(normalized, hr, seed + 10000, reserve=reserve)
@@ -183,9 +185,18 @@ def main():
                     nodes, history = train_importance_nodes(
                         normalized, hr, nodes, seed + 20000, neutral_zero=True)
                     matrix[method + '_training_hessian_mse'] = history
+                elif residual_method:
+                    reserve = int(method.rsplit('_', 1)[1])
+                    nodes, bulk_history = train_path_nodes(
+                        normalized, nodes, seed + 20000, neutral_zero=True)
+                    nodes, history = train_residual_specialists(
+                        normalized, hr, nodes, seed + 30000, reserve=reserve,
+                        neutral_zero=True)
+                    matrix[method + '_bulk_training_mse'] = bulk_history
+                    matrix[method + '_specialist_history'] = history
                 q, paths = trellis_encode(normalized, hr, nodes,
-                                         weighted=(method in ('learned_weighted', 'path_trained', 'path_trained_zero', 'path_trained_rerank', 'path_trained_no_implicit') or outlier_method),
-                                         rerank=(method in ('path_trained_rerank', 'path_trained_no_implicit') or outlier_method), forced=implicit)
+                                         weighted=(method in ('learned_weighted', 'path_trained', 'path_trained_zero', 'path_trained_rerank', 'path_trained_no_implicit') or outlier_method or residual_method),
+                                         rerank=(method in ('path_trained_rerank', 'path_trained_no_implicit') or outlier_method or residual_method), forced=implicit)
                 path = out / f'{method}_layer_{index:03d}.bin'
                 save_layer(path, paths, nodes, columns, seed, float(scale), forced=implicit)
                 restored, restored_nodes, restored_seed, restored_scale = load_layer(path, forced=implicit)

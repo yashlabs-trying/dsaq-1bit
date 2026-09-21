@@ -7,7 +7,8 @@ from pathlib import Path
 import torch
 from trellis_quant import (decode_paths, viterbi, fixed_nodes, save_layer, load_layer,
                            FORCED_BLOCKS, train_path_nodes, train_importance_nodes,
-                           learn_outlier_nodes, metadata_allocation, METADATA_BYTES, PATH_BYTES)
+                           train_residual_specialists, learn_outlier_nodes,
+                           metadata_allocation, METADATA_BYTES, PATH_BYTES)
 
 
 class TrellisTests(unittest.TestCase):
@@ -100,6 +101,18 @@ with tempfile.TemporaryDirectory() as directory:
         fitted, history = train_importance_nodes(w, h, nodes, seed=43, iterations=3)
         self.assertLessEqual(history[-1], history[0] + 1e-6)
         self.assertEqual(tuple(fitted.shape), (256, 2))
+        torch.testing.assert_close(w, original, atol=0, rtol=0)
+
+    def test_residual_specialists_never_increase_training_objective(self):
+        torch.manual_seed(47)
+        w = torch.randn(64, 32)
+        h = torch.diag(torch.linspace(.2, 3, 32))
+        original = w.clone()
+        nodes, history = train_residual_specialists(
+            w, h, fixed_nodes('cpu'), seed=53, reserve=16,
+            iterations=2, sample_blocks=128)
+        self.assertEqual(tuple(nodes.shape), (256, 2))
+        self.assertLessEqual(history[-1]['loss'], history[0]['loss'])
         torch.testing.assert_close(w, original, atol=0, rtol=0)
 
     def test_neutral_implicit_path_remains_zero_after_training(self):

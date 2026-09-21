@@ -235,6 +235,97 @@ def train_importance_nodes(w, h, nodes, seed, iterations=8, sample_blocks=8192,
     return nodes, history
 
 
+def train_residual_specialists(w, h, nodes, seed, reserve=32, iterations=2,
+                               sample_blocks=4096, neutral_zero=True):
+    """Replace low-use states with topology-aware post-encoding specialists.
+
+    Each trellis predecessor low nibble can reach only one 16-node destination
+    bucket.  We therefore cluster high-impact residual targets separately for
+    every reachable bucket. Candidate replacements are accepted bucket by
+    bucket only when they reduce the sampled diagonal-Hessian objective.
+    """
+    if reserve <= 0 or reserve % 16 or reserve >= STATES:
+        raise ValueError('reserve must be a positive multiple of 16 below 256')
+    per_bucket = reserve // 16
+    if per_bucket >= 16:
+        raise ValueError('at least one ordinary state must remain per bucket')
+    nodes = nodes.clone()
+    if neutral_zero:
+        nodes[0] = 0
+    generator = torch.Generator(device=w.device).manual_seed(seed)
+    blocks = w.reshape(-1, WIDTH)
+    groups = w.shape[1] // WIDTH
+    selection = torch.randint(len(blocks), (min(sample_blocks, len(blocks)),),
+                              generator=generator, device=w.device)
+    x = blocks[selection]
+    group_ids = selection % groups
+    diagonal = h.diag().reshape(groups, WIDTH)[group_ids].clamp_min(1e-12)
+
+    def encode(table):
+        q, paths = viterbi(x, table, diagonal=diagonal)
+        loss = float(((x - q).square() * diagonal).sum() / diagonal.sum())
+        return q, paths, loss
+
+    q, paths, loss = encode(nodes)
+    history = [dict(loss=loss, accepted_buckets=0)]
+    for _ in range(iterations):
+        state = torch.zeros_like(paths)
+        usage = torch.zeros(STATES, device=w.device)
+        buckets, targets, scores = [], [], []
+        for step in range(WIDTH // VECTOR):
+            predecessor_bucket = state & 15
+            symbol = (paths >> (4 * step)) & 15
+            state = ((state << 4) | symbol) & 255
+            usage.index_add_(0, state, torch.ones_like(state, dtype=torch.float))
+            target = x[:, 2 * step:2 * step + 2]
+            score = ((target - q[:, 2 * step:2 * step + 2]).square() *
+                     diagonal[:, 2 * step:2 * step + 2]).sum(1)
+            buckets.append(predecessor_bucket)
+            targets.append(target)
+            scores.append(score)
+        buckets = torch.cat(buckets)
+        targets = torch.cat(targets)
+        scores = torch.cat(scores)
+        accepted = 0
+        for bucket in range(16):
+            mask = buckets == bucket
+            if int(mask.sum()) < per_bucket:
+                continue
+            values, weights = targets[mask], scores[mask]
+            tail_count = min(len(values), max(per_bucket * 64, math.ceil(.05 * len(values))))
+            tail = weights.topk(tail_count).indices
+            values, weights = values[tail], weights[tail].clamp_min(1e-12)
+            chosen = torch.multinomial(weights, per_bucket, replacement=False,
+                                       generator=generator)
+            centers = values[chosen].clone()
+            for _fit in range(6):
+                distance = (values.square().sum(1, keepdim=True) -
+                            2 * values @ centers.t() + centers.square().sum(1))
+                assignment = distance.argmin(1)
+                sums = torch.zeros_like(centers).index_add_(
+                    0, assignment, values * weights[:, None])
+                counts = torch.zeros(per_bucket, device=w.device).index_add_(
+                    0, assignment, weights)
+                centers = torch.where(counts[:, None] > 0,
+                                      sums / counts.clamp_min(1e-12)[:, None], centers)
+            candidates = torch.arange(bucket * 16, (bucket + 1) * 16, device=w.device)
+            if neutral_zero and bucket == 0:
+                candidates = candidates[candidates != 0]
+            replace = candidates[usage[candidates].argsort()[:per_bucket]]
+            proposal = nodes.clone()
+            proposal[replace] = centers.half().float()
+            if neutral_zero:
+                proposal[0] = 0
+            new_q, new_paths, new_loss = encode(proposal)
+            if new_loss < loss:
+                nodes, q, paths, loss = proposal, new_q, new_paths, new_loss
+                accepted += 1
+        history.append(dict(loss=loss, accepted_buckets=accepted))
+        if not accepted:
+            break
+    return nodes, history
+
+
 def force_mask(rows, groups, group, forced, device):
     return torch.arange(rows, device=device) * groups + group >= rows * groups - forced
 

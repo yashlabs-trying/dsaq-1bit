@@ -1,0 +1,399 @@
+{
+  "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "gpu": "NVIDIA RTX 4000 Ada Generation",
+  "torch": "2.8.0+cu128",
+  "calibration_tokens": 8192,
+  "calibration_length": 256,
+  "states": 256,
+  "vector_width": 2,
+  "reset_width": 32,
+  "index_bits_per_weight": 2,
+  "forced_blocks_per_matrix": 131,
+  "full_model": false,
+  "budget_mode": "per_matrix",
+  "original_model_finetuned": false,
+  "matrices": [
+    {
+      "name": "model.layers.0.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "path_trained_rerank": {
+          "relative_hessian_error": 0.0035936309424497792,
+          "normalized_mse": 0.1772158145904541,
+          "encoding_seconds": 0.5538699626922607,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        },
+        "residual_base_16": {
+          "relative_hessian_error": 0.0035997518513073844,
+          "normalized_mse": 0.1774919629096985,
+          "encoding_seconds": 0.6583166122436523,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        },
+        "residual_base_32": {
+          "relative_hessian_error": 0.003596778675296461,
+          "normalized_mse": 0.17744523286819458,
+          "encoding_seconds": 0.6214325428009033,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        },
+        "residual_base_64": {
+          "relative_hessian_error": 0.003598525875026337,
+          "normalized_mse": 0.17816905677318573,
+          "encoding_seconds": 0.6139411926269531,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        }
+      },
+      "path_trained_rerank_training_mse": [
+        0.11156879365444183,
+        0.1067320927977562,
+        0.10403802990913391,
+        0.10222139209508896,
+        0.10092911869287491,
+        0.09988324344158173,
+        0.0989895835518837,
+        0.09822377562522888,
+        0.09758588671684265
+      ],
+      "residual_base_16_bulk_training_mse": [
+        0.11156879365444183,
+        0.1067320927977562,
+        0.10403802990913391,
+        0.10222139209508896,
+        0.10092911869287491,
+        0.09988324344158173,
+        0.0989895835518837,
+        0.09822377562522888,
+        0.09758588671684265
+      ],
+      "residual_base_16_specialist_history": [
+        {
+          "loss": 0.09075561910867691,
+          "accepted_buckets": 0
+        },
+        {
+          "loss": 0.09056045860052109,
+          "accepted_buckets": 2
+        },
+        {
+          "loss": 0.09056045860052109,
+          "accepted_buckets": 0
+        }
+      ],
+      "residual_base_32_bulk_training_mse": [
+        0.11156879365444183,
+        0.1067320927977562,
+        0.10403802990913391,
+        0.10222139209508896,
+        0.10092911869287491,
+        0.09988324344158173,
+        0.0989895835518837,
+        0.09822377562522888,
+        0.09758588671684265
+      ],
+      "residual_base_32_specialist_history": [
+        {
+          "loss": 0.09075561910867691,
+          "accepted_buckets": 0
+        },
+        {
+          "loss": 0.09070771932601929,
+          "accepted_buckets": 1
+        },
+        {
+          "loss": 0.09064143151044846,
+          "accepted_buckets": 1
+        }
+      ],
+      "residual_base_64_bulk_training_mse": [
+        0.11156879365444183,
+        0.1067320927977562,
+        0.10403802990913391,
+        0.10222139209508896,
+        0.10092911869287491,
+        0.09988324344158173,
+        0.0989895835518837,
+        0.09822377562522888,
+        0.09758588671684265
+      ],
+      "residual_base_64_specialist_history": [
+        {
+          "loss": 0.09075561910867691,
+          "accepted_buckets": 0
+        },
+        {
+          "loss": 0.09060236811637878,
+          "accepted_buckets": 1
+        },
+        {
+          "loss": 0.09060236811637878,
+          "accepted_buckets": 0
+        }
+      ]
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "path_trained_rerank": {
+          "relative_hessian_error": 0.010318911902612991,
+          "normalized_mse": 0.20938515663146973,
+          "encoding_seconds": 1.8602218627929688,
+          "serialized_bytes": 1089530,
+          "serialized_bpw": 1.999988986137218,
+          "implicit_blocks": 131
+        },
+        "residual_base_16": {
+          "relative_hessian_error": 0.010358534891106334,
+          "normalized_mse": 0.20935863256454468,
+          "encoding_seconds": 1.9314155578613281,
+          "serialized_bytes": 1089530,
+          "serialized_bpw": 1.999988986137218,
+          "implicit_blocks": 131
+        },
+        "residual_base_32": {
+          "relative_hessian_error": 0.010361252726374474,
+          "normalized_mse": 0.20923730731010437,
+          "encoding_seconds": 1.9200897216796875,
+          "serialized_bytes": 1089530,
+          "serialized_bpw": 1.999988986137218,
+          "implicit_blocks": 131
+        },
+        "residual_base_64": {
+          "relative_hessian_error": 0.010366922507473455,
+          "normalized_mse": 0.20989882946014404,
+          "encoding_seconds": 2.291201591491699,
+          "serialized_bytes": 1089530,
+          "serialized_bpw": 1.999988986137218,
+          "implicit_blocks": 131
+        }
+      },
+      "path_trained_rerank_training_mse": [
+        0.10711361467838287,
+        0.10008952766656876,
+        0.09676237404346466,
+        0.09480887651443481,
+        0.09334887564182281,
+        0.09224358201026917,
+        0.09132326394319534,
+        0.09055434912443161,
+        0.08994501084089279
+      ],
+      "residual_base_16_bulk_training_mse": [
+        0.10711361467838287,
+        0.10008952766656876,
+        0.09676237404346466,
+        0.09480887651443481,
+        0.09334887564182281,
+        0.09224358201026917,
+        0.09132326394319534,
+        0.09055434912443161,
+        0.08994501084089279
+      ],
+      "residual_base_16_specialist_history": [
+        {
+          "loss": 0.0909712165594101,
+          "accepted_buckets": 0
+        },
+        {
+          "loss": 0.09069868922233582,
+          "accepted_buckets": 3
+        },
+        {
+          "loss": 0.09065108001232147,
+          "accepted_buckets": 1
+        }
+      ],
+      "residual_base_32_bulk_training_mse": [
+        0.10711361467838287,
+        0.10008952766656876,
+        0.09676237404346466,
+        0.09480887651443481,
+        0.09334887564182281,
+        0.09224358201026917,
+        0.09132326394319534,
+        0.09055434912443161,
+        0.08994501084089279
+      ],
+      "residual_base_32_specialist_history": [
+        {
+          "loss": 0.0909712165594101,
+          "accepted_buckets": 0
+        },
+        {
+          "loss": 0.09085211157798767,
+          "accepted_buckets": 2
+        },
+        {
+          "loss": 0.09080784767866135,
+          "accepted_buckets": 1
+        }
+      ],
+      "residual_base_64_bulk_training_mse": [
+        0.10711361467838287,
+        0.10008952766656876,
+        0.09676237404346466,
+        0.09480887651443481,
+        0.09334887564182281,
+        0.09224358201026917,
+        0.09132326394319534,
+        0.09055434912443161,
+        0.08994501084089279
+      ],
+      "residual_base_64_specialist_history": [
+        {
+          "loss": 0.0909712165594101,
+          "accepted_buckets": 0
+        },
+        {
+          "loss": 0.09088335931301117,
+          "accepted_buckets": 2
+        },
+        {
+          "loss": 0.09086994081735611,
+          "accepted_buckets": 1
+        }
+      ]
+    },
+    {
+      "name": "model.layers.12.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "path_trained_rerank": {
+          "relative_hessian_error": 0.02195014129169671,
+          "normalized_mse": 0.16408389806747437,
+          "encoding_seconds": 0.3728353977203369,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        },
+        "residual_base_16": {
+          "relative_hessian_error": 0.02192390377228433,
+          "normalized_mse": 0.16373497247695923,
+          "encoding_seconds": 0.60237717628479,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        },
+        "residual_base_32": {
+          "relative_hessian_error": 0.02199113413390071,
+          "normalized_mse": 0.16405001282691956,
+          "encoding_seconds": 0.58164381980896,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        },
+        "residual_base_64": {
+          "relative_hessian_error": 0.02197379414997952,
+          "normalized_mse": 0.16437028348445892,
+          "encoding_seconds": 0.6021654605865479,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        }
+      },
+      "path_trained_rerank_training_mse": [
+        0.11038824915885925,
+        0.1018596887588501,
+        0.09760309010744095,
+        0.09516969323158264,
+        0.09353810548782349,
+        0.09237644076347351,
+        0.09149135649204254,
+        0.09073804318904877,
+        0.09010515362024307
+      ],
+      "residual_base_16_bulk_training_mse": [
+        0.11038824915885925,
+        0.1018596887588501,
+        0.09760309010744095,
+        0.09516969323158264,
+        0.09353810548782349,
+        0.0923764780163765,
+        0.09149134159088135,
+        0.09073641896247864,
+        0.09010379016399384
+      ],
+      "residual_base_16_specialist_history": [
+        {
+          "loss": 0.08978384733200073,
+          "accepted_buckets": 0
+        },
+        {
+          "loss": 0.08960560709238052,
+          "accepted_buckets": 2
+        },
+        {
+          "loss": 0.08960560709238052,
+          "accepted_buckets": 0
+        }
+      ],
+      "residual_base_32_bulk_training_mse": [
+        0.11038824915885925,
+        0.1018596887588501,
+        0.09760309010744095,
+        0.09516969323158264,
+        0.09353810548782349,
+        0.09237644076347351,
+        0.09149135649204254,
+        0.09073804318904877,
+        0.09010515362024307
+      ],
+      "residual_base_32_specialist_history": [
+        {
+          "loss": 0.0897800475358963,
+          "accepted_buckets": 0
+        },
+        {
+          "loss": 0.08967699855566025,
+          "accepted_buckets": 2
+        },
+        {
+          "loss": 0.08966337144374847,
+          "accepted_buckets": 1
+        }
+      ],
+      "residual_base_64_bulk_training_mse": [
+        0.11038824915885925,
+        0.1018596887588501,
+        0.09760309010744095,
+        0.09516969323158264,
+        0.09353810548782349,
+        0.0923764780163765,
+        0.09149134159088135,
+        0.09073641896247864,
+        0.09010379016399384
+      ],
+      "residual_base_64_specialist_history": [
+        {
+          "loss": 0.08978384733200073,
+          "accepted_buckets": 0
+        },
+        {
+          "loss": 0.08961556851863861,
+          "accepted_buckets": 1
+        },
+        {
+          "loss": 0.08950112760066986,
+          "accepted_buckets": 2
+        }
+      ]
+    }
+  ],
+  "elapsed_seconds": 19.173340797424316
+}
