@@ -89,6 +89,8 @@ A broader correlated per-state maze search then measured **42.38 / 60.05**, regr
 
 A BF16-restoration oracle on a separate RTX 4000 Ada mapped where the remaining damage occurs. MLP groups dominate, but the loss is not confined to a few blocks: the validation-ranked oracle needed 24/48 attention-or-MLP groups at **6.80 linear-equivalent bpw** to cross 30 on the original test slice, and 40/48 groups at **12.79 bpw** to cross 30 on both test slices. Errors also interact: whole-layer restoration underperformed the sum of its separate attention/MLP gains in 17/24 layers. This rules out simple two-bit layer reallocation as the next solution and motivates joint nonlinear MLP optimization with quantized-rollout inputs. See the [block sensitivity findings](results/BLOCK_SENSITIVITY_FINDINGS.md).
 
+Joint nonlinear selection then evaluated gate/up/down combinations by their real post-SiLU MLP output on quantized-rollout inputs, with full validation NLL controlling acceptance. Two passes improved the same-pod exact-two-bit trellis from **41.54 / 58.06** to **41.02 / 56.23**; a third pass accepted no changes. The 89,456,640-byte payload and 5.85984 whole-model bpw are unchanged, and fresh decoding reproduces the scores exactly. This validates coordinated MLP selection but remains far above 30 and only recombines existing candidate codes. See the [joint MLP findings](results/JOINT_MLP_FINDINGS.md).
+
 The first PCA-plus-sparse configuration failed the quality gate; see the historical [findings](results/REAL_MODEL_FINDINGS.md) and [reproduction details](REAL_MODEL.md).
 
 No 70B memory fit, BF16-quality retention, or RTX 3090 performance has been demonstrated. Final evaluation datasets and perplexity acceptance tolerance remain to be selected.
