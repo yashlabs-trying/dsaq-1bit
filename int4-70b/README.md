@@ -87,6 +87,8 @@ A subsequent four-way test on a **16 GB RTX 2000 Ada** measured **42.59 / 60.17*
 
 A broader correlated per-state maze search then measured **42.38 / 60.05**, regressing against **41.56 / 59.25** despite reducing the local Hessian proxy in 167 of 168 matrices. Fixed-path node refitting modestly improved this to **42.26 / 59.84**, still worse than the combined reference. Fresh serialized decoding reproduced both new checkpoints exactly at the same two-bit compressed-weight budget. These trials did not deliver the hoped-for 12-point improvement. See the [beam-search findings](results/TRELLIS_BEAM_FINDINGS.md).
 
+A BF16-restoration oracle on a separate RTX 4000 Ada mapped where the remaining damage occurs. MLP groups dominate, but the loss is not confined to a few blocks: the validation-ranked oracle needed 24/48 attention-or-MLP groups at **6.80 linear-equivalent bpw** to cross 30 on the original test slice, and 40/48 groups at **12.79 bpw** to cross 30 on both test slices. Errors also interact: whole-layer restoration underperformed the sum of its separate attention/MLP gains in 17/24 layers. This rules out simple two-bit layer reallocation as the next solution and motivates joint nonlinear MLP optimization with quantized-rollout inputs. See the [block sensitivity findings](results/BLOCK_SENSITIVITY_FINDINGS.md).
+
 The first PCA-plus-sparse configuration failed the quality gate; see the historical [findings](results/REAL_MODEL_FINDINGS.md) and [reproduction details](REAL_MODEL.md).
 
 No 70B memory fit, BF16-quality retention, or RTX 3090 performance has been demonstrated. Final evaluation datasets and perplexity acceptance tolerance remain to be selected.
