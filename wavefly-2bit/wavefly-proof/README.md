@@ -1,6 +1,6 @@
 # WaveFly numerical proof
 
-Experiments 1–2 only. See FINAL_REPORT.md for outcomes and limitations.
+This directory contains all four WaveFly proof experiments. See the root README for the cross-experiment results and the linked reports for full measurements.
 
 Run on a CUDA host with Python, PyTorch, transformers 4.56.2, accelerate, safetensors, pandas, numpy, matplotlib:
 
