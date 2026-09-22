@@ -1,6 +1,6 @@
 # WaveFly numerical proof
 
-This directory contains all four WaveFly proof experiments. See the root README for the cross-experiment results and the linked reports for full measurements.
+This directory contains all five WaveFly proof experiment rounds. The first round covered the original representation and universality gates. See the root README for results and the linked reports for full measurements.
 
 Run on a CUDA host with Python, PyTorch, transformers 4.56.2, accelerate, safetensors, pandas, numpy, matplotlib:
 
@@ -40,3 +40,14 @@ python experiments/v4_report.py
 ```
 
 See `WAVEFLY_V4_REPORT.md` and `results/v4`.
+
+WaveFly V5 adds layer/group allocation, learned scalar/vector quantization, static residual correction, oracle routing, and gated learned routers. SciPy is also required for constrained allocation:
+
+```sh
+python tests/test_v5.py
+HF_HUB_ENABLE_HF_TRANSFER=0 python experiments/v5_experiment.py
+HF_HUB_ENABLE_HF_TRANSFER=0 python experiments/v5_baseline_audit.py
+python experiments/v5_report.py
+```
+
+See `WAVEFLY_V5_REPORT.md` and `results/v5`. Configuration selection uses calibration A; B and C are evaluation splits. V5 error excludes bias, and global BPW is weight-count weighted over the 33 sampled matrices. This is a numerical representation experiment, not a deployed full-model codec.

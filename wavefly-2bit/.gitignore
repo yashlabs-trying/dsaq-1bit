@@ -3,3 +3,5 @@ __pycache__/
 .pytest_cache/
 .venv/
 venv/
+v5-pod-scripts.tar.gz
+v5-upload.tar.gz

@@ -1,6 +1,8 @@
 # WaveFly
 
-## Four proof experiments
+WaveFly investigates compression of transformer weights through reproducible numerical experiments. Code, measurements, plots, and reports are included.
+
+## Five proof experiments
 
 ### 1. DCT representation, quantization, and requantization
 
@@ -18,24 +20,23 @@ Haar wavelets were applied after clustering with exact BPW accounting for scales
 
 The best configuration protected 5% of columns using activation-RMS saliency at INT8, then used direct 1.5-bit grouped quantization with group size 32 and FP8 scales shared across four groups. It achieved **1.952 BPW, 27.55% mean held-out error, and 57.86% worst-layer error**. At 2.25 BPW, mean error crossed 25% at 23.96%; at 2.50 BPW it was 22.33%. Direct grouped quantization beat the Haar controls.
 
-The current conclusion is **PARTIAL**: WaveFly can store, decode, and requantize the tested weights, and V4 reaches the 25% error range, but it does not yet preserve production-quality model behavior at approximately 2 BPW. Perplexity, downstream accuracy, inference speed, and hardware kernel performance remain unmeasured.
+### 5. Layer-adaptive learned quantization and residual correction (V5)
 
-WaveFly is an experimental investigation into spectral compression of transformer weights. The repository contains reproducible PyTorch experiments, packed codec implementations, raw measurements, plots, and technical reports.
+V5 evaluated 3,237 configurations across the same 33 matrices on an RTX 2000 Ada GPU. Calibration-selected layer/group bit allocation, learned scalar/vector codebooks, and static residual corrections reached **18.71% mean held-out output error at 1.9998 global BPW**, with **44.37% worst-layer error**. A separate set of new code, math, and general-text passages gave 18.55% mean error. At 2.2498 BPW, mean held-out error was 16.76%; at 2.4998 BPW it was 15.22%.
 
-The current evidence is deliberately negative where appropriate:
+The best system combines different quantizers across layers and uses low-rank or binary corrections on six matrices. Group and layer bit allocation provide the largest gains. Oracle and learned routing add no gain to the selected ≤2 BPW system. Some small hard layers receive approximately 5 BPW; the weight-count-weighted average over sampled matrices remains below 2 BPW.
 
-- Full-coefficient DCT storage and reconstruction work to floating-point tolerance.
-- Quantized coefficient storage, decoding, and requantization work correctly.
-- A fixed DCT basis does not preserve sufficient model-layer accuracy near two bits per weight in the tested models.
-- Reversible row and column clustering improves local correlation and spectral concentration, but only earns a partial pass; average functional error remains too high.
-- Hardware kernel performance and end-to-end perplexity have not been measured.
+**Comparison detail:** V5 follows the requested bias-excluded metric, `||X(W−W_hat)^T||F / ||XW^T||F`. Reproducing V4 gives 27.55% with bias included and 29.78% with bias excluded. Thus the fair V5 comparison is **29.78% → 18.71%**. This is relative layer-output error, not token error rate or perplexity. V5 global BPW is weighted by matrix size; earlier V4 summaries used the arithmetic mean of per-layer BPW.
 
-Start with:
+The current verdict is **PARTIAL: Stage 1 (<20% mean error) reached; near-lossless behavior not reached**. V5 storage is explicitly accounted for but has not been physically packed into a deployable model. Perplexity, downstream accuracy, inference speed, and final kernel performance remain unmeasured.
+
+## Reports and reproduction
 
 - [`wavefly-proof/FINAL_REPORT.md`](wavefly-proof/FINAL_REPORT.md) — representation and universality experiments.
 - [`wavefly-proof/CLUSTERING_REPORT.md`](wavefly-proof/CLUSTERING_REPORT.md) — reversible channel-clustering experiment.
 - [`wavefly-proof/DWT_WAVEFLY_REPORT.md`](wavefly-proof/DWT_WAVEFLY_REPORT.md) — clustered Haar DWT and importance-aware mixed-precision experiment.
 - [`wavefly-proof/WAVEFLY_V4_REPORT.md`](wavefly-proof/WAVEFLY_V4_REPORT.md) — saliency-protected columns and grouped bulk quantization.
+- [`wavefly-proof/WAVEFLY_V5_REPORT.md`](wavefly-proof/WAVEFLY_V5_REPORT.md) — adaptive learned quantization, residual corrections, and routing tests.
 - [`wavefly-proof/README.md`](wavefly-proof/README.md) — environment and reproduction commands.
 
 All measured CSV/JSON results and generated plots are committed under `wavefly-proof/results`.
