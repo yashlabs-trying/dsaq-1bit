@@ -1,0 +1,8 @@
+{
+  "seed": 20260922,
+  "gpu": "NVIDIA A40",
+  "torch": "2.8.0+cu128",
+  "cuda": "12.8",
+  "python": "3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]",
+  "tf32": false
+}

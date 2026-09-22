@@ -1,0 +1,125 @@
+LOAD Qwen/Qwen2.5-0.5B
+`torch_dtype` is deprecated! Use `dtype` instead!
+DISCOVERY 1 87 raw
+DISCOVERY 2 87 row_k4_raw_centroid
+DISCOVERY 3 87 row_k4_raw_norm
+DISCOVERY 4 87 row_k4_raw_pca
+DISCOVERY 5 87 row_k8_raw_centroid
+DISCOVERY 6 87 row_k8_raw_norm
+DISCOVERY 7 87 row_k8_raw_pca
+DISCOVERY 8 87 row_k16_raw_centroid
+DISCOVERY 9 87 row_k16_raw_norm
+DISCOVERY 10 87 row_k16_raw_pca
+DISCOVERY 11 87 row_k32_raw_centroid
+DISCOVERY 12 87 row_k32_raw_norm
+DISCOVERY 13 87 row_k32_raw_pca
+DISCOVERY 14 87 row_k64_raw_centroid
+DISCOVERY 15 87 row_k64_raw_norm
+DISCOVERY 16 87 row_k64_raw_pca
+DISCOVERY 17 87 row_k4_norm_centroid
+DISCOVERY 18 87 row_k4_norm_norm
+DISCOVERY 19 87 row_k4_norm_pca
+DISCOVERY 20 87 row_k8_norm_centroid
+DISCOVERY 21 87 row_k8_norm_norm
+DISCOVERY 22 87 row_k8_norm_pca
+DISCOVERY 23 87 row_k16_norm_centroid
+DISCOVERY 24 87 row_k16_norm_norm
+DISCOVERY 25 87 row_k16_norm_pca
+DISCOVERY 26 87 row_k32_norm_centroid
+DISCOVERY 27 87 row_k32_norm_norm
+DISCOVERY 28 87 row_k32_norm_pca
+DISCOVERY 29 87 row_k64_norm_centroid
+DISCOVERY 30 87 row_k64_norm_norm
+DISCOVERY 31 87 row_k64_norm_pca
+DISCOVERY 32 87 col_k4_raw_centroid
+DISCOVERY 33 87 col_k4_raw_norm
+DISCOVERY 34 87 col_k4_raw_pca
+DISCOVERY 35 87 col_k8_raw_centroid
+DISCOVERY 36 87 col_k8_raw_norm
+DISCOVERY 37 87 col_k8_raw_pca
+DISCOVERY 38 87 col_k16_raw_centroid
+DISCOVERY 39 87 col_k16_raw_norm
+DISCOVERY 40 87 col_k16_raw_pca
+DISCOVERY 41 87 col_k32_raw_centroid
+DISCOVERY 42 87 col_k32_raw_norm
+DISCOVERY 43 87 col_k32_raw_pca
+DISCOVERY 44 87 col_k64_raw_centroid
+DISCOVERY 45 87 col_k64_raw_norm
+DISCOVERY 46 87 col_k64_raw_pca
+DISCOVERY 47 87 col_k4_norm_centroid
+DISCOVERY 48 87 col_k4_norm_norm
+DISCOVERY 49 87 col_k4_norm_pca
+DISCOVERY 50 87 col_k8_norm_centroid
+DISCOVERY 51 87 col_k8_norm_norm
+DISCOVERY 52 87 col_k8_norm_pca
+DISCOVERY 53 87 col_k16_norm_centroid
+DISCOVERY 54 87 col_k16_norm_norm
+DISCOVERY 55 87 col_k16_norm_pca
+DISCOVERY 56 87 col_k32_norm_centroid
+DISCOVERY 57 87 col_k32_norm_norm
+DISCOVERY 58 87 col_k32_norm_pca
+DISCOVERY 59 87 col_k64_norm_centroid
+DISCOVERY 60 87 col_k64_norm_norm
+DISCOVERY 61 87 col_k64_norm_pca
+DISCOVERY 62 87 both_k4_norm_centroid
+DISCOVERY 63 87 both_k4_norm_norm
+DISCOVERY 64 87 both_k4_norm_pca
+DISCOVERY 65 87 both_k8_norm_centroid
+DISCOVERY 66 87 both_k8_norm_norm
+DISCOVERY 67 87 both_k8_norm_pca
+DISCOVERY 68 87 both_k16_norm_centroid
+DISCOVERY 69 87 both_k16_norm_norm
+DISCOVERY 70 87 both_k16_norm_pca
+DISCOVERY 71 87 both_k32_norm_centroid
+DISCOVERY 72 87 both_k32_norm_norm
+DISCOVERY 73 87 both_k32_norm_pca
+DISCOVERY 74 87 both_k64_norm_centroid
+DISCOVERY 75 87 both_k64_norm_norm
+DISCOVERY 76 87 both_k64_norm_pca
+DISCOVERY 77 87 correlation_k8
+DISCOVERY 78 87 correlation_k16
+DISCOVERY 79 87 correlation_k32
+DISCOVERY 80 87 correlation_k64
+DISCOVERY 81 87 activation_a0.1
+DISCOVERY 82 87 activation_a1.0
+DISCOVERY 83 87 activation_a3.0
+DISCOVERY 84 87 magnitude_a0.25
+DISCOVERY 85 87 magnitude_a1.0
+DISCOVERY 86 87 local128_both
+DISCOVERY 87 87 local256_both
+VALIDATE Qwen/Qwen2.5-0.5B 1 21 model.layers.0.self_attn.q_proj
+VALIDATE Qwen/Qwen2.5-0.5B 2 21 model.layers.0.self_attn.k_proj
+VALIDATE Qwen/Qwen2.5-0.5B 3 21 model.layers.0.self_attn.v_proj
+VALIDATE Qwen/Qwen2.5-0.5B 4 21 model.layers.0.self_attn.o_proj
+VALIDATE Qwen/Qwen2.5-0.5B 5 21 model.layers.0.mlp.gate_proj
+VALIDATE Qwen/Qwen2.5-0.5B 6 21 model.layers.0.mlp.up_proj
+VALIDATE Qwen/Qwen2.5-0.5B 7 21 model.layers.0.mlp.down_proj
+VALIDATE Qwen/Qwen2.5-0.5B 8 21 model.layers.12.self_attn.q_proj
+VALIDATE Qwen/Qwen2.5-0.5B 9 21 model.layers.12.self_attn.k_proj
+VALIDATE Qwen/Qwen2.5-0.5B 10 21 model.layers.12.self_attn.v_proj
+VALIDATE Qwen/Qwen2.5-0.5B 11 21 model.layers.12.self_attn.o_proj
+VALIDATE Qwen/Qwen2.5-0.5B 12 21 model.layers.12.mlp.gate_proj
+VALIDATE Qwen/Qwen2.5-0.5B 13 21 model.layers.12.mlp.up_proj
+VALIDATE Qwen/Qwen2.5-0.5B 14 21 model.layers.12.mlp.down_proj
+VALIDATE Qwen/Qwen2.5-0.5B 15 21 model.layers.23.self_attn.q_proj
+VALIDATE Qwen/Qwen2.5-0.5B 16 21 model.layers.23.self_attn.k_proj
+VALIDATE Qwen/Qwen2.5-0.5B 17 21 model.layers.23.self_attn.v_proj
+VALIDATE Qwen/Qwen2.5-0.5B 18 21 model.layers.23.self_attn.o_proj
+VALIDATE Qwen/Qwen2.5-0.5B 19 21 model.layers.23.mlp.gate_proj
+VALIDATE Qwen/Qwen2.5-0.5B 20 21 model.layers.23.mlp.up_proj
+VALIDATE Qwen/Qwen2.5-0.5B 21 21 model.layers.23.mlp.down_proj
+LOAD facebook/opt-125m
+VALIDATE facebook/opt-125m 1 6 model.decoder.layers.6.self_attn.k_proj
+VALIDATE facebook/opt-125m 2 6 model.decoder.layers.6.self_attn.v_proj
+VALIDATE facebook/opt-125m 3 6 model.decoder.layers.6.self_attn.q_proj
+VALIDATE facebook/opt-125m 4 6 model.decoder.layers.6.self_attn.out_proj
+VALIDATE facebook/opt-125m 5 6 model.decoder.layers.6.fc1
+VALIDATE facebook/opt-125m 6 6 model.decoder.layers.6.fc2
+LOAD EleutherAI/pythia-70m
+VALIDATE EleutherAI/pythia-70m 1 6 gpt_neox.layers.3.attention.query_key_value.q_proj
+VALIDATE EleutherAI/pythia-70m 2 6 gpt_neox.layers.3.attention.query_key_value.k_proj
+VALIDATE EleutherAI/pythia-70m 3 6 gpt_neox.layers.3.attention.query_key_value.v_proj
+VALIDATE EleutherAI/pythia-70m 4 6 gpt_neox.layers.3.attention.dense
+VALIDATE EleutherAI/pythia-70m 5 6 gpt_neox.layers.3.mlp.dense_h_to_4h
+VALIDATE EleutherAI/pythia-70m 6 6 gpt_neox.layers.3.mlp.dense_4h_to_h
+CLUSTERING DONE 4360 {'label': 'both_k16_norm_centroid', 'kind': 'both', 'k': 16, 'norm': True, 'within': 'centroid'}

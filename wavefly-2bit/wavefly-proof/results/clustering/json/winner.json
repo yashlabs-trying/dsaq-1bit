@@ -1,0 +1,7 @@
+{
+  "label": "both_k16_norm_centroid",
+  "kind": "both",
+  "k": 16,
+  "norm": true,
+  "within": "centroid"
+}
