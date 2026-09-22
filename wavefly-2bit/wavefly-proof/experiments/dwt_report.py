@@ -12,6 +12,9 @@ v=r[(r.scope=='validation')];k32=v[v.k==32]
 def avg(method,rule='magnitude',k=32):return v[(v.method==method)&(v.rule==rule)&(v.k==k)].mean(numeric_only=True)
 raw_dct=avg('raw_dct');cl_dct=avg('clustered_dct');raw_haar=avg(f'raw_haar_L{chosen}');cl_haar=avg(f'clustered_haar_L{chosen}')
 cl_func=avg(f'clustered_haar_L{chosen}','functional');raw_func=avg(f'raw_haar_L{chosen}','functional');dct_func=avg('clustered_dct','functional')
+raw_level_errors={level:avg(f'raw_haar_L{level}','functional').test_output_error for level in [1,2,3]}
+clustered_level_errors={level:avg(f'clustered_haar_L{level}','functional').test_output_error for level in [1,2,3]}
+best_raw_level=min(raw_level_errors,key=raw_level_errors.get);best_clustered_level=min(clustered_level_errors,key=clustered_level_errors.get)
 mg=m.groupby(['target_bpw','allocation','scale_mode'],as_index=False).mean(numeric_only=True)
 best=mg.loc[mg.groupby('target_bpw').test_output_error.idxmin()].sort_values('target_bpw',ascending=False);best.to_csv(O/'csv/best_rate_distortion.csv',index=False)
 mag2=mg[(mg.target_bpw==2)&(mg.allocation=='magnitude_fixed')].sort_values('test_output_error').iloc[0]
@@ -77,7 +80,7 @@ At B=16, K=32, and magnitude selection, level-{chosen} raw Haar retained {raw_ha
 
 ## C. Clustered Haar results
 
-The exact prior winner was held fixed: normalized row and column K-means, 16 clusters, centroid-distance ordering. At K=32 magnitude selection, clustering changed Haar held-out error from {raw_haar.test_output_error:.2%} to {cl_haar.test_output_error:.2%}. With functional selection it changed {raw_func.test_output_error:.2%} to {cl_func.test_output_error:.2%}. Therefore clustering helps magnitude-selected Haar modestly but does not improve activation-aware Haar on average.
+The exact prior winner was held fixed: normalized row and column K-means, 16 clusters, centroid-distance ordering. At K=32 magnitude selection, clustering changed level-{chosen} Haar held-out error from {raw_haar.test_output_error:.2%} to {cl_haar.test_output_error:.2%}. With functional selection it changed {raw_func.test_output_error:.2%} to {cl_func.test_output_error:.2%}. When each side may choose its best level, raw Haar L{best_raw_level} reaches {raw_level_errors[best_raw_level]:.2%} and clustered Haar L{best_clustered_level} reaches {clustered_level_errors[best_clustered_level]:.2%}; clustering therefore does not improve the best activation-aware Haar result overall.
 
 Tile-size results at one-eighth coefficient retention on the Qwen middle Q projection:
 
@@ -161,7 +164,7 @@ Normalized clustering + DWT for WaveFly:
 
 FAIL
 
-Measured reasons: clustered Haar improves the K=32 functional error over clustered DCT from {dct_func.test_output_error:.2%} to {cl_func.test_output_error:.2%}, but clustering itself does not improve activation-aware Haar over raw Haar, and the best complete 2-BPW mixed-precision representation retains {float(best[best.target_bpw==2].test_output_error.iloc[0]):.2%} held-out output error. At 3 BPW it still has {float(best[best.target_bpw==3].test_output_error.iloc[0]):.2%} error. High-frequency subbands demonstrably carry model function and cannot be discarded wholesale.
+Measured reasons: clustered Haar improves the K=32 functional error over clustered DCT from {dct_func.test_output_error:.2%} to {cl_func.test_output_error:.2%}, but its best level ({clustered_level_errors[best_clustered_level]:.2%}) does not improve on the best raw-Haar level ({raw_level_errors[best_raw_level]:.2%}), and the best complete 2-BPW mixed-precision representation retains {float(best[best.target_bpw==2].test_output_error.iloc[0]):.2%} held-out output error. At 3 BPW it still has {float(best[best.target_bpw==3].test_output_error.iloc[0]):.2%} error. High-frequency subbands demonstrably carry model function and cannot be discarded wholesale.
 
 The measured rate-distortion curve rejects fixed Haar wavelets as the core WaveFly representation for these pretrained weights. The next experiment should move to a learned orthogonal basis/PCA, dictionary learning, or vector/codebook representation, with held-out activation-aware allocation retained as an evaluation tool.
 

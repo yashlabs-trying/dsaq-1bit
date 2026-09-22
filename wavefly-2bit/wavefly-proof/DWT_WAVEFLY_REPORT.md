@@ -17,7 +17,7 @@ At B=16, K=32, and magnitude selection, level-3 raw Haar retained 53.42% energy 
 
 ## C. Clustered Haar results
 
-The exact prior winner was held fixed: normalized row and column K-means, 16 clusters, centroid-distance ordering. At K=32 magnitude selection, clustering changed Haar held-out error from 54.02% to 50.22%. With functional selection it changed 48.53% to 45.96%. Therefore clustering helps magnitude-selected Haar modestly but does not improve activation-aware Haar on average.
+The exact prior winner was held fixed: normalized row and column K-means, 16 clusters, centroid-distance ordering. At K=32 magnitude selection, clustering changed level-3 Haar held-out error from 54.02% to 50.22%. With functional selection it changed 48.53% to 45.96%. When each side may choose its best level, raw Haar L1 reaches 45.71% and clustered Haar L2 reaches 45.96%; clustering therefore does not improve the best activation-aware Haar result overall.
 
 Tile-size results at one-eighth coefficient retention on the Qwen middle Q projection:
 
@@ -164,7 +164,7 @@ Normalized clustering + DWT for WaveFly:
 
 FAIL
 
-Measured reasons: clustered Haar improves the K=32 functional error over clustered DCT from 52.17% to 45.96%, but clustering itself does not improve activation-aware Haar over raw Haar, and the best complete 2-BPW mixed-precision representation retains 50.87% held-out output error. At 3 BPW it still has 34.50% error. High-frequency subbands demonstrably carry model function and cannot be discarded wholesale.
+Measured reasons: clustered Haar improves the K=32 functional error over clustered DCT from 52.17% to 45.96%, but its best level (45.96%) does not improve on the best raw-Haar level (45.71%), and the best complete 2-BPW mixed-precision representation retains 50.87% held-out output error. At 3 BPW it still has 34.50% error. High-frequency subbands demonstrably carry model function and cannot be discarded wholesale.
 
 The measured rate-distortion curve rejects fixed Haar wavelets as the core WaveFly representation for these pretrained weights. The next experiment should move to a learned orthogonal basis/PCA, dictionary learning, or vector/codebook representation, with held-out activation-aware allocation retained as an evaluation tool.
 
