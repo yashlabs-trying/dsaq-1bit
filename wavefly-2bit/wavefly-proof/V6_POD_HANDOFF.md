@@ -2,7 +2,7 @@
 
 This directory is a resumable snapshot for the V6 experiment. The V6 run completed on 33 matrices from Qwen/Qwen2.5-0.5B, facebook/opt-125m, and EleutherAI/pythia-70m.
 
-Repository commit: `ce7f0e4`
+Repository commit: `37805b3`
 
 ## Environment
 
