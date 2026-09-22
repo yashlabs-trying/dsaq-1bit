@@ -1,0 +1,6 @@
+{
+  "gpu": "NVIDIA RTX 2000 Ada Generation",
+  "torch": "2.8.0+cu128",
+  "seed": 20260923,
+  "smoke": false
+}

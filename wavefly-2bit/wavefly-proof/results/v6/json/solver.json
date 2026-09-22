@@ -1,0 +1,402 @@
+[
+  {
+    "target": 1.75,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.358226208627209e-05,
+    "choices": 818
+  },
+  {
+    "target": 1.75,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 6.578200813367131e-05,
+    "choices": 865
+  },
+  {
+    "target": 1.75,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 8.841343353635996e-05,
+    "choices": 1213
+  },
+  {
+    "target": 1.75,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.915335131176099e-05,
+    "choices": 1348
+  },
+  {
+    "target": 1.75,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 7.740917690794705e-05,
+    "choices": 948
+  },
+  {
+    "target": 1.75,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.091657373134109e-05,
+    "choices": 862
+  },
+  {
+    "target": 1.75,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 8.04894446157925e-05,
+    "choices": 758
+  },
+  {
+    "target": 1.75,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 8.833628523580885e-05,
+    "choices": 1447
+  },
+  {
+    "target": 1.9,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 0.0,
+    "choices": 818
+  },
+  {
+    "target": 1.9,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 8.721928810606633e-05,
+    "choices": 865
+  },
+  {
+    "target": 1.9,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.6617573325441e-05,
+    "choices": 1213
+  },
+  {
+    "target": 1.9,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.973204069222391e-05,
+    "choices": 1348
+  },
+  {
+    "target": 1.9,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.861625377849383e-05,
+    "choices": 948
+  },
+  {
+    "target": 1.9,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.373739151029677e-05,
+    "choices": 862
+  },
+  {
+    "target": 1.9,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 5.043910644416075e-05,
+    "choices": 758
+  },
+  {
+    "target": 1.9,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.652508066116011e-05,
+    "choices": 1447
+  },
+  {
+    "target": 2.0,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.68263802911519e-05,
+    "choices": 818
+  },
+  {
+    "target": 2.0,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 8.549609151382277e-05,
+    "choices": 865
+  },
+  {
+    "target": 2.0,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 5.410860990630889e-05,
+    "choices": 1213
+  },
+  {
+    "target": 2.0,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 8.228821115959751e-05,
+    "choices": 1348
+  },
+  {
+    "target": 2.0,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 8.377017470887126e-05,
+    "choices": 948
+  },
+  {
+    "target": 2.0,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 7.474912168305758e-05,
+    "choices": 862
+  },
+  {
+    "target": 2.0,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 1.639047697469609e-05,
+    "choices": 758
+  },
+  {
+    "target": 2.0,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 8.713585210266796e-05,
+    "choices": 1447
+  },
+  {
+    "target": 2.1,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 5.7647699353280127e-05,
+    "choices": 818
+  },
+  {
+    "target": 2.1,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 8.66853568595858e-05,
+    "choices": 865
+  },
+  {
+    "target": 2.1,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.385839646343098e-05,
+    "choices": 1213
+  },
+  {
+    "target": 2.1,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 7.477209098077651e-05,
+    "choices": 1348
+  },
+  {
+    "target": 2.1,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 5.82478214320816e-05,
+    "choices": 948
+  },
+  {
+    "target": 2.1,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 0.0,
+    "choices": 862
+  },
+  {
+    "target": 2.1,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 4.892568082052565e-05,
+    "choices": 758
+  },
+  {
+    "target": 2.1,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 1.2607597264897121e-05,
+    "choices": 1447
+  },
+  {
+    "target": 2.25,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 0.0,
+    "choices": 818
+  },
+  {
+    "target": 2.25,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 3.9268441477764696e-05,
+    "choices": 865
+  },
+  {
+    "target": 2.25,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 8.636593559518838e-05,
+    "choices": 1213
+  },
+  {
+    "target": 2.25,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.186459611316216e-05,
+    "choices": 1348
+  },
+  {
+    "target": 2.25,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 2.7468526524574373e-05,
+    "choices": 948
+  },
+  {
+    "target": 2.25,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.234252610374006e-06,
+    "choices": 862
+  },
+  {
+    "target": 2.25,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 0.0,
+    "choices": 758
+  },
+  {
+    "target": 2.25,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 7.661456595263726e-05,
+    "choices": 1447
+  },
+  {
+    "target": 2.5,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 1.4637133479439033e-05,
+    "choices": 818
+  },
+  {
+    "target": 2.5,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.695972833738256e-05,
+    "choices": 865
+  },
+  {
+    "target": 2.5,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.511448851617822e-05,
+    "choices": 1213
+  },
+  {
+    "target": 2.5,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 5.9008000612713156e-05,
+    "choices": 1348
+  },
+  {
+    "target": 2.5,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 0.0,
+    "choices": 948
+  },
+  {
+    "target": 2.5,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 0.0,
+    "choices": 862
+  },
+  {
+    "target": 2.5,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 0.0,
+    "choices": 758
+  },
+  {
+    "target": 2.5,
+    "lam": 0.25,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 8.912384434645535e-05,
+    "choices": 1447
+  },
+  {
+    "target": 2.0,
+    "lam": 0.0,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 7.934804974598728e-05,
+    "choices": 1447
+  },
+  {
+    "target": 2.0,
+    "lam": 1.0,
+    "status": 0,
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "gap": 9.977368087548526e-05,
+    "choices": 1447
+  }
+]

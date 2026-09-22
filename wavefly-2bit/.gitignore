@@ -5,3 +5,4 @@ __pycache__/
 venv/
 v5-pod-scripts.tar.gz
 v5-upload.tar.gz
+.v6-cache/

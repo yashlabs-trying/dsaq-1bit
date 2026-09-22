@@ -2,7 +2,7 @@
 
 WaveFly investigates compression of transformer weights through reproducible numerical experiments. Code, measurements, plots, and reports are included.
 
-## Five proof experiments
+## Six proof experiments
 
 ### 1. DCT representation, quantization, and requantization
 
@@ -30,6 +30,12 @@ The best system combines different quantizers across layers and uses low-rank or
 
 The current verdict is **PARTIAL: Stage 1 (<20% mean error) reached; near-lossless behavior not reached**. V5 storage is explicitly accounted for but has not been physically packed into a deployable model. Perplexity, downstream accuracy, inference speed, and final kernel performance remain unmeasured.
 
+### 6. Global bit-stealing and residual-aware allocation (V6)
+
+V6 ran **24,084 configurations across all 33 matrices**. At the strict 2.00 BPW budget, the joint V6 system reached **17.24% mean held-out error**, but its worst layer was **48.77%**, worse than V5’s 44.37%. The strongest isolated component was nested micro-scaling: **17.56% mean and 34.01% worst-layer error at 2.00 BPW**. At 2.50 BPW, full V6 reached 13.34% mean error, but worst-layer error remained 48.71%.
+
+Residual saliency and activation-aware grouping gave small improvements. Global bit-stealing alone regressed the mean to 19.15% at 2 BPW. The V6 verdict is **FAIL for its strict minimum target at ≤2 BPW**: it did not achieve both mean <15% and worst-layer <35%. The experiment is still useful because it identifies micro-scaling as the best component and shows that the remaining hard layer is not fixed by the tested allocation strategy. No perplexity or model-level accuracy claim is made.
+
 ## Reports and reproduction
 
 - [`wavefly-proof/FINAL_REPORT.md`](wavefly-proof/FINAL_REPORT.md) — representation and universality experiments.
@@ -37,6 +43,7 @@ The current verdict is **PARTIAL: Stage 1 (<20% mean error) reached; near-lossle
 - [`wavefly-proof/DWT_WAVEFLY_REPORT.md`](wavefly-proof/DWT_WAVEFLY_REPORT.md) — clustered Haar DWT and importance-aware mixed-precision experiment.
 - [`wavefly-proof/WAVEFLY_V4_REPORT.md`](wavefly-proof/WAVEFLY_V4_REPORT.md) — saliency-protected columns and grouped bulk quantization.
 - [`wavefly-proof/WAVEFLY_V5_REPORT.md`](wavefly-proof/WAVEFLY_V5_REPORT.md) — adaptive learned quantization, residual corrections, and routing tests.
+- [`wavefly-proof/WAVEFLY_V6_REPORT.md`](wavefly-proof/WAVEFLY_V6_REPORT.md) — global bit-stealing, residual-driven saliency, activation-aware grouping, nested micro-scaling, and mixed precision.
 - [`wavefly-proof/README.md`](wavefly-proof/README.md) — environment and reproduction commands.
 
 All measured CSV/JSON results and generated plots are committed under `wavefly-proof/results`.

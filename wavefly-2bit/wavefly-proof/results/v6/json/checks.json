@@ -1,0 +1,927 @@
+[
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.q_proj@early",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features",
+      "activation_residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        1,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.k_proj@early",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        1,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.v_proj@early",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features",
+      "residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.o_proj@early",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features",
+      "residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        1,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.0.mlp.gate_proj@early",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.0.mlp.up_proj@early",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.0.mlp.down_proj@early",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features",
+      "residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        1,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.q_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.k_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        1,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.v_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.o_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.12.mlp.gate_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.12.mlp.up_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features",
+      "residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.12.mlp.down_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features",
+      "residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.q_proj@late",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.k_proj@late",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        1,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.v_proj@late",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        1,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.o_proj@late",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.23.mlp.gate_proj@late",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "residual",
+      "features"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.23.mlp.up_proj@late",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features",
+      "residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "Qwen/Qwen2.5-0.5B/model.layers.23.mlp.down_proj@late",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features",
+      "activation_residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        1,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 35,
+    "ood_tokens": 191
+  },
+  {
+    "layer": "facebook/opt-125m/model.decoder.layers.6.self_attn.k_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        2,
+        "mse"
+      ]
+    ],
+    "calibration_tokens": 51,
+    "validation_tokens": 37,
+    "ood_tokens": 227
+  },
+  {
+    "layer": "facebook/opt-125m/model.decoder.layers.6.self_attn.v_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 51,
+    "validation_tokens": 37,
+    "ood_tokens": 227
+  },
+  {
+    "layer": "facebook/opt-125m/model.decoder.layers.6.self_attn.q_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        1,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 51,
+    "validation_tokens": 37,
+    "ood_tokens": 227
+  },
+  {
+    "layer": "facebook/opt-125m/model.decoder.layers.6.self_attn.out_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 51,
+    "validation_tokens": 37,
+    "ood_tokens": 227
+  },
+  {
+    "layer": "facebook/opt-125m/model.decoder.layers.6.fc1@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 51,
+    "validation_tokens": 37,
+    "ood_tokens": 227
+  },
+  {
+    "layer": "facebook/opt-125m/model.decoder.layers.6.fc2@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features",
+      "activation"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        1,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 51,
+    "validation_tokens": 37,
+    "ood_tokens": 227
+  },
+  {
+    "layer": "EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.q_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 36,
+    "ood_tokens": 196
+  },
+  {
+    "layer": "EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.k_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        1,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 36,
+    "ood_tokens": 196
+  },
+  {
+    "layer": "EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.v_proj@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 36,
+    "ood_tokens": 196
+  },
+  {
+    "layer": "EleutherAI/pythia-70m/gpt_neox.layers.3.attention.dense@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 36,
+    "ood_tokens": 196
+  },
+  {
+    "layer": "EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_h_to_4h@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 36,
+    "ood_tokens": 196
+  },
+  {
+    "layer": "EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_4h_to_h@middle",
+    "permutation_roundtrip": true,
+    "selected_orders": [
+      "original",
+      "features",
+      "residual"
+    ],
+    "selected_micro": [
+      [
+        "off",
+        0,
+        "mse"
+      ],
+      [
+        "fixed",
+        2,
+        "functional"
+      ],
+      [
+        "learned",
+        2,
+        "functional"
+      ]
+    ],
+    "calibration_tokens": 48,
+    "validation_tokens": 36,
+    "ood_tokens": 196
+  }
+]

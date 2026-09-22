@@ -51,3 +51,13 @@ python experiments/v5_report.py
 ```
 
 See `WAVEFLY_V5_REPORT.md` and `results/v5`. Configuration selection uses calibration A; B and C are evaluation splits. V5 error excludes bias, and global BPW is weight-count weighted over the 33 sampled matrices. This is a numerical representation experiment, not a deployed full-model codec.
+
+WaveFly V6 evaluates global bit stealing, residual-driven column saliency, activation-aware grouping, nested FP8 plus 2-bit micro-scaling, mixed bulk precision, and mixed residual precision:
+
+```sh
+python tests/test_v6.py
+HF_HUB_ENABLE_HF_TRANSFER=0 python experiments/v6_experiment.py
+python experiments/v6_report.py
+```
+
+See `WAVEFLY_V6_REPORT.md` and `results/v6`. V6 uses the same 33 matrices and A/B/C metric as V5, counts all metadata and correction payloads, and does not use dynamic runtime routing.

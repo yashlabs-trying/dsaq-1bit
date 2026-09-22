@@ -1,0 +1,138 @@
+nohup: ignoring input
+LOAD Qwen/Qwen2.5-0.5B
+`torch_dtype` is deprecated! Use `dtype` instead!
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.q_proj@early [896, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.q_proj@early 1.5 v4_1 1.4345503826530612
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.q_proj@early 2.0 learned_1.5 1.9693977200255102
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.q_proj@early rows 99
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.k_proj@early [128, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.k_proj@early 1.5 v4_0 0.49686104910714285
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.k_proj@early 2.0 learned_1.25 1.8069893973214286
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.k_proj@early rows 197
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.v_proj@early [128, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.v_proj@early 1.5 v4_0 0.49686104910714285
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.v_proj@early 2.0 learned_1.25 1.8069893973214286
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.v_proj@early rows 295
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.o_proj@early [896, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.o_proj@early 1.5 learned_1 1.4945093271683674
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.o_proj@early 2.0 learned_1.5 1.9693977200255102
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.o_proj@early rows 393
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.mlp.gate_proj@early [4864, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.mlp.gate_proj@early 1.5 v4_1 1.427728868068609
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.mlp.gate_proj@early 2.0 learned_1.5 1.9620884486607142
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.mlp.gate_proj@early rows 491
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.mlp.up_proj@early [4864, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.mlp.up_proj@early 1.5 learned_1 1.4872000558035714
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.mlp.up_proj@early 2.0 learned_1.5 1.9620884486607142
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.mlp.up_proj@early rows 589
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.mlp.down_proj@early [896, 4864] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.mlp.down_proj@early 1.5 learned_1 1.486109683388158
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.0.mlp.down_proj@early 2.0 learned_1.5 1.9611302425986843
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.mlp.down_proj@early rows 687
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.q_proj@middle [896, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.q_proj@middle 1.5 learned_1 1.4945093271683674
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.q_proj@middle 2.0 learned_1.5 1.9693977200255102
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.q_proj@middle rows 785
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.k_proj@middle [128, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.k_proj@middle 1.5 v4_0 0.49686104910714285
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.k_proj@middle 2.0 v4_1.25 1.7731584821428572
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.k_proj@middle rows 883
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.v_proj@middle [128, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.v_proj@middle 1.5 v4_0 0.49686104910714285
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.v_proj@middle 2.0 v4_1.25 1.7731584821428572
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.v_proj@middle rows 981
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.o_proj@middle [896, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.o_proj@middle 1.5 learned_1 1.4945093271683674
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.o_proj@middle 2.0 learned_1.5 1.9693977200255102
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.o_proj@middle rows 1079
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.mlp.gate_proj@middle [4864, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.mlp.gate_proj@middle 1.5 v4_1 1.427728868068609
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.mlp.gate_proj@middle 2.0 learned_1.5 1.9620884486607142
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.mlp.gate_proj@middle rows 1177
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.mlp.up_proj@middle [4864, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.mlp.up_proj@middle 1.5 v4_1 1.427728868068609
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.mlp.up_proj@middle 2.0 learned_1.5 1.9620884486607142
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.mlp.up_proj@middle rows 1275
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.mlp.down_proj@middle [896, 4864] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.mlp.down_proj@middle 1.5 v4_1 1.4266219748590225
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.12.mlp.down_proj@middle 2.0 learned_1.5 1.9611302425986843
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.mlp.down_proj@middle rows 1373
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.q_proj@late [896, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.q_proj@late 1.5 v4_1 1.4345503826530612
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.q_proj@late 2.0 learned_1.5 1.9693977200255102
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.q_proj@late rows 1471
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.k_proj@late [128, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.k_proj@late 1.5 v4_0 0.49686104910714285
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.k_proj@late 2.0 learned_1.25 1.8069893973214286
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.k_proj@late rows 1569
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.v_proj@late [128, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.v_proj@late 1.5 v4_0 0.49686104910714285
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.v_proj@late 2.0 v4_1.25 1.7731584821428572
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.v_proj@late rows 1667
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.o_proj@late [896, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.o_proj@late 1.5 learned_1 1.4945093271683674
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.o_proj@late 2.0 learned_1.5 1.9693977200255102
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.o_proj@late rows 1765
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.mlp.gate_proj@late [4864, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.mlp.gate_proj@late 1.5 v4_1 1.427728868068609
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.mlp.gate_proj@late 2.0 learned_1.5 1.9620884486607142
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.mlp.gate_proj@late rows 1863
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.mlp.up_proj@late [4864, 896] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.mlp.up_proj@late 1.5 v4_1 1.427728868068609
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.mlp.up_proj@late 2.0 learned_1.5 1.9620884486607142
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.mlp.up_proj@late rows 1961
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.mlp.down_proj@late [896, 4864] [48, 35, 191]
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.mlp.down_proj@late 1.5 learned_1 1.486109683388158
+CORRECTIONS Qwen/Qwen2.5-0.5B/model.layers.23.mlp.down_proj@late 2.0 learned_1.5 1.9611302425986843
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.mlp.down_proj@late rows 2059
+LOAD facebook/opt-125m
+LAYER_START facebook/opt-125m/model.decoder.layers.6.self_attn.k_proj@middle [768, 768] [51, 37, 227]
+CORRECTIONS facebook/opt-125m/model.decoder.layers.6.self_attn.k_proj@middle 1.5 v4_1 1.4333902994791667
+CORRECTIONS facebook/opt-125m/model.decoder.layers.6.self_attn.k_proj@middle 2.0 learned_1.5 1.9688720703125
+LAYER_DONE facebook/opt-125m/model.decoder.layers.6.self_attn.k_proj@middle rows 2157
+LAYER_START facebook/opt-125m/model.decoder.layers.6.self_attn.v_proj@middle [768, 768] [51, 37, 227]
+CORRECTIONS facebook/opt-125m/model.decoder.layers.6.self_attn.v_proj@middle 1.5 learned_1 1.4936116536458333
+CORRECTIONS facebook/opt-125m/model.decoder.layers.6.self_attn.v_proj@middle 2.0 learned_1.5 1.9688720703125
+LAYER_DONE facebook/opt-125m/model.decoder.layers.6.self_attn.v_proj@middle rows 2255
+LAYER_START facebook/opt-125m/model.decoder.layers.6.self_attn.q_proj@middle [768, 768] [51, 37, 227]
+CORRECTIONS facebook/opt-125m/model.decoder.layers.6.self_attn.q_proj@middle 1.5 learned_1 1.4936116536458333
+CORRECTIONS facebook/opt-125m/model.decoder.layers.6.self_attn.q_proj@middle 2.0 learned_1.5 1.9688720703125
+LAYER_DONE facebook/opt-125m/model.decoder.layers.6.self_attn.q_proj@middle rows 2353
+LAYER_START facebook/opt-125m/model.decoder.layers.6.self_attn.out_proj@middle [768, 768] [51, 37, 227]
+CORRECTIONS facebook/opt-125m/model.decoder.layers.6.self_attn.out_proj@middle 1.5 v4_1 1.4333902994791667
+CORRECTIONS facebook/opt-125m/model.decoder.layers.6.self_attn.out_proj@middle 2.0 learned_1.5 1.9688720703125
+LAYER_DONE facebook/opt-125m/model.decoder.layers.6.self_attn.out_proj@middle rows 2451
+LAYER_START facebook/opt-125m/model.decoder.layers.6.fc1@middle [3072, 768] [51, 37, 227]
+CORRECTIONS facebook/opt-125m/model.decoder.layers.6.fc1@middle 1.5 learned_1 1.484649658203125
+CORRECTIONS facebook/opt-125m/model.decoder.layers.6.fc1@middle 2.0 learned_1.5 1.9599100748697917
+LAYER_DONE facebook/opt-125m/model.decoder.layers.6.fc1@middle rows 2549
+LAYER_START facebook/opt-125m/model.decoder.layers.6.fc2@middle [768, 3072] [51, 37, 227]
+CORRECTIONS facebook/opt-125m/model.decoder.layers.6.fc2@middle 1.5 v4_1 1.4303453233506944
+CORRECTIONS facebook/opt-125m/model.decoder.layers.6.fc2@middle 2.0 learned_1.5 1.9648471408420138
+LAYER_DONE facebook/opt-125m/model.decoder.layers.6.fc2@middle rows 2647
+LOAD EleutherAI/pythia-70m
+LAYER_START EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.q_proj@middle [512, 512] [48, 36, 196]
+CORRECTIONS EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.q_proj@middle 1.5 v4_1 1.452789306640625
+CORRECTIONS EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.q_proj@middle 2.0 learned_1.5 1.988555908203125
+LAYER_DONE EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.q_proj@middle rows 2747
+LAYER_START EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.k_proj@middle [512, 512] [48, 36, 196]
+CORRECTIONS EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.k_proj@middle 1.5 v4_1 1.452789306640625
+CORRECTIONS EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.k_proj@middle 2.0 learned_1.5 1.988555908203125
+LAYER_DONE EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.k_proj@middle rows 2845
+LAYER_START EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.v_proj@middle [512, 512] [48, 36, 196]
+CORRECTIONS EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.v_proj@middle 1.5 v4_1 1.452789306640625
+CORRECTIONS EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.v_proj@middle 2.0 learned_1.5 1.988555908203125
+LAYER_DONE EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.v_proj@middle rows 2943
+LAYER_START EleutherAI/pythia-70m/gpt_neox.layers.3.attention.dense@middle [512, 512] [48, 36, 196]
+CORRECTIONS EleutherAI/pythia-70m/gpt_neox.layers.3.attention.dense@middle 1.5 v4_1 1.452789306640625
+CORRECTIONS EleutherAI/pythia-70m/gpt_neox.layers.3.attention.dense@middle 2.0 learned_1.5 1.988555908203125
+LAYER_DONE EleutherAI/pythia-70m/gpt_neox.layers.3.attention.dense@middle rows 3041
+LAYER_START EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_h_to_4h@middle [2048, 512] [48, 36, 196]
+CORRECTIONS EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_h_to_4h@middle 1.5 v4_1 1.4413833618164062
+CORRECTIONS EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_h_to_4h@middle 2.0 learned_1.5 1.9757766723632812
+LAYER_DONE EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_h_to_4h@middle rows 3139
+LAYER_START EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_4h_to_h@middle [512, 2048] [48, 36, 196]
+CORRECTIONS EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_4h_to_h@middle 1.5 learned_1 1.4956130981445312
+CORRECTIONS EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_4h_to_h@middle 2.0 learned_1.5 1.9707107543945312
+LAYER_DONE EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_4h_to_h@middle rows 3237
+V5_DONE 3237

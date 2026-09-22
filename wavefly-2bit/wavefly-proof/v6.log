@@ -1,0 +1,68 @@
+nohup: ignoring input
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.q_proj@early
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.q_proj@early 756
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.k_proj@early
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.k_proj@early 1458
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.v_proj@early
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.v_proj@early 2214
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.o_proj@early
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.o_proj@early 2970
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.mlp.gate_proj@early
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.mlp.gate_proj@early 3699
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.mlp.up_proj@early
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.mlp.up_proj@early 4401
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.0.mlp.down_proj@early
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.0.mlp.down_proj@early 5157
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.q_proj@middle
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.q_proj@middle 5859
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.k_proj@middle
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.k_proj@middle 6561
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.v_proj@middle
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.v_proj@middle 7290
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.o_proj@middle
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.self_attn.o_proj@middle 7992
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.mlp.gate_proj@middle
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.mlp.gate_proj@middle 8721
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.mlp.up_proj@middle
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.mlp.up_proj@middle 9477
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.12.mlp.down_proj@middle
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.12.mlp.down_proj@middle 10233
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.q_proj@late
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.q_proj@late 10962
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.k_proj@late
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.k_proj@late 11691
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.v_proj@late
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.v_proj@late 12420
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.o_proj@late
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.self_attn.o_proj@late 13122
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.mlp.gate_proj@late
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.mlp.gate_proj@late 13878
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.mlp.up_proj@late
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.mlp.up_proj@late 14634
+LAYER_START Qwen/Qwen2.5-0.5B/model.layers.23.mlp.down_proj@late
+LAYER_DONE Qwen/Qwen2.5-0.5B/model.layers.23.mlp.down_proj@late 15390
+LAYER_START facebook/opt-125m/model.decoder.layers.6.self_attn.k_proj@middle
+LAYER_DONE facebook/opt-125m/model.decoder.layers.6.self_attn.k_proj@middle 16119
+LAYER_START facebook/opt-125m/model.decoder.layers.6.self_attn.v_proj@middle
+LAYER_DONE facebook/opt-125m/model.decoder.layers.6.self_attn.v_proj@middle 16848
+LAYER_START facebook/opt-125m/model.decoder.layers.6.self_attn.q_proj@middle
+LAYER_DONE facebook/opt-125m/model.decoder.layers.6.self_attn.q_proj@middle 17550
+LAYER_START facebook/opt-125m/model.decoder.layers.6.self_attn.out_proj@middle
+LAYER_DONE facebook/opt-125m/model.decoder.layers.6.self_attn.out_proj@middle 18279
+LAYER_START facebook/opt-125m/model.decoder.layers.6.fc1@middle
+LAYER_DONE facebook/opt-125m/model.decoder.layers.6.fc1@middle 19008
+LAYER_START facebook/opt-125m/model.decoder.layers.6.fc2@middle
+LAYER_DONE facebook/opt-125m/model.decoder.layers.6.fc2@middle 19764
+LAYER_START EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.q_proj@middle
+LAYER_DONE EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.q_proj@middle 20493
+LAYER_START EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.k_proj@middle
+LAYER_DONE EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.k_proj@middle 21195
+LAYER_START EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.v_proj@middle
+LAYER_DONE EleutherAI/pythia-70m/gpt_neox.layers.3.attention.query_key_value.v_proj@middle 21897
+LAYER_START EleutherAI/pythia-70m/gpt_neox.layers.3.attention.dense@middle
+LAYER_DONE EleutherAI/pythia-70m/gpt_neox.layers.3.attention.dense@middle 22599
+LAYER_START EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_h_to_4h@middle
+LAYER_DONE EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_h_to_4h@middle 23328
+LAYER_START EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_4h_to_h@middle
+LAYER_DONE EleutherAI/pythia-70m/gpt_neox.layers.3.mlp.dense_4h_to_h@middle 24084
+V6_DONE 24084
