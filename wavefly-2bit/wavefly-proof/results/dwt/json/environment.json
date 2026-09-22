@@ -1,0 +1,7 @@
+{
+  "seed": 20260922,
+  "gpu": "NVIDIA A40",
+  "torch": "2.8.0+cu128",
+  "cuda": "12.8",
+  "tf32": false
+}

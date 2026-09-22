@@ -21,3 +21,13 @@ python experiments/clustering_report.py
 ```
 
 It compares raw, row, column, joint, spherical/correlation, activation-aware, magnitude-aware, and block-local permutations. It verifies exact permutation undo, reconstructs complete matrices for functional error, counts permutation metadata, and retains all requested curves and heatmaps under `results/clustering`.
+
+The Haar DWT follow-up uses held-out activations and exact mixed-precision BPW accounting:
+
+```sh
+HF_HUB_ENABLE_HF_TRANSFER=0 python experiments/dwt_experiment.py
+python tests/test_wavelet.py
+python experiments/dwt_report.py
+```
+
+See `DWT_WAVEFLY_REPORT.md` and `results/dwt`.

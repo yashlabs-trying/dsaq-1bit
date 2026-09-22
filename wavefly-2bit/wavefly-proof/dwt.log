@@ -1,0 +1,38 @@
+LOAD Qwen/Qwen2.5-0.5B
+`torch_dtype` is deprecated! Use `dtype` instead!
+DWT Qwen/Qwen2.5-0.5B 1 21 model.layers.0.self_attn.q_proj
+DWT Qwen/Qwen2.5-0.5B 2 21 model.layers.0.self_attn.k_proj
+DWT Qwen/Qwen2.5-0.5B 3 21 model.layers.0.self_attn.v_proj
+DWT Qwen/Qwen2.5-0.5B 4 21 model.layers.0.self_attn.o_proj
+DWT Qwen/Qwen2.5-0.5B 5 21 model.layers.0.mlp.gate_proj
+DWT Qwen/Qwen2.5-0.5B 6 21 model.layers.0.mlp.up_proj
+DWT Qwen/Qwen2.5-0.5B 7 21 model.layers.0.mlp.down_proj
+DWT Qwen/Qwen2.5-0.5B 8 21 model.layers.12.self_attn.q_proj
+DWT Qwen/Qwen2.5-0.5B 9 21 model.layers.12.self_attn.k_proj
+DWT Qwen/Qwen2.5-0.5B 10 21 model.layers.12.self_attn.v_proj
+DWT Qwen/Qwen2.5-0.5B 11 21 model.layers.12.self_attn.o_proj
+DWT Qwen/Qwen2.5-0.5B 12 21 model.layers.12.mlp.gate_proj
+DWT Qwen/Qwen2.5-0.5B 13 21 model.layers.12.mlp.up_proj
+DWT Qwen/Qwen2.5-0.5B 14 21 model.layers.12.mlp.down_proj
+DWT Qwen/Qwen2.5-0.5B 15 21 model.layers.23.self_attn.q_proj
+DWT Qwen/Qwen2.5-0.5B 16 21 model.layers.23.self_attn.k_proj
+DWT Qwen/Qwen2.5-0.5B 17 21 model.layers.23.self_attn.v_proj
+DWT Qwen/Qwen2.5-0.5B 18 21 model.layers.23.self_attn.o_proj
+DWT Qwen/Qwen2.5-0.5B 19 21 model.layers.23.mlp.gate_proj
+DWT Qwen/Qwen2.5-0.5B 20 21 model.layers.23.mlp.up_proj
+DWT Qwen/Qwen2.5-0.5B 21 21 model.layers.23.mlp.down_proj
+LOAD facebook/opt-125m
+DWT facebook/opt-125m 1 6 model.decoder.layers.6.self_attn.k_proj
+DWT facebook/opt-125m 2 6 model.decoder.layers.6.self_attn.v_proj
+DWT facebook/opt-125m 3 6 model.decoder.layers.6.self_attn.q_proj
+DWT facebook/opt-125m 4 6 model.decoder.layers.6.self_attn.out_proj
+DWT facebook/opt-125m 5 6 model.decoder.layers.6.fc1
+DWT facebook/opt-125m 6 6 model.decoder.layers.6.fc2
+LOAD EleutherAI/pythia-70m
+DWT EleutherAI/pythia-70m 1 6 gpt_neox.layers.3.attention.query_key_value.q_proj
+DWT EleutherAI/pythia-70m 2 6 gpt_neox.layers.3.attention.query_key_value.k_proj
+DWT EleutherAI/pythia-70m 3 6 gpt_neox.layers.3.attention.query_key_value.v_proj
+DWT EleutherAI/pythia-70m 4 6 gpt_neox.layers.3.attention.dense
+DWT EleutherAI/pythia-70m 5 6 gpt_neox.layers.3.mlp.dense_h_to_4h
+DWT EleutherAI/pythia-70m 6 6 gpt_neox.layers.3.mlp.dense_4h_to_h
+DWT DONE 8067 1782 level 3
