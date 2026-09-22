@@ -31,3 +31,12 @@ python experiments/dwt_report.py
 ```
 
 See `DWT_WAVEFLY_REPORT.md` and `results/dwt`.
+
+WaveFly V4 tests saliency-protected columns against direct and Haar grouped bulk quantization:
+
+```sh
+HF_HUB_ENABLE_HF_TRANSFER=0 python experiments/v4_experiment.py
+python experiments/v4_report.py
+```
+
+See `WAVEFLY_V4_REPORT.md` and `results/v4`.

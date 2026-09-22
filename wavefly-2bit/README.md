@@ -15,6 +15,7 @@ Start with:
 - [`wavefly-proof/FINAL_REPORT.md`](wavefly-proof/FINAL_REPORT.md) — representation and universality experiments.
 - [`wavefly-proof/CLUSTERING_REPORT.md`](wavefly-proof/CLUSTERING_REPORT.md) — reversible channel-clustering experiment.
 - [`wavefly-proof/DWT_WAVEFLY_REPORT.md`](wavefly-proof/DWT_WAVEFLY_REPORT.md) — clustered Haar DWT and importance-aware mixed-precision experiment.
+- [`wavefly-proof/WAVEFLY_V4_REPORT.md`](wavefly-proof/WAVEFLY_V4_REPORT.md) — saliency-protected columns and grouped bulk quantization.
 - [`wavefly-proof/README.md`](wavefly-proof/README.md) — environment and reproduction commands.
 
 All measured CSV/JSON results and generated plots are committed under `wavefly-proof/results`.
