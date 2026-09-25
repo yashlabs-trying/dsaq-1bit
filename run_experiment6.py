@@ -233,9 +233,10 @@ def make_plots(out, aggregate, drift, distribution):
     plt.yscale("log"); plt.xlabel("transformer layer"); plt.ylabel("hidden-state NMSE")
     plt.tight_layout(); plt.savefig(plot_dir / "best_hidden_state_drift.png", dpi=180); plt.close()
     dist = pd.DataFrame(distribution)
-    top = dist[(dist.configuration == best.configuration) & (dist.axis == "projection")]
-    plt.figure(figsize=(8, 5)); plt.bar(top.group, top.fraction_of_selected)
-    plt.ylabel("fraction of protected weights"); plt.xticks(rotation=30); plt.tight_layout()
+    top = dist[(dist.configuration == best.configuration) & (dist.axis == "projection")].sort_values("enrichment", ascending=False)
+    plt.figure(figsize=(8, 5)); plt.bar(top.group, top.enrichment)
+    plt.axhline(1.0, color="grey", lw=.8); plt.ylabel("selection enrichment vs projection size")
+    plt.xticks(rotation=30); plt.tight_layout()
     plt.savefig(plot_dir / "best_projection_distribution.png", dpi=180); plt.close()
 
 
@@ -254,7 +255,7 @@ def build_report(out, aggregate, overlap, bf_ppl):
     one = primary[np.isclose(primary.protected_pct, 1.0)]
     layer_conc = pd.DataFrame(pd.read_csv(out / "importance_distribution.csv"))
     best_layers = layer_conc[(layer_conc.configuration == best.configuration) & (layer_conc.axis == "layer")].sort_values("fraction_of_selected", ascending=False).head(3)
-    best_proj = layer_conc[(layer_conc.configuration == best.configuration) & (layer_conc.axis == "projection")].sort_values("fraction_of_selected", ascending=False).head(3)
+    best_proj = layer_conc[(layer_conc.configuration == best.configuration) & (layer_conc.axis == "projection")].sort_values("enrichment", ascending=False).head(3)
     overlaps = pd.DataFrame(overlap); jac = overlaps[overlaps.kind == "jaccard"]
     hybrids = frame[frame.method.str.startswith("hybrid")]
     best_single_1 = one.perplexity.min(); best_hybrid = hybrids.perplexity.min() if len(hybrids) else float("inf")
@@ -281,7 +282,7 @@ All 24 transformer layers and all Q/K/V/O/gate/up/down weights use the same fixe
 
 **Q6. Layer concentration:** For the best configuration, the three largest shares are {', '.join(f'layer {int(r.group)} ({r.fraction_of_selected:.2%})' for r in best_layers.itertuples())}.
 
-**Q7. Projection concentration:** The three largest shares are {', '.join(f'{r.group} ({r.fraction_of_selected:.2%})' for r in best_proj.itertuples())}.
+**Q7. Projection concentration:** Relative to each projection family's size, the strongest enrichments are {', '.join(f'{r.group} ({r.enrichment:.2f}x; {r.fraction_of_selected:.2%} of selected weights)' for r in best_proj.itertuples())}.
 
 **Q8. Top-1% overlap:** {', '.join(f'{r.selector_a} vs {r.selector_b}: Jaccard {r.value:.4f}' for r in jac.itertuples())}.
 
@@ -308,6 +309,10 @@ def main() -> None:
     diag_tokens = calibration[:1]
     originals = {name: module.weight.detach().cpu().clone() for name, module in modules.items()}
     total_weights = sum(weight.numel() for weight in originals.values())
+    layer_totals, projection_totals = defaultdict(int), defaultdict(int)
+    for name, weight in originals.items():
+        layer_totals[layer_of(name)] += weight.numel()
+        projection_totals[projection_of(name)] += weight.numel()
 
     bf_ppl, bf_nll = safe_perplexity(model, evaluation, device)
     teacher_inputs, teacher_outputs, teacher_kwargs = capture_layers(model, diag_tokens, device)
@@ -356,12 +361,18 @@ def main() -> None:
         aggregate.append(row)
         for item in drift:
             drift_rows.append({"configuration": configuration, **item})
-        for axis, counts in (("layer", layer_counts), ("projection", projection_counts)):
+        for axis, counts, totals in (("layer", layer_counts, layer_totals),
+                                     ("projection", projection_counts, projection_totals)):
             for group, count in counts.items():
+                baseline_fraction = totals[group] / total_weights
                 distribution_rows.append({"configuration": configuration, "method": method, "scope": scope,
                                           "requested_pct": requested_pct, "axis": axis, "group": group,
                                           "protected_weights": count,
-                                          "fraction_of_selected": count / max(protected, 1)})
+                                          "fraction_of_selected": count / max(protected, 1),
+                                          "group_weights": totals[group],
+                                          "selection_rate": count / totals[group],
+                                          "enrichment": ((count / max(protected, 1)) / baseline_fraction
+                                                         if protected else 0.0)})
         write_outputs(args.output, aggregate, drift_rows, distribution_rows, overlap_rows)
         print(f"RESULT {configuration}: protected={actual_pct:.6g}% PPL={ppl:.6g} hidden_NMSE={drift[-1]['hidden_nmse']:.6g}", flush=True)
         return row
