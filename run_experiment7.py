@@ -328,7 +328,7 @@ def main() -> None:
         print(f"[{index}/{len(names)}] Hadamard base {name}", flush=True)
         base[name] = quantize_hadamard(originals[name].to(device), args.block_size)
 
-    aggregate, drift_rows, allocation_rows, causal_rows, interaction_rows = [], [], [], [], []
+    aggregate, drift_rows, allocation_rows, causal_rows, interaction_rows, stopping_rows = [], [], [], [], [], []
     aggregate.append({"configuration": "bf16", "method": "bf16", "protected_pct": 100.0,
                       "protected_weights": total_weights, "perplexity": bf_ppl, "mean_nll": bf_nll,
                       "teacher_logit_kl": 0.0, "final_hidden_nmse": 0.0, "hidden_cosine": 1.0,
@@ -340,6 +340,7 @@ def main() -> None:
         pd.DataFrame(allocation_rows).to_csv(args.output / "protection_allocation.csv", index=False)
         pd.DataFrame(causal_rows).to_csv(args.output / "causal_validation.csv", index=False)
         pd.DataFrame(interaction_rows).to_csv(args.output / "interactions.csv", index=False)
+        pd.DataFrame(stopping_rows).to_csv(args.output / "conditional_stopping.csv", index=False)
 
     def evaluate(configuration, method, budget, masks, calibration_evaluations=0, preapplied=False):
         started = time.time()
@@ -471,6 +472,11 @@ def main() -> None:
                 budget = BUDGETS[next_report]
                 evaluate(f"{method}_p{budget:g}", method, budget, masks, evaluations)
                 next_report += 1
+        stopping_rows.append({"method": method, "final_protected_pct": 100 * protected / total_weights,
+                              "final_repair_kl": current_loss, "final_calibration_nll": current_nll,
+                              "rejected_groups": len(rejected), "calibration_evaluations": evaluations,
+                              "reason": "candidate frontier exhausted or rejection limit reached"})
+        save()
         return masks
 
     iterative_masks = conditional_run("iterative_icqr", prior=False)
@@ -549,6 +555,11 @@ def build_report(out, aggregate, allocation, interactions, bf_ppl):
     causal_text = ("not measured" if causal.empty else
                    f"Pearson r={causal.predicted_gain.corr(causal.causal_gain):.3f}; "
                    f"{(causal.causal_gain > 0).mean():.1%} of directly tested groups had positive gain")
+    stopping_path = out / "conditional_stopping.csv"
+    stopping = pd.read_csv(stopping_path) if stopping_path.exists() else pd.DataFrame()
+    stopping_text = ("" if stopping.empty else " Conditional search stopped at " +
+                     ", ".join(f"{r.method}={r.final_protected_pct:.3f}%" for r in stopping.itertuples()) +
+                     " because no remaining proposed batch passed both KL and NLL acceptance.")
     text = f"""# Experiment 7: Conditional Quantization-Error Importance
 
 Q-OBS uses conditional 128x128 error-group selection with damped activation covariance and inverse-covariance diagnostics. ICQR uses a 128→16 hierarchical search, gradients of teacher-student KL on the current damaged model, direct causal checks, adaptive conditional batches, and backtracking. Exact BF16 restoration remains an oracle operation.
@@ -585,7 +596,7 @@ Q-OBS uses conditional 128x128 error-group selection with damped activation cova
 
 **Q13. Small-critical-subset hypothesis:** {'SUPPORTED at <=10%' if len(candidates[(candidates.protected_pct <= 10.0) & (candidates.perplexity < 100)]) else 'NOT SUPPORTED by the tested selectors at <=10%'}.
 
-BF16 PPL is {bf_ppl:.4g}; the hard success threshold is 100. Temporary compensation is diagnostic only and no compactness or encoding mechanism is introduced.
+BF16 PPL is {bf_ppl:.4g}; the hard success threshold is 100.{stopping_text} Temporary compensation is diagnostic only and no compactness or encoding mechanism is introduced.
 """
     (out / "REPORT.md").write_text(text, encoding="utf-8")
 
