@@ -1,0 +1,7 @@
+kind,selector_a,selector_b,value,intersection,union
+jaccard,magnitude,activation,0.16526146742141742,1027514.0,6217505
+jaccard,magnitude,functional_fisher,0.08520412649211473,568838.0,6676179
+jaccard,activation,functional_fisher,0.1493548771505835,929968.0,6226566
+jaccard_all_three,all_three,all_three,0.03117533745238324,266984.0,8563949
+union_result,hybrid_mag_func,,115707.34994233657,,3355522
+union_result,hybrid_all_three,,225125.49912120376,,2961785
