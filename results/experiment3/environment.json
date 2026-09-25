@@ -1,0 +1,21 @@
+{
+  "args": {
+    "model": "Qwen/Qwen2.5-0.5B",
+    "revision": "main",
+    "layers": "0,12,23",
+    "block_size": 128,
+    "calibration_tokens": 4096,
+    "evaluation_tokens": 4096,
+    "sequence_length": 512,
+    "seed": 20260925,
+    "output": "results/experiment3"
+  },
+  "python": "3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]",
+  "platform": "Linux-6.14.0-29-generic-x86_64-with-glibc2.39",
+  "torch": "2.8.0+cu128",
+  "cuda": "12.8",
+  "gpu": "NVIDIA RTX 4000 Ada Generation",
+  "target_weights": 44728320,
+  "base_metadata_bits": 43680,
+  "timestamp_utc": "2026-09-25T08:43:21Z"
+}
