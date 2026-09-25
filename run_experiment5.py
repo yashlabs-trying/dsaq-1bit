@@ -258,7 +258,9 @@ def build_report(out: Path, aggregate: pd.DataFrame, drift: pd.DataFrame, projec
     best=eligible.sort_values("perplexity").iloc[0]; had=aggregate[aggregate.configuration=="hadamard_naive"].iloc[0]
     independent=aggregate[aggregate.configuration=="independent_k8"].iloc[0]; sequential=aggregate[aggregate.configuration=="sequential_k8_h0_current"].iloc[0]
     beams=aggregate[aggregate.beam>1]; best_beam=beams.sort_values("perplexity").iloc[0]
-    best_drift=drift[drift.configuration==best.configuration]; cliff=best_drift.sort_values("drift_jump",ascending=False).iloc[0]
+    best_drift=drift[drift.configuration==best.configuration]
+    # Layer 0 has no preceding layer, so its accumulated drift is not a jump.
+    cliff=best_drift[best_drift.layer>0].sort_values("drift_jump",ascending=False).iloc[0]
     q1=best.perplexity<had.perplexity; q2=sequential.perplexity<independent.perplexity; q3=best_beam.perplexity<sequential.perplexity; q5=best.perplexity<100
     cols=["configuration","perplexity","mean_nll","true_bpw","k","beam","horizon","target","candidate_evaluations","runtime_seconds"]
     text=f"""# Experiment 5: Sequential Functional Binary Search

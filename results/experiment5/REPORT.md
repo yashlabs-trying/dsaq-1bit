@@ -38,7 +38,7 @@ Best result at <=1.05 BPW: **sequential_k8_h1_clean**, PPL **9.609e+04**, true B
 
 **Q5: Did we reach PPL <100? NO.**
 
-**Q6: Where does functional information begin collapsing?** The largest positive teacher-drift jump for the best configuration occurs at transformer layer **0**: NMSE changes by 0.735 to 0.735. Projection rescue diagnostics for that layer are in `per_projection.csv`.
+**Q6: Where does functional information begin collapsing?** Excluding layer 0's initial condition, the largest positive teacher-drift jump for the best configuration occurs at transformer layer **2**: the inter-layer NMSE jump is about 0.178, reaching teacher-output NMSE about 0.995. Projection rescue diagnostics for that layer are in `per_projection.csv`.
 
 **Q7: Next bottleneck:** the candidate family / fundamental one-bit representation, if horizon and beam ablations do not materially close the gap; the tables distinguish this from search failure. No repair mechanism is introduced.
 
