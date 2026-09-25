@@ -43,6 +43,14 @@ python run_experiment3.py --output results/experiment3
 
 Ranks, factor storage, residual spectra, sensitivity concentration, layer/projection tables, matched perplexity, and recovery per metadata bit are recorded automatically.
 
+Experiment 4 tests a Hessian-aware Hadamard binary base, damage-routed low-rank correction, and individually or structurally indexed BF16 salient residual rescue:
+
+```bash
+python run_experiment4.py --output results/experiment4
+```
+
+It reports exact binary-scale, FP16 factor, BF16 value, and sparse-index storage separately.
+
 ## Interpretation limits
 
 This is a controlled proof-of-concept on three representative layers of one small model. A positive result is evidence for a routing signal and a generated-candidate mechanism, not evidence that a complete model can reach the same BPW or perplexity. A negative result kills the tested DSA surfaces or seeded distributions, not every possible structured reconstruction method.
