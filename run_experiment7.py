@@ -117,9 +117,7 @@ def order_to_masks(order, originals, budgets, total_weights):
         target = round(total_weights * budget / 100)
         while cursor < len(order) and protected < target:
             name, row, col, block, _score = order[cursor]
-            before = int(masks[name].sum())
-            mark_group(masks[name], originals[name].shape, row, col, block)
-            protected += int(masks[name].sum()) - before
+            protected += mark_group(masks[name], originals[name].shape, row, col, block)
             cursor += 1
         snapshots[budget] = {name: mask.clone() for name, mask in masks.items()}
     return snapshots
@@ -207,18 +205,32 @@ def fine_group_scores(model, modules, originals, base, masks, tokens, teacher_lo
         keep = max(1, math.ceil(coarse.numel() * 0.5))
         coarse_keep = torch.zeros_like(coarse, dtype=torch.bool)
         coarse_keep.view(-1)[torch.topk(coarse.flatten(), keep).indices] = True
-        for rg in range(ro):
-            for cg in range(co):
-                in_shortlist = bool(coarse_keep[rg // 8, cg // 8])
-                if (not in_shortlist and not include_all) or bool(masks[name].view(originals[name].shape)[rg * block:min((rg + 1) * block, originals[name].shape[0]), cg * block:min((cg + 1) * block, originals[name].shape[1])].all()):
-                    continue
-                value = float(score[rg, cg]) if in_shortlist else float("-inf")
-                if prior:
-                    layer, proj = layer_of(name), projection_of(name)
-                    bonus = 1.0 + (0.75 if proj in {"v_proj", "k_proj", "o_proj"} else 0.0) + (0.75 if layer >= 20 else 0.0) + (1.0 if layer == 21 else 0.0)
-                    value *= bonus
-                candidates.append((value, name, rg * block, cg * block, block,
-                                   float(accum_abs[name][rg, cg]), float(accum_qf[name][rg, cg])))
+        allowed = coarse_keep.repeat_interleave(8, 0).repeat_interleave(8, 1)[:ro, :co]
+        weight_mask = masks[name].view(originals[name].shape)
+        padded_mask = F.pad(weight_mask, (0, co * block - weight_mask.shape[1], 0, ro * block - weight_mask.shape[0]), value=True)
+        selected_groups = padded_mask.view(ro, block, co, block).all((1, 3))
+        signed_flat = score.flatten(); qf_flat = accum_qf[name].flatten()
+        if include_all:
+            # The baseline keeps a broad per-matrix frontier for both signed ICQR
+            # and quantization-Fisher so that the global 20% path remains feasible.
+            chosen = torch.zeros(score.numel(), dtype=torch.bool)
+            signed_work = signed_flat.masked_fill((~allowed | selected_groups).flatten(), float("-inf"))
+            qf_work = qf_flat.masked_fill(selected_groups.flatten(), float("-inf"))
+            k_signed = min(score.numel(), max(1, math.ceil(score.numel() * 0.25)))
+            k_qf = min(score.numel(), max(1, math.ceil(score.numel() * 0.40)))
+            chosen[torch.topk(signed_work, k_signed).indices] = True
+            chosen[torch.topk(qf_work, k_qf).indices] = True
+            indices = torch.nonzero(chosen, as_tuple=False).flatten()
+        else:
+            work = signed_flat.masked_fill((~allowed | selected_groups).flatten(), float("-inf"))
+            k = min(score.numel(), max(64, math.ceil(score.numel() * 0.03)))
+            indices = torch.topk(work, k).indices
+        layer, proj = layer_of(name), projection_of(name)
+        bonus = 1.0 + (0.75 if prior and proj in {"v_proj", "k_proj", "o_proj"} else 0.0) + (0.75 if prior and layer >= 20 else 0.0) + (1.0 if prior and layer == 21 else 0.0)
+        for index in indices.tolist():
+            rg, cg = divmod(index, co); value = float(signed_flat[index]) * bonus
+            candidates.append((value, name, rg * block, cg * block, block,
+                               float(accum_abs[name].flatten()[index]), float(qf_flat[index])))
     candidates.sort(reverse=True, key=lambda item: item[0])
     return candidates
 
@@ -425,8 +437,10 @@ def main() -> None:
             accepted = False
             for fraction in (1.0, 0.5, 0.25):
                 trial = batch[:max(1, round(len(batch) * fraction))]
-                for _, name, row, col, block, *_ in trial: mark_group(masks[name], originals[name].shape, row, col, block)
-                protected_trial = sum(int(mask.sum()) for mask in masks.values())
+                trial_count = 0
+                for _, name, row, col, block, *_ in trial:
+                    trial_count += mark_group(masks[name], originals[name].shape, row, col, block)
+                protected_trial = protected + trial_count
                 apply_current(modules, originals, base, masks, device)
                 trial_loss = repair_kl(model, gradient_tokens, repair_teacher, device); evaluations += len(gradient_tokens)
                 trial_nll = calibration_nll(model, gradient_tokens, device); evaluations += len(gradient_tokens)
