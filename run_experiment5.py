@@ -372,7 +372,9 @@ def main() -> None:
     for proj,(name,module) in sfbs.by_layer[layer].items():
         saved=module.weight.detach().clone()
         with torch.no_grad(): module.weight.copy_(originals[name].to(device))
-        rescued=sfbs.call(layer,hidden); nmse,cos=tensor_metrics(teacher_outputs[layer],rescued)
+        with torch.no_grad():
+            rescued=sfbs.call(layer,hidden)
+        nmse,cos=tensor_metrics(teacher_outputs[layer],rescued)
         with torch.no_grad(): module.weight.copy_(saved)
         projection_rows.append({"layer":layer,"projection":proj,"matrix":name,"base_layer_nmse":base_nmse,"rescued_layer_nmse":nmse,"nmse_reduction":base_nmse-nmse,"rescued_cosine":cos})
     for name,module in modules.items():
