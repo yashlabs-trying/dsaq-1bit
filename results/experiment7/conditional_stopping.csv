@@ -1,0 +1,3 @@
+method,final_protected_pct,final_repair_kl,final_calibration_nll,rejected_groups,calibration_evaluations,reason
+iterative_icqr,0.375,3551.26,,,,candidate frontier exhausted or rejection limit reached
+collapse_prior_icqr,0.250114,3669.76,,,,candidate frontier exhausted or rejection limit reached
