@@ -35,6 +35,14 @@ python run_experiments.py --synthetic --output results/smoke
 
 The run writes raw block records, per-layer and aggregate tables, perplexity results, fitted router metadata, plots, and `REPORT.md`. Run metadata records the seed, model revision, package versions, arguments, and device.
 
+Experiment 3 tests FP16-stored low-rank corrections to the Hadamard 1-bit residual, followed by either an ordinary or diagonal-Hessian-weighted second correction:
+
+```bash
+python run_experiment3.py --output results/experiment3
+```
+
+Ranks, factor storage, residual spectra, sensitivity concentration, layer/projection tables, matched perplexity, and recovery per metadata bit are recorded automatically.
+
 ## Interpretation limits
 
 This is a controlled proof-of-concept on three representative layers of one small model. A positive result is evidence for a routing signal and a generated-candidate mechanism, not evidence that a complete model can reach the same BPW or perplexity. A negative result kills the tested DSA surfaces or seeded distributions, not every possible structured reconstruction method.
