@@ -59,6 +59,15 @@ python run_experiment5.py --output results/experiment5
 
 It compares independent and sequential calibration, K=4/8/16, horizons 0/1/2/4, clean and current-input targets, and beam widths 1/2/4 without residual repair.
 
+Experiment 6 Part 1 is an oracle importance study. It keeps the Hadamard 1-bit
+bulk fixed, restores selected weights exactly, and compares magnitude,
+activation-aware, gradient, and Fisher selectors under global and
+layer-balanced budgets:
+
+```bash
+python run_experiment6.py --output results/experiment6
+```
+
 ## Interpretation limits
 
 This is a controlled proof-of-concept on three representative layers of one small model. A positive result is evidence for a routing signal and a generated-candidate mechanism, not evidence that a complete model can reach the same BPW or perplexity. A negative result kills the tested DSA surfaces or seeded distributions, not every possible structured reconstruction method.
