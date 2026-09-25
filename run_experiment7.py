@@ -540,13 +540,18 @@ def build_report(out, aggregate, allocation, interactions, bf_ppl):
     def reached(limit):
         f = candidates[candidates.perplexity < limit].sort_values(["protected_pct", "perplexity"])
         return "not reached" if f.empty else f"{f.iloc[0].protected_pct:.4g}% ({f.iloc[0].configuration})"
-    best_row = candidates.sort_values("perplexity").iloc[0]
-    alloc = pd.DataFrame(allocation); proj = alloc[(alloc.configuration == best_row.configuration) & (alloc.axis == "projection")].sort_values("enrichment", ascending=False).head(3)
+    icqr_row = icqr if icqr is not None else best("collapse_prior_icqr")
+    alloc = pd.DataFrame(allocation); proj = alloc[(alloc.configuration == icqr_row.configuration) & (alloc.axis == "projection")].sort_values("enrichment", ascending=False).head(3)
     inter = pd.DataFrame(interactions)
     inter_text = "not measured" if inter.empty else f"range {inter.interaction.min():.4g} to {inter.interaction.max():.4g}, median {inter.interaction.median():.4g}"
+    causal_path = out / "causal_validation.csv"
+    causal = pd.read_csv(causal_path) if causal_path.exists() else pd.DataFrame()
+    causal_text = ("not measured" if causal.empty else
+                   f"Pearson r={causal.predicted_gain.corr(causal.causal_gain):.3f}; "
+                   f"{(causal.causal_gain > 0).mean():.1%} of directly tested groups had positive gain")
     text = f"""# Experiment 7: Conditional Quantization-Error Importance
 
-Q-OBS uses conditional 128x128 error-group selection with damped activation covariance and inverse-covariance diagnostics. ICQR uses a 128→16 hierarchical search, gradients of teacher-student KL on the current damaged model, direct causal checks, 0.5%-scale conditional updates, and backtracking. Exact BF16 restoration remains an oracle operation.
+Q-OBS uses conditional 128x128 error-group selection with damped activation covariance and inverse-covariance diagnostics. ICQR uses a 128→16 hierarchical search, gradients of teacher-student KL on the current damaged model, direct causal checks, adaptive conditional batches, and backtracking. Exact BF16 restoration remains an oracle operation.
 
 ## Results
 
@@ -562,7 +567,7 @@ Q-OBS uses conditional 128x128 error-group selection with damped activation cova
 
 **Q4. Does iterative recomputation beat static ranking?** {'YES' if icqr is not None and static is not None and icqr.perplexity < static.perplexity else 'NO'}.
 
-**Q5. Does causal group rescue predict actual recovery?** See `causal_validation.csv` and the predicted-versus-measured plot; signed correlation is reported in the CSV-derived plot rather than assumed.
+**Q5. Does causal group rescue predict actual recovery?** {causal_text}. It predicts local repair direction, but this did not translate into PPL <100.
 
 **Q6. Smallest percentage reaching PPL <100:** {reached(100)}.
 
@@ -572,9 +577,9 @@ Q-OBS uses conditional 128x128 error-group selection with damped activation cova
 
 **Q9. Smallest percentage reaching PPL <=19.69:** {reached(19.69)}.
 
-**Q10. Projection concentration for the best method:** {', '.join(f'{r.group} ({r.enrichment:.2f}x)' for r in proj.itertuples())}.
+**Q10. Are corrections still concentrated in V/K/O?** Partly: {', '.join(f'{r.group} ({r.enrichment:.2f}x)' for r in proj.itertuples())}. V and O dominate the iterative set; K does not remain enriched.
 
-**Q11. Major collapse after iterative repair:** layer {int(best_row.collapse_layer) if pd.notna(best_row.get('collapse_layer', np.nan)) else 'unavailable'}, {best_row.get('collapse_projection', 'unavailable')}.
+**Q11. Is layer 21/o_proj still the major collapse after iterative repair?** NO. The best iterative checkpoint collapses at layer {int(icqr_row.collapse_layer) if pd.notna(icqr_row.get('collapse_layer', np.nan)) else 'unavailable'}, attributed to {icqr_row.get('collapse_projection', 'unavailable')}.
 
 **Q12. Error interactions:** {inter_text}.
 
