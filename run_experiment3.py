@@ -165,9 +165,12 @@ def plot_results(out: Path, spectra: pd.DataFrame, aggregate_table: pd.DataFrame
     plt.savefig(p / "perplexity_vs_first_rank.png", dpi=180); plt.close()
 
     plt.figure(figsize=(8, 5))
-    for method, frame in ppl.groupby("stage2_method"):
+    low_bit = ppl[ppl.true_bpw <= 2]
+    for method, frame in low_bit.groupby("stage2_method"):
         plt.scatter(frame.true_bpw, frame.perplexity, label=method, s=45)
-    plt.xlabel("true BPW"); plt.ylabel("perplexity"); plt.yscale("log"); plt.legend(); plt.tight_layout()
+    bf16_ppl = float(ppl.loc[ppl.configuration == "bf16", "perplexity"].iloc[0])
+    plt.axhline(bf16_ppl, color="black", linestyle="--", linewidth=1, label=f"BF16 ({bf16_ppl:.1f})")
+    plt.xlabel("true BPW"); plt.ylabel("perplexity"); plt.yscale("log"); plt.xlim(.98, 1.32); plt.legend(); plt.tight_layout()
     plt.savefig(p / "perplexity_vs_bpw.png", dpi=180); plt.close()
 
     second = aggregate_table[aggregate_table.r2 > 0]
