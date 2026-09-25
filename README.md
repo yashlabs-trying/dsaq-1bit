@@ -68,6 +68,14 @@ layer-balanced budgets:
 python run_experiment6.py --output results/experiment6
 ```
 
+Experiment 7 scores the actual Hadamard quantization error. It compares a
+conditional blockwise Q-OBS selector with static, iterative, and collapse-prior
+ICQR repair driven by teacher-student KL:
+
+```bash
+python run_experiment7.py --output results/experiment7
+```
+
 ## Interpretation limits
 
 This is a controlled proof-of-concept on three representative layers of one small model. A positive result is evidence for a routing signal and a generated-candidate mechanism, not evidence that a complete model can reach the same BPW or perplexity. A negative result kills the tested DSA surfaces or seeded distributions, not every possible structured reconstruction method.
