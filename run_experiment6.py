@@ -328,7 +328,8 @@ def main() -> None:
                   "protected_pct": 100.0, "protected_weights": total_weights, "perplexity": bf_ppl,
                   "mean_nll": bf_nll, "ppl_degradation_pct": 0.0, "weight_nmse": 0.0,
                   "final_hidden_nmse": 0.0, "final_hidden_cosine": 1.0, "logit_kl": 0.0,
-                  "collapse_layer": np.nan, "collapse_projection": "none", "runtime_seconds": 0.0}]
+                  "collapse_layer": np.nan, "collapse_projection": "none", "runtime_seconds": 0.0,
+                  "recovery_per_protected_pct": np.nan}]
     drift_rows, distribution_rows, overlap_rows = [], [], []
 
     def evaluate_config(configuration, method, scope, requested_pct, masks):
@@ -341,13 +342,17 @@ def main() -> None:
                                                      teacher_outputs[int(cliff["layer"])], device)
         kl = logit_kl(model, kl_tokens, teacher_logits, device)
         actual_pct = 100.0 * protected / total_weights
+        bulk_ppl = next((item["perplexity"] for item in aggregate
+                         if item["method"] != "bf16" and item["protected_pct"] == 0), np.nan)
         row = {"configuration": configuration, "method": method, "scope": scope,
                "requested_pct": requested_pct, "protected_pct": actual_pct,
                "protected_weights": protected, "perplexity": ppl, "mean_nll": nll,
                "ppl_degradation_pct": 100.0 * (ppl / bf_ppl - 1), "weight_nmse": weight_nmse,
                "final_hidden_nmse": drift[-1]["hidden_nmse"], "final_hidden_cosine": drift[-1]["hidden_cosine"],
                "logit_kl": kl, "collapse_layer": int(cliff["layer"]), "collapse_projection": projection,
-               "collapse_rescued_nmse": rescued_nmse, "runtime_seconds": time.time() - start}
+               "collapse_rescued_nmse": rescued_nmse, "runtime_seconds": time.time() - start,
+               "recovery_per_protected_pct": ((bulk_ppl - ppl) / actual_pct
+                                                if actual_pct > 0 and np.isfinite(bulk_ppl) else np.nan)}
         aggregate.append(row)
         for item in drift:
             drift_rows.append({"configuration": configuration, **item})
