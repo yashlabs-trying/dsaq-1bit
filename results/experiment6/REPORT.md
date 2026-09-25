@@ -96,7 +96,7 @@ All 24 transformer layers and all Q/K/V/O/gate/up/down weights use the same fixe
 
 **Q6. Layer concentration:** For the best configuration, the three largest shares are layer 0 (8.93%), layer 1 (6.60%), layer 2 (6.42%).
 
-**Q7. Projection concentration:** The three largest shares are down_proj (32.44%), up_proj (28.51%), gate_proj (19.54%).
+**Q7. Projection concentration:** Relative to each family size, the strongest enrichments are v_proj (4.39x; 43.92% selected), k_proj (2.45x; 24.46% selected), and o_proj (2.13x; 21.29% selected).
 
 **Q8. Top-1% overlap:** magnitude vs activation: Jaccard 0.1653, magnitude vs functional_fisher: Jaccard 0.0852, activation vs functional_fisher: Jaccard 0.1494.
 
