@@ -35,7 +35,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--gradient-sequences", type=int, default=2)
     p.add_argument("--evaluation-tokens", type=int, default=4096)
     p.add_argument("--sequence-length", type=int, default=512)
-    p.add_argument("--iteration-pct", type=float, default=0.5)
+    p.add_argument("--iteration-pct", type=float, default=2.0)
     p.add_argument("--seed", type=int, default=20260925)
     p.add_argument("--output", type=Path, default=Path("results/experiment7"))
     return p.parse_args()
@@ -245,6 +245,14 @@ def apply_current(modules, originals, base, masks, device):
     return apply_oracle(modules, originals, base, masks, device)
 
 
+def apply_weights_only(modules, originals, base, masks, device):
+    with torch.no_grad():
+        for name, module in modules.items():
+            merged = base[name].clone()
+            merged.view(-1)[masks[name]] = originals[name].view(-1)[masks[name]]
+            module.weight.copy_(merged.to(device, module.weight.dtype))
+
+
 def apply_qobs_compensation(modules, originals, base, masks, selected_order, inverses, block, device):
     """Diagnostic group-level OBS compensation; resulting weights are no longer 1-bit."""
     corrections = {}
@@ -377,7 +385,7 @@ def main() -> None:
     for budget in BUDGETS: evaluate(f"qobs_p{budget:g}", "qobs", budget, qobs_masks[budget])
     for budget in (10.0, 20.0):
         masks = qobs_masks[budget]
-        apply_current(modules, originals, base, masks, device)
+        apply_weights_only(modules, originals, base, masks, device)
         selected_count = int(sum(mask.sum() for mask in masks.values()))
         order_prefix, running = [], 0
         for item in qobs_order:
@@ -403,7 +411,7 @@ def main() -> None:
 
     def conditional_run(method, prior):
         masks = empty_masks(originals); rejected = set(); protected = 0; evaluations = 0
-        apply_current(modules, originals, base, masks, device)
+        apply_weights_only(modules, originals, base, masks, device)
         current_loss = repair_kl(model, gradient_tokens, repair_teacher, device); evaluations += len(gradient_tokens)
         current_nll = calibration_nll(model, gradient_tokens, device); evaluations += len(gradient_tokens)
         next_report = 0
@@ -415,7 +423,8 @@ def main() -> None:
             current_pct = 100 * protected / total_weights
             increment = (0.1 if current_pct < 0.1 - 1e-6 else
                          0.15 if current_pct < 0.25 - 1e-6 else
-                         0.25 if current_pct < 0.5 - 1e-6 else args.iteration_pct)
+                         0.25 if current_pct < 0.5 - 1e-6 else
+                         0.5 if current_pct < 1.0 - 1e-6 else args.iteration_pct)
             target_add = round(total_weights * increment / 100)
             batch, count = [], 0
             for item in candidates:
@@ -441,17 +450,17 @@ def main() -> None:
                 for _, name, row, col, block, *_ in trial:
                     trial_count += mark_group(masks[name], originals[name].shape, row, col, block)
                 protected_trial = protected + trial_count
-                apply_current(modules, originals, base, masks, device)
+                apply_weights_only(modules, originals, base, masks, device)
                 trial_loss = repair_kl(model, gradient_tokens, repair_teacher, device); evaluations += len(gradient_tokens)
                 trial_nll = calibration_nll(model, gradient_tokens, device); evaluations += len(gradient_tokens)
-                if trial_loss < current_loss and trial_nll <= current_nll:
+                if trial_loss < current_loss and trial_nll <= current_nll * 1.005:
                     protected, current_loss, current_nll, accepted = protected_trial, trial_loss, trial_nll, True
                     break
                 for _, name, row, col, block, *_ in trial:
                     view = masks[name].view(originals[name].shape)
                     view[row:min(row + block, view.shape[0]), col:min(col + block, view.shape[1])] = False
                     rejected.add((name, row, col))
-                apply_current(modules, originals, base, masks, device)
+                apply_weights_only(modules, originals, base, masks, device)
             if not accepted:
                 print(f"{method}: rejected all batch sizes at {100*protected/total_weights:.3f}%", flush=True)
                 if len(rejected) > 50000: break
