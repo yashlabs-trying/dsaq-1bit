@@ -207,7 +207,9 @@ def build_report(out: Path, aggregate_table: pd.DataFrame, projection_table: pd.
     q2 = best_quality.recovery_fraction >= .25
     q3 = hessian_wins >= .625 and float((paired.ordinary - paired.hessian).median()) > 0
     dsa_row = {"configuration": "hadamard_dsa (Exp. 1)", "perplexity": 6482.09914360287, "true_bpw": 1.00604}
-    q4 = bool(best_quality.perplexity < dsa_row["perplexity"] and best_quality.true_bpw <= 1.05)
+    eligible = candidates[candidates.true_bpw <= 1.05]
+    best_capped = eligible.sort_values("perplexity").iloc[0] if len(eligible) else None
+    q4 = bool(best_capped is not None and best_capped.perplexity < dsa_row["perplexity"])
     table_cols = ["configuration", "r1", "r2", "stage2_method", "true_bpw", "relative_error", "weighted_error", "cosine"]
     text = f"""# Experiment 3: low-rank residual reconstruction
 
@@ -243,7 +245,7 @@ Hessian-guided stage 2 beats ordinary stage 2 at equal ranks in **{hessian_wins:
 
 **Q3: Does Hessian-guided second LRR recover more quality per metadata bit than ordinary LRR? {'YES' if q3 else 'NO'}** under the rule that it wins at equal storage in at least five of eight rank pairs with a positive median perplexity advantage.
 
-**Q4: Should LRR replace DSA as the main reconstruction mechanism? {'YES' if q4 else 'NO'}** based on lower perplexity than Hadamard+DSA while staying at or below 1.05 BPW.
+**Q4: Should LRR replace DSA as the main reconstruction mechanism? {'YES' if q4 else 'NO'}** The best configuration at or below 1.05 BPW is **{best_capped.configuration if best_capped is not None else 'none'}** with perplexity **{best_capped.perplexity if best_capped is not None else float('nan'):.4f}**, compared with Experiment 1 Hadamard+DSA at **{dsa_row['perplexity']:.4f}** and {dsa_row['true_bpw']:.6f} BPW.
 
 These conclusions apply to this representative-layer intervention and the tested FP16 factorization ranks. They are not whole-model compression claims.
 """
