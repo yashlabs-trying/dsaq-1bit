@@ -263,6 +263,7 @@ def run_search(mode, core_pct, model, modules, originals, base, core_masks, fish
     ppl, _ = full_eval("starting_core")
     start_ppl = ppl
     accepted_groups = []
+    rejected_groups = set()
     candidates = projection_groups(originals)
     score_mode = "fisher" if mode == "fisher" else "functional"
     # Projection candidates are disjoint. Activating one cannot alter the static
@@ -273,7 +274,8 @@ def run_search(mode, core_pct, model, modules, originals, base, core_masks, fish
     iteration = 0
     while ppl > target_ppl and protected_count(masks) < total_weights:
         iteration += 1
-        remaining = [g for g in candidates if group_change_count(masks, g, True) > 0]
+        remaining = [g for g in candidates if g not in rejected_groups and
+                     group_change_count(masks, g, True) > 0]
         if not remaining:
             break
         scores = [cached_scores[g] for g in remaining]
@@ -315,6 +317,7 @@ def run_search(mode, core_pct, model, modules, originals, base, core_masks, fish
                     ppl = trial; accepted_groups.append(group)
                 else:
                     set_group(masks, group, False); apply_masks(modules, originals, base, masks, device)
+                    rejected_groups.add(group)
                     state["group_log"].append({"search": tag, "event": "split_add", "group": group.label,
                                                "level": group.level, "accepted": False, "ppl": trial})
         if iteration > 40:
