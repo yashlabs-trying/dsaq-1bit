@@ -51,7 +51,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--sequence-length", type=int, default=512)
     p.add_argument("--gradient-sequences", type=int, default=8)
     p.add_argument("--direct-candidates", type=int, default=6)
-    p.add_argument("--max-full-evals", type=int, default=240)
+    p.add_argument("--max-full-evals", type=int, default=360)
     p.add_argument("--seed", type=int, default=20260925)
     p.add_argument("--output", type=Path, default=Path("results/experiment9"))
     return p.parse_args()
@@ -323,7 +323,9 @@ def run_search(mode, core_pct, model, modules, originals, base, core_masks, fish
     reached = ppl <= target_ppl
     # Refine the most recent additions only after a certified safe state exists.
     backtrack_before = protected_count(masks)
-    if reached:
+    # Coarse ablation paths stop at their first certified safe state. The single
+    # best path is refined after all nine comparisons finish.
+    if reached and False:
         refine_parents = list(reversed(accepted_groups[-8:]))
         for parent in refine_parents:
             for child in split_group(parent, 8, "head_or_channel"):
@@ -371,6 +373,109 @@ def run_search(mode, core_pct, model, modules, originals, base, core_masks, fish
               "backtracking_removed_pct_points": 100 * (backtrack_before - final_count) / total_weights,
               "runtime_seconds": time.time() - start, "full_evaluations": state["full_evals"]}
     return result, masks
+
+
+def refine_best(tag, model, modules, originals, base, masks, core_masks, fisher,
+                residual_damage, evaluation, device, total_weights, target_ppl,
+                state, args):
+    apply_masks(modules, originals, base, masks, device)
+    start_count = protected_count(masks)
+    current_ppl, _ = safe_perplexity(model, evaluation, device)
+
+    def evaluate(event, group_a, group_b=None):
+        if state["full_evals"] >= args.max_full_evals:
+            return float("inf")
+        ppl, nll = safe_perplexity(model, evaluation, device)
+        state["full_evals"] += 1
+        count = protected_count(masks)
+        groups = group_a.label + (f" -> {group_b.label}" if group_b else "")
+        state["history"].append({"search": tag, "mode": "best_refinement", "core_pct": np.nan,
+                                 "event": event, "groups": groups, "level": group_a.level,
+                                 "accepted": ppl <= target_ppl, "protected": count,
+                                 "protected_pct": 100 * count / total_weights, "ppl": ppl,
+                                 "nll": nll, "elapsed_seconds": np.nan,
+                                 "full_eval_index": state["full_evals"]})
+        print(f"EVAL {state['full_evals']:03d} {tag} {event} "
+              f"protected={100*count/total_weights:.4f}% ppl={ppl:.6g}", flush=True)
+        return ppl
+
+    parents = projection_groups(originals)
+    # First refine the weakest selected non-core projections into functional
+    # head/channel groups.
+    ranked_extra = []
+    for parent in parents:
+        region = group_view(masks[parent.name] & ~core_masks[parent.name], parent)
+        if bool(region.any()):
+            score = float(group_view(fisher[parent.name], parent)[region].sum()) / max(int(region.sum()), 1)
+            ranked_extra.append((score, parent))
+    for _, parent in sorted(ranked_extra, key=lambda x: x[0])[:4]:
+        for child in split_group(parent, 8, "head_or_channel"):
+            view = group_view(masks[child.name], child)
+            removable = view & ~group_view(core_masks[child.name], child)
+            if not bool(removable.any()):
+                continue
+            old = view.clone(); view[removable] = False
+            apply_masks(modules, originals, base, masks, device)
+            trial = evaluate("backtrack_remove", child)
+            if trial <= target_ppl:
+                current_ppl = trial
+            else:
+                view.copy_(old); apply_masks(modules, originals, base, masks, device)
+
+    # Then revisit the weakest pieces inherited from the starting Fisher core.
+    ranked_core = []
+    for parent in parents:
+        region = group_view(masks[parent.name] & core_masks[parent.name], parent)
+        if bool(region.any()):
+            score = float(group_view(fisher[parent.name], parent)[region].sum()) / max(int(region.sum()), 1)
+            ranked_core.append((score, parent))
+    for _, parent in sorted(ranked_core, key=lambda x: x[0])[:4]:
+        for child in split_group(parent, 8, "core_head_or_channel"):
+            view = group_view(masks[child.name], child)
+            removable = view & group_view(core_masks[child.name], child)
+            if not bool(removable.any()):
+                continue
+            old = view.clone(); view[removable] = False
+            apply_masks(modules, originals, base, masks, device)
+            trial = evaluate("core_remove", child)
+            if trial <= target_ppl:
+                current_ppl = trial
+            else:
+                view.copy_(old); apply_masks(modules, originals, base, masks, device)
+
+    # Limited unequal-cost swap search between functional groups.
+    children = [child for parent in parents for child in split_group(parent, 8, "swap_group")]
+    protected, unprotected = [], []
+    for child in children:
+        view = group_view(masks[child.name], child)
+        if bool(view.any()):
+            score = float(group_view(fisher[child.name], child)[view].sum()) / max(int(view.sum()), 1)
+            protected.append((score, child))
+        if bool((~view).any()):
+            score = float(group_view(residual_damage[child.name], child)[~view].sum()) / max(int((~view).sum()), 1)
+            unprotected.append((score, child))
+    protected.sort(key=lambda x: x[0]); unprotected.sort(key=lambda x: x[0], reverse=True)
+    attempts = 0
+    for _, remove in protected:
+        if attempts >= 4:
+            break
+        remove_count = group_change_count(masks, remove, False)
+        add = next((g for _, g in unprotected if g.name != remove.name and
+                    group_change_count(masks, g, True) < remove_count), None)
+        if add is None:
+            continue
+        old_remove = group_view(masks[remove.name], remove).clone()
+        old_add = group_view(masks[add.name], add).clone()
+        set_group(masks, remove, False); set_group(masks, add, True)
+        apply_masks(modules, originals, base, masks, device)
+        trial = evaluate("swap", remove, add); attempts += 1
+        if trial <= target_ppl:
+            current_ppl = trial
+        else:
+            group_view(masks[remove.name], remove).copy_(old_remove)
+            group_view(masks[add.name], add).copy_(old_add)
+            apply_masks(modules, originals, base, masks, device)
+    return current_ppl, 100 * (start_count - protected_count(masks)) / total_weights
 
 
 def final_diagnostics(model, tokens, teacher_outputs, device):
@@ -508,6 +613,23 @@ def main():
     best_row = (reached.sort_values(["protected_pct", "final_ppl"]).iloc[0]
                 if len(reached) else summary_df.sort_values("final_ppl").iloc[0])
     best_masks = masks_by_search[best_row.search]
+    if bool(best_row.reached_target):
+        refined_ppl, removed = refine_best(best_row.search, model, modules, originals, base,
+                                            best_masks, core_masks[float(best_row.core_pct)],
+                                            fisher, residual_damage, evaluation, device,
+                                            total_weights, target_ppl, state, args)
+        final_count = protected_count(best_masks)
+        core_overlap = int(sum((best_masks[n] & core_masks[float(best_row.core_pct)][n]).sum()
+                               for n in best_masks))
+        selector = summary_df.search == best_row.search
+        summary_df.loc[selector, "final_ppl"] = refined_ppl
+        summary_df.loc[selector, "protected"] = final_count
+        summary_df.loc[selector, "protected_pct"] = 100 * final_count / total_weights
+        summary_df.loc[selector, "additional_beyond_core_pct"] = 100 * int(sum(
+            (best_masks[n] & ~core_masks[float(best_row.core_pct)][n]).sum() for n in best_masks)) / total_weights
+        summary_df.loc[selector, "core_retained_pct_points"] = 100 * core_overlap / total_weights
+        summary_df.loc[selector, "core_removed_pct_points"] = float(best_row.core_pct) - 100 * core_overlap / total_weights
+        summary_df.loc[selector, "backtracking_removed_pct_points"] = removed
     apply_masks(modules, originals, base, best_masks, device)
     final_ppl, final_nll = safe_perplexity(model, evaluation, device)
     drift = pd.DataFrame(final_diagnostics(model, diag_tokens, teacher_outputs, device))
@@ -519,6 +641,9 @@ def main():
 
     history = pd.DataFrame(state["history"]); group_log = pd.DataFrame(state["group_log"])
     allocation = pd.DataFrame(allocation_rows)
+    allocation = allocation[allocation.search != best_row.search]
+    allocation = pd.concat([allocation, pd.DataFrame(distribution_rows(
+        best_row.search, best_masks, originals, core_masks[float(best_row.core_pct)]))], ignore_index=True)
     summary_df.to_csv(args.output / "search_summary.csv", index=False)
     history.to_csv(args.output / "rescue_history.csv", index=False)
     group_log.to_csv(args.output / "group_log.csv", index=False)
