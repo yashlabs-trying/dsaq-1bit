@@ -167,10 +167,10 @@ def static_group_score(group, masks, fisher, quant_fisher, residual_damage, mode
     if not bool(available.any()):
         return -float("inf")
     f = float(group_view(fisher[group.name], group)[available].sum())
-    q = float(group_view(quant_fisher[group.name], group)[available].sum())
-    r = float(group_view(residual_damage[group.name], group)[available].sum())
     if mode == "fisher":
         return f / max(int(available.sum()), 1)
+    q = float(group_view(quant_fisher[group.name], group)[available].sum())
+    r = float(group_view(residual_damage[group.name], group)[available].sum())
     return (math.log1p(max(q, 0)) + math.log1p(max(r, 0))) / math.sqrt(max(int(available.sum()), 1))
 
 
@@ -256,20 +256,27 @@ def run_search(mode, core_pct, model, modules, originals, base, core_masks, fish
                                  "protected_pct": 100 * count / total_weights,
                                  "ppl": ppl, "nll": nll, "elapsed_seconds": time.time() - start,
                                  "full_eval_index": state["full_evals"]})
+        print(f"EVAL {state['full_evals']:03d} {tag} {event} "
+              f"protected={100 * count / total_weights:.4f}% ppl={ppl:.6g}", flush=True)
         return ppl, nll
 
     ppl, _ = full_eval("starting_core")
     start_ppl = ppl
     accepted_groups = []
     candidates = projection_groups(originals)
+    score_mode = "fisher" if mode == "fisher" else "functional"
+    # Projection candidates are disjoint. Activating one cannot alter the static
+    # score of another, so cache these model-sized reductions once per search.
+    cached_scores = {group: static_group_score(group, masks, fisher, quant_fisher,
+                                               residual_damage, score_mode)
+                     for group in candidates}
     iteration = 0
     while ppl > target_ppl and protected_count(masks) < total_weights:
         iteration += 1
         remaining = [g for g in candidates if group_change_count(masks, g, True) > 0]
         if not remaining:
             break
-        scores = [static_group_score(g, masks, fisher, quant_fisher, residual_damage,
-                                     "fisher" if mode == "fisher" else "functional") for g in remaining]
+        scores = [cached_scores[g] for g in remaining]
         use_direct = mode == "functional" or (mode == "hybrid" and ppl < 30)
         if use_direct:
             order = direct_rank(model, modules, originals, base, masks, remaining, scores,
