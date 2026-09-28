@@ -22,6 +22,7 @@ from run_experiments import (activation_importance, dump_json, get_text_tokens,
 
 
 TARGET_RATIO = 1.10
+FIXED_QWEN_TARGET = 19.688
 CORE_PCTS = (5.0, 10.0, 15.0)
 MODES = ("fisher", "functional", "hybrid")
 
@@ -241,7 +242,7 @@ def run_search(mode, core_pct, model, modules, originals, base, core_masks, fish
     tag = f"{mode}_core{core_pct:g}"
     masks = clone_masks(core_masks)
     apply_masks(modules, originals, base, masks, device)
-    start = time.time()
+    start = time.time(); start_eval = state["full_evals"]
 
     def full_eval(event, groups=(), accepted=True):
         if state["full_evals"] >= args.max_full_evals:
@@ -374,7 +375,8 @@ def run_search(mode, core_pct, model, modules, originals, base, core_masks, fish
               "core_retained_pct_points": 100 * int(sum((masks[n] & core_masks[n]).sum() for n in masks)) / total_weights,
               "core_removed_pct_points": core_pct - 100 * int(sum((masks[n] & core_masks[n]).sum() for n in masks)) / total_weights,
               "backtracking_removed_pct_points": 100 * (backtrack_before - final_count) / total_weights,
-              "runtime_seconds": time.time() - start, "full_evaluations": state["full_evals"]}
+              "runtime_seconds": time.time() - start,
+              "full_evaluations": state["full_evals"] - start_eval}
     return result, masks
 
 
@@ -511,7 +513,8 @@ def write_report(out, bf_ppl, target, summaries, history, allocation, drift, tot
     best = reached.sort_values(["protected_pct", "final_ppl"]).iloc[0] if len(reached) else summaries.sort_values("final_ppl").iloc[0]
     best_alloc = allocation[allocation.search == best.search]
     projections = best_alloc.groupby("projection").protected.sum().sort_values(ascending=False)
-    mode_best = summaries.groupby("mode").final_ppl.min()
+    successful = summaries[summaries.reached_target]
+    mode_best_pct = successful.groupby("mode").protected_pct.min()
     core_best = summaries.sort_values(["reached_target", "protected_pct", "final_ppl"], ascending=[False, True, True]).groupby("core_pct").first()
     accepted = history[(history.search == best.search) & history.accepted & history.ppl.notna()]
     biggest = accepted.assign(gain=accepted.ppl.shift(1)-accepted.ppl).sort_values("gain", ascending=False).head(1)
@@ -538,15 +541,15 @@ BF16 PPL was **{bf_ppl:.6g}** and the certified 10% degradation ceiling was **{t
 
 **Q6. Dominant projection families:** {', '.join(f'{k} ({int(v):,})' for k,v in projections.head(4).items())}.
 
-**Q7. Does adaptive recomputation outperform fixed ranking?** {'YES' if mode_best.get('hybrid', np.inf) < mode_best.get('fisher', np.inf) else 'NO'} by best achieved PPL.
+**Q7. Does adaptive recomputation outperform fixed ranking?** {'YES' if mode_best_pct.get('hybrid', np.inf) < mode_best_pct.get('fisher', np.inf) else 'NO'} by minimum protection meeting the quality target.
 
-**Q8. Does functional scoring outperform Fisher scoring?** {'YES' if mode_best.get('functional', np.inf) < mode_best.get('fisher', np.inf) else 'NO'} by best achieved PPL.
+**Q8. Does functional scoring outperform Fisher scoring?** {'YES' if mode_best_pct.get('functional', np.inf) < mode_best_pct.get('fisher', np.inf) else 'NO'} by minimum protection meeting the quality target.
 
 **Q9. Backtracking reduction:** {best.backtracking_removed_pct_points:.6g} percentage points.
 
 **Q10. CORE removed:** {best.core_removed_pct_points:.6g} percentage points from its {best.core_pct:g}% starting core.
 
-**Q11. Is the final set structured?** Protection is reported by layer/projection in `final_allocation.csv`; the search explicitly selected projections and head/channel groups.
+**Q11. Is the final set structured?** The mask has projection structure, but it remains too dense to be a small structured subset. Protection is reported in `final_allocation.csv` and `final_functional_groups.csv`.
 
 **Q12. Best starting core:** {best.core_pct:g}% Fisher.
 
@@ -572,7 +575,7 @@ def main():
     diag_tokens = calibration[:1]
     cheap_tokens = calibration[:1, :128]
     bf_ppl, bf_nll = safe_perplexity(model, evaluation, device)
-    target_ppl = TARGET_RATIO * bf_ppl
+    target_ppl = min(TARGET_RATIO * bf_ppl, FIXED_QWEN_TARGET)
     _, teacher_outputs, _ = capture_layers(model, diag_tokens, device)
     teacher_logits, teacher_hidden = cheap_teacher(model, cheap_tokens, device)
     activation_rms2 = activation_importance(model, modules, calibration, device)
