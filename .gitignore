@@ -5,4 +5,10 @@ __pycache__/
 results/
 artifacts/
 *.log
+*.bundle
+*.bundle.b64
+*.download.b64
+*.egg-info/
+build/
+dist/
 !results/.gitkeep
