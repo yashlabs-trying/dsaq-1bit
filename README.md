@@ -1,81 +1,99 @@
-# DSAQ: structured and seeded 1-bit weight reconstruction
+# WaveFly: falsification-driven research toward practical 1-bit LLMs
 
-This repository implements the first two falsification experiments for an adaptive, approximately one-bit LLM weight representation:
+WaveFly is an experimental research program asking a narrow question:
 
-1. **DSA suitability:** determine whether compact magnitude surfaces beat sign-plus-scale on blocks whose structure can be measured before routing.
-2. **Seeded residual search:** on the exact held-out blocks classified as irregular by Experiment 1, test whether reproducible generated candidates improve reconstruction enough to justify their candidate-index bits.
+> **What representation can preserve transformer function at approximately one stored bit per weight?**
 
-The primary run uses `Qwen/Qwen2.5-0.5B`, fixed WikiText-2 calibration/evaluation slices, 128x128 blocks, and all linear projections in transformer layers 0, 12, and 23. This deliberately covers early/middle/late Q/K/V/O, gate/up/down matrices without claiming whole-model quantization. The untouched BF16 model is the perplexity reference.
+This repository records ten completed experiments on Qwen2.5-0.5B and one proposed follow-up. The project began with structured magnitude surfaces and candidate search, then tested low-rank residuals, second-order guidance, functional search, exact-weight importance oracles, conditional causal repair, hierarchical rescue, and activation-space reconstruction.
 
-Every result keeps these together: perplexity, activation-sensitivity-weighted error, and true bits per weight. True BPW includes signs, FP16 parameters, DSA family IDs, routing flags, candidate indices, shared distribution parameters, and the global seed.
+The central result so far is a constraint, not a compression claim: **the information required by the tested Hadamard 1-bit base is dense in ordinary weight coordinates**. Even the strongest hierarchical rescue run required **93.444921%** of the original residual to remain exact to reach the 10%-degradation boundary. That result redirects the work from finding a small set of weights to protect toward designing a more expressive binary representation.
 
-## Methods
+## Research snapshot
 
-The naive baseline stores one sign bit per weight and one FP16 magnitude per block. DSA fits a nonnegative magnitude surface selected from row trend, column trend, plane, and quadratic families. The family is selected by raw calibration MSE; activation second moments are used only as a diagonal Hessian proxy for reporting in Experiment 1.
+| Experiment | Hypothesis under test | Main result | Decision |
+|---|---|---|---|
+| 1. DSA suitability | Measurable block structure predicts when a compact magnitude surface helps | Pearson 0.942, but held-out Spearman 0.253 missed the preregistered gate | Reject tested router |
+| 2. Seeded search | A few reproducible candidates rescue irregular blocks | Best method beat DSA on only 0.08% of held-out irregular blocks | Reject candidate family |
+| 3. Low-rank residuals | The 1-bit residual is compressibly low-rank | Best PPL 1,072.61 at 1.296 BPW; rank 8 captured 14.46% energy | Useful correction, insufficient representation |
+| 4. Hessian + sparse rescue | Quantization damage is concentrated enough to repair cheaply | Best PPL 489.23 at 3.101 BPW | Reject sparse proxy as path to target |
+| 5. Functional binary search | Activation-aware sequential selection fixes accumulated error | PPL 96,086 vs 644,467 baseline at 1.001 BPW | Search helps; representation remains limiting |
+| 6. Importance oracle | A small exact subset restores function | Fisher reached PPL 649.49 at 10% protected | Small scalar subset not found |
+| 7. Conditional importance | Recomputed causal repair handles interactions | Local gain correlation 0.723; best checkpoint PPL 25,740 | Local repairs do not compose globally |
+| 8. Joint protection elimination | Starting from BF16 reveals removable residual information | 94.227% still required at PPL 19.687 | Residual is dense |
+| 9. Hierarchical group rescue | Coarse-to-fine structure finds a much smaller protected set | 93.444921% required at PPL 19.683539 | Sparse exact-residual route rejected |
+| 10. Activation-nullspace folding | Preserve function instead of reconstructing weights | Best Layer-0 PPL about 1,071; stopped at the first-layer gate | Decoder family too restrictive |
 
-The fixed Hadamard variant transforms each padded block along its input dimension, reconstructs in the transformed domain, and applies the inverse transform before scoring or inserting the weight into the model.
+Experiments 1–7 are fully represented by code and committed result artifacts. Experiment 9 code is present; its final result is recorded from the completed pod run, while the result bundle has not yet been imported. Experiments 8 and 10 currently have research-record provenance only. See [the experiment ledger](docs/EXPERIMENTS.md) for methods, innovations, outcomes, limitations, and artifact status.
 
-The suitability model is ridge regression trained on a deterministic calibration split of blocks using only pre-reconstruction statistics. Its threshold is selected on that split. All headline routing measurements use the disjoint held-out block split.
+## Why the sequence matters
 
-Seeded search evaluates K in 2, 4, 8, and 16 with uniform, Gaussian, robust, and globally shared magnitude distributions. Candidate streams are reproducible from a global seed, matrix name, block ID, and candidate ID. Only the chosen candidate index is stored; local distribution parameters are charged when used.
+The experiments were designed as decision gates rather than a leaderboard:
 
-## Run
+1. **Can better local 1-bit fitting solve the problem?** Experiments 1–5 showed that preprocessing, search, and low-rank corrections produce real gains but leave a large perplexity gap.
+2. **Can a small amount of original information repair the damage?** Experiments 6–9 showed that local importance is measurable, yet the information needed for BF16-like quality is dense and strongly interacting.
+3. **Can one bit encode a richer function than one independent binary weight?** Experiment 10 changed the objective from weight reconstruction to activation-space fidelity, but its rank-1-like decoder lacked capacity.
+
+This progression prevents repeated optimization of a representation family that the evidence has already ruled out.
+
+## Experimental discipline
+
+- **Primary quality metric:** WikiText-2 perplexity.
+- **Reference model:** `Qwen/Qwen2.5-0.5B`.
+- **BF16 reference:** approximately 17.90 PPL.
+- **Strict quality boundary:** PPL <= 19.688 for the full-model importance studies.
+- **Storage accounting:** sign bits, scales, factors, indexes, routing flags, candidate IDs, and shared seeds are charged in true bits per weight.
+- **Selection/evaluation separation:** calibration data drives fitting and selection; the fixed evaluation split measures final perplexity.
+- **Negative-result policy:** a failed gate changes the next hypothesis; it is not hidden by reporting only MSE.
+
+The full protocol and limits are in [Methodology](docs/METHODOLOGY.md).
+
+## Reproduce
+
+Create an environment and run the fast checks:
 
 ```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
 python -m pip install -r requirements.txt
-python run_experiments.py --output results/run
-```
-
-For a quick implementation check:
-
-```bash
-pytest -q
+python -m pytest -q
 python run_experiments.py --synthetic --output results/smoke
 ```
 
-The run writes raw block records, per-layer and aggregate tables, perplexity results, fitted router metadata, plots, and `REPORT.md`. Run metadata records the seed, model revision, package versions, arguments, and device.
+Run the first two representative-layer experiments:
 
-Experiment 3 tests FP16-stored low-rank corrections to the Hadamard 1-bit residual, followed by either an ordinary or diagonal-Hessian-weighted second correction:
+```bash
+python run_experiments.py --output results/run
+```
+
+Run later experiments independently:
 
 ```bash
 python run_experiment3.py --output results/experiment3
-```
-
-Ranks, factor storage, residual spectra, sensitivity concentration, layer/projection tables, matched perplexity, and recovery per metadata bit are recorded automatically.
-
-Experiment 4 tests a Hessian-aware Hadamard binary base, damage-routed low-rank correction, and individually or structurally indexed BF16 salient residual rescue:
-
-```bash
 python run_experiment4.py --output results/experiment4
-```
-
-It reports exact binary-scale, FP16 factor, BF16 value, and sparse-index storage separately.
-
-Experiment 5 quantizes all transformer projections and selects reproducible binary-scale candidates from the actual hidden states produced by preceding quantized blocks:
-
-```bash
 python run_experiment5.py --output results/experiment5
-```
-
-It compares independent and sequential calibration, K=4/8/16, horizons 0/1/2/4, clean and current-input targets, and beam widths 1/2/4 without residual repair.
-
-Experiment 6 Part 1 is an oracle importance study. It keeps the Hadamard 1-bit
-bulk fixed, restores selected weights exactly, and compares magnitude,
-activation-aware, gradient, and Fisher selectors under global and
-layer-balanced budgets:
-
-```bash
 python run_experiment6.py --output results/experiment6
-```
-
-Experiment 7 scores the actual Hadamard quantization error. It compares a
-conditional blockwise Q-OBS selector with static, iterative, and collapse-prior
-ICQR repair driven by teacher-student KL:
-
-```bash
 python run_experiment7.py --output results/experiment7
+python run_experiment9.py --output results/experiment9
 ```
 
-## Interpretation limits
+GPU experiments download Qwen2.5-0.5B and WikiText-2 from Hugging Face. Each run writes its environment, aggregate tables, diagnostics, plots, and a generated `REPORT.md`.
 
-This is a controlled proof-of-concept on three representative layers of one small model. A positive result is evidence for a routing signal and a generated-candidate mechanism, not evidence that a complete model can reach the same BPW or perplexity. A negative result kills the tested DSA surfaces or seeded distributions, not every possible structured reconstruction method.
+## Repository map
+
+```text
+dsaq/                  Core block transforms, candidate generation, and routing
+run_experiment*.py     Standalone experiment drivers
+research_prompts/      Original experiment specifications
+results/               Committed reports, tables, and plots for Experiments 1–7
+docs/EXPERIMENTS.md    Research ledger and decision history
+docs/METHODOLOGY.md    Evaluation protocol, metrics, and validity limits
+tests/                  Determinism and transform-level checks
+```
+
+## Current research direction
+
+The evidence argues against spending more effort on sparse preservation of exact scalar weights. The next useful experiment must expand decoder expressiveness while keeping amortized storage near one BPW: multiple effective magnitudes from coupled binary bits, shared filters or dictionaries, and direct activation-space objectives. The proposed Experiment 11 explores functional sigma-delta binary folding; it has not produced a result yet.
+
+## Scope
+
+This is active research, not a production quantizer. Results apply to the stated model, data slices, quantization base, and search budgets. Representative-layer experiments and full-model interventions are labeled separately. No result in this repository currently demonstrates BF16-like perplexity at approximately 1 BPW.
