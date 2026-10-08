@@ -7,7 +7,8 @@ assignments are selected on calibration A and accepted only when calibration B
 does not worsen.
 
 The CPU worker optimizes exact final MLP output SSE and deliberately does not
-claim perplexity.  A strict full-model evaluation is required for PPL.
+claim perplexity during search. A separate strict full-model evaluator measures
+PPL from the authoritative packed decode.
 
 ## Reproducibility
 
@@ -61,6 +62,20 @@ The predefined stop rule was reached on E8g when marginal Ly(B) improvement
 fell below 2% (1.82%). E7a to E8g reduced held-out Ly(B) by 35.03% and Ey(B)
 by 19.40%, with no added storage. E8g packed SHA-256:
 `d6dabae1c6842d90cc634907a8a31801a1961145e56c9d5f03a508afccd1f92f`
+
+## Strict E8g perplexity
+
+The final E8g packed checkpoint was decoded into the pinned full model and
+evaluated on all 4,096 fixed evaluation tokens in 16 sequences of length 256:
+
+- NLL: 4.332956179976463
+- PPL: **76.16912371426544**
+- Reference PPL: 22.188270476805936
+- Delta PPL: **+243.28553815804304%**
+- CPU evaluation time: 62.84 seconds
+
+This beats E7a's approximately 89.59 PPL but remains above the first target of
+33.28 PPL (<50% degradation) and the breakthrough target of 24.41 PPL (<10%).
 
 ## Commands
 
