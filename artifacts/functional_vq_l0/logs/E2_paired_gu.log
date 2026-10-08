@@ -1,0 +1,49 @@
+{
+  "experiment": "E2_paired_gu",
+  "input": "E1_functional_5pct",
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "paired_row_groups": 12,
+  "pairs_tested": 103012,
+  "block_pairs_accepted": 2311,
+  "ids_changed": 4622,
+  "before_A": {
+    "Ez": 0.6337782740592957,
+    "Ey": 0.6519603133201599,
+    "cos_y": 0.7767439484596252
+  },
+  "before_B": {
+    "Ez": 0.659852147102356,
+    "Ey": 0.6681379079818726,
+    "cos_y": 0.7660537958145142
+  },
+  "after_A": {
+    "Ez": 0.634319543838501,
+    "Ey": 0.6438977718353271,
+    "cos_y": 0.7805477380752563
+  },
+  "after_B": {
+    "Ez": 0.6600745320320129,
+    "Ey": 0.6602187156677246,
+    "cos_y": 0.769360363483429
+  },
+  "bf16_down_oracle_after_pair": {
+    "Ey_A": 0.527917206287384,
+    "Ey_B": 0.551449179649353
+  },
+  "ppl": {
+    "nll": 5.845850825309753,
+    "ppl": 345.79662917897207
+  },
+  "delta_ppl_pct": 1458.4657838770624,
+  "hashes": {
+    "q_proj": "ade8e185b4b9783acd80b6108abc44a1f67c64461fe23ccc95775e2cbed51753",
+    "k_proj": "c2c566545e935e15d5d31742f35fc99d7c92f3e2f92f7f67f333e646770cd1b9",
+    "v_proj": "da95d9efe30cf6b5ba4594765ff34730a3598c6c924f0cea572099a40a8fbd9d",
+    "o_proj": "8efee5f679e8c02f7a456347822e1a6596fae32f6cfbf9b1262ba96d1bb3d1a6",
+    "gate_proj": "8b8b3e1a577bb5785b166bbb00b7d15ca25c4f290d781ddb813886f5eb852634",
+    "up_proj": "eedbf5069a8d3dade1fa99502d5cc097b1267cc694b5245e83bb946f550cb296",
+    "down_proj": "d12a81e7d7b0a108caf17beaa3a25d7bc29530bae2c02a79f10c08891fb5c3d9"
+  },
+  "elapsed_seconds": 247.86751627922058
+}

@@ -1,0 +1,185 @@
+{
+  "bf16": {
+    "nll": 3.099563792347908,
+    "ppl": 22.188270476805936
+  },
+  "blocks": 931840,
+  "breakthrough": false,
+  "coverage_curve": [
+    {
+      "allowed_error": 3.5644225135911256e-05,
+      "blocks_covered_pct": 10
+    },
+    {
+      "allowed_error": 5.8422217989573255e-05,
+      "blocks_covered_pct": 25
+    },
+    {
+      "allowed_error": 9.127538942266256e-05,
+      "blocks_covered_pct": 50
+    },
+    {
+      "allowed_error": 0.00013721325376536697,
+      "blocks_covered_pct": 75
+    },
+    {
+      "allowed_error": 0.00020612165099009871,
+      "blocks_covered_pct": 90
+    }
+  ],
+  "elapsed_seconds": 310.74968671798706,
+  "families": 16,
+  "family_usage": [
+    59643,
+    58741,
+    56819,
+    56715,
+    57153,
+    58870,
+    59613,
+    59495,
+    58646,
+    57224,
+    60078,
+    57351,
+    56946,
+    58720,
+    58047,
+    57779
+  ],
+  "hard_fraction": 0.2,
+  "pattern_reuse": {
+    "max": 634,
+    "median": 203.0,
+    "unused": 0
+  },
+  "patterns": 4096,
+  "patterns_per_family": 256,
+  "results": [
+    {
+      "activation_error": 0.5511656156091853,
+      "bpw": 1.0268425910027472,
+      "delta_ppl_pct": 6454.226847125389,
+      "file_bytes": 1913706,
+      "hard_block_pct": 0.0,
+      "method": "Checkpoint patterns",
+      "ppl": 1454.2695805036112,
+      "projection_activation_error": [
+        {
+          "activation_error": 0.4195408461355405,
+          "family": "q_proj"
+        },
+        {
+          "activation_error": 0.3647990835352107,
+          "family": "k_proj"
+        },
+        {
+          "activation_error": 0.6160798783570723,
+          "family": "v_proj"
+        },
+        {
+          "activation_error": 0.5487803514430507,
+          "family": "o_proj"
+        },
+        {
+          "activation_error": 0.5464530678817825,
+          "family": "gate_proj"
+        },
+        {
+          "activation_error": 0.7081986323954194,
+          "family": "up_proj"
+        },
+        {
+          "activation_error": 0.5099843356802369,
+          "family": "down_proj"
+        }
+      ]
+    },
+    {
+      "activation_error": 0.5647215323829022,
+      "bpw": 1.027872810782967,
+      "delta_ppl_pct": 7889.895713619153,
+      "file_bytes": 1915626,
+      "hard_block_pct": 0.0,
+      "method": "WaveRel + patterns",
+      "ppl": 1772.8196717525416,
+      "projection_activation_error": [
+        {
+          "activation_error": 0.45479697303242717,
+          "family": "q_proj"
+        },
+        {
+          "activation_error": 0.44086096562372545,
+          "family": "k_proj"
+        },
+        {
+          "activation_error": 0.610483729207522,
+          "family": "v_proj"
+        },
+        {
+          "activation_error": 0.5479341056612785,
+          "family": "o_proj"
+        },
+        {
+          "activation_error": 0.5565204481394136,
+          "family": "gate_proj"
+        },
+        {
+          "activation_error": 0.7131010557928014,
+          "family": "up_proj"
+        },
+        {
+          "activation_error": 0.522340898299136,
+          "family": "down_proj"
+        }
+      ]
+    },
+    {
+      "activation_error": 0.5185014344557504,
+      "bpw": 1.1928587525755494,
+      "delta_ppl_pct": 5443.422609615796,
+      "file_bytes": 2223107,
+      "hard_block_pct": 20.0,
+      "method": "WaveRel + patterns + hard refinement",
+      "ppl": 1229.989602293967,
+      "projection_activation_error": [
+        {
+          "activation_error": 0.27636853066589073,
+          "family": "q_proj"
+        },
+        {
+          "activation_error": 0.3404997336245148,
+          "family": "k_proj"
+        },
+        {
+          "activation_error": 0.6071490081821286,
+          "family": "v_proj"
+        },
+        {
+          "activation_error": 0.3524955456524335,
+          "family": "o_proj"
+        },
+        {
+          "activation_error": 0.5251967827761878,
+          "family": "gate_proj"
+        },
+        {
+          "activation_error": 0.6999320327714822,
+          "family": "up_proj"
+        },
+        {
+          "activation_error": 0.4947268831080548,
+          "family": "down_proj"
+        }
+      ]
+    }
+  ],
+  "scale_cost_bits": 3729152,
+  "success": false,
+  "total_weights": 14909440,
+  "wave_pattern_table_bits": 409600,
+  "worst_projection_family": {
+    "activation_error": 0.6999320327714822,
+    "family": "up_proj"
+  }
+}

@@ -1,0 +1,46 @@
+nohup: ignoring input
+{
+  "experiment": "E3_functional_10pct",
+  "input": "/workspace/experiments/functional_vq_l0/packed/E2_paired_gu.packed",
+  "coverage": 0.1,
+  "control_bytes": 2223107,
+  "functional_bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "searched_gate_up_row_groups": 121,
+  "searched_down_row_groups": 22,
+  "changed_ids": 41699,
+  "changed_pct_all_blocks": 4.474909855769231,
+  "before": {
+    "Ez_A": 0.634319543838501,
+    "Ez_B": 0.6600745320320129,
+    "Ey_A": 0.6438977718353271,
+    "Ey_B": 0.6602187156677246
+  },
+  "after_gate_up": {
+    "Ez_A": 0.5864515900611877,
+    "Ez_B": 0.6192776560783386,
+    "Ey_A": 0.6241766214370728,
+    "Ey_B": 0.6437587738037109
+  },
+  "after_down": {
+    "Ez_A": 0.5864515900611877,
+    "Ez_B": 0.6192776560783386,
+    "Ey_A": 0.5939153432846069,
+    "Ey_B": 0.6144567131996155
+  },
+  "ppl": {
+    "nll": 5.37622332572937,
+    "ppl": 216.2041987581164
+  },
+  "delta_ppl_pct": 874.4075495909138,
+  "decoded_hashes": {
+    "q_proj": "ade8e185b4b9783acd80b6108abc44a1f67c64461fe23ccc95775e2cbed51753",
+    "k_proj": "c2c566545e935e15d5d31742f35fc99d7c92f3e2f92f7f67f333e646770cd1b9",
+    "v_proj": "da95d9efe30cf6b5ba4594765ff34730a3598c6c924f0cea572099a40a8fbd9d",
+    "o_proj": "8efee5f679e8c02f7a456347822e1a6596fae32f6cfbf9b1262ba96d1bb3d1a6",
+    "gate_proj": "0b14ef8d4739d4c612a3f7a5d86abddbf2864c05334ff97bf78271be4c9c4885",
+    "up_proj": "6808199f17ba7172fab78c5c29fadb65987486329dfceb874bfe6dc9a337a9d4",
+    "down_proj": "296ea1e5c35220ef80092017e2c4a229d69949839a5cd4a60bd3a36b7122081d"
+  },
+  "elapsed_seconds": 1915.0868537425995
+}

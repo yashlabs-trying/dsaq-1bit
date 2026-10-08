@@ -1,0 +1,45 @@
+{
+  "experiment": "E5_assignment_30pct",
+  "input": "/workspace/experiments/functional_vq_l0/packed/E4_assignment_20pct.packed",
+  "coverage": 0.3,
+  "control_bytes": 2223107,
+  "functional_bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "searched_gate_up_row_groups": 364,
+  "searched_down_row_groups": 67,
+  "changed_ids": 112726,
+  "changed_pct_all_blocks": 12.09714114010989,
+  "before": {
+    "Ez_A": 0.5286706686019897,
+    "Ez_B": 0.567329466342926,
+    "Ey_A": 0.5184847116470337,
+    "Ey_B": 0.5406330227851868
+  },
+  "after_gate_up": {
+    "Ez_A": 0.4620823264122009,
+    "Ez_B": 0.4953290820121765,
+    "Ey_A": 0.49896445870399475,
+    "Ey_B": 0.5174956321716309
+  },
+  "after_down": {
+    "Ez_A": 0.4620823264122009,
+    "Ez_B": 0.4953290820121765,
+    "Ey_A": 0.44198179244995117,
+    "Ey_B": 0.46226203441619873
+  },
+  "ppl": {
+    "nll": 4.902676314115524,
+    "ppl": 134.64966268304096
+  },
+  "delta_ppl_pct": 506.85060059824394,
+  "decoded_hashes": {
+    "q_proj": "ade8e185b4b9783acd80b6108abc44a1f67c64461fe23ccc95775e2cbed51753",
+    "k_proj": "c2c566545e935e15d5d31742f35fc99d7c92f3e2f92f7f67f333e646770cd1b9",
+    "v_proj": "da95d9efe30cf6b5ba4594765ff34730a3598c6c924f0cea572099a40a8fbd9d",
+    "o_proj": "8efee5f679e8c02f7a456347822e1a6596fae32f6cfbf9b1262ba96d1bb3d1a6",
+    "gate_proj": "eefed361386fe46854fd65423ed1cf2c1523ac1d90ab3a3772ffc24046cec7d4",
+    "up_proj": "80f08c155f430451ffe1ebd1b0209e8d18ef0525ae3807e5c1e93c532a4204b7",
+    "down_proj": "db214c2b0c198bcbf4e70557a4a55bef4948a5cc1bb27572718ed5f3864c725d"
+  },
+  "elapsed_seconds": 5815.91330075264
+}
