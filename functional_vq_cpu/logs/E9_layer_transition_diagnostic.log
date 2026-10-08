@@ -1,0 +1,67 @@
+
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]
+Loading weights:  12%|#2        | 36/290 [00:00<00:00, 277.02it/s]
+Loading weights:  22%|##2       | 64/290 [00:00<00:00, 231.64it/s]
+Loading weights:  30%|###       | 88/290 [00:00<00:00, 207.01it/s]
+Loading weights:  38%|###7      | 109/290 [00:00<00:00, 194.33it/s]
+Loading weights:  45%|####5     | 131/290 [00:00<00:00, 181.67it/s]
+Loading weights:  52%|#####2    | 152/290 [00:00<00:00, 176.44it/s]
+Loading weights:  59%|#####8    | 170/290 [00:00<00:00, 176.46it/s]
+Loading weights:  66%|######5   | 191/290 [00:01<00:00, 163.15it/s]
+Loading weights:  72%|#######1  | 208/290 [00:01<00:00, 148.66it/s]
+Loading weights:  80%|########  | 232/290 [00:01<00:00, 169.28it/s]
+Loading weights:  87%|########6 | 251/290 [00:01<00:00, 156.32it/s]
+Loading weights:  95%|#########4| 275/290 [00:01<00:00, 158.56it/s]
+Loading weights: 100%|##########| 290/290 [00:01<00:00, 181.41it/s]
+{
+  "event": "complete",
+  "experiment": "E9_layer_transition_alignment_diagnostic",
+  "model": "Qwen/Qwen2.5-0.5B",
+  "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "dtype": "float32",
+  "device": "cpu",
+  "threads": 4,
+  "tokens_sha256": "70df7be65f81733de4ae37f80792ea0448d25061ef69b513882d60eae5c722e7",
+  "tokens_A": 512,
+  "tokens_B": 512,
+  "sequence_length": 256,
+  "results": {
+    "E7a": {
+      "packed": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\artifacts\\functional_vq_l0\\packed\\E7a_codebook_100.packed",
+      "packed_sha256": "5e15e9d8921d1de2c0fd9ab3756cc292413b39bd7ee562e9535a3b182375a768",
+      "bytes": 2223107,
+      "bpw": 1.1928587525755494,
+      "A": {
+        "L_h2": 0.1759716421365738,
+        "E_h2": 0.419489740204184,
+        "L_next_norm": 0.26047444343566895,
+        "E_next_norm": 0.5103669693815117
+      },
+      "B": {
+        "L_h2": 0.18869812786579132,
+        "E_h2": 0.4343939777043316,
+        "L_next_norm": 0.2905290424823761,
+        "E_next_norm": 0.5390074605071585
+      }
+    },
+    "E8g": {
+      "packed": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E8g_down_polish_round5.packed",
+      "packed_sha256": "d6dabae1c6842d90cc634907a8a31801a1961145e56c9d5f03a508afccd1f92f",
+      "bytes": 2223107,
+      "bpw": 1.1928587525755494,
+      "A": {
+        "L_h2": 0.13444122672080994,
+        "E_h2": 0.3666622788354563,
+        "L_next_norm": 0.19550468027591705,
+        "E_next_norm": 0.4421591119449163
+      },
+      "B": {
+        "L_h2": 0.14367753267288208,
+        "E_h2": 0.37904819307428717,
+        "L_next_norm": 0.21755307912826538,
+        "E_next_norm": 0.4664258559817041
+      }
+    }
+  },
+  "elapsed_seconds": 5.940827131271362
+}

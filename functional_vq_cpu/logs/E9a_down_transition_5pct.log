@@ -1,0 +1,47 @@
+{"event": "start", "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E8g_down_polish_round5.packed", "coverage": 0.05, "row_groups": 11, "initial": {"L_h2_A": 0.13444121181964874, "L_h2_B": 0.14367753267288208, "E_h2_A": 0.36666225851544737, "E_h2_B": 0.37904819307428717, "L_next_norm_A": 0.19550468027591705, "L_next_norm_B": 0.21755307912826538, "E_next_norm_A": 0.4421591119449163, "E_next_norm_B": 0.4664258559817041}}
+{"event": "progress", "row_groups_done": 1, "row_groups_total": 11, "ids_changed": 414, "metrics": {"L_h2_A": 0.13240788877010345, "L_h2_B": 0.14216293394565582, "E_h2_A": 0.36387894796223574, "E_h2_B": 0.37704500254698486, "L_next_norm_A": 0.19570386409759521, "L_next_norm_B": 0.21817459166049957, "E_next_norm_A": 0.4423842945874042, "E_next_norm_B": 0.46709163090393685}, "memory": {"rss_bytes": 554151936, "available_bytes": 4895141888, "percent_used": 71.1}}
+{"event": "progress", "row_groups_done": 2, "row_groups_total": 11, "ids_changed": 898, "metrics": {"L_h2_A": 0.13187265396118164, "L_h2_B": 0.14155729115009308, "E_h2_A": 0.36314274598452556, "E_h2_B": 0.37624100142075567, "L_next_norm_A": 0.1877008080482483, "L_next_norm_B": 0.20591767132282257, "E_next_norm_A": 0.43324451300420214, "E_next_norm_B": 0.4537815237785939}, "memory": {"rss_bytes": 554049536, "available_bytes": 4780040192, "percent_used": 71.7}}
+{"event": "progress", "row_groups_done": 3, "row_groups_total": 11, "ids_changed": 1328, "metrics": {"L_h2_A": 0.13145266473293304, "L_h2_B": 0.14113320410251617, "E_h2_A": 0.36256401466904165, "E_h2_B": 0.3756769943748435, "L_next_norm_A": 0.1848679482936859, "L_next_norm_B": 0.20286862552165985, "E_next_norm_A": 0.42996272895878535, "E_next_norm_B": 0.4504093976835517}, "memory": {"rss_bytes": 554123264, "available_bytes": 5106855936, "percent_used": 69.8}}
+{"event": "progress", "row_groups_done": 4, "row_groups_total": 11, "ids_changed": 1643, "metrics": {"L_h2_A": 0.13109977543354034, "L_h2_B": 0.14084456861019135, "E_h2_A": 0.362077029696086, "E_h2_B": 0.37529264395960565, "L_next_norm_A": 0.1848389357328415, "L_next_norm_B": 0.20277544856071472, "E_next_norm_A": 0.4299289891747723, "E_next_norm_B": 0.45030594995038065}, "memory": {"rss_bytes": 554270720, "available_bytes": 5194301440, "percent_used": 69.3}}
+{"event": "progress", "row_groups_done": 5, "row_groups_total": 11, "ids_changed": 1891, "metrics": {"L_h2_A": 0.13086584210395813, "L_h2_B": 0.14059780538082123, "E_h2_A": 0.3617538418648213, "E_h2_B": 0.3749637387545911, "L_next_norm_A": 0.1847960352897644, "L_next_norm_B": 0.20274758338928223, "E_next_norm_A": 0.4298790938040188, "E_next_norm_B": 0.4502750086217113}, "memory": {"rss_bytes": 554274816, "available_bytes": 5197402112, "percent_used": 69.3}}
+{"event": "progress", "row_groups_done": 6, "row_groups_total": 11, "ids_changed": 2116, "metrics": {"L_h2_A": 0.13065969944000244, "L_h2_B": 0.1404235064983368, "E_h2_A": 0.36146880839154355, "E_h2_B": 0.37473124569261207, "L_next_norm_A": 0.18459361791610718, "L_next_norm_B": 0.20263147354125977, "E_next_norm_A": 0.4296435940592006, "E_next_norm_B": 0.4501460580092419}, "memory": {"rss_bytes": 554147840, "available_bytes": 5319671808, "percent_used": 68.5}}
+{"event": "progress", "row_groups_done": 7, "row_groups_total": 11, "ids_changed": 2489, "metrics": {"L_h2_A": 0.13031050562858582, "L_h2_B": 0.1400650441646576, "E_h2_A": 0.3609854645669072, "E_h2_B": 0.37425264750520815, "L_next_norm_A": 0.184703066945076, "L_next_norm_B": 0.20263352990150452, "E_next_norm_A": 0.429770947069571, "E_next_norm_B": 0.4501483421068043}, "memory": {"rss_bytes": 554844160, "available_bytes": 5196787712, "percent_used": 69.3}}
+{"event": "progress", "row_groups_done": 8, "row_groups_total": 11, "ids_changed": 2772, "metrics": {"L_h2_A": 0.130068838596344, "L_h2_B": 0.1397997885942459, "E_h2_A": 0.36065057686955665, "E_h2_B": 0.37389809921186534, "L_next_norm_A": 0.18466787040233612, "L_next_norm_B": 0.2026190161705017, "E_next_norm_A": 0.4297299970939149, "E_next_norm_B": 0.45013222076463455}, "memory": {"rss_bytes": 553979904, "available_bytes": 5107474432, "percent_used": 69.8}}
+{"event": "progress", "row_groups_done": 9, "row_groups_total": 11, "ids_changed": 3073, "metrics": {"L_h2_A": 0.1297786831855774, "L_h2_B": 0.13948369026184082, "E_h2_A": 0.36024808560987165, "E_h2_B": 0.3734751534732141, "L_next_norm_A": 0.18456122279167175, "L_next_norm_B": 0.2025059461593628, "E_next_norm_A": 0.4296058924079973, "E_next_norm_B": 0.45000660679523674}, "memory": {"rss_bytes": 554856448, "available_bytes": 4874186752, "percent_used": 71.2}}
+{"event": "progress", "row_groups_done": 10, "row_groups_total": 11, "ids_changed": 3517, "metrics": {"L_h2_A": 0.12931819260120392, "L_h2_B": 0.13906076550483704, "E_h2_A": 0.3596083878348834, "E_h2_B": 0.3729085216307574, "L_next_norm_A": 0.1784881204366684, "L_next_norm_B": 0.197612926363945, "E_next_norm_A": 0.4224785443506787, "E_next_norm_B": 0.44453675479530935}, "memory": {"rss_bytes": 554934272, "available_bytes": 4826189824, "percent_used": 71.5}}
+{"event": "progress", "row_groups_done": 11, "row_groups_total": 11, "ids_changed": 3795, "metrics": {"L_h2_A": 0.12904030084609985, "L_h2_B": 0.1387890726327896, "E_h2_A": 0.3592217989572735, "E_h2_B": 0.3725440546201075, "L_next_norm_A": 0.1785220056772232, "L_next_norm_B": 0.1977241188287735, "E_next_norm_A": 0.4225186453604423, "E_next_norm_B": 0.44466180275437817}, "memory": {"rss_bytes": 554864640, "available_bytes": 4823097344, "percent_used": 71.5}}
+{
+  "event": "complete",
+  "experiment": "E9a_down_transition_5pct",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E8g_down_polish_round5.packed",
+  "parent_sha256": "d6dabae1c6842d90cc634907a8a31801a1961145e56c9d5f03a508afccd1f92f",
+  "coverage": 0.05,
+  "row_groups": 11,
+  "searched_blocks": 13376,
+  "ids_changed": 3795,
+  "initial": {
+    "L_h2_A": 0.13444121181964874,
+    "L_h2_B": 0.14367753267288208,
+    "E_h2_A": 0.36666225851544737,
+    "E_h2_B": 0.37904819307428717,
+    "L_next_norm_A": 0.19550468027591705,
+    "L_next_norm_B": 0.21755307912826538,
+    "E_next_norm_A": 0.4421591119449163,
+    "E_next_norm_B": 0.4664258559817041
+  },
+  "final": {
+    "L_h2_A": 0.12904030084609985,
+    "L_h2_B": 0.1387890726327896,
+    "E_h2_A": 0.3592217989572735,
+    "E_h2_B": 0.3725440546201075,
+    "L_next_norm_A": 0.1785220056772232,
+    "L_next_norm_B": 0.1977241188287735,
+    "E_next_norm_A": 0.4225186453604423,
+    "E_next_norm_B": 0.44466180275437817
+  },
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "a9e875456dbf5dcf28f618e5256d5db13c0a54e5f9bd275508974eed649a9cc1",
+  "elapsed_seconds": 88.15543961524963,
+  "ppl": null
+}

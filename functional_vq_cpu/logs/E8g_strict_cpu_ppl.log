@@ -1,0 +1,79 @@
+{"event": "load_model", "model": "Qwen/Qwen2.5-0.5B", "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987", "packed": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E8g_down_polish_round5.packed", "packed_sha256": "d6dabae1c6842d90cc634907a8a31801a1961145e56c9d5f03a508afccd1f92f", "evaluation_tokens": 4096, "sequence_length": 256, "available_ram": 6593892352}
+
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]
+Loading weights:  12%|#2        | 35/290 [00:00<00:00, 255.27it/s]
+Loading weights:  21%|##1       | 61/290 [00:00<00:01, 153.42it/s]
+Loading weights:  27%|##7       | 79/290 [00:00<00:01, 156.90it/s]
+Loading weights:  33%|###3      | 96/290 [00:00<00:01, 143.75it/s]
+Loading weights:  39%|###8      | 113/290 [00:00<00:01, 146.42it/s]
+Loading weights:  44%|####4     | 129/290 [00:00<00:01, 140.63it/s]
+Loading weights:  50%|#####     | 145/290 [00:00<00:01, 133.85it/s]
+Loading weights:  55%|#####4    | 159/290 [00:01<00:01, 130.96it/s]
+Loading weights:  60%|#####9    | 173/290 [00:01<00:00, 132.10it/s]
+Loading weights:  64%|######4   | 187/290 [00:01<00:00, 131.09it/s]
+Loading weights:  69%|######9   | 201/290 [00:01<00:00, 123.34it/s]
+Loading weights:  74%|#######3  | 214/290 [00:01<00:00, 120.95it/s]
+Loading weights:  78%|#######8  | 227/290 [00:01<00:00, 113.42it/s]
+Loading weights:  86%|########5 | 249/290 [00:01<00:00, 141.21it/s]
+Loading weights:  91%|#########1| 264/290 [00:01<00:00, 122.10it/s]
+Loading weights:  96%|#########5| 277/290 [00:02<00:00, 123.43it/s]
+Loading weights: 100%|##########| 290/290 [00:02<00:00, 139.25it/s]
+{"event": "segment", "index": 1, "segments": 15, "loss": 3.923229932785034, "elapsed_seconds": 9.249607801437378, "segment_seconds": 3.581493854522705, "available_ram": 4312268800}
+{"event": "segment", "index": 2, "segments": 15, "loss": 4.648185729980469, "elapsed_seconds": 12.778859853744507, "segment_seconds": 3.5287647247314453, "available_ram": 4445356032}
+{"event": "segment", "index": 3, "segments": 15, "loss": 3.9729995727539062, "elapsed_seconds": 16.29914689064026, "segment_seconds": 3.519778251647949, "available_ram": 4452249600}
+{"event": "segment", "index": 4, "segments": 15, "loss": 4.08947229385376, "elapsed_seconds": 19.826610565185547, "segment_seconds": 3.5269734859466553, "available_ram": 4447969280}
+{"event": "segment", "index": 5, "segments": 15, "loss": 6.160440444946289, "elapsed_seconds": 23.394913911819458, "segment_seconds": 3.5675997734069824, "available_ram": 4449087488}
+{"event": "segment", "index": 6, "segments": 15, "loss": 5.313867568969727, "elapsed_seconds": 26.884621143341064, "segment_seconds": 3.4892187118530273, "available_ram": 4456443904}
+{"event": "segment", "index": 7, "segments": 15, "loss": 4.204201698303223, "elapsed_seconds": 30.45573925971985, "segment_seconds": 3.570542335510254, "available_ram": 4416819200}
+{"event": "segment", "index": 8, "segments": 15, "loss": 4.855823516845703, "elapsed_seconds": 34.06271576881409, "segment_seconds": 3.6062827110290527, "available_ram": 4497793024}
+{"event": "segment", "index": 9, "segments": 15, "loss": 3.7691352367401123, "elapsed_seconds": 37.673718214035034, "segment_seconds": 3.6104516983032227, "available_ram": 4495462400}
+{"event": "segment", "index": 10, "segments": 15, "loss": 4.206430912017822, "elapsed_seconds": 41.30818772315979, "segment_seconds": 3.633984088897705, "available_ram": 4497403904}
+{"event": "segment", "index": 11, "segments": 15, "loss": 3.6879005432128906, "elapsed_seconds": 44.893863916397095, "segment_seconds": 3.585170030593872, "available_ram": 4495695872}
+{"event": "segment", "index": 12, "segments": 15, "loss": 3.832629919052124, "elapsed_seconds": 48.45365810394287, "segment_seconds": 3.5593109130859375, "available_ram": 4495441920}
+{"event": "segment", "index": 13, "segments": 15, "loss": 4.142069339752197, "elapsed_seconds": 52.12914538383484, "segment_seconds": 3.6749818325042725, "available_ram": 4349095936}
+{"event": "segment", "index": 14, "segments": 15, "loss": 3.907777786254883, "elapsed_seconds": 55.71554517745972, "segment_seconds": 3.5858404636383057, "available_ram": 4496482304}
+{"event": "segment", "index": 15, "segments": 15, "loss": 3.767746925354004, "elapsed_seconds": 59.303550004959106, "segment_seconds": 3.587570905685425, "available_ram": 4497715200}
+{"event": "segment", "index": 16, "segments": 15, "loss": 4.8453874588012695, "elapsed_seconds": 62.829002380371094, "segment_seconds": 3.525078058242798, "available_ram": 4504522752}
+{
+  "event": "complete",
+  "experiment": "E8g_strict_full_model_cpu_ppl",
+  "model": "Qwen/Qwen2.5-0.5B",
+  "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "dtype": "float32",
+  "device": "cpu",
+  "threads": 4,
+  "packed": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E8g_down_polish_round5.packed",
+  "packed_sha256": "d6dabae1c6842d90cc634907a8a31801a1961145e56c9d5f03a508afccd1f92f",
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "tokens": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\artifacts\\functional_vq_l0\\calibration_cache\\fixed_token_ids.pt",
+  "tokens_sha256": "70df7be65f81733de4ae37f80792ea0448d25061ef69b513882d60eae5c722e7",
+  "evaluation_tokens": 4096,
+  "sequence_length": 256,
+  "segment_losses": [
+    3.923229932785034,
+    4.648185729980469,
+    3.9729995727539062,
+    4.08947229385376,
+    6.160440444946289,
+    5.313867568969727,
+    4.204201698303223,
+    4.855823516845703,
+    3.7691352367401123,
+    4.206430912017822,
+    3.6879005432128906,
+    3.832629919052124,
+    4.142069339752197,
+    3.907777786254883,
+    3.767746925354004,
+    4.8453874588012695
+  ],
+  "nll": 4.332956179976463,
+  "ppl": 76.16912371426544,
+  "reference_ppl": 22.188270476805936,
+  "delta_ppl_pct": 243.28553815804304,
+  "elapsed_seconds": 62.840224742889404,
+  "mean_segment_seconds": 3.5720651149749756,
+  "python": "3.13.15",
+  "torch": "2.14.0+cpu"
+}

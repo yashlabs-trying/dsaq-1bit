@@ -1,0 +1,45 @@
+{"event": "start", "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E8d_down_polish_round2.packed", "coverage": 0.05, "row_groups": 11, "initial": {"Ez_A": 0.4360213577747345, "Ez_B": 0.4453445076942444, "Ey_A": 0.29599833488464355, "Ey_B": 0.314460426568985, "Ly_A": 0.08761512488126755, "Ly_B": 0.09888511151075363}, "memory": {"rss_bytes": 534228992, "available_bytes": 6397812736, "percent_used": 62.2}}
+{"event": "progress", "row_groups_done": 1, "row_groups_total": 11, "searched_blocks": 1216, "accepted_changes": 145, "blocks_per_second": 129.51014335038678, "metrics": {"Ez_A": 0.4360213577747345, "Ez_B": 0.4453445076942444, "Ey_A": 0.29586902260780334, "Ey_B": 0.31433120369911194, "Ly_A": 0.08753857761621475, "Ly_B": 0.09880387037992477}, "memory": {"rss_bytes": 543203328, "available_bytes": 6374436864, "percent_used": 62.3}}
+{"event": "progress", "row_groups_done": 2, "row_groups_total": 11, "searched_blocks": 2432, "accepted_changes": 731, "blocks_per_second": 135.74447649099022, "metrics": {"Ez_A": 0.4360213577747345, "Ez_B": 0.4453445076942444, "Ey_A": 0.29522329568862915, "Ey_B": 0.31372371315956116, "Ly_A": 0.08715689927339554, "Ly_B": 0.09842235594987869}, "memory": {"rss_bytes": 543092736, "available_bytes": 6389288960, "percent_used": 62.2}}
+{"event": "progress", "row_groups_done": 3, "row_groups_total": 11, "searched_blocks": 3648, "accepted_changes": 1338, "blocks_per_second": 137.3708431378008, "metrics": {"Ez_A": 0.4360213577747345, "Ez_B": 0.4453445076942444, "Ey_A": 0.29459333419799805, "Ey_B": 0.31310322880744934, "Ly_A": 0.08678530156612396, "Ly_B": 0.09803341329097748}, "memory": {"rss_bytes": 543244288, "available_bytes": 6351933440, "percent_used": 62.4}}
+{"event": "progress", "row_groups_done": 4, "row_groups_total": 11, "searched_blocks": 4864, "accepted_changes": 1570, "blocks_per_second": 139.21453231111585, "metrics": {"Ez_A": 0.4360213577747345, "Ez_B": 0.4453445076942444, "Ey_A": 0.29436761140823364, "Ey_B": 0.3128712475299835, "Ly_A": 0.08665236085653305, "Ly_B": 0.09788820147514343}, "memory": {"rss_bytes": 543252480, "available_bytes": 6262865920, "percent_used": 63.0}}
+{"event": "progress", "row_groups_done": 5, "row_groups_total": 11, "searched_blocks": 6080, "accepted_changes": 2149, "blocks_per_second": 140.3282801208066, "metrics": {"Ez_A": 0.4360213577747345, "Ez_B": 0.4453445076942444, "Ey_A": 0.2937416732311249, "Ey_B": 0.3122670650482178, "Ly_A": 0.08628421276807785, "Ly_B": 0.09751050919294357}, "memory": {"rss_bytes": 543215616, "available_bytes": 6273662976, "percent_used": 62.9}}
+{"event": "progress", "row_groups_done": 6, "row_groups_total": 11, "searched_blocks": 7296, "accepted_changes": 2702, "blocks_per_second": 140.75526040648765, "metrics": {"Ez_A": 0.4360213577747345, "Ez_B": 0.4453445076942444, "Ey_A": 0.2931324541568756, "Ey_B": 0.3116259276866913, "Ly_A": 0.08592668920755386, "Ly_B": 0.09711049497127533}, "memory": {"rss_bytes": 543092736, "available_bytes": 6276419584, "percent_used": 62.9}}
+{"event": "progress", "row_groups_done": 7, "row_groups_total": 11, "searched_blocks": 8512, "accepted_changes": 2948, "blocks_per_second": 140.6595559892663, "metrics": {"Ez_A": 0.4360213577747345, "Ez_B": 0.4453445076942444, "Ey_A": 0.2929052412509918, "Ey_B": 0.3113747835159302, "Ly_A": 0.08579353243112564, "Ly_B": 0.09695402532815933}, "memory": {"rss_bytes": 543178752, "available_bytes": 6335598592, "percent_used": 62.5}}
+{"event": "progress", "row_groups_done": 8, "row_groups_total": 11, "searched_blocks": 9728, "accepted_changes": 3276, "blocks_per_second": 141.24945286775286, "metrics": {"Ez_A": 0.4360213577747345, "Ez_B": 0.4453445076942444, "Ey_A": 0.2925788164138794, "Ey_B": 0.31107574701309204, "Ly_A": 0.08560238778591156, "Ly_B": 0.09676787257194519}, "memory": {"rss_bytes": 543256576, "available_bytes": 6335492096, "percent_used": 62.5}}
+{"event": "progress", "row_groups_done": 9, "row_groups_total": 11, "searched_blocks": 10944, "accepted_changes": 3615, "blocks_per_second": 141.95071176004387, "metrics": {"Ez_A": 0.4360213577747345, "Ez_B": 0.4453445076942444, "Ey_A": 0.2922325134277344, "Ey_B": 0.3107597231864929, "Ly_A": 0.08539986610412598, "Ly_B": 0.09657138586044312}, "memory": {"rss_bytes": 543326208, "available_bytes": 6347288576, "percent_used": 62.5}}
+{"event": "progress", "row_groups_done": 10, "row_groups_total": 11, "searched_blocks": 12160, "accepted_changes": 3959, "blocks_per_second": 142.1265165994474, "metrics": {"Ez_A": 0.4360213577747345, "Ez_B": 0.4453445076942444, "Ey_A": 0.29188084602355957, "Ey_B": 0.3104250133037567, "Ly_A": 0.08519444614648819, "Ly_B": 0.09636346995830536}, "memory": {"rss_bytes": 543346688, "available_bytes": 6329819136, "percent_used": 62.6}}
+{"event": "progress", "row_groups_done": 11, "row_groups_total": 11, "searched_blocks": 13376, "accepted_changes": 4173, "blocks_per_second": 141.770428533671, "metrics": {"Ez_A": 0.4360213577747345, "Ez_B": 0.4453445076942444, "Ey_A": 0.29168975353240967, "Ey_B": 0.31023070216178894, "Ly_A": 0.08508296310901642, "Ly_B": 0.09624289721250534}, "memory": {"rss_bytes": 543289344, "available_bytes": 6335746048, "percent_used": 62.5}}
+{
+  "event": "complete",
+  "experiment": "E8e_down_polish_round3",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E8d_down_polish_round2.packed",
+  "parent_sha256": "b83d6aac28fd15c836ec0dd26459360d409745191feedbefbb41beef9fb86f50",
+  "coverage": 0.05,
+  "threads": 4,
+  "row_groups": 11,
+  "searched_blocks": 13376,
+  "ids_changed": 4173,
+  "initial": {
+    "Ez_A": 0.4360213577747345,
+    "Ez_B": 0.4453445076942444,
+    "Ey_A": 0.29599833488464355,
+    "Ey_B": 0.314460426568985,
+    "Ly_A": 0.08761512488126755,
+    "Ly_B": 0.09888511151075363
+  },
+  "final": {
+    "Ez_A": 0.4360213577747345,
+    "Ez_B": 0.4453445076942444,
+    "Ey_A": 0.29168975353240967,
+    "Ey_B": 0.31023070216178894,
+    "Ly_A": 0.08508296310901642,
+    "Ly_B": 0.09624289721250534
+  },
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "c27fe1e750a59d122d369b8b7f8bab9c71fc3a3c7347d057549a0afefb8a1ead",
+  "elapsed_seconds": 94.43327736854553,
+  "ppl": null,
+  "ppl_note": "CPU worker does not claim PPL; requires strict full-model evaluation"
+}
