@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PACKED = Path(os.environ.get("PPL_PACKED", ROOT / "packed/E8g_down_polish_round5.packed"))
 TOKENS = ROOT.parent / "artifacts/functional_vq_l0/calibration_cache/fixed_token_ids.pt"
 RESULT = Path(os.environ.get("PPL_RESULT", ROOT / "results/E8g_strict_cpu_ppl.json"))
+LABEL = os.environ.get("PPL_LABEL", "E8g_strict_full_model_cpu_ppl")
 MODEL = "Qwen/Qwen2.5-0.5B"
 REVISION = "060db6499f32faf8b98477b0a26969ef7d8b9987"
 SEQ = 256
@@ -73,7 +74,7 @@ def main():
     nll = float(np.mean(losses))
     ppl = math.exp(min(nll, 80))
     result = {
-        "experiment": "E8g_strict_full_model_cpu_ppl",
+        "experiment": LABEL,
         "model": MODEL, "revision": REVISION, "dtype": "float32", "device": "cpu",
         "threads": THREADS, "packed": str(PACKED), "packed_sha256": sha256(PACKED),
         "bytes": PACKED.stat().st_size, "bpw": PACKED.stat().st_size * 8 / codec["meta"]["weights"],
