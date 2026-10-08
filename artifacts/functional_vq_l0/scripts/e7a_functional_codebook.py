@@ -29,6 +29,7 @@ RESULT = Path(os.environ.get("E7_RESULT", ROOT / "results/E7a_codebook_short.jso
 TOKENS = ROOT / "calibration_cache/fixed_token_ids.pt"
 STEPS = int(os.environ.get("E7_STEPS", "30"))
 TOPK = int(os.environ.get("E7_TOPK", "512"))
+MIN_TRIAL = int(os.environ.get("E7_MIN_TRIAL", "8"))
 TRUST = float(os.environ.get("E7_TRUST", "0.01"))
 GU_MIN = float(os.environ.get("E7_GU_MIN", "0.62"))
 ATT_MAX = float(os.environ.get("E7_ATT_MAX", "0.075"))
@@ -202,7 +203,7 @@ def main():
         accepted = None
         trial_sizes = []
         trial = min(TOPK, available)
-        while trial >= 8:
+        while trial >= MIN_TRIAL:
             trial_sizes.append(trial)
             candidate = current_codes.clone()
             flat_candidate = candidate.view(-1)
@@ -251,6 +252,7 @@ def main():
         "steps_requested": STEPS,
         "steps_accepted": sum(int(item["accepted"]) for item in history),
         "topk": TOPK,
+        "min_trial": MIN_TRIAL,
         "trust_lambda": TRUST,
         "gate_up_ratio_min": GU_MIN,
         "attention_ratio_max": ATT_MAX,
