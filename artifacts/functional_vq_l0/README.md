@@ -24,8 +24,10 @@ Frozen snapshot of the reproducible Layer-0 experiment completed on 2026-10-08.
 | E4 | 20% functional assignment | 164.4477 | 641.15% | 0.5673 | 0.5406 | 80,577 | 3891.30 s |
 | E5 | 30% functional assignment | 134.6497 | 506.85% | 0.4953 | 0.4623 | 112,726 | 5815.91 s |
 | E6 | 40% functional assignment | 97.7278 | 340.45% | 0.4114 | 0.3809 | 136,940 | 7734.77 s |
+| E7a-short | 24 accepted projected prototype steps | 89.5863 | 303.76% | 0.4158 | 0.3773 | 2,822 pattern coordinates | 7.27 s |
+| E7a-100 | 25 accepted projected prototype steps; saturated | 89.5881 | 303.76% | 0.4158 | 0.3773 | 2,822 pattern coordinates | 7.44 s |
 
-E6 reduced PPL by 92.1% relative to E0 without changing packed size. The next planned experiment is same-byte functional MLP prototype/codebook adaptation from the frozen E6 checkpoint.
+E6 reduced PPL by 92.1% relative to E0 without changing packed size. E7a then proved same-byte functional prototype adaptation has leverage: the short run improved PPL by 8.3% to 89.5863. The stricter 100-step attempt accepted only one additional micro-update before calibration-B rejection and did not materially improve PPL, marking the local frontier for this prototype subset.
 
 ## Packed checkpoint SHA-256
 
@@ -37,6 +39,8 @@ E3 f87d9f5c0a520b06165363c41e26f117b6572be17ebbeefc87530cf68fb53ced
 E4 310c784f94da4b9277f3bfb7a51e367e4f3f9537d0978c91e923db97b6f55eee
 E5 baa60f589a6b841353c6e2c8e9735e2558c46627d7514eefb68ce66cc101ad9e
 E6 518938c0070f40f7ca2ce3c5206fa639bc86ecfb9d00f5ba77d6b6637bbadf71
+E7a-short 2f6813041478110e67bd54dc8476c40e64a776a9ee73ed3c3277c9bd39b7ae60
+E7a-100 5e15e9d8921d1de2c0fd9ab3756cc292413b39bd7ee562e9535a3b182375a768
 ```
 
 ## Directory contents
@@ -47,4 +51,3 @@ E6 518938c0070f40f7ca2ce3c5206fa639bc86ecfb9d00f5ba77d6b6637bbadf71
 - `calibration_cache/`: fixed calibration/evaluation token IDs
 - `logs/`: original run logs
 - `environment/`: Python and GPU information
-
