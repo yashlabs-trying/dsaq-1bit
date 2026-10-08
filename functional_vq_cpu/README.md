@@ -30,6 +30,8 @@ tracked.
 | E7a-100 | E6 + adapted codebook | - | - | 0.415834 | 0.377260 | 0.142325 | - |
 | E7b 10% | E7a-100 | 54,208 | 17,457 | 0.426988 | 0.359939 | 0.129555 | 283.5 s |
 | E7b 20% | E7b 10% | 108,864 | 26,000 | 0.442888 | 0.340501 | 0.115941 | 587.1 s |
+| E7c paired G/U 5% | E7b 20% | 13,440 block pairs | 4,116 | 0.443679 | 0.339306 | 0.115128 | 171.9 s |
+| E7d Down 5% | E7c | 13,376 | 6,273 | 0.443679 | 0.331496 | 0.109889 | 31.7 s |
 
 E7b-20 reduced held-out squared output loss by 18.54% relative to E7a while
 keeping the packed size unchanged.  Ez(B) worsened while Ey(B) improved, which
@@ -38,6 +40,13 @@ not the intermediate activation coordinate-by-coordinate.
 
 E7b-20 packed SHA-256:
 `97843deaf89ecd6ddcf0d5e555b36fb37e1a809987e23ab1b9dd0ca146fb85df`
+
+E7c confirmed that paired Gate/Up search is valid but low-leverage after E7b:
+498,892 candidate-pair evaluations reduced Ly(B) by only 0.70%.  E7d was more
+efficient: Down reassignment against the actual student activation reduced
+Ly(B) by another 4.55%.  Overall, E7a to E7d reduced held-out Ly(B) by 22.79%
+with no added storage.  E7d packed SHA-256:
+`de3ae63c998cf7ed201be633b9c7ad580f6a2f9d53f478a4f9ee04bae5706d57`
 
 ## Commands
 
