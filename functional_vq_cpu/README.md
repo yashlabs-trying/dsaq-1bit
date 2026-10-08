@@ -32,6 +32,13 @@ tracked.
 | E7b 20% | E7b 10% | 108,864 | 26,000 | 0.442888 | 0.340501 | 0.115941 | 587.1 s |
 | E7c paired G/U 5% | E7b 20% | 13,440 block pairs | 4,116 | 0.443679 | 0.339306 | 0.115128 | 171.9 s |
 | E7d Down 5% | E7c | 13,376 | 6,273 | 0.443679 | 0.331496 | 0.109889 | 31.7 s |
+| E8a codebook EM | E7d | 6 accepted steps | 937 coordinates | 0.444531 | 0.331274 | 0.109742 | 7.8 s |
+| E8b reassignment 10% | E8a | 54,208 | 4,085 | 0.445345 | 0.329233 | 0.108394 | 389.2 s |
+| E8c Down round 1 | E8b | 13,376 | 6,255 | 0.445345 | 0.321489 | 0.103355 | 94.7 s |
+| E8d Down round 2 | E8c | 13,376 | 5,985 | 0.445345 | 0.314460 | 0.098885 | 94.4 s |
+| E8e Down round 3 | E8d | 13,376 | 4,173 | 0.445345 | 0.310231 | 0.096243 | 94.4 s |
+| E8f Down round 4 | E8e | 13,376 | 3,318 | 0.445345 | 0.306895 | 0.094184 | 94.3 s |
+| E8g Down round 5 | E8f | 13,376 | 2,845 | 0.445345 | **0.304083** | **0.092466** | 92.9 s |
 
 E7b-20 reduced held-out squared output loss by 18.54% relative to E7a while
 keeping the packed size unchanged.  Ez(B) worsened while Ey(B) improved, which
@@ -47,6 +54,13 @@ efficient: Down reassignment against the actual student activation reduced
 Ly(B) by another 4.55%.  Overall, E7a to E7d reduced held-out Ly(B) by 22.79%
 with no added storage.  E7d packed SHA-256:
 `de3ae63c998cf7ed201be633b9c7ad580f6a2f9d53f478a4f9ee04bae5706d57`
+
+The second EM round showed that prototype adaptation and Gate/Up reassignment
+were close to saturation, but repeated Down reassignment remained productive.
+The predefined stop rule was reached on E8g when marginal Ly(B) improvement
+fell below 2% (1.82%). E7a to E8g reduced held-out Ly(B) by 35.03% and Ey(B)
+by 19.40%, with no added storage. E8g packed SHA-256:
+`d6dabae1c6842d90cc634907a8a31801a1961145e56c9d5f03a508afccd1f92f`
 
 ## Commands
 

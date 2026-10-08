@@ -21,6 +21,12 @@ def unpack_fixed(blob, count, bits):
     return torch.from_numpy(values.astype(np.uint8))
 
 
+def pack_fixed(values, bits):
+    values = np.asarray(values, dtype=np.uint16).reshape(-1)
+    matrix = ((values[:, None] >> np.arange(bits, dtype=np.uint16)) & 1).astype(np.uint8)
+    return np.packbits(matrix.reshape(-1), bitorder="little").tobytes()
+
+
 def read_codec(path):
     path = Path(path)
     blob = path.read_bytes()
@@ -126,4 +132,21 @@ def patch_ids(src, dst, pattern_ids):
     records = np.frombuffer(blob, dtype="<u2", count=pattern_ids.numel(), offset=pos).copy()
     records = (records & 0xF000) | (pattern_ids.numpy().astype(np.uint16) & 0x0FFF)
     blob[pos : pos + 2 * len(records)] = records.astype("<u2").tobytes()
+    dst.write_bytes(blob)
+
+
+def patch_pattern_codes(src, dst, new_codes):
+    src, dst = Path(src), Path(dst)
+    blob = bytearray(src.read_bytes())
+    meta_len = struct.unpack_from("<I", blob, 0)[0]
+    meta = json.loads(blob[4 : 4 + meta_len])
+    pos = 4 + meta_len + 2 * meta["nblocks"]
+    pos += 2 * len(meta["names"]) * SCALE_LEVELS
+    pos += 2 * math.prod(meta["checkpoint_shape"])
+    count = math.prod(meta["pattern_shape"])
+    byte_count = (count * meta["pattern_bits"] + 7) // 8
+    packed = pack_fixed(new_codes.numpy(), meta["pattern_bits"])
+    if len(packed) != byte_count:
+        raise RuntimeError("Pattern-code packed size changed")
+    blob[pos : pos + byte_count] = packed
     dst.write_bytes(blob)
