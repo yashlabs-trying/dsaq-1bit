@@ -1,0 +1,33 @@
+{
+  "experiment": "E7b_benchmark_1000",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\artifacts\\functional_vq_l0\\packed\\E7a_codebook_100.packed",
+  "parent_sha256": "5e15e9d8921d1de2c0fd9ab3756cc292413b39bd7ee562e9535a3b182375a768",
+  "coverage": 0.002,
+  "threads": 4,
+  "row_groups": 2,
+  "searched_blocks": 896,
+  "ids_changed": 202,
+  "initial": {
+    "Ez_A": 0.39924517273902893,
+    "Ez_B": 0.41583406925201416,
+    "Ey_A": 0.35819748044013977,
+    "Ey_B": 0.3772599697113037,
+    "Ly_A": 0.12830540537834167,
+    "Ly_B": 0.14232482016086578
+  },
+  "final": {
+    "Ez_A": 0.39963239431381226,
+    "Ez_B": 0.4162296950817108,
+    "Ey_A": 0.3579099476337433,
+    "Ey_B": 0.3769865930080414,
+    "Ly_A": 0.12809953093528748,
+    "Ly_B": 0.14211852848529816
+  },
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "4a5653228b59fe5a217479d0a2fbbd99645ff18809ae9ba753946cd17f95046d",
+  "elapsed_seconds": 5.042020559310913,
+  "peak_memory_note": "See append-only progress log for RSS/available memory",
+  "ppl": null,
+  "ppl_note": "CPU worker does not claim PPL; requires strict full-model evaluation"
+}

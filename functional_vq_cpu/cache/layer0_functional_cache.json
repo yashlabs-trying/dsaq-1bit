@@ -1,0 +1,58 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B",
+  "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "dtype": "float32",
+  "source_tokens": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\artifacts\\functional_vq_l0\\calibration_cache\\fixed_token_ids.pt",
+  "source_tokens_sha256": "70df7be65f81733de4ae37f80792ea0448d25061ef69b513882d60eae5c722e7",
+  "cache": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\cache\\layer0_functional_cache.pt",
+  "cache_bytes": 79573586,
+  "shapes": {
+    "x_a": [
+      512,
+      896
+    ],
+    "x_b": [
+      512,
+      896
+    ],
+    "z_teacher_a": [
+      512,
+      4864
+    ],
+    "z_teacher_b": [
+      512,
+      4864
+    ],
+    "y_teacher_a": [
+      512,
+      896
+    ],
+    "y_teacher_b": [
+      512,
+      896
+    ],
+    "token_ids_a": [
+      512
+    ],
+    "token_ids_b": [
+      512
+    ]
+  },
+  "hashes": {
+    "x_a": "388ec06c699236eed56e99478841b5236432027b00ca7bde8fcec486270e9d45",
+    "x_b": "62b3a2a9f3212230e78073aeb6b31ac7df59e5c205299e07d89bd9fec8878630",
+    "z_teacher_a": "e7d959dd4195ee287c324d181aac1b42ae8ab08b69169b8c9e637ca39891d4a5",
+    "z_teacher_b": "c16df0ea4b525ebf30a9938b9646185907351c5fe33236656fa21a22da4fece9",
+    "y_teacher_a": "dd8507efce1a758392585c509d62526c3cc650c248e8523a89735aa52fc90c1d",
+    "y_teacher_b": "cff64732e6fee243c4521517840dd0cc1e8d2a35e64c4b9bbe9d50f4b86cff6b",
+    "weight_gate_proj": "ded0ed32de2d5340f3faae7070c3fbe83ab3f03663a09956124a68d64d9ae388",
+    "weight_up_proj": "0f0e3e9a63e915132e0110364a50f82623dd10a5917b526bef85b32eb632f5a0",
+    "weight_down_proj": "fe56319974e89520ac6a3f90d9750a9c70a73079c8dd33300699ecf847fa1400"
+  },
+  "elapsed_seconds": 186.25289154052734,
+  "final_memory": {
+    "rss_bytes": 2438021120,
+    "available_bytes": 4102762496,
+    "percent_used": 75.7
+  }
+}
