@@ -77,6 +77,24 @@ evaluated on all 4,096 fixed evaluation tokens in 16 sequences of length 256:
 This beats E7a's approximately 89.59 PPL but remains above the first target of
 33.28 PPL (<50% degradation) and the breakthrough target of 24.41 PPL (<10%).
 
+## E9 whole-layer transition test
+
+The E9 diagnostic confirmed that E8g improved the actual held-out Layer-0
+transition relative to E7a:
+
+| Checkpoint | E_h2(B) | E_next_norm(B) |
+|---|---:|---:|
+| E7a | 0.434394 | 0.539007 |
+| E8g | 0.379048 | 0.466426 |
+
+E9a then reassigned 3,795 Down IDs against exact Layer-0 transition loss. It
+reduced L_h2(B) from 0.143678 to 0.138789 and next-RMSNorm loss from 0.217553
+to 0.197724 at the same byte count. However, strict PPL worsened from 76.1691
+to 76.7917 (+246.09% versus the reference). E9a is therefore rejected and
+E8g remains the frozen winner. This shows that average whole-layer transition
+MSE, even after RMSNorm, is still not sufficient to identify all
+language-model-critical error directions.
+
 ## Commands
 
 Generate the deterministic cache:
