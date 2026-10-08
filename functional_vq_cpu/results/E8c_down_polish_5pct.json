@@ -1,0 +1,32 @@
+{
+  "experiment": "E8c_down_polish_5pct",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E8b_reassign_10pct.packed",
+  "parent_sha256": "e0ebd62809deb4dea51856dfb21ac35dc1abf13f35626f8871eb8e07673bc108",
+  "coverage": 0.05,
+  "threads": 4,
+  "row_groups": 11,
+  "searched_blocks": 13376,
+  "ids_changed": 6255,
+  "initial": {
+    "Ez_A": 0.4360213577747345,
+    "Ez_B": 0.4453445076942444,
+    "Ey_A": 0.31052470207214355,
+    "Ey_B": 0.329233318567276,
+    "Ly_A": 0.09642551094293594,
+    "Ly_B": 0.10839419066905975
+  },
+  "final": {
+    "Ez_A": 0.4360213577747345,
+    "Ez_B": 0.4453445076942444,
+    "Ey_A": 0.3029468059539795,
+    "Ey_B": 0.3214888274669647,
+    "Ly_A": 0.09177682548761368,
+    "Ly_B": 0.10335475951433182
+  },
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "f38d7487f5030fb1abe2e8da0fb903de5f8f3066d7b4910da54d92c3ae31d1aa",
+  "elapsed_seconds": 94.65565609931946,
+  "ppl": null,
+  "ppl_note": "CPU worker does not claim PPL; requires strict full-model evaluation"
+}

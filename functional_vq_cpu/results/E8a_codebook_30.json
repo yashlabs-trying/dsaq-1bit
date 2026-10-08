@@ -1,0 +1,200 @@
+{
+  "experiment": "E8a_same_byte_codebook_adaptation",
+  "input": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E7d_down_polish_5pct.packed",
+  "input_sha256": "de3ae63c998cf7ed201be633b9c7ad580f6a2f9d53f478a4f9ee04bae5706d57",
+  "output": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E8a_codebook_30.packed",
+  "steps_requested": 30,
+  "steps_accepted": 6,
+  "topk": 512,
+  "min_trial": 8,
+  "trust_lambda": 0.01,
+  "gate_up_ratio_min": 0.62,
+  "attention_ratio_max": 0.075,
+  "selected_prototypes": 256,
+  "selected_gate_up_uses": 31568,
+  "selected_attention_uses": 3088,
+  "selected_down_uses": 13829,
+  "changed_pattern_coordinates": 937,
+  "changed_prototypes": 249,
+  "initial": {
+    "Lz_A": 0.18878312408924103,
+    "Lz_B": 0.1968253254890442,
+    "Ly_A": 0.09836220741271973,
+    "Ly_B": 0.10988910496234894,
+    "Ez_A": 0.4345215857028961,
+    "Ez_B": 0.4436793923377991,
+    "Ey_A": 0.313627153635025,
+    "Ey_B": 0.3314957320690155
+  },
+  "final": {
+    "Lz_A": 0.18943017721176147,
+    "Lz_B": 0.1975802183151245,
+    "Ly_A": 0.09773002564907074,
+    "Ly_B": 0.10974201560020447,
+    "Ez_A": 0.43526509404182434,
+    "Ez_B": 0.44453102350234985,
+    "Ey_A": 0.3126181364059448,
+    "Ey_B": 0.3312740623950958
+  },
+  "history": [
+    {
+      "step": 1,
+      "objective_A": 0.09836220741271973,
+      "trust": 0.0,
+      "available_moves": 4048,
+      "trial_sizes": [
+        512
+      ],
+      "accepted": true,
+      "moved_coordinates": 512,
+      "metrics": {
+        "Lz_A": 0.1889519840478897,
+        "Lz_B": 0.1970306634902954,
+        "Ly_A": 0.09814582765102386,
+        "Ly_B": 0.10981501638889313,
+        "Ez_A": 0.43471595644950867,
+        "Ez_B": 0.4439120292663574,
+        "Ey_A": 0.31328240036964417,
+        "Ey_B": 0.3313840627670288
+      }
+    },
+    {
+      "step": 2,
+      "objective_A": 0.09814707189798355,
+      "trust": 0.00012456055264919996,
+      "available_moves": 4046,
+      "trial_sizes": [
+        512
+      ],
+      "accepted": true,
+      "moved_coordinates": 512,
+      "metrics": {
+        "Lz_A": 0.18912234902381897,
+        "Lz_B": 0.1972256749868393,
+        "Ly_A": 0.09796831011772156,
+        "Ly_B": 0.10976257175207138,
+        "Ez_A": 0.43491169810295105,
+        "Ez_B": 0.4441317617893219,
+        "Ey_A": 0.31299877166748047,
+        "Ey_B": 0.33130529522895813
+      }
+    },
+    {
+      "step": 3,
+      "objective_A": 0.09797248989343643,
+      "trust": 0.0004176959628239274,
+      "available_moves": 4044,
+      "trial_sizes": [
+        512
+      ],
+      "accepted": true,
+      "moved_coordinates": 512,
+      "metrics": {
+        "Lz_A": 0.1892884224653244,
+        "Lz_B": 0.19742640852928162,
+        "Ly_A": 0.09782136976718903,
+        "Ly_B": 0.10974638164043427,
+        "Ez_A": 0.43510302901268005,
+        "Ez_B": 0.44435715675354004,
+        "Ey_A": 0.3127641975879669,
+        "Ey_B": 0.33128035068511963
+      }
+    },
+    {
+      "step": 4,
+      "objective_A": 0.09782940149307251,
+      "trust": 0.0008035209611989558,
+      "available_moves": 4043,
+      "trial_sizes": [
+        512,
+        256
+      ],
+      "accepted": true,
+      "moved_coordinates": 256,
+      "metrics": {
+        "Lz_A": 0.18938441574573517,
+        "Lz_B": 0.19753289222717285,
+        "Ly_A": 0.09775020182132721,
+        "Ly_B": 0.10974310338497162,
+        "Ez_A": 0.4352126717567444,
+        "Ez_B": 0.44447800517082214,
+        "Ey_A": 0.31265008449554443,
+        "Ey_B": 0.3312757611274719
+      }
+    },
+    {
+      "step": 5,
+      "objective_A": 0.0977611094713211,
+      "trust": 0.0010909887496381998,
+      "available_moves": 4041,
+      "trial_sizes": [
+        512,
+        256,
+        128,
+        64,
+        32
+      ],
+      "accepted": true,
+      "moved_coordinates": 32,
+      "metrics": {
+        "Lz_A": 0.18941809237003326,
+        "Lz_B": 0.19756664335727692,
+        "Ly_A": 0.09773693233728409,
+        "Ly_B": 0.10974211990833282,
+        "Ez_A": 0.43525123596191406,
+        "Ez_B": 0.44451582431793213,
+        "Ey_A": 0.3126290738582611,
+        "Ey_B": 0.3312740921974182
+      }
+    },
+    {
+      "step": 6,
+      "objective_A": 0.0977485179901123,
+      "trust": 0.0011587673798203468,
+      "available_moves": 4041,
+      "trial_sizes": [
+        512,
+        256,
+        128,
+        64,
+        32,
+        16
+      ],
+      "accepted": true,
+      "moved_coordinates": 16,
+      "metrics": {
+        "Lz_A": 0.18943017721176147,
+        "Lz_B": 0.1975802183151245,
+        "Ly_A": 0.09773002564907074,
+        "Ly_B": 0.10974201560020447,
+        "Ez_A": 0.43526509404182434,
+        "Ez_B": 0.44453102350234985,
+        "Ey_A": 0.3126181364059448,
+        "Ey_B": 0.3312740623950958
+      }
+    },
+    {
+      "step": 7,
+      "objective_A": 0.09774203598499298,
+      "trust": 0.0012013153173029423,
+      "available_moves": 4041,
+      "trial_sizes": [
+        512,
+        256,
+        128,
+        64,
+        32,
+        16,
+        8
+      ],
+      "accepted": false,
+      "reason": "calibration_B_rejected_all_projected_batches"
+    }
+  ],
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "1b3ed341d0ea6da98c46ab366ccca715dabcb39c8daa47e98da69113af67abdc",
+  "elapsed_seconds": 7.801111698150635,
+  "ppl": null,
+  "ppl_note": "CPU worker does not claim PPL; requires strict full-model evaluation"
+}

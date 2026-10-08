@@ -134,6 +134,7 @@ def main():
         top_rows = resume["top_rows"]
         changed = list(resume["changed"])
         initial_metrics = resume["initial_metrics"]
+        started = time.time() - float(resume.get("elapsed_seconds", 0.0))
         print(json.dumps({"event": "resume", "projection_index": projection_index, "row_position": row_position}), flush=True)
 
     weights = weights_from_ids(codec, ids)
@@ -171,6 +172,12 @@ def main():
     projections = ("gate_proj", "up_proj")
     searched_blocks = 0
     accepted_changes = 0
+    if projection_index >= len(projections):
+        # A completed search may be resumed only to finalize after a transient
+        # filesystem failure. Preserve its scientific work counters.
+        gate_cols = codec["slices"]["gate_proj"][3]
+        searched_blocks = len(top_rows) * (gate_cols // 4) * len(projections)
+        accepted_changes = len(changed)
     for pindex in range(projection_index, len(projections)):
         projection = projections[pindex]
         start, end, rows_total, cols_total = codec["slices"][projection]
