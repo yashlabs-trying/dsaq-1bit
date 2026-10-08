@@ -1,0 +1,45 @@
+{
+  "experiment": "E1_functional_5pct",
+  "input": "/workspace/experiments/functional_vq_l0/packed/E0_control.packed",
+  "coverage": 0.05,
+  "control_bytes": 2223107,
+  "functional_bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "searched_gate_up_row_groups": 60,
+  "searched_down_row_groups": 11,
+  "changed_ids": 22971,
+  "changed_pct_all_blocks": 2.465122767857143,
+  "before": {
+    "Ez_A": 0.7076237797737122,
+    "Ez_B": 0.7128276228904724,
+    "Ey_A": 0.7244950532913208,
+    "Ey_B": 0.7296009659767151
+  },
+  "after_gate_up": {
+    "Ez_A": 0.6337782740592957,
+    "Ez_B": 0.6598520874977112,
+    "Ey_A": 0.6816886067390442,
+    "Ey_B": 0.6974949240684509
+  },
+  "after_down": {
+    "Ez_A": 0.6337782740592957,
+    "Ez_B": 0.6598520874977112,
+    "Ey_A": 0.6519603133201599,
+    "Ey_B": 0.6681379079818726
+  },
+  "ppl": {
+    "nll": 6.013009667396545,
+    "ppl": 408.71155690230995
+  },
+  "delta_ppl_pct": 1742.0161538870977,
+  "decoded_hashes": {
+    "q_proj": "ade8e185b4b9783acd80b6108abc44a1f67c64461fe23ccc95775e2cbed51753",
+    "k_proj": "c2c566545e935e15d5d31742f35fc99d7c92f3e2f92f7f67f333e646770cd1b9",
+    "v_proj": "da95d9efe30cf6b5ba4594765ff34730a3598c6c924f0cea572099a40a8fbd9d",
+    "o_proj": "8efee5f679e8c02f7a456347822e1a6596fae32f6cfbf9b1262ba96d1bb3d1a6",
+    "gate_proj": "625ffd4b9753f0938c77546360eca3c79bc70cc02ac31e43730624fa1bd2b925",
+    "up_proj": "245154ebc4265b2b5b990d5cbb12ba43a4743cc37f087e415fae5b221564d3f3",
+    "down_proj": "d12a81e7d7b0a108caf17beaa3a25d7bc29530bae2c02a79f10c08891fb5c3d9"
+  },
+  "elapsed_seconds": 977.0059764385223
+}

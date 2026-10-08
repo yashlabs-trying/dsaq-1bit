@@ -1,0 +1,485 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Generating test split:   0%|          | 0/4358 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 4358/4358 [00:00<00:00, 353233.56 examples/s]
+Generating train split:   0%|          | 0/36718 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 36718/36718 [00:00<00:00, 476679.15 examples/s]
+Generating validation split:   0%|          | 0/3760 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 3760/3760 [00:00<00:00, 381872.80 examples/s]
+Token indices sequence length is longer than the specified maximum sequence length for this model (2517232 > 131072). Running this sequence through the model will result in indexing errors
+SKIP recovered strict baseline: /workspace/centroid_refine/centroid_refined_checkpoint.pt not present
+TRAIN global checkpoint patterns
+  KM iter 1: shift=646.6337, live=4096/4096, t=0.4s
+  KM iter 2: shift=89.4417, live=4096/4096, t=0.4s
+  KM iter 3: shift=36.7257, live=4096/4096, t=0.4s
+  KM iter 4: shift=23.3678, live=4096/4096, t=0.4s
+  KM iter 5: shift=16.9647, live=4096/4096, t=0.4s
+  KM iter 6: shift=13.1573, live=4096/4096, t=0.4s
+  KM iter 7: shift=10.3989, live=4096/4096, t=0.4s
+  KM iter 8: shift=8.4711, live=4096/4096, t=0.4s
+  KM iter 9: shift=7.1325, live=4096/4096, t=0.4s
+  KM iter 10: shift=6.0823, live=4096/4096, t=0.4s
+  KM iter 11: shift=5.2606, live=4096/4096, t=0.4s
+  KM iter 12: shift=4.5437, live=4096/4096, t=0.4s
+  KM iter 13: shift=3.9808, live=4096/4096, t=0.4s
+  KM iter 14: shift=3.6314, live=4096/4096, t=0.4s
+  KM iter 15: shift=3.1809, live=4096/4096, t=0.4s
+  KM iter 16: shift=2.8415, live=4096/4096, t=0.4s
+  KM iter 17: shift=2.5435, live=4096/4096, t=0.4s
+  KM iter 18: shift=2.2977, live=4096/4096, t=0.4s
+  KM iter 19: shift=2.0936, live=4096/4096, t=0.4s
+  KM iter 20: shift=1.9158, live=4096/4096, t=0.4s
+TRAIN WaveRel family patterns
+  KM iter 1: shift=226.1328, live=16/16, t=0.0s
+  KM iter 2: shift=3.5849, live=16/16, t=0.0s
+  KM iter 3: shift=1.3579, live=16/16, t=0.0s
+  KM iter 4: shift=0.7801, live=16/16, t=0.0s
+  KM iter 5: shift=0.5283, live=16/16, t=0.0s
+  KM iter 6: shift=0.3645, live=16/16, t=0.0s
+  KM iter 7: shift=0.2649, live=16/16, t=0.0s
+  KM iter 8: shift=0.2029, live=16/16, t=0.0s
+  KM iter 9: shift=0.1591, live=16/16, t=0.0s
+  KM iter 10: shift=0.1243, live=16/16, t=0.0s
+  KM iter 11: shift=0.1070, live=16/16, t=0.0s
+  KM iter 12: shift=0.0885, live=16/16, t=0.0s
+  KM iter 1: shift=81.9770, live=256/256, t=0.0s
+  KM iter 2: shift=7.0724, live=256/256, t=0.0s
+  KM iter 3: shift=2.8250, live=256/256, t=0.0s
+  KM iter 4: shift=1.5908, live=256/256, t=0.0s
+  KM iter 5: shift=1.1377, live=256/256, t=0.0s
+  KM iter 6: shift=0.8228, live=256/256, t=0.0s
+  KM iter 7: shift=0.6380, live=256/256, t=0.0s
+  KM iter 8: shift=0.5180, live=256/256, t=0.0s
+  KM iter 9: shift=0.4284, live=256/256, t=0.0s
+  KM iter 10: shift=0.3504, live=256/256, t=0.0s
+  KM iter 11: shift=0.2809, live=256/256, t=0.0s
+  KM iter 12: shift=0.2618, live=256/256, t=0.0s
+  KM iter 13: shift=0.2177, live=256/256, t=0.0s
+  KM iter 14: shift=0.1946, live=256/256, t=0.0s
+  KM iter 15: shift=0.1626, live=256/256, t=0.0s
+  KM iter 1: shift=76.4166, live=256/256, t=0.0s
+  KM iter 2: shift=6.8105, live=256/256, t=0.0s
+  KM iter 3: shift=2.6057, live=256/256, t=0.0s
+  KM iter 4: shift=1.5985, live=256/256, t=0.0s
+  KM iter 5: shift=1.1185, live=256/256, t=0.0s
+  KM iter 6: shift=0.8925, live=256/256, t=0.0s
+  KM iter 7: shift=0.7112, live=256/256, t=0.0s
+  KM iter 8: shift=0.5730, live=256/256, t=0.0s
+  KM iter 9: shift=0.4675, live=256/256, t=0.0s
+  KM iter 10: shift=0.3872, live=256/256, t=0.0s
+  KM iter 11: shift=0.3192, live=256/256, t=0.0s
+  KM iter 12: shift=0.2689, live=256/256, t=0.0s
+  KM iter 13: shift=0.2487, live=256/256, t=0.0s
+  KM iter 14: shift=0.2279, live=256/256, t=0.0s
+  KM iter 15: shift=0.2100, live=256/256, t=0.0s
+  KM iter 1: shift=76.9174, live=256/256, t=0.0s
+  KM iter 2: shift=7.2405, live=256/256, t=0.0s
+  KM iter 3: shift=2.8147, live=256/256, t=0.0s
+  KM iter 4: shift=1.6939, live=256/256, t=0.0s
+  KM iter 5: shift=1.2441, live=256/256, t=0.0s
+  KM iter 6: shift=0.9422, live=256/256, t=0.0s
+  KM iter 7: shift=0.7513, live=256/256, t=0.0s
+  KM iter 8: shift=0.5703, live=256/256, t=0.0s
+  KM iter 9: shift=0.4517, live=256/256, t=0.0s
+  KM iter 10: shift=0.3876, live=256/256, t=0.0s
+  KM iter 11: shift=0.3227, live=256/256, t=0.0s
+  KM iter 12: shift=0.2728, live=256/256, t=0.0s
+  KM iter 13: shift=0.2408, live=256/256, t=0.0s
+  KM iter 14: shift=0.2003, live=256/256, t=0.0s
+  KM iter 15: shift=0.1810, live=256/256, t=0.0s
+  KM iter 1: shift=86.2609, live=256/256, t=0.0s
+  KM iter 2: shift=7.0437, live=256/256, t=0.0s
+  KM iter 3: shift=2.6078, live=256/256, t=0.0s
+  KM iter 4: shift=1.5988, live=256/256, t=0.0s
+  KM iter 5: shift=1.0752, live=256/256, t=0.0s
+  KM iter 6: shift=0.7983, live=256/256, t=0.0s
+  KM iter 7: shift=0.6787, live=256/256, t=0.0s
+  KM iter 8: shift=0.5570, live=256/256, t=0.0s
+  KM iter 9: shift=0.4708, live=256/256, t=0.0s
+  KM iter 10: shift=0.3727, live=256/256, t=0.0s
+  KM iter 11: shift=0.3350, live=256/256, t=0.0s
+  KM iter 12: shift=0.2834, live=256/256, t=0.0s
+  KM iter 13: shift=0.2431, live=256/256, t=0.0s
+  KM iter 14: shift=0.2222, live=256/256, t=0.0s
+  KM iter 15: shift=0.1876, live=256/256, t=0.0s
+  KM iter 1: shift=78.7002, live=256/256, t=0.0s
+  KM iter 2: shift=6.5535, live=256/256, t=0.0s
+  KM iter 3: shift=2.5813, live=256/256, t=0.0s
+  KM iter 4: shift=1.6083, live=256/256, t=0.0s
+  KM iter 5: shift=1.1057, live=256/256, t=0.0s
+  KM iter 6: shift=0.8883, live=256/256, t=0.0s
+  KM iter 7: shift=0.6746, live=256/256, t=0.0s
+  KM iter 8: shift=0.5567, live=256/256, t=0.0s
+  KM iter 9: shift=0.4367, live=256/256, t=0.0s
+  KM iter 10: shift=0.3836, live=256/256, t=0.0s
+  KM iter 11: shift=0.3463, live=256/256, t=0.0s
+  KM iter 12: shift=0.3179, live=256/256, t=0.0s
+  KM iter 13: shift=0.2809, live=256/256, t=0.0s
+  KM iter 14: shift=0.2521, live=256/256, t=0.0s
+  KM iter 15: shift=0.2255, live=256/256, t=0.0s
+  KM iter 1: shift=79.0697, live=256/256, t=0.0s
+  KM iter 2: shift=7.0135, live=256/256, t=0.0s
+  KM iter 3: shift=2.8768, live=256/256, t=0.0s
+  KM iter 4: shift=1.7845, live=256/256, t=0.0s
+  KM iter 5: shift=1.2441, live=256/256, t=0.0s
+  KM iter 6: shift=0.9278, live=256/256, t=0.0s
+  KM iter 7: shift=0.7312, live=256/256, t=0.0s
+  KM iter 8: shift=0.5808, live=256/256, t=0.0s
+  KM iter 9: shift=0.4957, live=256/256, t=0.0s
+  KM iter 10: shift=0.3988, live=256/256, t=0.0s
+  KM iter 11: shift=0.3591, live=256/256, t=0.0s
+  KM iter 12: shift=0.3022, live=256/256, t=0.0s
+  KM iter 13: shift=0.2482, live=256/256, t=0.0s
+  KM iter 14: shift=0.2312, live=256/256, t=0.0s
+  KM iter 15: shift=0.2177, live=256/256, t=0.0s
+  KM iter 1: shift=79.8431, live=256/256, t=0.0s
+  KM iter 2: shift=6.4244, live=256/256, t=0.0s
+  KM iter 3: shift=2.5057, live=256/256, t=0.0s
+  KM iter 4: shift=1.5876, live=256/256, t=0.0s
+  KM iter 5: shift=1.1279, live=256/256, t=0.0s
+  KM iter 6: shift=0.8396, live=256/256, t=0.0s
+  KM iter 7: shift=0.6514, live=256/256, t=0.0s
+  KM iter 8: shift=0.5271, live=256/256, t=0.0s
+  KM iter 9: shift=0.4365, live=256/256, t=0.0s
+  KM iter 10: shift=0.3796, live=256/256, t=0.0s
+  KM iter 11: shift=0.3417, live=256/256, t=0.0s
+  KM iter 12: shift=0.2852, live=256/256, t=0.0s
+  KM iter 13: shift=0.2526, live=256/256, t=0.0s
+  KM iter 14: shift=0.2195, live=256/256, t=0.0s
+  KM iter 15: shift=0.1837, live=256/256, t=0.0s
+  KM iter 1: shift=83.8440, live=256/256, t=0.0s
+  KM iter 2: shift=7.1014, live=256/256, t=0.0s
+  KM iter 3: shift=2.6725, live=256/256, t=0.0s
+  KM iter 4: shift=1.6083, live=256/256, t=0.0s
+  KM iter 5: shift=1.0783, live=256/256, t=0.0s
+  KM iter 6: shift=0.8364, live=256/256, t=0.0s
+  KM iter 7: shift=0.6751, live=256/256, t=0.0s
+  KM iter 8: shift=0.5514, live=256/256, t=0.0s
+  KM iter 9: shift=0.4559, live=256/256, t=0.0s
+  KM iter 10: shift=0.3733, live=256/256, t=0.0s
+  KM iter 11: shift=0.3264, live=256/256, t=0.0s
+  KM iter 12: shift=0.2843, live=256/256, t=0.0s
+  KM iter 13: shift=0.2460, live=256/256, t=0.0s
+  KM iter 14: shift=0.2118, live=256/256, t=0.0s
+  KM iter 15: shift=0.1916, live=256/256, t=0.0s
+  KM iter 1: shift=87.9527, live=256/256, t=0.0s
+  KM iter 2: shift=7.0363, live=256/256, t=0.0s
+  KM iter 3: shift=2.7126, live=256/256, t=0.0s
+  KM iter 4: shift=1.6682, live=256/256, t=0.0s
+  KM iter 5: shift=1.1951, live=256/256, t=0.0s
+  KM iter 6: shift=0.9206, live=256/256, t=0.0s
+  KM iter 7: shift=0.6860, live=256/256, t=0.0s
+  KM iter 8: shift=0.5329, live=256/256, t=0.0s
+  KM iter 9: shift=0.4259, live=256/256, t=0.0s
+  KM iter 10: shift=0.3482, live=256/256, t=0.0s
+  KM iter 11: shift=0.2856, live=256/256, t=0.0s
+  KM iter 12: shift=0.2339, live=256/256, t=0.0s
+  KM iter 13: shift=0.2037, live=256/256, t=0.0s
+  KM iter 14: shift=0.1748, live=256/256, t=0.0s
+  KM iter 15: shift=0.1625, live=256/256, t=0.0s
+  KM iter 1: shift=91.0107, live=256/256, t=0.0s
+  KM iter 2: shift=6.9954, live=256/256, t=0.0s
+  KM iter 3: shift=2.6973, live=256/256, t=0.0s
+  KM iter 4: shift=1.6263, live=256/256, t=0.0s
+  KM iter 5: shift=1.1216, live=256/256, t=0.0s
+  KM iter 6: shift=0.8338, live=256/256, t=0.0s
+  KM iter 7: shift=0.7007, live=256/256, t=0.0s
+  KM iter 8: shift=0.5634, live=256/256, t=0.0s
+  KM iter 9: shift=0.4449, live=256/256, t=0.0s
+  KM iter 10: shift=0.3869, live=256/256, t=0.0s
+  KM iter 11: shift=0.3111, live=256/256, t=0.0s
+  KM iter 12: shift=0.2632, live=256/256, t=0.0s
+  KM iter 13: shift=0.2278, live=256/256, t=0.0s
+  KM iter 14: shift=0.1950, live=256/256, t=0.0s
+  KM iter 15: shift=0.1611, live=256/256, t=0.0s
+  KM iter 1: shift=81.0094, live=256/256, t=0.0s
+  KM iter 2: shift=6.4051, live=256/256, t=0.0s
+  KM iter 3: shift=2.5743, live=256/256, t=0.0s
+  KM iter 4: shift=1.6631, live=256/256, t=0.0s
+  KM iter 5: shift=1.2431, live=256/256, t=0.0s
+  KM iter 6: shift=0.9100, live=256/256, t=0.0s
+  KM iter 7: shift=0.6944, live=256/256, t=0.0s
+  KM iter 8: shift=0.5683, live=256/256, t=0.0s
+  KM iter 9: shift=0.4621, live=256/256, t=0.0s
+  KM iter 10: shift=0.3969, live=256/256, t=0.0s
+  KM iter 11: shift=0.3460, live=256/256, t=0.0s
+  KM iter 12: shift=0.2963, live=256/256, t=0.0s
+  KM iter 13: shift=0.2840, live=256/256, t=0.0s
+  KM iter 14: shift=0.2377, live=256/256, t=0.0s
+  KM iter 15: shift=0.2104, live=256/256, t=0.0s
+  KM iter 1: shift=84.2209, live=256/256, t=0.0s
+  KM iter 2: shift=7.3484, live=256/256, t=0.0s
+  KM iter 3: shift=2.7763, live=256/256, t=0.0s
+  KM iter 4: shift=1.7753, live=256/256, t=0.0s
+  KM iter 5: shift=1.2803, live=256/256, t=0.0s
+  KM iter 6: shift=0.9845, live=256/256, t=0.0s
+  KM iter 7: shift=0.7072, live=256/256, t=0.0s
+  KM iter 8: shift=0.5563, live=256/256, t=0.0s
+  KM iter 9: shift=0.4524, live=256/256, t=0.0s
+  KM iter 10: shift=0.3565, live=256/256, t=0.0s
+  KM iter 11: shift=0.2902, live=256/256, t=0.0s
+  KM iter 12: shift=0.2392, live=256/256, t=0.0s
+  KM iter 13: shift=0.2123, live=256/256, t=0.0s
+  KM iter 14: shift=0.1884, live=256/256, t=0.0s
+  KM iter 15: shift=0.1747, live=256/256, t=0.0s
+  KM iter 1: shift=77.6679, live=256/256, t=0.0s
+  KM iter 2: shift=6.6270, live=256/256, t=0.0s
+  KM iter 3: shift=2.7273, live=256/256, t=0.0s
+  KM iter 4: shift=1.6460, live=256/256, t=0.0s
+  KM iter 5: shift=1.1564, live=256/256, t=0.0s
+  KM iter 6: shift=0.8939, live=256/256, t=0.0s
+  KM iter 7: shift=0.7207, live=256/256, t=0.0s
+  KM iter 8: shift=0.5751, live=256/256, t=0.0s
+  KM iter 9: shift=0.4665, live=256/256, t=0.0s
+  KM iter 10: shift=0.3916, live=256/256, t=0.0s
+  KM iter 11: shift=0.3224, live=256/256, t=0.0s
+  KM iter 12: shift=0.2686, live=256/256, t=0.0s
+  KM iter 13: shift=0.2266, live=256/256, t=0.0s
+  KM iter 14: shift=0.2094, live=256/256, t=0.0s
+  KM iter 15: shift=0.1850, live=256/256, t=0.0s
+  KM iter 1: shift=81.0921, live=256/256, t=0.0s
+  KM iter 2: shift=6.8131, live=256/256, t=0.0s
+  KM iter 3: shift=2.6215, live=256/256, t=0.0s
+  KM iter 4: shift=1.6776, live=256/256, t=0.0s
+  KM iter 5: shift=1.2030, live=256/256, t=0.0s
+  KM iter 6: shift=0.9038, live=256/256, t=0.0s
+  KM iter 7: shift=0.6727, live=256/256, t=0.0s
+  KM iter 8: shift=0.5332, live=256/256, t=0.0s
+  KM iter 9: shift=0.4825, live=256/256, t=0.0s
+  KM iter 10: shift=0.4118, live=256/256, t=0.0s
+  KM iter 11: shift=0.3271, live=256/256, t=0.0s
+  KM iter 12: shift=0.2838, live=256/256, t=0.0s
+  KM iter 13: shift=0.2490, live=256/256, t=0.0s
+  KM iter 14: shift=0.2334, live=256/256, t=0.0s
+  KM iter 15: shift=0.2068, live=256/256, t=0.0s
+  KM iter 1: shift=83.3200, live=256/256, t=0.0s
+  KM iter 2: shift=7.2139, live=256/256, t=0.0s
+  KM iter 3: shift=2.7692, live=256/256, t=0.0s
+  KM iter 4: shift=1.7437, live=256/256, t=0.0s
+  KM iter 5: shift=1.2779, live=256/256, t=0.0s
+  KM iter 6: shift=0.9356, live=256/256, t=0.0s
+  KM iter 7: shift=0.7135, live=256/256, t=0.0s
+  KM iter 8: shift=0.5498, live=256/256, t=0.0s
+  KM iter 9: shift=0.4599, live=256/256, t=0.0s
+  KM iter 10: shift=0.3774, live=256/256, t=0.0s
+  KM iter 11: shift=0.3270, live=256/256, t=0.0s
+  KM iter 12: shift=0.2898, live=256/256, t=0.0s
+  KM iter 13: shift=0.2569, live=256/256, t=0.0s
+  KM iter 14: shift=0.2247, live=256/256, t=0.0s
+  KM iter 15: shift=0.1985, live=256/256, t=0.0s
+  KM iter 1: shift=83.1983, live=256/256, t=0.0s
+  KM iter 2: shift=7.1323, live=256/256, t=0.0s
+  KM iter 3: shift=2.8542, live=256/256, t=0.0s
+  KM iter 4: shift=1.7450, live=256/256, t=0.0s
+  KM iter 5: shift=1.1747, live=256/256, t=0.0s
+  KM iter 6: shift=0.8231, live=256/256, t=0.0s
+  KM iter 7: shift=0.6504, live=256/256, t=0.0s
+  KM iter 8: shift=0.5375, live=256/256, t=0.0s
+  KM iter 9: shift=0.4247, live=256/256, t=0.0s
+  KM iter 10: shift=0.3505, live=256/256, t=0.0s
+  KM iter 11: shift=0.2872, live=256/256, t=0.0s
+  KM iter 12: shift=0.2431, live=256/256, t=0.0s
+  KM iter 13: shift=0.2208, live=256/256, t=0.0s
+  KM iter 14: shift=0.2064, live=256/256, t=0.0s
+  KM iter 15: shift=0.1852, live=256/256, t=0.0s
+  KM iter 1: shift=0.2253, live=256/256, t=0.1s
+  KM iter 2: shift=0.1761, live=256/256, t=0.0s
+  KM iter 3: shift=0.1745, live=256/256, t=0.0s
+  KM iter 4: shift=0.1349, live=256/256, t=0.0s
+  KM iter 5: shift=0.1405, live=256/256, t=0.0s
+  KM iter 6: shift=0.1606, live=256/256, t=0.0s
+  KM iter 7: shift=0.1793, live=256/256, t=0.0s
+  KM iter 8: shift=0.1112, live=256/256, t=0.0s
+  KM iter 9: shift=0.0641, live=256/256, t=0.0s
+  KM iter 10: shift=0.0351, live=256/256, t=0.0s
+  KM iter 11: shift=0.0490, live=256/256, t=0.0s
+  KM iter 12: shift=0.0376, live=256/256, t=0.0s
+  KM iter 13: shift=0.0368, live=256/256, t=0.0s
+  KM iter 14: shift=0.0171, live=256/256, t=0.0s
+  KM iter 15: shift=0.0109, live=256/256, t=0.0s
+  KM iter 16: shift=0.0086, live=256/256, t=0.0s
+  KM iter 17: shift=0.0057, live=256/256, t=0.0s
+  KM iter 18: shift=0.0096, live=256/256, t=0.0s
+  KM iter 19: shift=0.0056, live=256/256, t=0.0s
+  KM iter 20: shift=0.0092, live=256/256, t=0.0s
+{
+  "bf16": {
+    "nll": 3.099563792347908,
+    "ppl": 22.188270476805936
+  },
+  "results": [
+    {
+      "method": "Checkpoint patterns",
+      "bpw": 1.0268425910027472,
+      "file_bytes": 1913706,
+      "ppl": 1454.2695805036112,
+      "delta_ppl_pct": 6454.226847125389,
+      "activation_error": 0.5511656156091853,
+      "hard_block_pct": 0.0,
+      "projection_activation_error": [
+        {
+          "family": "q_proj",
+          "activation_error": 0.4195408461355405
+        },
+        {
+          "family": "k_proj",
+          "activation_error": 0.3647990835352107
+        },
+        {
+          "family": "v_proj",
+          "activation_error": 0.6160798783570723
+        },
+        {
+          "family": "o_proj",
+          "activation_error": 0.5487803514430507
+        },
+        {
+          "family": "gate_proj",
+          "activation_error": 0.5464530678817825
+        },
+        {
+          "family": "up_proj",
+          "activation_error": 0.7081986323954194
+        },
+        {
+          "family": "down_proj",
+          "activation_error": 0.5099843356802369
+        }
+      ]
+    },
+    {
+      "method": "WaveRel + patterns",
+      "bpw": 1.027872810782967,
+      "file_bytes": 1915626,
+      "ppl": 1772.8196717525416,
+      "delta_ppl_pct": 7889.895713619153,
+      "activation_error": 0.5647215323829022,
+      "hard_block_pct": 0.0,
+      "projection_activation_error": [
+        {
+          "family": "q_proj",
+          "activation_error": 0.45479697303242717
+        },
+        {
+          "family": "k_proj",
+          "activation_error": 0.44086096562372545
+        },
+        {
+          "family": "v_proj",
+          "activation_error": 0.610483729207522
+        },
+        {
+          "family": "o_proj",
+          "activation_error": 0.5479341056612785
+        },
+        {
+          "family": "gate_proj",
+          "activation_error": 0.5565204481394136
+        },
+        {
+          "family": "up_proj",
+          "activation_error": 0.7131010557928014
+        },
+        {
+          "family": "down_proj",
+          "activation_error": 0.522340898299136
+        }
+      ]
+    },
+    {
+      "method": "WaveRel + patterns + hard refinement",
+      "bpw": 1.1928587525755494,
+      "file_bytes": 2223107,
+      "ppl": 1229.989602293967,
+      "delta_ppl_pct": 5443.422609615796,
+      "activation_error": 0.5185014344557504,
+      "hard_block_pct": 20.0,
+      "projection_activation_error": [
+        {
+          "family": "q_proj",
+          "activation_error": 0.27636853066589073
+        },
+        {
+          "family": "k_proj",
+          "activation_error": 0.3404997336245148
+        },
+        {
+          "family": "v_proj",
+          "activation_error": 0.6071490081821286
+        },
+        {
+          "family": "o_proj",
+          "activation_error": 0.3524955456524335
+        },
+        {
+          "family": "gate_proj",
+          "activation_error": 0.5251967827761878
+        },
+        {
+          "family": "up_proj",
+          "activation_error": 0.6999320327714822
+        },
+        {
+          "family": "down_proj",
+          "activation_error": 0.4947268831080548
+        }
+      ]
+    }
+  ],
+  "total_weights": 14909440,
+  "blocks": 931840,
+  "families": 16,
+  "patterns": 4096,
+  "patterns_per_family": 256,
+  "family_usage": [
+    59643,
+    58741,
+    56819,
+    56715,
+    57153,
+    58870,
+    59613,
+    59495,
+    58646,
+    57224,
+    60078,
+    57351,
+    56946,
+    58720,
+    58047,
+    57779
+  ],
+  "pattern_reuse": {
+    "unused": 0,
+    "median": 203.0,
+    "max": 634
+  },
+  "coverage_curve": [
+    {
+      "allowed_error": 3.5644225135911256e-05,
+      "blocks_covered_pct": 10
+    },
+    {
+      "allowed_error": 5.8422217989573255e-05,
+      "blocks_covered_pct": 25
+    },
+    {
+      "allowed_error": 9.127538942266256e-05,
+      "blocks_covered_pct": 50
+    },
+    {
+      "allowed_error": 0.00013721325376536697,
+      "blocks_covered_pct": 75
+    },
+    {
+      "allowed_error": 0.00020612165099009871,
+      "blocks_covered_pct": 90
+    }
+  ],
+  "hard_fraction": 0.2,
+  "scale_cost_bits": 3729152,
+  "wave_pattern_table_bits": 409600,
+  "worst_projection_family": {
+    "family": "up_proj",
+    "activation_error": 0.6999320327714822
+  },
+  "elapsed_seconds": 310.74968671798706,
+  "success": false,
+  "breakthrough": false
+}

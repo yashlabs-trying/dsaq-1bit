@@ -1,0 +1,45 @@
+{
+  "experiment": "E4_assignment_20pct",
+  "input": "/workspace/experiments/functional_vq_l0/packed/E3_functional_10pct.packed",
+  "coverage": 0.2,
+  "control_bytes": 2223107,
+  "functional_bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "searched_gate_up_row_groups": 243,
+  "searched_down_row_groups": 44,
+  "changed_ids": 80577,
+  "changed_pct_all_blocks": 8.647085336538462,
+  "before": {
+    "Ez_A": 0.5864515900611877,
+    "Ez_B": 0.6192776560783386,
+    "Ey_A": 0.5939153432846069,
+    "Ey_B": 0.6144567131996155
+  },
+  "after_gate_up": {
+    "Ez_A": 0.5286706686019897,
+    "Ez_B": 0.567329466342926,
+    "Ey_A": 0.5677768588066101,
+    "Ey_B": 0.5888586044311523
+  },
+  "after_down": {
+    "Ez_A": 0.5286706686019897,
+    "Ez_B": 0.567329466342926,
+    "Ey_A": 0.5184847116470337,
+    "Ey_B": 0.5406330227851868
+  },
+  "ppl": {
+    "nll": 5.102592289447784,
+    "ppl": 164.44765114662616
+  },
+  "delta_ppl_pct": 641.1467201385699,
+  "decoded_hashes": {
+    "q_proj": "ade8e185b4b9783acd80b6108abc44a1f67c64461fe23ccc95775e2cbed51753",
+    "k_proj": "c2c566545e935e15d5d31742f35fc99d7c92f3e2f92f7f67f333e646770cd1b9",
+    "v_proj": "da95d9efe30cf6b5ba4594765ff34730a3598c6c924f0cea572099a40a8fbd9d",
+    "o_proj": "8efee5f679e8c02f7a456347822e1a6596fae32f6cfbf9b1262ba96d1bb3d1a6",
+    "gate_proj": "2004d16190653870c7c0491507fa24b405f5e6abd23d85e4b96e9087ceec2338",
+    "up_proj": "10770a8b3092b03744fd92f6e642a451791a5b18a01039a582a4a78a0196bdfa",
+    "down_proj": "08579c28475399634b870d9d6b1c9f51a9892b4d280447903b0007279769383f"
+  },
+  "elapsed_seconds": 3891.2960982322693
+}
