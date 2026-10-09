@@ -1,0 +1,18 @@
+{
+  "experiment": "E15_joint_package_8140",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E14c_joint_ce_consistent_005.packed",
+  "parent_sha256": "b76cd2237e168f7a9ea56c0bfbd6232026efdebc7062d2bc08febba095149f93",
+  "k": 8140,
+  "package_count": 272384,
+  "package_dimensions": 48,
+  "package_id_bits": 13,
+  "scale_bits_per_package": 12,
+  "joint_codebook_bytes": 781440,
+  "padding_bytes": 1132,
+  "training_mse_normalized": 0.15791690349578857,
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "878e153b6b7aa0989801a26b81a55a7d1af65eef123a4eabc4836e42d5950a52",
+  "elapsed_seconds": 2.381274938583374,
+  "strict_ppl": null
+}
