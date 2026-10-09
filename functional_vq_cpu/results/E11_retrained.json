@@ -1,0 +1,13 @@
+{
+  "experiment": "E11_codebook_ce_retrain",
+  "steps": 30,
+  "lr": 0.01,
+  "use_ce": true,
+  "final_loss": 4.283560276031494,
+  "best_loss": 4.269055366516113,
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "f02a57d50a8952d1653861208db3788e6e3fcc2f7012063c4c6ad609b7bbffa9",
+  "elapsed_seconds": 555.3635008335114,
+  "ppl": null
+}

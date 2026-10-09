@@ -91,7 +91,10 @@ def blockify(weight):
 def codec_state(path):
     state = read_codec(path)
     meta, scale_tables, checkpoint, codes, pattern_ids, scale_ids, hard, residual_ids, residual_q, residual_scale = state
-    family = (torch.arange(codes.shape[0]) // PATTERNS_PER_FAMILY).long()
+    if checkpoint.shape[0] == 1:
+        family = torch.zeros(codes.shape[0], dtype=torch.long)
+    else:
+        family = (torch.arange(codes.shape[0]) // PATTERNS_PER_FAMILY).long()
     patterns = checkpoint.float()[family[:, None], codes.long()]
     matrix_index = torch.empty(meta["nblocks"], dtype=torch.long)
     slices = {name: tuple(meta["slices"][name]) for name in meta["names"]}
