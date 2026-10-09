@@ -1,0 +1,30 @@
+{
+  "experiment": "E14_joint_benchmark",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E10a_gate_up_downstream.packed",
+  "parent_sha256": "834788878d32dcb31864b80f2b5f7d494289dff16b0eaf9a983cd4346490eb00",
+  "coverage": 0.002,
+  "neuron_groups": 2,
+  "input_top": 1,
+  "output_top": 1,
+  "locations": 2,
+  "evaluated_triples": 686,
+  "accepted_triples": 2,
+  "ids_changed": 6,
+  "initial": {
+    "L_h2_A": 0.1719595342874527,
+    "L_h2_B": 0.18562501668930054,
+    "L_sense_A": 65.7197494506836,
+    "L_sense_B": 1.3253592252731323
+  },
+  "final": {
+    "L_h2_A": 0.1720135658979416,
+    "L_h2_B": 0.1856396645307541,
+    "L_sense_A": 57.28947448730469,
+    "L_sense_B": 0.9722076058387756
+  },
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "a89cc0e7ac832bdd625b5c64410ecee7dbb8e7e1a83e00450ed15d297c0c7050",
+  "elapsed_seconds": 7.53653621673584,
+  "ppl": null
+}

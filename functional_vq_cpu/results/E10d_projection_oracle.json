@@ -1,0 +1,93 @@
+{
+  "experiment": "E10d_projection_oracle",
+  "model": "Qwen/Qwen2.5-0.5B",
+  "packed": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E10a_gate_up_downstream.packed",
+  "packed_sha256": "834788878d32dcb31864b80f2b5f7d494289dff16b0eaf9a983cd4346490eb00",
+  "reference_ppl": 22.188270476805936,
+  "results": {
+    "none": {
+      "ppl": 59.17591804915345,
+      "nll": 4.080514669418335
+    },
+    "q_proj": {
+      "ppl": 59.15860751877085,
+      "nll": 4.080222100019455
+    },
+    "k_proj": {
+      "ppl": 58.52684281024795,
+      "nll": 4.069485500454903
+    },
+    "v_proj": {
+      "ppl": 50.76967746099138,
+      "nll": 3.927299275994301
+    },
+    "o_proj": {
+      "ppl": 46.377391065056955,
+      "nll": 3.8368120789527893
+    },
+    "gate_proj": {
+      "ppl": 42.41801871220849,
+      "nll": 3.7475732415914536
+    },
+    "up_proj": {
+      "ppl": 40.279923705015165,
+      "nll": 3.6958531737327576
+    },
+    "down_proj": {
+      "ppl": 37.73593938147473,
+      "nll": 3.630612939596176
+    },
+    "all_bf16": {
+      "ppl": 22.18767336526361,
+      "nll": 3.099536880850792
+    }
+  },
+  "summary_table": [
+    {
+      "projection": "all_bf16",
+      "ppl": 22.18767336526361,
+      "delta_from_bf16": -0.001
+    },
+    {
+      "projection": "down_proj",
+      "ppl": 37.73593938147473,
+      "delta_from_bf16": 15.548
+    },
+    {
+      "projection": "up_proj",
+      "ppl": 40.279923705015165,
+      "delta_from_bf16": 18.092
+    },
+    {
+      "projection": "gate_proj",
+      "ppl": 42.41801871220849,
+      "delta_from_bf16": 20.23
+    },
+    {
+      "projection": "o_proj",
+      "ppl": 46.377391065056955,
+      "delta_from_bf16": 24.189
+    },
+    {
+      "projection": "v_proj",
+      "ppl": 50.76967746099138,
+      "delta_from_bf16": 28.581
+    },
+    {
+      "projection": "k_proj",
+      "ppl": 58.52684281024795,
+      "delta_from_bf16": 36.339
+    },
+    {
+      "projection": "q_proj",
+      "ppl": 59.15860751877085,
+      "delta_from_bf16": 36.97
+    },
+    {
+      "projection": "none",
+      "ppl": 59.17591804915345,
+      "delta_from_bf16": 36.988
+    }
+  ],
+  "elapsed_seconds": 501.16835141181946
+}

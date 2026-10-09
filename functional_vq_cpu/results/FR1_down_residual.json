@@ -1,0 +1,11 @@
+{
+  "experiment": "FR1_down_residual",
+  "n_protos": 128,
+  "coverage": 0.1,
+  "n_fixed_blocks": 27238,
+  "loss_B_old": 7.927493572235107,
+  "loss_B_new": 7.928289413452148,
+  "elapsed": 167.3718912601471,
+  "ppl": null,
+  "accepted": false
+}

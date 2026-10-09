@@ -1,0 +1,30 @@
+{
+  "experiment": "E14_neuron_joint_5pct",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E10a_gate_up_downstream.packed",
+  "parent_sha256": "834788878d32dcb31864b80f2b5f7d494289dff16b0eaf9a983cd4346490eb00",
+  "coverage": 0.05,
+  "neuron_groups": 60,
+  "input_top": 2,
+  "output_top": 2,
+  "locations": 240,
+  "evaluated_triples": 94088,
+  "accepted_triples": 123,
+  "ids_changed": 250,
+  "initial": {
+    "L_h2_A": 0.1719595342874527,
+    "L_h2_B": 0.18562501668930054,
+    "L_sense_A": 65.7197494506836,
+    "L_sense_B": 1.3253592252731323
+  },
+  "final": {
+    "L_h2_A": 0.17192436754703522,
+    "L_h2_B": 0.18538862466812134,
+    "L_sense_A": 0.6524369120597839,
+    "L_sense_B": 0.9366298913955688
+  },
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "7515da0c75186e79932456e6db68c5eb1998e6f046d5ce1580584ef903176708",
+  "elapsed_seconds": 27.54248285293579,
+  "ppl": null
+}

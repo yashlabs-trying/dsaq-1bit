@@ -1,0 +1,49 @@
+{
+  "experiment": "E14b4_joint_ce_consistent_proof",
+  "method": "joint_neuron_signed_ce_exact_gate",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E10a_gate_up_downstream.packed",
+  "parent_sha256": "834788878d32dcb31864b80f2b5f7d494289dff16b0eaf9a983cd4346490eb00",
+  "coverage": 0.002,
+  "groups": 2,
+  "input_top": 2,
+  "output_top": 2,
+  "shortlist": 4,
+  "locations": 8,
+  "evaluated_triples": 3584,
+  "evaluated_exact": 32,
+  "accepted": 4,
+  "ids_changed": 10,
+  "initial": {
+    "CE_A": 3.5022552013397217,
+    "CE_B": 3.514676809310913,
+    "PPL_A": 33.19021987915039,
+    "PPL_B": 33.605064392089844,
+    "segments_A": [
+      3.4872565269470215,
+      3.517253875732422
+    ],
+    "segments_B": [
+      3.7311136722564697,
+      3.2982401847839355
+    ]
+  },
+  "final": {
+    "CE_A": 3.494187116622925,
+    "CE_B": 3.5068578720092773,
+    "PPL_A": 32.92351531982422,
+    "PPL_B": 33.34333419799805,
+    "segments_A": [
+      3.4789254665374756,
+      3.509448528289795
+    ],
+    "segments_B": [
+      3.7196359634399414,
+      3.2940797805786133
+    ]
+  },
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "f93e4320444bd69a33f580c14a290c51b853bbf3e54106a2b36d438baa5a791b",
+  "elapsed_seconds": 246.12675380706787,
+  "strict_ppl": null
+}

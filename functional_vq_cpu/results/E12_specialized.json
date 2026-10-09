@@ -1,0 +1,18 @@
+{
+  "experiment": "E12_specialized_codec",
+  "pattern_allocation": {
+    "down_proj": 1408,
+    "gate_proj": 1024,
+    "up_proj": 1024,
+    "o_proj": 256,
+    "v_proj": 160,
+    "q_proj": 128,
+    "k_proj": 96
+  },
+  "bytes": 1913747,
+  "bpw": 0.25671614762190936,
+  "loss_B": 1.740099549293518,
+  "output_sha256": "49b274954c95e86bfa983b19305e359ee67e2ed1a7516bff35ae551ad7617dc7",
+  "elapsed": 27.112155437469482,
+  "ppl": null
+}

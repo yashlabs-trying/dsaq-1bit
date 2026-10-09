@@ -1,0 +1,33 @@
+{
+  "experiment": "E14b2_joint_ce_segmented_proof",
+  "method": "joint_neuron_signed_ce_exact_gate",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E10a_gate_up_downstream.packed",
+  "parent_sha256": "834788878d32dcb31864b80f2b5f7d494289dff16b0eaf9a983cd4346490eb00",
+  "coverage": 0.002,
+  "groups": 2,
+  "input_top": 1,
+  "output_top": 1,
+  "shortlist": 8,
+  "locations": 2,
+  "evaluated_triples": 896,
+  "evaluated_exact": 16,
+  "accepted": 2,
+  "ids_changed": 6,
+  "initial": {
+    "CE_A": 3.5022552013397217,
+    "CE_B": 3.514676809310913,
+    "PPL_A": 33.19021987915039,
+    "PPL_B": 33.605064392089844
+  },
+  "final": {
+    "CE_A": 3.4956681728363037,
+    "CE_B": 3.509305953979492,
+    "PPL_A": 32.972312927246094,
+    "PPL_B": 33.4250602722168
+  },
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "0ceb8bb826c31b4b638a3da9de8ea3665309bb9cb4137cf6c83e7bdb73cd6590",
+  "elapsed_seconds": 126.89217686653137,
+  "strict_ppl": null
+}

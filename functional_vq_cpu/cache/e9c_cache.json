@@ -1,0 +1,99 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B",
+  "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E9b_downstream_l1_5pct.packed",
+  "parent_sha256": "e1e85eb1f7329b74563a996682b180c80878cd08c36bb86123fa4739eea2ca42",
+  "cache": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\cache\\e9c_cache.pt",
+  "cache_bytes": 85347799,
+  "elapsed_seconds": 8.870553016662598,
+  "shapes": {
+    "h1_a": [
+      512,
+      896
+    ],
+    "h1_b": [
+      512,
+      896
+    ],
+    "x_a": [
+      512,
+      896
+    ],
+    "x_b": [
+      512,
+      896
+    ],
+    "h2_teacher_a": [
+      512,
+      896
+    ],
+    "h2_teacher_b": [
+      512,
+      896
+    ],
+    "h2_parent_a": [
+      512,
+      896
+    ],
+    "h2_parent_b": [
+      512,
+      896
+    ],
+    "h4_teacher_a": [
+      512,
+      896
+    ],
+    "h4_teacher_b": [
+      512,
+      896
+    ],
+    "h4_parent_a": [
+      512,
+      896
+    ],
+    "h4_parent_b": [
+      512,
+      896
+    ],
+    "sensitivity_gradient_a": [
+      512,
+      896
+    ],
+    "sensitivity_gradient_b": [
+      512,
+      896
+    ],
+    "next_norm_weight": [
+      896
+    ],
+    "token_ids_a": [
+      512
+    ],
+    "token_ids_b": [
+      512
+    ]
+  },
+  "hashes": {
+    "h1_a": "8906f10e3d1ed3f901679d873684781c9fd5ffa32e38c178aebe31662eac9f52",
+    "h1_b": "7f3e6701f35f456efd8f1245544a68d3e97ed848d1da75466aba6be6e3d3431d",
+    "x_a": "ac7a7fac1d04ee48264737b5aaf0c5b526daa50e1af9080df547ccbf2485a44c",
+    "x_b": "263ce95cd3387c3f25fafc73f20552d6c4e50a1b4f011d540ab63a4185db2b8c",
+    "h2_teacher_a": "f2a20e277fce915fc843d969926435ef36f9d685950b4afd2ebd4ae1bdbd94a7",
+    "h2_teacher_b": "521eb82ba4a31b94b3137ad64598d016c7a06cda9409f28a4f7d0520fb03c053",
+    "h2_parent_a": "44abb6e6ef06f63f2230ca50125ea16b28b1339a6b5df136f3494a726407f919",
+    "h2_parent_b": "f75cf5c5abcb667b99a1bdbac3679ef683db5130b14127fb429129cd82851450",
+    "h4_teacher_a": "bb45b6767fa34025e1b33291c03846ac34355d05a559a39746366d1768a68939",
+    "h4_teacher_b": "008055e8ac07fa9cd983d8e5aa0146fb6b3ae9d3d690ba3f9e5571f3ba1092a2",
+    "h4_parent_a": "35fa28bc0ed76d1698c0e6b86e0d2aa3e8923f3521fdd86f6f7aace32e850c2d",
+    "h4_parent_b": "f9cc3915a65c560dfb1e2e9eee8ff41c1fb997c510ab2d0a5320eaff1846c8d4",
+    "sensitivity_gradient_a": "4a6d9051d64d13a0fec7bb4493d7e1ad70f57d743b25b850adf90a314ccc8b88",
+    "sensitivity_gradient_b": "a5eb813f6ab0dfa5e08b2c586a1036bf0792acf68a868fc03b5bec9628501911",
+    "next_norm_weight": "7ab7ebfcb54c8695200b3c8be7ceb0930e3ca162b1b9ba087403d2bc8079538e",
+    "token_ids_a": "5f0b7c831bcd865bd54fdd0614da923a20906c4b531a9ccd6df6977908269337",
+    "token_ids_b": "7ddb94a12c5ddc24da8c9f7f4ef1432bfb098a018799849855e453bef352012d"
+  },
+  "L_h2_A (E9b parent)": 0.13444122672080994,
+  "L_h2_B (E9b parent)": 0.14367753267288208,
+  "L_h4_A (through L1+L2)": 0.12776102125644684,
+  "L_h4_B (through L1+L2)": 0.602889895439148
+}

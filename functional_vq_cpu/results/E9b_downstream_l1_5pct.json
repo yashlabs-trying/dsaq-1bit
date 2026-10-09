@@ -1,0 +1,31 @@
+{
+  "experiment": "E9b_downstream_l1_5pct",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E8g_down_polish_round5.packed",
+  "parent_sha256": "d6dabae1c6842d90cc634907a8a31801a1961145e56c9d5f03a508afccd1f92f",
+  "coverage": 0.05,
+  "threads": 4,
+  "row_groups": 11,
+  "searched_blocks": 13376,
+  "ids_changed": 9011,
+  "initial": {
+    "L_h2_A": 0.13444121181964874,
+    "L_h2_B": 0.14367753267288208,
+    "L_sense_A": 0.5386239886283875,
+    "L_sense_B": 0.5449967384338379,
+    "E_sense_A": 0.7339100684882225,
+    "E_sense_B": 0.7382389439970218
+  },
+  "final": {
+    "L_h2_A": 0.1698130965232849,
+    "L_h2_B": 0.1837776005268097,
+    "L_sense_A": 0.3650780916213989,
+    "L_sense_B": 0.3507574498653412,
+    "E_sense_A": 0.6042169243089761,
+    "E_sense_B": 0.5922477943102373
+  },
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "e1e85eb1f7329b74563a996682b180c80878cd08c36bb86123fa4739eea2ca42",
+  "elapsed_seconds": 37.282341718673706,
+  "ppl": null
+}
