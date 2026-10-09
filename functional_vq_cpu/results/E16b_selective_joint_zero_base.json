@@ -1,0 +1,29 @@
+{
+  "experiment": "E16b_selective_joint_zero_base",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E14c_joint_ce_consistent_005.packed",
+  "parent_sha256": "b76cd2237e168f7a9ea56c0bfbd6232026efdebc7062d2bc08febba095149f93",
+  "coverage": 0.05,
+  "critical_groups": 61,
+  "critical_count": 13664,
+  "compressed_parent_bytes": 2158144,
+  "correction_index_bytes": 32452,
+  "correction_id_bytes": 13664,
+  "correction_codebook_bytes": 12800,
+  "padding_bytes": 5323,
+  "functional": {
+    "parent_z_error_A": 0.2453097254037857,
+    "output_z_error_A": 0.2453097254037857,
+    "parent_y_error_A": 0.1703624278306961,
+    "output_y_error_A": 0.1703624278306961,
+    "parent_z_error_B": 0.2567877769470215,
+    "output_z_error_B": 0.2567877769470215,
+    "parent_y_error_B": 0.18572619557380676,
+    "output_y_error_B": 0.18572619557380676
+  },
+  "functional_gate_pass": false,
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "28f7ea8f5c7c42ac6a5d982cc3a6e4549ab326bde61a864f7f1ca4ed7fc954e2",
+  "elapsed_seconds": 20.97389531135559,
+  "strict_ppl": null
+}

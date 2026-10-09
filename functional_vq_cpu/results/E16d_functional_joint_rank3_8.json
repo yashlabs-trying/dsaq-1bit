@@ -1,0 +1,47 @@
+{
+  "experiment": "E16d_functional_joint_rank3_8",
+  "base": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E16c_functional_joint_proof.packed",
+  "base_sha256": "c5ac7150860dc4b95d915f90542bfef8114f3790035e4f4f26bba8e883517d42",
+  "groups": 6,
+  "group_offset": 2,
+  "chunks_per_group": 2,
+  "candidates": 8,
+  "accepted": 5,
+  "changed_packages": [
+    17263,
+    250330,
+    250328,
+    8775,
+    105963
+  ],
+  "exact_evaluations": 94,
+  "initial": {
+    "CE_A": 3.483797550201416,
+    "CE_B": 3.4933910369873047,
+    "segments_A": [
+      3.4659969806671143,
+      3.5015978813171387
+    ],
+    "segments_B": [
+      3.700145959854126,
+      3.2866358757019043
+    ]
+  },
+  "final": {
+    "CE_A": 3.4824715852737427,
+    "CE_B": 3.491904377937317,
+    "segments_A": [
+      3.464946746826172,
+      3.4999964237213135
+    ],
+    "segments_B": [
+      3.698972463607788,
+      3.2848362922668457
+    ]
+  },
+  "bytes": 2223107,
+  "bpw": 1.1928587525755494,
+  "output_sha256": "4eaf4039f736a9e5ee028d97c7c023a821887438e29cf207ecaecf67cb4f4b3b",
+  "elapsed_seconds": 493.360554933548,
+  "strict_ppl": null
+}

@@ -1,0 +1,91 @@
+{
+  "experiment": "E16_id_entropy_audit",
+  "parent": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\functional_vq_cpu\\packed\\E14c_joint_ce_consistent_005.packed",
+  "projections": {
+    "gate_proj": {
+      "count": 272384,
+      "unique_ids": 4096,
+      "entropy_bits_per_id": 11.93075014869855,
+      "theoretical_bytes": 406219,
+      "fixed_bytes": 408576,
+      "zlib_bytes": 408707,
+      "zlib_bits_per_id": 12.003847509398497,
+      "zlib_savings_bytes": -131
+    },
+    "up_proj": {
+      "count": 272384,
+      "unique_ids": 4096,
+      "entropy_bits_per_id": 11.957668362992518,
+      "theoretical_bytes": 407135,
+      "fixed_bytes": 408576,
+      "zlib_bytes": 408707,
+      "zlib_bits_per_id": 12.003847509398497,
+      "zlib_savings_bytes": -131
+    },
+    "down_proj": {
+      "count": 272384,
+      "unique_ids": 4096,
+      "entropy_bits_per_id": 11.927208304545893,
+      "theoretical_bytes": 406098,
+      "fixed_bytes": 408576,
+      "zlib_bytes": 408707,
+      "zlib_bits_per_id": 12.003847509398497,
+      "zlib_savings_bytes": -131
+    }
+  },
+  "total": {
+    "count": 817152,
+    "entropy_bits_per_id": 11.938542272078987,
+    "theoretical_bytes": 1219451,
+    "fixed_bytes": 1225728,
+    "theoretical_savings_bytes": 6277,
+    "zlib_bytes_separate": 1226121,
+    "zlib_savings_bytes_separate": -393,
+    "zlib_bytes_combined": 1226109,
+    "zlib_savings_bytes_combined": -381
+  },
+  "scale_ids": {
+    "gate_proj": {
+      "count": 272384,
+      "entropy_bits_per_id": 3.846940688282891,
+      "theoretical_bytes": 130981,
+      "fixed_bytes": 136192,
+      "zlib_bytes": 131741,
+      "theoretical_savings_bytes": 5211,
+      "zlib_savings_bytes": 4451
+    },
+    "up_proj": {
+      "count": 272384,
+      "entropy_bits_per_id": 3.7946354166886653,
+      "theoretical_bytes": 129200,
+      "fixed_bytes": 136192,
+      "zlib_bytes": 130358,
+      "theoretical_savings_bytes": 6992,
+      "zlib_savings_bytes": 5834
+    },
+    "down_proj": {
+      "count": 272384,
+      "entropy_bits_per_id": 3.8017916119663933,
+      "theoretical_bytes": 129444,
+      "fixed_bytes": 136192,
+      "zlib_bytes": 130419,
+      "theoretical_savings_bytes": 6748,
+      "zlib_savings_bytes": 5773
+    }
+  },
+  "scale_ids_total": {
+    "fixed_bytes": 408576,
+    "theoretical_bytes": 389625,
+    "theoretical_savings_bytes": 18951,
+    "zlib_bytes": 392518,
+    "zlib_savings_bytes": 16058
+  },
+  "other_streams": {
+    "hard_mask_fixed_bytes": 116480,
+    "hard_mask_zlib_bytes": 72810,
+    "hard_mask_zlib_savings_bytes": 43670,
+    "residual_ids_fixed_bytes": 186368,
+    "residual_ids_zlib_bytes": 169175,
+    "residual_ids_zlib_savings_bytes": 17193
+  }
+}
