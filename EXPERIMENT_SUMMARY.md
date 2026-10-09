@@ -256,6 +256,8 @@ All 2,223,107 bytes except where noted:
 | E10d_projection_oracle.json | Oracle table of per-projection BF16 restoration |
 | E11_strict_cpu_ppl.json | PPL=276.198 (codebook retrain failed) |
 | E13_dual_vocab.json | PPL=42551 (implementation issues) |
+| **E16c_functional_joint_proof_strict_ppl.json** | **PPL=57.548, NLL=4.053 (1 accepted selective joint correction)** |
+| **E16d_functional_joint_rank3_8_strict_ppl.json** | **PPL=57.621, NLL=4.054 (5 accepted corrections; rejected vs E16c)** |
 
 ---
 
@@ -269,3 +271,23 @@ ID savings come from deleting too much entropy. The next credible path is a
 joint neuron packages only to the functionally critical minority—or a compact
 factorized learned decoder whose latent code preserves component-specific
 freedom. E14c remains the frozen champion.
+
+### E16 selective joint residual results
+
+The entropy audit found that the existing 12-bit MLP IDs are near-maximal
+entropy (Gate 11.931, Up 11.958, Down 11.927 bits/ID), so ordinary lossless
+coding cannot recover enough budget to replace independent choices. E16 instead
+keeps the frozen E14c codec and adds a selective joint Gate/Up/Down correction
+for critical neuron groups, while preserving the exact packed size of
+2,223,107 bytes (1.1928587526 BPW).
+
+E16c used exact segmented calibration-CE gating and accepted one correction.
+Strict held-out WikiText-2 PPL improved from 57.6497 to **57.5483** (NLL
+4.052625), SHA-256 `c5ac7150860dc4b95d915f90542bfef8114f3790035e4f4f26bba8e883517d42`.
+
+E16d expanded the search to six groups and accepted five corrections. Although
+calibration-B CE improved slightly, strict held-out PPL was **57.6207** (NLL
+4.053882), worse than E16c. E16c is therefore the current E16 champion. This
+is a small positive signal with diminishing returns, not yet a breakthrough;
+the next useful step is stronger candidate generation or a learned
+low-dimensional joint decoder rather than simply searching more groups.

@@ -36,8 +36,10 @@ def pack_fixed(values, bits):
 
 
 def read_codec(path):
-    path = Path(path)
-    blob = path.read_bytes()
+    return read_codec_blob(Path(path).read_bytes())
+
+
+def read_codec_blob(blob):
     pos = 0
     meta_len = struct.unpack_from("<I", blob, pos)[0]
     pos += 4
@@ -97,7 +99,10 @@ def blockify(weight):
 
 
 def codec_state(path):
-    state = read_codec(path)
+    return codec_state_from_raw(read_codec(path))
+
+
+def codec_state_from_raw(state):
     meta, scale_tables, checkpoint, codes, pattern_ids, scale_ids, hard, residual_ids, residual_q, residual_scale = state
     if checkpoint.shape[0] == 1:
         family = torch.zeros(codes.shape[0], dtype=torch.long)
@@ -128,6 +133,8 @@ def decode_weights(path):
     blob = path.read_bytes()
     meta_len = struct.unpack_from("<I", blob, 0)[0]
     meta = json.loads(blob[4:4+meta_len])
+    if meta.get("version") == 3 and meta.get("layout") == "selective_joint_residual":
+        return decode_selective_joint_residual(blob, meta, meta_len)
     if meta.get("version") == 2 and meta.get("layout") == "joint_mlp_packages":
         return decode_joint_packages(blob, meta, meta_len)
     state = codec_state(path)
@@ -139,6 +146,65 @@ def decode_weights(path):
     for name, (start, end, rows, cols) in state["slices"].items():
         weights[name] = unblock(block_values[start:end], (rows, cols))
     return weights, state
+
+
+def decode_legacy_blob(blob):
+    state = codec_state_from_raw(read_codec_blob(blob))
+    block_values = (state["patterns"][state["pattern_ids"].long()]
+                    * state["scales"][:, None] + state["residual"])
+    weights = {name: unblock(block_values[s:e], (rows, cols))
+               for name, (s, e, rows, cols) in state["slices"].items()}
+    return weights, state
+
+
+def decode_selective_joint_residual(blob, meta, meta_len):
+    import lzma
+    pos = 4+meta_len
+    parent_size = meta["compressed_parent_bytes"]
+    parent_blob = lzma.decompress(blob[pos:pos+parent_size])
+    pos += parent_size
+    weights, parent_state = decode_legacy_blob(parent_blob)
+    count = meta["critical_count"]
+    index_bits = meta["critical_index_bits"]
+    index_bytes = (count*index_bits+7)//8
+    package_indices = unpack_uint(blob[pos:pos+index_bytes], count, index_bits)
+    pos += index_bytes
+    correction_ids = torch.from_numpy(np.frombuffer(
+        blob, dtype=np.uint8, count=count, offset=pos).copy()).long()
+    pos += count
+    k = meta["correction_k"]
+    correction_q = torch.from_numpy(np.frombuffer(
+        blob, dtype=np.int8, count=k*48, offset=pos).copy()).view(k,48).float()
+    pos += k*48
+    correction_scale = torch.from_numpy(np.frombuffer(
+        blob, dtype="<f2", count=k, offset=pos).copy()).float()
+    pos += 2*k
+    pos += meta.get("padding_bytes", 0)
+    assert pos == len(blob), (pos, len(blob))
+    corrections = correction_q[correction_ids]*correction_scale[correction_ids,None]
+
+    slices = parent_state["slices"]
+    g_start = slices["gate_proj"][0]
+    u_start = slices["up_proj"][0]
+    d_start = slices["down_proj"][0]
+    neuron_groups = meta["neuron_groups"]
+    hidden_chunks = meta["hidden_chunks"]
+    neuron = package_indices//hidden_chunks
+    chunk = package_indices%hidden_chunks
+    g_index = g_start+package_indices
+    u_index = u_start+package_indices
+    d_index = d_start+chunk*neuron_groups+neuron
+    gate_blocks = blockify(weights["gate_proj"])
+    up_blocks = blockify(weights["up_proj"])
+    down_blocks = blockify(weights["down_proj"])
+    gate_blocks[package_indices] += corrections[:,:16]*parent_state["scales"][g_index,None]
+    up_blocks[package_indices] += corrections[:,16:32]*parent_state["scales"][u_index,None]
+    down_blocks[d_index-d_start] += corrections[:,32:48]*parent_state["scales"][d_index,None]
+    weights["gate_proj"] = unblock(gate_blocks, weights["gate_proj"].shape)
+    weights["up_proj"] = unblock(up_blocks, weights["up_proj"].shape)
+    weights["down_proj"] = unblock(down_blocks, weights["down_proj"].shape)
+    return weights, {"meta": meta, "package_indices": package_indices,
+                     "correction_ids": correction_ids}
 
 
 def decode_joint_packages(blob, meta, meta_len):
