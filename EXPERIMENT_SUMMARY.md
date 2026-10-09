@@ -134,6 +134,22 @@ not worsen calibration-B mean CE, and not worsen any of the four independent
 256-token calibration sequences. Candidate triples are shortlisted by the
 signed first-order CE change and then evaluated with exact downstream CE.
 
+### E15 Phase: Stored joint neuron-package vocabulary
+*Focus: replace three independent MLP IDs with one aligned package representation*
+
+| Experiment | Strict PPL / gate | BPW | Finding |
+|---|---:|---:|---|
+| E15, 8,140 FP16 joint prototypes, BF16-MSE target | 23,361.74 | 1.19285875 | Flat joint ID destroys functional structure |
+| E15a, 8,140 FP16 prototypes, E14c-imitation target | 31,399.19 | 1.19285875 | Preserving parent targets does not overcome package entropy collapse |
+| E15b, 4,096 joint bases + three 4-bit residual subcodes | functional gate failed | 1.19285875 | 82.7–83.1% parent MLP-output error; strict PPL skipped |
+
+E15 validated the exact storage idea: all variants decode in a fresh process,
+retain attention exactly, preserve the residual stream, and occupy exactly
+2,223,107 bytes. The negative result is representational, not infrastructure.
+One global package ID collapses the combinatorial entropy of three independently
+selected patterns. Even three small component residual subcodes leave about 50%
+relative weight error and 83% MLP-output error versus E14c.
+
 ---
 
 ## Tail Token Analysis (from E10a, calibration A)
@@ -165,6 +181,8 @@ Excess NLL is highly concentrated: 10% of tokens cause 38% of damage.
 6. **Global prototype gradient descent is destructive**. E11 proved that moving all 4096 prototypes simultaneously (even with CE gradient) produces PPL 276.
 
 7. **Neuron-aligned coupling is real but the old vocabulary remains limiting**. Correct joint moves improved 59.18 → 57.65 at identical storage, but ranks 7-12 failed to generalize. Assignment-only coupling is not on a credible path to <30.
+
+8. **Global flat neuron packages are too restrictive**. Saving ID bits by forcing all 272,384 triples through one 8K vocabulary removes essential Gate/Up/Down combinatorial information. Future neuron alignment must be selective or use a factorized/learned decoder with substantially more latent entropy.
 
 ---
 
@@ -210,6 +228,9 @@ All 2,223,107 bytes except where noted:
 | **E14b4_joint_ce_consistent_proof.packed** | 2,223,107 | f93e4320... |
 | **E14c_joint_ce_consistent_005.packed** | 2,223,107 | b76cd223... |
 | E14d_joint_ce_consistent_rank7_12.packed | 2,223,107 | 99f08954... |
+| E15_joint_package_8140.packed | 2,223,107 | 878e153b... |
+| E15a_joint_parent_imitation_8140.packed | 2,223,107 | 96354e38... |
+| E15b_joint_base4096_res4.packed | 2,223,107 | c5918e77... |
 | E11_retrained.packed | 2,223,107 | f02a57d5... |
 | E12_specialized.packed | 1,913,747 | 49b27495... |
 | E13_dual_vocab.packed | 1,913,747 | a86884ec... |
@@ -230,6 +251,8 @@ All 2,223,107 bytes except where noted:
 | E14b4_joint_ce_consistent_proof_strict_ppl.json | PPL=58.484, NLL=4.069 |
 | **E14c_joint_ce_consistent_005_strict_ppl.json** | **PPL=57.650, NLL=4.054 (best)** |
 | E14d_joint_ce_consistent_rank7_12_strict_ppl.json | PPL=57.838, NLL=4.058 (rejected) |
+| E15_joint_package_8140_strict_ppl.json | PPL=23,361.743, NLL=10.059 (rejected) |
+| E15a_joint_parent_imitation_8140_strict_ppl.json | PPL=31,399.192, NLL=10.355 (rejected) |
 | E10d_projection_oracle.json | Oracle table of per-projection BF16 restoration |
 | E11_strict_cpu_ppl.json | PPL=276.198 (codebook retrain failed) |
 | E13_dual_vocab.json | PPL=42551 (implementation issues) |
@@ -240,8 +263,9 @@ All 2,223,107 bytes except where noted:
 
 The shared 4×4 VQ codebook with 4096 patterns at 1.19 BPW on Layer 0 now reaches **PPL 57.65** after robust neuron-aligned joint assignment. The minimal proof is positive: coupled Gate/Up/Down changes can escape the independent-block local optimum. The scaling curve is not strong enough to approach PPL 30 with the old vocabulary, however.
 
-The path to <30 PPL requires the next representation change: a genuinely
-**joint neuron-package vocabulary** (or learned package decoder) whose stored
-code jointly generates Gate, Up, and Down components. E14 only coupled the
-search while reusing three independently learned old codewords; it did not yet
-create joint stored prototypes.
+E15 shows that a flat global joint vocabulary is not that representation: the
+ID savings come from deleting too much entropy. The next credible path is a
+**selective hybrid**—retain independent coding for most blocks and apply richer
+joint neuron packages only to the functionally critical minority—or a compact
+factorized learned decoder whose latent code preserves component-specific
+freedom. E14c remains the frozen champion.
