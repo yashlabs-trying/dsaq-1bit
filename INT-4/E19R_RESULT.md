@@ -92,3 +92,22 @@ The optimizer hypothesis is validated. Do not spend time on discrete assignment
 search yet: the quality target is already crossed at 3.39 BPW. First make the
 stored decode bit-exact, then reduce the base/residual storage toward the true
 1.20-BPW constraint while using this corrected QAT loop for recovery.
+
+## Rate audit and next experiment
+
+`e19r_bit_audit.py` decomposes the frozen checkpoint's proposed packed payload.
+The 4-bit GPTQ IDs use 2.89719 model-BPW (85.5% of all bits). By contrast, the
+two residual ID streams plus both residual codebooks together use only 0.12907
+model-BPW. The high-value rate strategy is therefore to preserve the validated
+factorized repair mechanism and reduce the GPTQ base through 3, 2, and 1 bit,
+running the corrected QAT recovery after each step.
+
+With the current FP16 scales and residual representation, a 1-bit base would
+project to 1.21552 BPW if zero-points remained wastefully stored as FP16. Packing
+the discrete zero-points at their natural one-bit width projects to 1.04576 BPW,
+leaving about 0.154 BPW below the 1.20 target for format metadata or additional
+repair capacity. These are storage projections, not quality results.
+
+The runner now constructs its residual target and cached GPTQ base from the
+exact FP16 scale/zero representation saved in the checkpoint. It also fails
+closed unless that cached base is bit-identical to a decode from stored fields.

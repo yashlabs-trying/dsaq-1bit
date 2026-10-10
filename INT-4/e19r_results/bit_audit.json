@@ -1,0 +1,89 @@
+{
+  "checkpoint": "C:\\Users\\yashs\\OneDrive\\Documents\\ChatGPT\\1 bit\\INT-4\\e19r_results\\e19r_value_best.pt",
+  "codec_layers": 168,
+  "model_parameters_denominator": 494032768,
+  "quantized_linear_weight_values": 357826560,
+  "components": {
+    "gptq_weight_ids": {
+      "bits": 1431306240,
+      "bytes": 178913280.0,
+      "model_bpw": 2.8971888763459512,
+      "share_percent": 85.50284154220117
+    },
+    "gptq_scales": {
+      "bits": 89456640,
+      "bytes": 11182080.0,
+      "model_bpw": 0.18107430477162195,
+      "share_percent": 5.343927596387573
+    },
+    "gptq_zero_points": {
+      "bits": 89456640,
+      "bytes": 11182080.0,
+      "model_bpw": 0.18107430477162195,
+      "share_percent": 5.343927596387573
+    },
+    "residual_ids_c1": {
+      "bits": 29819232,
+      "bytes": 3727404.0,
+      "model_bpw": 0.06035881409388618,
+      "share_percent": 1.781330226441362
+    },
+    "residual_ids_c2": {
+      "bits": 29819232,
+      "bytes": 3727404.0,
+      "model_bpw": 0.06035881409388618,
+      "share_percent": 1.781330226441362
+    },
+    "codebook_c1": {
+      "bits": 2064384,
+      "bytes": 258048.0,
+      "model_bpw": 0.004178637802422045,
+      "share_percent": 0.12332140607048245
+    },
+    "codebook_c2": {
+      "bits": 2064384,
+      "bytes": 258048.0,
+      "model_bpw": 0.004178637802422045,
+      "share_percent": 0.12332140607048245
+    }
+  },
+  "total": {
+    "bits": 1673986752,
+    "bytes": 209248344.0,
+    "model_bpw": 3.3884123896818115
+  },
+  "target_1_20_bpw": {
+    "bits": 592839322,
+    "bytes": 74104915.25,
+    "bits_to_remove": 1081147430,
+    "bytes_to_remove": 135143428.75,
+    "reduction_percent": 64.58518436351402
+  },
+  "rate_descent_projection": [
+    {
+      "base_bits": 4,
+      "bpw_with_fp16_zero_points": 3.3884123896818115,
+      "bpw_with_natural_width_zero_points": 3.252606661103095
+    },
+    {
+      "base_bits": 3,
+      "bpw_with_fp16_zero_points": 2.664115170595324,
+      "bpw_with_natural_width_zero_points": 2.5169922979683808
+    },
+    {
+      "base_bits": 2,
+      "bpw_with_fp16_zero_points": 1.9398179515088358,
+      "bpw_with_natural_width_zero_points": 1.7813779348336667
+    },
+    {
+      "base_bits": 1,
+      "bpw_with_fp16_zero_points": 1.215520732422348,
+      "bpw_with_natural_width_zero_points": 1.0457635716989526
+    }
+  ],
+  "notes": [
+    "Counts packed integer IDs and FP16 metadata/codebooks.",
+    "Does not count container alignment, tensor headers, names, or model config.",
+    "The torch checkpoint is a research container, not the packed payload."
+  ]
+}
