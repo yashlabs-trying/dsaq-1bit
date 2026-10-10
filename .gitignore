@@ -2,6 +2,7 @@ __pycache__/
 .pytest_cache/
 .venv/
 *.pyc
+INT-4/e19r_results/*.pt
 results/
 artifacts/
 *.log

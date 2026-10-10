@@ -1,0 +1,66 @@
+{
+  "config": {
+    "bpw_target": 1.2,
+    "group_size": 64,
+    "package_dim": 48,
+    "subcode_size": 16,
+    "num_macro_rounds": 3,
+    "qat_steps_per_round": 30,
+    "qat_lr": 0.0001,
+    "kl_weight": 0.25,
+    "geom_weight": 1e-05,
+    "assign_update_fraction": 0.01,
+    "assign_beam": 2,
+    "cal_tokens": 4096,
+    "eval_tokens": 4096,
+    "output_dir": "e19_120_full",
+    "seed": 42
+  },
+  "bf16_ppl": 27.736421868705172,
+  "init_ppl": 37.67434149110942,
+  "final_ppl": 38.16487896480602,
+  "final_val_ce": 3.6419156938791275,
+  "macro_log": [
+    {
+      "round": 0,
+      "changes": {},
+      "prototype_ce": 965.1111111111111,
+      "prototype_kl": -9.730034722222221,
+      "i_changes": 22825,
+      "j_changes": 24554,
+      "val_ppl": 37.788120899952666,
+      "val_nll": 3.631994791328907,
+      "val_ce": 3.631994791328907,
+      "elapsed": 5432.154449462891
+    },
+    {
+      "round": 1,
+      "changes": {},
+      "prototype_ce": 965.3333333333334,
+      "prototype_kl": -9.883246527777779,
+      "i_changes": 22646,
+      "j_changes": 24268,
+      "val_ppl": 37.881410414377854,
+      "val_nll": 3.634460501372814,
+      "val_ce": 3.634460501372814,
+      "elapsed": 5418.566125869751
+    },
+    {
+      "round": 2,
+      "changes": {},
+      "prototype_ce": 965.0,
+      "prototype_kl": -9.761284722222221,
+      "i_changes": 22422,
+      "j_changes": 24123,
+      "val_ppl": 38.16487896480602,
+      "val_nll": 3.6419156938791275,
+      "val_ce": 3.6419156938791275,
+      "elapsed": 5470.778160333633
+    }
+  ],
+  "payload_bytes": 209248344.0,
+  "effective_bpw": 3.3884123896818115,
+  "runtime_seconds": 16442.304117918015,
+  "sha256": "364cc42f7606ac8d21309fca1647e7f2a3ff67b9cd27baeaabe1e2886ed6bf0a",
+  "packed_path": "e19_120_full/packed/e19_bpw1.20.pt"
+}
