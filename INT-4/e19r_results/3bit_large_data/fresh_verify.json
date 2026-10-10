@@ -1,0 +1,29 @@
+{
+  "checkpoint": "results/E19R_3bit_large_data/e19r_value_best.pt",
+  "sha256": "775c30ce5cb0dde958b207972e1880805364d25268003024f5c9adf48df5eccf",
+  "file_bytes": 395944879,
+  "metadata": {
+    "effective_bpw": 2.664115170595324,
+    "valid": {
+      "nll": 3.3298921287059784,
+      "ppl": 27.935328120706604,
+      "tokens": 4064
+    },
+    "test": {
+      "nll": 3.5948452576994896,
+      "ppl": 36.41006537465598,
+      "tokens": 4064
+    },
+    "parent_init_test": {
+      "nll": 5.2542532458901405,
+      "ppl": 191.3785197845827,
+      "tokens": 4064
+    },
+    "selection": "validation_only"
+  },
+  "fresh_decode": {
+    "nll": 3.5948452576994896,
+    "ppl": 36.41006537465598,
+    "tokens": 4064
+  }
+}
