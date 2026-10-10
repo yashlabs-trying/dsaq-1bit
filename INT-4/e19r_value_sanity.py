@@ -20,6 +20,7 @@ from torch.func import functional_call
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 import e19_repaired as legacy
+from gptq import decode as gptq_decode
 from gptq import gptq_quantize
 
 
@@ -212,23 +213,44 @@ def main():
     codecs = {}
     for idx, (name, module) in enumerate(linear):
         w = originals[name]
-        Q, codes, scale, zero = gptq_quantize(
+        _, codes, scale, zero = gptq_quantize(
             w, H[name], 4, groupwise=True, groupsize=64, sym=False
         )
-        residual = w.reshape(-1) - Q.reshape(-1)
+        # The stored FP16 metadata is the codec.  Build both the residual target
+        # and the cached base from that exact representation; retaining the
+        # transient FP32 GPTQ reconstruction here caused E19-R's 0.042-PPL
+        # in-process/fresh-process discrepancy.
+        stored_scale = scale.to(torch.float16)
+        stored_zero = zero.to(torch.float16)
+        stored_base = gptq_decode(codes, stored_scale, stored_zero).float()
+        residual = w.reshape(-1) - stored_base.reshape(-1)
         C1, C2, idx1, idx2, _ = legacy.init_factorized_residual(
             residual, 64, 48, 16, SEED
         )
-        codec = legacy.E19Codec(codes, scale, zero, 4, C1, C2, idx1, idx2)
-        codec._base_rec = Q.to(torch.float16).reshape(-1)
+        codec = legacy.E19Codec(
+            codes, stored_scale, stored_zero, 4, C1, C2, idx1, idx2
+        )
+        codec._base_rec = stored_base.to(torch.float16).reshape(-1)
         codecs[name] = codec
-        module.weight.data.copy_(Q.to(module.weight.dtype))
+        module.weight.data.copy_(stored_base.to(module.weight.dtype))
         if (idx + 1) % 20 == 0:
             print(json.dumps({"event": "build_progress", "done": idx + 1,
                               "total": len(linear)}), flush=True)
 
     del H, originals
     torch.cuda.empty_cache()
+    stored_base_max_abs_diff = max(
+        float((codec._base_rec.reshape(codec.base_codes.shape).float() -
+               gptq_decode(codec.base_codes, codec.base_scale, codec.base_zero).float())
+              .abs().max())
+        for codec in codecs.values()
+    )
+    if stored_base_max_abs_diff != 0.0:
+        raise RuntimeError(
+            f"cached base is not the stored decode: max diff={stored_base_max_abs_diff}"
+        )
+    print(json.dumps({"event": "stored_decode_preflight",
+                      "max_abs_difference": stored_base_max_abs_diff}), flush=True)
     base_test = evaluate(model, test_ids)
 
     for name, codec in codecs.items():
@@ -325,6 +347,7 @@ def main():
         "bf16_valid": bf16_valid,
         "bf16_test": bf16_test,
         "gptq_base_test": base_test,
+        "stored_base_max_abs_difference": stored_base_max_abs_diff,
         "init_valid": init_valid,
         "baseline_valid_check": baseline_valid_check,
         "init_test": init_test,
