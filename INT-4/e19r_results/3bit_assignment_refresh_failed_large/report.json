@@ -1,0 +1,80 @@
+{
+  "experiment": "E19-R 3-bit functional assignment refresh",
+  "parent": "results/E19R_3bit_large_data_200/e19r_value_best.pt",
+  "parent_sha256": "086b070742a7f5206f091197fc590a16d1172cf19d511a17a203044396b102d9",
+  "total_mlp_packages": 6537240,
+  "negative_first_order_candidates": 6513433,
+  "split_windows": {
+    "parent_value_qat": 200,
+    "proposal": 128,
+    "acceptance": 128,
+    "sanity": 120
+  },
+  "baseline": {
+    "acceptance": {
+      "nll": 3.5042338110506535,
+      "ppl": 33.25595374427232,
+      "tokens": 16256
+    },
+    "sanity": {
+      "nll": 3.553640154997508,
+      "ppl": 34.94027429026504,
+      "tokens": 15240
+    },
+    "validation": {
+      "nll": 3.269815608859062,
+      "ppl": 26.306488212651285,
+      "tokens": 4064
+    }
+  },
+  "trials": [
+    {
+      "coverage": 0.0025,
+      "changed_packages": 16343,
+      "acceptance": {
+        "nll": 10.849410615861416,
+        "ppl": 51503.78689351574,
+        "tokens": 16256
+      },
+      "sanity": {
+        "nll": 10.801706369717916,
+        "ppl": 49104.520154473765,
+        "tokens": 15240
+      },
+      "mean_internal_nll": 10.825558492789666
+    },
+    {
+      "coverage": 0.005,
+      "changed_packages": 32686,
+      "acceptance": {
+        "nll": 11.940148368477821,
+        "ppl": 153299.43334567378,
+        "tokens": 16256
+      },
+      "sanity": {
+        "nll": 11.87192341486613,
+        "ppl": 143189.3866037166,
+        "tokens": 15240
+      },
+      "mean_internal_nll": 11.906035891671976
+    }
+  ],
+  "selected_trial_index": null,
+  "accepted": false,
+  "final_validation": {
+    "nll": 3.269815608859062,
+    "ppl": 26.306488212651285,
+    "tokens": 4064
+  },
+  "final_test": {
+    "nll": 3.5681247189641,
+    "ppl": 35.4500519692405,
+    "tokens": 4064
+  },
+  "checkpoint": {
+    "path": "results/E19R_3bit_assignment_refresh/e19r_3bit_assignment_best.pt",
+    "sha256": "c5cf39e4fa150a628a9c2c8f67e22bdfb19071dc4eff8dde2fdda7b55e572ebb",
+    "file_bytes": 395956891
+  },
+  "runtime_seconds": 50.75783896446228
+}
