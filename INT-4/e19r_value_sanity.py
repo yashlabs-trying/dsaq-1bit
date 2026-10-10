@@ -37,7 +37,12 @@ LR = float(os.environ.get("E19R_LR", "1e-4"))
 KL_WEIGHT = float(os.environ.get("E19R_KL_WEIGHT", "0.20"))
 TRUST_WEIGHT = float(os.environ.get("E19R_TRUST_WEIGHT", "1e-4"))
 TOPK = int(os.environ.get("E19R_TOPK", "64"))
-OUT = Path(os.environ.get("E19R_OUT", "/workspace/e19r/results/E19R_value_sanity"))
+BASE_BITS = int(os.environ.get("E19R_BASE_BITS", "4"))
+if BASE_BITS not in (1, 2, 3, 4):
+    raise ValueError(f"E19R_BASE_BITS must be 1, 2, 3, or 4; got {BASE_BITS}")
+OUT = Path(os.environ.get(
+    "E19R_OUT", f"/workspace/e19r/results/E19R_{BASE_BITS}bit_value_sanity"
+))
 
 
 def tokenize(tokenizer, text: str, limit: int, device: torch.device) -> torch.Tensor:
@@ -182,7 +187,8 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
 
     print(json.dumps({"event": "start", "gpu": torch.cuda.get_device_name(0),
-                      "steps": STEPS, "train_tokens": TRAIN_TOKENS}), flush=True)
+                      "steps": STEPS, "train_tokens": TRAIN_TOKENS,
+                      "base_bits": BASE_BITS}), flush=True)
     tokenizer = AutoTokenizer.from_pretrained(MODEL)
     model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.bfloat16).to(device).eval()
     model.device_holder = device
@@ -214,7 +220,7 @@ def main():
     for idx, (name, module) in enumerate(linear):
         w = originals[name]
         _, codes, scale, zero = gptq_quantize(
-            w, H[name], 4, groupwise=True, groupsize=64, sym=False
+            w, H[name], BASE_BITS, groupwise=True, groupsize=64, sym=False
         )
         # The stored FP16 metadata is the codec.  Build both the residual target
         # and the cached base from that exact representation; retaining the
@@ -228,9 +234,11 @@ def main():
             residual, 64, 48, 16, SEED
         )
         codec = legacy.E19Codec(
-            codes, stored_scale, stored_zero, 4, C1, C2, idx1, idx2
+            codes, stored_scale, stored_zero, BASE_BITS, C1, C2, idx1, idx2
         )
-        codec._base_rec = stored_base.to(torch.float16).reshape(-1)
+        # Cache the exact decoder output.  Do not round this reconstruction a
+        # second time: scale/zero are already stored at FP16 precision.
+        codec._base_rec = stored_base.reshape(-1)
         codecs[name] = codec
         module.weight.data.copy_(stored_base.to(module.weight.dtype))
         if (idx + 1) % 20 == 0:
@@ -341,7 +349,10 @@ def main():
 
     report = {
         "experiment": "E19-R value-only functional-QAT sanity",
-        "representation": "recovered E19 4-bit GPTQ + 2x16 additive residual",
+        "representation": (
+            f"E19-R {BASE_BITS}-bit GPTQ + 2x16 additive residual"
+        ),
+        "base_bits": BASE_BITS,
         "claimed_target_bpw": 1.20,
         "actual_theoretical_bpw": effective_bpw,
         "bf16_valid": bf16_valid,
