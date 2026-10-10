@@ -13,6 +13,8 @@ test split remained report-only.
 | 3-bit base + initialized factorized residual | 191.3785 | +590.0% |
 | 25-step QAT | 48.3345 | +74.25% |
 | **100-step run, validation-selected checkpoint** | **45.5440** | **+64.19%** |
+| 131K-token QAT, 100 unique windows | 36.4101 | +31.26% |
+| **131K-token QAT, 200 unique windows** | **35.4501** | **+27.80%** |
 
 The final checkpoint was selected at step 50. The 1,016-token validation PPL
 improved from 177.736 at initialization to 36.660 at step 50, then worsened to
@@ -48,3 +50,26 @@ earlier. The next controlled 3-bit run should use more distinct calibration
 windows, full 4,096-token validation selection, and the same validated codec and
 optimizer. If that does not close the gap, the next lever is assignment
 re-optimization or larger residual capacity funded by the packed-zero savings.
+
+## Large-data follow-up
+
+The controlled follow-up changed only the QAT data regime: 131,072 unique
+calibration tokens supplied 1,024 shuffled windows, the full 4,096-token
+validation split selected checkpoints, and the test split remained report-only.
+GPTQ/Hessian construction remained fixed at the original 32 windows.
+
+At 100 unique training windows, test PPL reached 36.4101. Because validation was
+still improving, the otherwise identical 200-step run continued to 200 unique
+windows. Its best validation checkpoint occurred at step 190 and decoded to
+test PPL **35.4501**, exactly reproduced in a fresh process. Its SHA-256 is
+`086b070742a7f5206f091197fc590a16d1172cf19d511a17a203044396b102d9`.
+
+This establishes that calibration diversity caused a large part of the earlier
+stall: 45.5440 fell to 35.4501 without changing storage or representation. The
+curve is now flattening, however. Full validation PPL moved only
+26.6390 -> 26.4755 -> 26.4305 -> 26.3065 from steps 150 through 190, and step
+200 was rejected. More value-only steps are now lower leverage. The next
+controlled operation should be a discrete assignment refresh using the trained
+3-bit codebooks, followed by another short value-QAT pass. Do not descend to a
+2-bit base until the 3-bit representation either crosses 30.5128 test PPL or
+demonstrates a clear assignment/capacity ceiling.

@@ -37,6 +37,7 @@ LR = float(os.environ.get("E19R_LR", "1e-4"))
 KL_WEIGHT = float(os.environ.get("E19R_KL_WEIGHT", "0.20"))
 TRUST_WEIGHT = float(os.environ.get("E19R_TRUST_WEIGHT", "1e-4"))
 TOPK = int(os.environ.get("E19R_TOPK", "64"))
+HESSIAN_WINDOWS = int(os.environ.get("E19R_HESSIAN_WINDOWS", "32"))
 BASE_BITS = int(os.environ.get("E19R_BASE_BITS", "4"))
 if BASE_BITS not in (1, 2, 3, 4):
     raise ValueError(f"E19R_BASE_BITS must be 1, 2, 3, or 4; got {BASE_BITS}")
@@ -213,7 +214,8 @@ def main():
     modules = dict(linear)
     print(json.dumps({"event": "hessian_start", "linear_layers": len(linear)}), flush=True)
     H = legacy.collect_H(model, linear, tokenizer, train_text,
-                         nsamples=min(legacy.NSAMPLES, TRAIN_TOKENS // legacy.SEQLEN))
+                         nsamples=min(HESSIAN_WINDOWS,
+                                      TRAIN_TOKENS // legacy.SEQLEN))
 
     originals = {name: module.weight.detach().float().clone() for name, module in linear}
     codecs = {}
