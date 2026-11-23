@@ -3,9 +3,10 @@ import sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'experiments'))
 import torch
+_DEV = 'cuda' if torch.cuda.is_available() else 'cpu'
 import v5_experiment as v5
 torch.manual_seed(7)
-device='cuda'
+device=_DEV
 v=torch.randn(64,32,device=device)*.03
 weight=torch.rand_like(v)
 opts,sbits=v5.scalar_options(v,weight,True)

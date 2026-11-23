@@ -33,7 +33,7 @@ Exact BF16 restoration in Experiments 6–9 is an **oracle diagnostic**. It is n
 
 ## Reproducibility
 
-Committed result directories contain a generated `REPORT.md`, machine-readable tables, plots, and an environment snapshot. Original specifications are preserved in `research_prompts/`. Candidate streams derive from a global seed plus stable matrix, block, and candidate identifiers.
+Committed result directories contain a generated `REPORT.md`, machine-readable tables, plots, and an environment snapshot. Each experiment's hypothesis, gate and decision are recorded in `docs/EXPERIMENTS.md`. Candidate streams derive from a global seed plus stable matrix, block, and candidate identifiers.
 
 ```bash
 python -m pytest -q

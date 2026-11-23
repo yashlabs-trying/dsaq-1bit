@@ -117,7 +117,7 @@ This ledger separates the scientific claim from the implementation status. A neg
 
 **Learning.** Hierarchical grouping marginally improves the mask but does not reveal a compact structured subset. The exact-residual rescue route is effectively closed for this base.
 
-**Status.** Code and specification are here: [driver](../run_experiment9.py), [block refiner](../refine_experiment9_blocks.py), [prompt](../research_prompts/experiment9.md). The completed pod result bundle was not imported before transfer stopped.
+**Status.** Code and specification are here: [driver](../run_experiment9.py), [block refiner](../refine_experiment9_blocks.py). The completed pod result bundle was not imported before transfer stopped.
 
 ## Experiment 10 — Activation-nullspace binary folding
 

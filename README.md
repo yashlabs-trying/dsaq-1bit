@@ -1,10 +1,27 @@
-# WaveFly: falsification-driven research toward practical 1-bit LLMs
+# Low-bit LLM compression research
 
-WaveFly is an experimental research program asking a narrow question:
+How few bits per weight can a transformer keep before it stops working? This
+repository is a research record of three tracks on that question, run on rented
+RTX 3090 / A40 / RTX Ada GPUs and a laptop CPU, with every result tied to code,
+a fixed evaluation slice, and exact bit accounting (scales, indexes, tables and
+metadata are all charged).
+
+| Track | Question | Best measured result | Folder |
+|---|---|---|---|
+| **2-bit full model** | Can a whole model run at exactly 2.00 bits/weight without finetuning? | **Qwen2.5-0.5B: 39.33 PPL vs 22.17 BF16** at exactly 2.00 serialized BPW (E8P lattice + BlockLDLQ, RTX 3090) | [`int4-70b/`](int4-70b/) |
+| **2-bit layer codecs** | Which representation keeps layer outputs closest at ≤2 BPW? | **17.24% mean held-out output error at 2.00 BPW** across 33 matrices, after 24,084 configurations | [`wavefly-2bit/`](wavefly-2bit/) |
+| **~1-bit** | What representation preserves function at ~1 stored bit/weight? | Ten gated experiments; the main finding is a **negative result** (below) | this page |
+
+Each track uses preregistered decision gates: an idea is kept only if it passes
+its gate on held-out data, and failed gates are reported rather than hidden.
+
+---
+
+## ~1-bit track: falsification-driven experiments
 
 > **What representation can preserve transformer function at approximately one stored bit per weight?**
 
-This repository records ten completed experiments on Qwen2.5-0.5B and one proposed follow-up. The project began with structured magnitude surfaces and candidate search, then tested low-rank residuals, second-order guidance, functional search, exact-weight importance oracles, conditional causal repair, hierarchical rescue, and activation-space reconstruction.
+This part records ten completed experiments on Qwen2.5-0.5B and one proposed follow-up. It began with structured magnitude surfaces and candidate search, then tested low-rank residuals, second-order guidance, functional search, exact-weight importance oracles, conditional causal repair, hierarchical rescue, and activation-space reconstruction.
 
 The central result so far is a constraint, not a compression claim: **the information required by the tested Hadamard 1-bit base is dense in ordinary weight coordinates**. Even the strongest hierarchical rescue run required **93.444921%** of the original residual to remain exact to reach the 10%-degradation boundary. That result redirects the work from finding a small set of weights to protect toward designing a more expressive binary representation.
 
@@ -83,7 +100,10 @@ GPU experiments download Qwen2.5-0.5B and WikiText-2 from Hugging Face. Each run
 ```text
 dsaq/                  Core block transforms, candidate generation, and routing
 run_experiment*.py     Standalone experiment drivers
-research_prompts/      Original experiment specifications
+functional_vq_cpu/     Layer-0 functional vector-quantization worker (1.19 BPW packed codecs)
+recovered_vq/          Earlier block-VQ and wavelet codec experiments
+int4-70b/              2-bit full-model track and the 70B-on-one-RTX-3090 goal
+wavefly-2bit/          2-bit layer-codec experiments (DCT, clustering, DWT, V4-V6)
 results/               Committed reports, tables, and plots for Experiments 1–7
 docs/EXPERIMENTS.md    Research ledger and decision history
 docs/METHODOLOGY.md    Evaluation protocol, metrics, and validity limits
@@ -97,3 +117,7 @@ The evidence argues against spending more effort on sparse preservation of exact
 ## Scope
 
 This is active research, not a production quantizer. Results apply to the stated model, data slices, quantization base, and search budgets. Representative-layer experiments and full-model interventions are labeled separately. No result in this repository currently demonstrates BF16-like perplexity at approximately 1 BPW.
+
+## License
+
+MIT © Yashvardhan Singh Shekhawat

@@ -1,8 +1,9 @@
 import math, struct
 import numpy as np
 import torch
+_DEV = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-def basis(n, dtype=torch.float32, device='cuda'):
+def basis(n, dtype=torch.float32, device=_DEV):
     k=torch.arange(n,dtype=torch.float64,device=device)[:,None]
     j=torch.arange(n,dtype=torch.float64,device=device)[None,:]
     d=torch.cos(math.pi/n*(j+.5)*k)*math.sqrt(2/n)
@@ -61,7 +62,7 @@ def serialize(c,indices,b,bits,method,ridx,rval):
     assert len(data)==storage(t,b,k,bits,method,r)['total_bytes']
     return bytes(data)
 
-def deserialize(data,device='cuda'):
+def deserialize(data,device=_DEV):
     _,t,b,k,bits,top,r,_=struct.unpack('<8I',data[:32]); off=32; ib=math.ceil(math.log2(b*b))
     cs=[]; ids=[]; rs=[]; ri=[]
     for i in range(t):

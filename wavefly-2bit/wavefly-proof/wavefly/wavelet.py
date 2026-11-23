@@ -1,7 +1,8 @@
 import math
 import torch
+_DEV = 'cuda' if torch.cuda.is_available() else 'cpu'
 
-def haar_basis(n,levels,dtype=torch.float32,device='cuda'):
+def haar_basis(n,levels,dtype=torch.float32,device=_DEV):
     """Packed orthonormal Haar analysis matrix; recursively transforms the low half."""
     if n&(n-1) or levels<1 or levels>int(math.log2(n)):raise ValueError((n,levels))
     h=torch.eye(n,dtype=torch.float64,device=device);m=n;s=math.sqrt(.5)
@@ -25,7 +26,7 @@ def band_slices(n,levels):
     bands.insert(0,(f'LL{levels}',(slice(0,m),slice(0,m))))
     return bands
 
-def band_index(n,levels,device='cuda'):
+def band_index(n,levels,device=_DEV):
     z=torch.empty(n,n,dtype=torch.long,device=device);names=[]
     for i,(name,(a,b)) in enumerate(band_slices(n,levels)):z[a,b]=i;names.append(name)
     return z,names
