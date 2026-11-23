@@ -1,0 +1,291 @@
+{
+  "baseline": {
+    "model": "Qwen/Qwen2.5-0.5B",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "torch": "2.8.0+cu128",
+    "M": 1,
+    "K": 256,
+    "g": 4,
+    "beam": 1,
+    "full_hessian": true,
+    "calibration_tokens": 2048,
+    "calibration_sequence_length": 128,
+    "nominal_index_bits_per_weight": 2.0,
+    "sparse_target_bits_per_weight": null,
+    "optimize_row_scale": false,
+    "optimize_row_affine": true,
+    "scale_weight_codebook": false,
+    "residual_rank": 0,
+    "promote_3bit_suffixes": [],
+    "strict_mlp_mixed": false,
+    "block_ldlq": false,
+    "randomized_hadamard": false,
+    "rht_block_size": null,
+    "scale_group": null,
+    "scale_bits": 16,
+    "entropy_coded_indices": false,
+    "hessian_initialization": false,
+    "initialization_restarts": 1,
+    "sequential_block_calibration": false,
+    "evaluation": "First 4096 WikiText-2 test tokens",
+    "variants": {
+      "bf16": {
+        "nll": 3.098824918270111,
+        "perplexity": 22.17188219410369,
+        "scored_tokens": 4080
+      },
+      "aq_block_2bit": {
+        "nll": 4.194303914904594,
+        "perplexity": 66.30755980532481,
+        "scored_tokens": 4080,
+        "tensor_payload_bytes": 363429632.0,
+        "effective_bits_per_parameter": 5.8851097423561995,
+        "bits_per_compressed_weight": 2.0348901098901098,
+        "sparse_corrections": 0
+      }
+    },
+    "elapsed_seconds": 66.39023494720459
+  },
+  "metric_init": {
+    "model": "Qwen/Qwen2.5-0.5B",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "torch": "2.8.0+cu128",
+    "M": 1,
+    "K": 256,
+    "g": 4,
+    "beam": 1,
+    "full_hessian": true,
+    "calibration_tokens": 2048,
+    "calibration_sequence_length": 128,
+    "nominal_index_bits_per_weight": 2.0,
+    "sparse_target_bits_per_weight": null,
+    "optimize_row_scale": false,
+    "optimize_row_affine": true,
+    "scale_weight_codebook": false,
+    "residual_rank": 0,
+    "promote_3bit_suffixes": [],
+    "strict_mlp_mixed": false,
+    "block_ldlq": false,
+    "randomized_hadamard": false,
+    "rht_block_size": null,
+    "scale_group": null,
+    "scale_bits": 16,
+    "entropy_coded_indices": false,
+    "hessian_initialization": true,
+    "initialization_restarts": 2,
+    "sequential_block_calibration": false,
+    "evaluation": "First 4096 WikiText-2 test tokens",
+    "variants": {
+      "bf16": {
+        "nll": 3.098824918270111,
+        "perplexity": 22.17188219410369,
+        "scored_tokens": 4080
+      },
+      "aq_block_2bit": {
+        "nll": 4.268275007605553,
+        "perplexity": 71.39836769042378,
+        "scored_tokens": 4080,
+        "tensor_payload_bytes": 363429632.0,
+        "effective_bits_per_parameter": 5.8851097423561995,
+        "bits_per_compressed_weight": 2.0348901098901098,
+        "sparse_corrections": 0
+      }
+    },
+    "elapsed_seconds": 72.0333366394043
+  },
+  "sequential_metric": {
+    "model": "Qwen/Qwen2.5-0.5B",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "torch": "2.8.0+cu128",
+    "M": 1,
+    "K": 256,
+    "g": 4,
+    "beam": 1,
+    "full_hessian": true,
+    "calibration_tokens": 2048,
+    "calibration_sequence_length": 128,
+    "nominal_index_bits_per_weight": 2.0,
+    "sparse_target_bits_per_weight": null,
+    "optimize_row_scale": false,
+    "optimize_row_affine": true,
+    "scale_weight_codebook": false,
+    "residual_rank": 0,
+    "promote_3bit_suffixes": [],
+    "strict_mlp_mixed": false,
+    "block_ldlq": false,
+    "randomized_hadamard": false,
+    "rht_block_size": null,
+    "scale_group": null,
+    "scale_bits": 16,
+    "entropy_coded_indices": false,
+    "hessian_initialization": true,
+    "initialization_restarts": 2,
+    "sequential_block_calibration": true,
+    "evaluation": "First 4096 WikiText-2 test tokens",
+    "variants": {
+      "bf16": {
+        "nll": 3.098824918270111,
+        "perplexity": 22.17188219410369,
+        "scored_tokens": 4080
+      },
+      "aq_block_2bit": {
+        "nll": 4.298264637589455,
+        "perplexity": 73.57200875660644,
+        "scored_tokens": 4080,
+        "tensor_payload_bytes": 363429632.0,
+        "effective_bits_per_parameter": 5.8851097423561995,
+        "bits_per_compressed_weight": 2.0348901098901098,
+        "sparse_corrections": 0
+      }
+    },
+    "elapsed_seconds": 364.64965176582336
+  },
+  "sequential_old": {
+    "model": "Qwen/Qwen2.5-0.5B",
+    "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "torch": "2.8.0+cu128",
+    "M": 1,
+    "K": 256,
+    "g": 4,
+    "beam": 1,
+    "full_hessian": true,
+    "calibration_tokens": 2048,
+    "calibration_sequence_length": 128,
+    "nominal_index_bits_per_weight": 2.0,
+    "sparse_target_bits_per_weight": null,
+    "optimize_row_scale": false,
+    "optimize_row_affine": true,
+    "scale_weight_codebook": false,
+    "residual_rank": 0,
+    "promote_3bit_suffixes": [],
+    "strict_mlp_mixed": false,
+    "block_ldlq": false,
+    "randomized_hadamard": false,
+    "rht_block_size": null,
+    "scale_group": null,
+    "scale_bits": 16,
+    "entropy_coded_indices": false,
+    "hessian_initialization": false,
+    "initialization_restarts": 1,
+    "sequential_block_calibration": true,
+    "gpu_hessian_products": true,
+    "evaluation": "First 4096 WikiText-2 test tokens",
+    "variants": {
+      "bf16": {
+        "nll": 3.098824918270111,
+        "perplexity": 22.17188219410369,
+        "scored_tokens": 4080
+      },
+      "aq_block_2bit": {
+        "nll": 4.3860465586185455,
+        "perplexity": 80.3222411741334,
+        "scored_tokens": 4080,
+        "tensor_payload_bytes": 363429632.0,
+        "effective_bits_per_parameter": 5.8851097423561995,
+        "bits_per_compressed_weight": 2.0348901098901098,
+        "sparse_corrections": 0
+      }
+    },
+    "elapsed_seconds": 348.82631373405457
+  },
+  "lattice": {
+    "method": "E8P_two_sided_DCT_Hadamard_BlockLDLQ_NoFT",
+    "exact_quip_reproduction": false,
+    "official_code_commit": "1d8f873e9a2a8b86b12bb1064c312c5689b77d98",
+    "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+    "bf16": {
+      "nll": 3.098824918270111,
+      "perplexity": 22.17188219410369,
+      "scored_tokens": 4080
+    },
+    "quantized": {
+      "nll": 3.9398363530635834,
+      "perplexity": 51.410187492415,
+      "scored_tokens": 4080,
+      "bits_per_compressed_weight": 2.0000905019459707
+    },
+    "elapsed_seconds": 109.72145938873291
+  },
+  "lattice_strict_refine": {
+    "method": "E8P_two_sided_DCT_Hadamard_BlockLDLQ_NoFT",
+    "exact_quip_reproduction": false,
+    "official_code_commit": "1d8f873e9a2a8b86b12bb1064c312c5689b77d98",
+    "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+    "torch": "2.8.0+cu128",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "strict_payload": true,
+    "implicit_lattice_codes": 2024,
+    "discrete_refinement_sweeps": 1,
+    "bf16": {
+      "nll": 3.098824918270111,
+      "perplexity": 22.17188219410369,
+      "scored_tokens": 4080
+    },
+    "quantized": {
+      "nll": 3.901180014014244,
+      "perplexity": 49.46077909614748,
+      "scored_tokens": 4080,
+      "bits_per_compressed_weight": 2.0,
+      "serialized_bits_per_compressed_weight": 2.0
+    },
+    "elapsed_seconds": 172.59810376167297
+  },
+  "lattice_strict_8k": {
+    "method": "E8P_two_sided_DCT_Hadamard_BlockLDLQ_NoFT",
+    "exact_quip_reproduction": false,
+    "official_code_commit": "1d8f873e9a2a8b86b12bb1064c312c5689b77d98",
+    "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+    "torch": "2.8.0+cu128",
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "strict_payload": true,
+    "implicit_lattice_codes": 2024,
+    "discrete_refinement_sweeps": 1,
+    "calibration_tokens": 8192,
+    "calibration_length": 256,
+    "sequential_calibration": false,
+    "scale_factor": 1.0,
+    "bf16": {
+      "nll": 3.098824918270111,
+      "perplexity": 22.17188219410369,
+      "scored_tokens": 4080
+    },
+    "quantized": {
+      "nll": 3.671985924243927,
+      "perplexity": 39.32993462573655,
+      "scored_tokens": 4080,
+      "bits_per_compressed_weight": 2.0,
+      "serialized_bits_per_compressed_weight": 2.0
+    },
+    "elapsed_seconds": 171.33562803268433
+  },
+  "fresh_eval": {
+    "bf16": {
+      "first_4096": {
+        "nll": 3.098824918270111,
+        "perplexity": 22.17188219410369,
+        "scored_tokens": 4080
+      },
+      "next_4096": {
+        "nll": 3.3144428580999374,
+        "perplexity": 27.507064376469643,
+        "scored_tokens": 4080
+      }
+    },
+    "quantized": {
+      "first_4096": {
+        "nll": 3.671985924243927,
+        "perplexity": 39.32993462573655,
+        "scored_tokens": 4080
+      },
+      "next_4096": {
+        "nll": 4.024543151259422,
+        "perplexity": 55.9547400890373,
+        "scored_tokens": 4080
+      }
+    },
+    "compressed_payload_bytes": 89456640,
+    "serialized_bpw": 2.0,
+    "whole_model_bpw": 5.859838932789171
+  }
+}

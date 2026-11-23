@@ -1,0 +1,45 @@
+{
+  "input": "SYNTHETIC low-rank plus outliers; favorable construction, not LLM evidence",
+  "shape": [
+    512,
+    64
+  ],
+  "block_size": 64,
+  "rank": 2,
+  "sparse_count": 327,
+  "results": {
+    "zero_correction": {
+      "payload_bytes": 0,
+      "correction_bits_per_weight": 0,
+      "residual_relative_l2": 1.0
+    },
+    "pca_only": {
+      "payload_bytes": 2448,
+      "correction_bits_per_weight": 0.59765625,
+      "residual_relative_l2": 0.5108311772346497,
+      "residual_mse": 0.6073735229675841,
+      "max_abs_error": 8.037968635559082
+    },
+    "sparse_only_matched_budget": {
+      "payload_bytes": 4410,
+      "correction_bits_per_weight": 1.07666015625,
+      "residual_relative_l2": 0.7601961493492126,
+      "residual_mse": 1.3450932620863894,
+      "max_abs_error": 4.09464693069458
+    },
+    "pca_plus_sparse": {
+      "payload_bytes": 4410,
+      "correction_bits_per_weight": 1.07666015625,
+      "residual_relative_l2": 0.10833599418401718,
+      "residual_mse": 0.02731786023867427,
+      "max_abs_error": 1.014157772064209
+    }
+  },
+  "archive_bytes_including_container": 5888,
+  "limitations": [
+    "Basis fitted to these weights: measures weight compression, not generalization to other weights.",
+    "No model quality, activation-weighted error, base quantizer metadata, KV cache, GPU memory, or inference speed measured.",
+    "Full CPU SVD and dense reconstruction are feasibility tools, not a scalable 70B implementation.",
+    "PCA optimizes squared reconstruction error; largest residual is not necessarily most important to model quality."
+  ]
+}

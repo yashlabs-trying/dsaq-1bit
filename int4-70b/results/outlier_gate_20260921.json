@@ -1,0 +1,273 @@
+{
+  "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "gpu": "NVIDIA RTX 4000 Ada Generation",
+  "torch": "2.8.0+cu128",
+  "calibration_tokens": 8192,
+  "calibration_length": 256,
+  "states": 256,
+  "vector_width": 2,
+  "reset_width": 32,
+  "index_bits_per_weight": 2,
+  "forced_blocks_per_matrix": 131,
+  "full_model": false,
+  "budget_mode": "per_matrix",
+  "original_model_finetuned": false,
+  "matrices": [
+    {
+      "name": "model.layers.0.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "path_trained_rerank": {
+          "relative_hessian_error": 0.0035936309424497792,
+          "normalized_mse": 0.1772158145904541,
+          "encoding_seconds": 0.543053388595581,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        },
+        "outlier_base_32": {
+          "relative_hessian_error": 0.0035648743351309577,
+          "normalized_mse": 0.17700044810771942,
+          "encoding_seconds": 0.43199658393859863,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        },
+        "outlier_base_64": {
+          "relative_hessian_error": 0.0035918294995910347,
+          "normalized_mse": 0.1813291609287262,
+          "encoding_seconds": 0.37813854217529297,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        },
+        "outlier_base_96": {
+          "relative_hessian_error": 0.0035611217710052366,
+          "normalized_mse": 0.17880703508853912,
+          "encoding_seconds": 0.38050031661987305,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        }
+      },
+      "path_trained_rerank_training_mse": [
+        0.11156879365444183,
+        0.1067320927977562,
+        0.10403802990913391,
+        0.10222139209508896,
+        0.10092911869287491,
+        0.09988324344158173,
+        0.0989895835518837,
+        0.09822377562522888,
+        0.09758588671684265
+      ],
+      "outlier_base_32_training_hessian_mse": [
+        0.1148533746600151,
+        0.10728791356086731,
+        0.10247985273599625,
+        0.09917419403791428,
+        0.09674076735973358,
+        0.09490039944648743,
+        0.0935785174369812,
+        0.09249186515808105,
+        0.09158222377300262
+      ],
+      "outlier_base_64_training_hessian_mse": [
+        0.12532125413417816,
+        0.1146848276257515,
+        0.10782880336046219,
+        0.10333770513534546,
+        0.10021387040615082,
+        0.09795792400836945,
+        0.0963360071182251,
+        0.09512742608785629,
+        0.0941033586859703
+      ],
+      "outlier_base_96_training_hessian_mse": [
+        0.1417893022298813,
+        0.12529879808425903,
+        0.1150704175233841,
+        0.10799559950828552,
+        0.10301553457975388,
+        0.09943533688783646,
+        0.09680069983005524,
+        0.09474717080593109,
+        0.0933237299323082
+      ]
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj",
+      "shape": [
+        896,
+        4864
+      ],
+      "variants": {
+        "path_trained_rerank": {
+          "relative_hessian_error": 0.010317684840353315,
+          "normalized_mse": 0.20928186178207397,
+          "encoding_seconds": 1.7525930404663086,
+          "serialized_bytes": 1089530,
+          "serialized_bpw": 1.999988986137218,
+          "implicit_blocks": 131
+        },
+        "outlier_base_32": {
+          "relative_hessian_error": 0.010171628552438527,
+          "normalized_mse": 0.2089938223361969,
+          "encoding_seconds": 1.767686367034912,
+          "serialized_bytes": 1089530,
+          "serialized_bpw": 1.999988986137218,
+          "implicit_blocks": 131
+        },
+        "outlier_base_64": {
+          "relative_hessian_error": 0.010252744723000813,
+          "normalized_mse": 0.21094512939453125,
+          "encoding_seconds": 1.7640016078948975,
+          "serialized_bytes": 1089530,
+          "serialized_bpw": 1.999988986137218,
+          "implicit_blocks": 131
+        },
+        "outlier_base_96": {
+          "relative_hessian_error": 0.010238236146940692,
+          "normalized_mse": 0.210981547832489,
+          "encoding_seconds": 1.7459425926208496,
+          "serialized_bytes": 1089530,
+          "serialized_bpw": 1.999988986137218,
+          "implicit_blocks": 131
+        }
+      },
+      "path_trained_rerank_training_mse": [
+        0.10711388289928436,
+        0.10009057819843292,
+        0.09675975143909454,
+        0.09480860829353333,
+        0.09335725009441376,
+        0.09223885089159012,
+        0.09132230281829834,
+        0.09055308252573013,
+        0.08994020521640778
+      ],
+      "outlier_base_32_training_hessian_mse": [
+        0.12232166528701782,
+        0.10958407074213028,
+        0.10244402289390564,
+        0.09808658808469772,
+        0.09529805928468704,
+        0.09338682144880295,
+        0.09195511788129807,
+        0.09092278778553009,
+        0.09010054171085358
+      ],
+      "outlier_base_64_training_hessian_mse": [
+        0.13834282755851746,
+        0.11908859014511108,
+        0.10851476341485977,
+        0.10196925699710846,
+        0.09782719612121582,
+        0.0951266884803772,
+        0.09322376549243927,
+        0.09178564697504044,
+        0.09069322049617767
+      ],
+      "outlier_base_96_training_hessian_mse": [
+        0.1618177890777588,
+        0.130116268992424,
+        0.11404386162757874,
+        0.10503309965133667,
+        0.09949535876512527,
+        0.09600311517715454,
+        0.09366922825574875,
+        0.09205487370491028,
+        0.09087991714477539
+      ]
+    },
+    {
+      "name": "model.layers.12.self_attn.q_proj",
+      "shape": [
+        896,
+        896
+      ],
+      "variants": {
+        "path_trained_rerank": {
+          "relative_hessian_error": 0.021935329083022443,
+          "normalized_mse": 0.16428084671497345,
+          "encoding_seconds": 0.3655099868774414,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        },
+        "outlier_base_32": {
+          "relative_hessian_error": 0.022178107819879996,
+          "normalized_mse": 0.16625216603279114,
+          "encoding_seconds": 0.373934268951416,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        },
+        "outlier_base_64": {
+          "relative_hessian_error": 0.02211683297259321,
+          "normalized_mse": 0.16619542241096497,
+          "encoding_seconds": 0.37189173698425293,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        },
+        "outlier_base_96": {
+          "relative_hessian_error": 0.02221258066476504,
+          "normalized_mse": 0.16769063472747803,
+          "encoding_seconds": 0.38166046142578125,
+          "serialized_bytes": 200698,
+          "serialized_bpw": 1.9999402104591837,
+          "implicit_blocks": 131
+        }
+      },
+      "path_trained_rerank_training_mse": [
+        0.11038877815008163,
+        0.1018635556101799,
+        0.09761299192905426,
+        0.0951630249619484,
+        0.09353891015052795,
+        0.09238158166408539,
+        0.0915060043334961,
+        0.09074095636606216,
+        0.09011467546224594
+      ],
+      "outlier_base_32_training_hessian_mse": [
+        0.11448600143194199,
+        0.10471902787685394,
+        0.09900502115488052,
+        0.09558264911174774,
+        0.09333939105272293,
+        0.09172910451889038,
+        0.09061291813850403,
+        0.08976587653160095,
+        0.08905908465385437
+      ],
+      "outlier_base_64_training_hessian_mse": [
+        0.12683190405368805,
+        0.11249083280563354,
+        0.1041068360209465,
+        0.09898694604635239,
+        0.09551844000816345,
+        0.09305354952812195,
+        0.09134280681610107,
+        0.09015749394893646,
+        0.0892595425248146
+      ],
+      "outlier_base_96_training_hessian_mse": [
+        0.14832854270935059,
+        0.12328290939331055,
+        0.11000082641839981,
+        0.10229380428791046,
+        0.09733529388904572,
+        0.09414602816104889,
+        0.0920235738158226,
+        0.09059828519821167,
+        0.08951938152313232
+      ]
+    }
+  ],
+  "elapsed_seconds": 16.784271240234375
+}

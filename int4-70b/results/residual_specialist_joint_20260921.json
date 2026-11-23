@@ -1,0 +1,1735 @@
+{
+  "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "gpu": "NVIDIA RTX 4000 Ada Generation",
+  "torch": "2.8.0+cu128",
+  "full_model": true,
+  "variant": "mlp_joint_select",
+  "reset_width": 32,
+  "budget_mode": "global_mlp",
+  "original_model_finetuned": false,
+  "selection_split": "WikiText-2 validation tokens 4096:8192",
+  "validation_offset": 4096,
+  "candidate_arms": {
+    "current": "/workspace/ablation_current",
+    "hessian": "/workspace/ablation_hessian_only",
+    "node": "/workspace/ablation_layer_output_only",
+    "both": "/workspace/ablation_both",
+    "pass2": "/workspace/mlp_joint_pass2",
+    "outlier": "/workspace/outlier_base32",
+    "residual": "/workspace/residual_base16"
+  },
+  "base_arm": "pass2",
+  "candidate_combinations_per_layer": 343,
+  "rollout_samples_per_layer": 256,
+  "baseline_validation": {
+    "nll": 3.5170238465070724,
+    "perplexity": 33.684030293359505,
+    "scored_tokens": 4080
+  },
+  "final_validation": {
+    "nll": 3.4739330410957336,
+    "perplexity": 32.263386458273565,
+    "scored_tokens": 4080
+  },
+  "source_quantized": {
+    "first_4096": {
+      "nll": 3.7141442745923996,
+      "perplexity": 41.023467236840474,
+      "scored_tokens": 4080
+    },
+    "next_4096": {
+      "nll": 4.029431477189064,
+      "perplexity": 56.228934726271845,
+      "scored_tokens": 4080
+    }
+  },
+  "bf16": {
+    "first_4096": {
+      "nll": 3.099435031414032,
+      "perplexity": 22.18541367830422,
+      "scored_tokens": 4080
+    },
+    "next_4096": {
+      "nll": 3.316697135567665,
+      "perplexity": 27.569142876689952,
+      "scored_tokens": 4080
+    }
+  },
+  "quantized": {
+    "first_4096": {
+      "nll": 3.725491762161255,
+      "perplexity": 41.491631743191924,
+      "scored_tokens": 4080
+    },
+    "next_4096": {
+      "nll": 4.010275050997734,
+      "perplexity": 55.16204085143999,
+      "scored_tokens": 4080
+    }
+  },
+  "selections": [
+    {
+      "layer": 0,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "outlier",
+        "up": "outlier",
+        "down": "current"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.002797741675749421,
+      "teacher_output_mse_best": 0.0027486965991556644,
+      "teacher_output_energy": 0.036518946290016174,
+      "relative_teacher_mse_reduction": 0.01753023769809592,
+      "validation_before": {
+        "nll": 3.5170238465070724,
+        "perplexity": 33.684030293359505,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.52932146191597,
+        "perplexity": 34.10082105694812,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.5170238465070724,
+        "perplexity": 33.684030293359505,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 1,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "residual",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "residual",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.0023145517334342003,
+      "teacher_output_mse_best": 0.002238662913441658,
+      "teacher_output_energy": 0.016436297446489334,
+      "relative_teacher_mse_reduction": 0.03278769659641301,
+      "validation_before": {
+        "nll": 3.5170238465070724,
+        "perplexity": 33.684030293359505,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.510582312941551,
+        "perplexity": 33.467750815208056,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.510582312941551,
+        "perplexity": 33.467750815208056,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 2,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "node",
+        "up": "outlier",
+        "down": "outlier"
+      },
+      "selected": {
+        "gate": "node",
+        "up": "outlier",
+        "down": "outlier"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.29248926043510437,
+      "teacher_output_mse_best": 0.20139695703983307,
+      "teacher_output_energy": 24.885089874267578,
+      "relative_teacher_mse_reduction": 0.31143811317982484,
+      "validation_before": {
+        "nll": 3.510582312941551,
+        "perplexity": 33.467750815208056,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4954664558172226,
+        "perplexity": 32.96566139173566,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4954664558172226,
+        "perplexity": 32.96566139173566,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 3,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "outlier",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.117268405854702,
+      "teacher_output_mse_best": 0.11651799082756042,
+      "teacher_output_energy": 56.313053131103516,
+      "relative_teacher_mse_reduction": 0.006399123631571801,
+      "validation_before": {
+        "nll": 3.4954664558172226,
+        "perplexity": 32.96566139173566,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.5036735385656357,
+        "perplexity": 33.237326567061075,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4954664558172226,
+        "perplexity": 32.96566139173566,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 4,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.0045578861609101295,
+      "teacher_output_mse_best": 0.004537965636700392,
+      "teacher_output_energy": 0.03579893335700035,
+      "relative_teacher_mse_reduction": 0.004370562033905623,
+      "validation_before": {
+        "nll": 3.4954664558172226,
+        "perplexity": 32.96566139173566,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.5001592189073563,
+        "perplexity": 33.120724984541354,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4954664558172226,
+        "perplexity": 32.96566139173566,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 5,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.004692268557846546,
+      "teacher_output_mse_best": 0.004613344557583332,
+      "teacher_output_energy": 0.0956142395734787,
+      "relative_teacher_mse_reduction": 0.016820009189635,
+      "validation_before": {
+        "nll": 3.4954664558172226,
+        "perplexity": 32.96566139173566,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4955787360668182,
+        "perplexity": 32.969362992229236,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4954664558172226,
+        "perplexity": 32.96566139173566,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 6,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "both",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.0045295837335288525,
+      "teacher_output_mse_best": 0.004476784262806177,
+      "teacher_output_energy": 0.036586448550224304,
+      "relative_teacher_mse_reduction": 0.011656583436540413,
+      "validation_before": {
+        "nll": 3.4954664558172226,
+        "perplexity": 32.96566139173566,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.494747430086136,
+        "perplexity": 32.9419667525012,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.494747430086136,
+        "perplexity": 32.9419667525012,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 7,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "current",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "hessian",
+        "up": "current",
+        "down": "hessian"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.004492299165576696,
+      "teacher_output_mse_best": 0.004312591627240181,
+      "teacher_output_energy": 0.0374155230820179,
+      "relative_teacher_mse_reduction": 0.040003466312654945,
+      "validation_before": {
+        "nll": 3.494747430086136,
+        "perplexity": 32.9419667525012,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.490231469273567,
+        "perplexity": 32.79353752410159,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.490231469273567,
+        "perplexity": 32.79353752410159,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 8,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.0031392755918204784,
+      "teacher_output_mse_best": 0.0031392755918204784,
+      "teacher_output_energy": 0.02725672908127308,
+      "relative_teacher_mse_reduction": 0.0,
+      "validation_before": {
+        "nll": 3.490231469273567,
+        "perplexity": 32.79353752410159,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.490231469273567,
+        "perplexity": 32.79353752410159,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.490231469273567,
+        "perplexity": 32.79353752410159,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 9,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "both"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.003121442859992385,
+      "teacher_output_mse_best": 0.0030910209752619267,
+      "teacher_output_energy": 0.027023257687687874,
+      "relative_teacher_mse_reduction": 0.009746096947785388,
+      "validation_before": {
+        "nll": 3.490231469273567,
+        "perplexity": 32.79353752410159,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4869522899389267,
+        "perplexity": 32.68617775571317,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4869522899389267,
+        "perplexity": 32.68617775571317,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 10,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "both",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.0028442374896258116,
+      "teacher_output_mse_best": 0.002646419685333967,
+      "teacher_output_energy": 0.023021521046757698,
+      "relative_teacher_mse_reduction": 0.0695503821369956,
+      "validation_before": {
+        "nll": 3.4869522899389267,
+        "perplexity": 32.68617775571317,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.481585219502449,
+        "perplexity": 32.51121866625833,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.481585219502449,
+        "perplexity": 32.51121866625833,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 11,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.003593873931095004,
+      "teacher_output_mse_best": 0.003252805443480611,
+      "teacher_output_energy": 0.030435599386692047,
+      "relative_teacher_mse_reduction": 0.09490274120730613,
+      "validation_before": {
+        "nll": 3.481585219502449,
+        "perplexity": 32.51121866625833,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.48797570168972,
+        "perplexity": 32.71964629724506,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.481585219502449,
+        "perplexity": 32.51121866625833,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 12,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.003317943774163723,
+      "teacher_output_mse_best": 0.002959243021905422,
+      "teacher_output_energy": 0.023849571123719215,
+      "relative_teacher_mse_reduction": 0.10810935225950602,
+      "validation_before": {
+        "nll": 3.481585219502449,
+        "perplexity": 32.51121866625833,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.487164720892906,
+        "perplexity": 32.69312204920109,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.481585219502449,
+        "perplexity": 32.51121866625833,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 13,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.004123088903725147,
+      "teacher_output_mse_best": 0.0036575894337147474,
+      "teacher_output_energy": 0.030805343762040138,
+      "relative_teacher_mse_reduction": 0.11290066279915245,
+      "validation_before": {
+        "nll": 3.481585219502449,
+        "perplexity": 32.51121866625833,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4831466674804688,
+        "perplexity": 32.5620228966669,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.481585219502449,
+        "perplexity": 32.51121866625833,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 14,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.00463136238977313,
+      "teacher_output_mse_best": 0.004209355916827917,
+      "teacher_output_energy": 0.035706304013729095,
+      "relative_teacher_mse_reduction": 0.09111929437374167,
+      "validation_before": {
+        "nll": 3.481585219502449,
+        "perplexity": 32.51121866625833,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4816425144672394,
+        "perplexity": 32.513081448750626,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.481585219502449,
+        "perplexity": 32.51121866625833,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 15,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "hessian"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.005751993041485548,
+      "teacher_output_mse_best": 0.005749659612774849,
+      "teacher_output_energy": 0.0542779415845871,
+      "relative_teacher_mse_reduction": 0.00040567307607464187,
+      "validation_before": {
+        "nll": 3.481585219502449,
+        "perplexity": 32.51121866625833,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 16,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "hessian",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.01004414726048708,
+      "teacher_output_mse_best": 0.01004414726048708,
+      "teacher_output_energy": 0.1040206104516983,
+      "relative_teacher_mse_reduction": 0.0,
+      "validation_before": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 17,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "hessian",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.00920365285128355,
+      "teacher_output_mse_best": 0.009168815799057484,
+      "teacher_output_energy": 0.08644621819257736,
+      "relative_teacher_mse_reduction": 0.0037851332279670302,
+      "validation_before": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4835841208696365,
+        "perplexity": 32.57627038001895,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 18,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "hessian",
+        "up": "both",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.011050601489841938,
+      "teacher_output_mse_best": 0.011050601489841938,
+      "teacher_output_energy": 0.09304105490446091,
+      "relative_teacher_mse_reduction": 0.0,
+      "validation_before": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 19,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.01990421488881111,
+      "teacher_output_mse_best": 0.019838541746139526,
+      "teacher_output_energy": 0.19974178075790405,
+      "relative_teacher_mse_reduction": 0.0032994590863517637,
+      "validation_before": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.48188978433609,
+        "perplexity": 32.52112194818204,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 20,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "both",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "both",
+        "up": "both",
+        "down": "both"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.03121296502649784,
+      "teacher_output_mse_best": 0.029154600575566292,
+      "teacher_output_energy": 0.3524119257926941,
+      "relative_teacher_mse_reduction": 0.06594581607944416,
+      "validation_before": {
+        "nll": 3.481572836637497,
+        "perplexity": 32.51081608672071,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4791581481695175,
+        "perplexity": 32.432407298528126,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4791581481695175,
+        "perplexity": 32.432407298528126,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 21,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "residual",
+        "up": "hessian",
+        "down": "both"
+      },
+      "selected": {
+        "gate": "residual",
+        "up": "hessian",
+        "down": "both"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.4948814809322357,
+      "teacher_output_mse_best": 0.4827443063259125,
+      "teacher_output_energy": 133.73463439941406,
+      "relative_teacher_mse_reduction": 0.024525416840128655,
+      "validation_before": {
+        "nll": 3.4791581481695175,
+        "perplexity": 32.432407298528126,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4758144170045853,
+        "perplexity": 32.324143151462486,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4758144170045853,
+        "perplexity": 32.324143151462486,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 22,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "both",
+        "up": "hessian",
+        "down": "hessian"
+      },
+      "accepted": true,
+      "teacher_output_mse_current": 0.06501173228025436,
+      "teacher_output_mse_best": 0.06388913094997406,
+      "teacher_output_energy": 0.8378890156745911,
+      "relative_teacher_mse_reduction": 0.017267672940031287,
+      "validation_before": {
+        "nll": 3.4758144170045853,
+        "perplexity": 32.324143151462486,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4739330410957336,
+        "perplexity": 32.263386458273565,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4739330410957336,
+        "perplexity": 32.263386458273565,
+        "scored_tokens": 4080
+      }
+    },
+    {
+      "layer": 23,
+      "sampled_rollout_tokens": 256,
+      "proposed": {
+        "gate": "both",
+        "up": "both",
+        "down": "hessian"
+      },
+      "selected": {
+        "gate": "pass2",
+        "up": "pass2",
+        "down": "pass2"
+      },
+      "accepted": false,
+      "teacher_output_mse_current": 0.11260422319173813,
+      "teacher_output_mse_best": 0.11176183074712753,
+      "teacher_output_energy": 6.415261268615723,
+      "relative_teacher_mse_reduction": 0.007481002228275191,
+      "validation_before": {
+        "nll": 3.4739330410957336,
+        "perplexity": 32.263386458273565,
+        "scored_tokens": 4080
+      },
+      "validation_proposed": {
+        "nll": 3.4741495698690414,
+        "perplexity": 32.27037316615047,
+        "scored_tokens": 4080
+      },
+      "validation_after": {
+        "nll": 3.4739330410957336,
+        "perplexity": 32.263386458273565,
+        "scored_tokens": 4080
+      }
+    }
+  ],
+  "matrices": [
+    {
+      "name": "model.layers.0.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.0.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.0.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.0.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.0.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.0.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.1.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.1.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.1.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.1.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.1.mlp.gate_proj",
+      "source_arm": "residual",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.1.mlp.up_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.1.mlp.down_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.2.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.2.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.2.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.2.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.2.mlp.gate_proj",
+      "source_arm": "node",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.2.mlp.up_proj",
+      "source_arm": "outlier",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.2.mlp.down_proj",
+      "source_arm": "outlier",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.3.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.3.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.3.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.3.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.3.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.3.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.3.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.4.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.4.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.4.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.4.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.4.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.4.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.4.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.5.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.5.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.5.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.5.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.5.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.5.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.5.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.6.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.6.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.6.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.6.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.6.mlp.gate_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.6.mlp.up_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.6.mlp.down_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.7.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.7.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.7.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.7.mlp.gate_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.7.mlp.up_proj",
+      "source_arm": "current",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.7.mlp.down_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.8.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.8.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.8.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.8.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.8.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.8.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.8.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.9.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.9.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.9.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.9.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.9.mlp.gate_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.9.mlp.up_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.9.mlp.down_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.10.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.10.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.10.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.10.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.10.mlp.gate_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.10.mlp.up_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.10.mlp.down_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.11.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.11.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.11.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.11.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.11.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.11.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.12.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.12.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.12.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.12.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.12.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.12.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.12.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.13.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.13.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.13.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.13.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.13.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.13.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.13.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.14.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.14.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.14.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.14.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.14.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.14.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.14.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.15.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.15.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.15.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.15.mlp.gate_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.15.mlp.up_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.15.mlp.down_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.16.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.16.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.16.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.16.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.16.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.16.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.16.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.17.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.17.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.17.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.17.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.17.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.17.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.17.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.18.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.18.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.18.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.18.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.18.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.18.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.18.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.19.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.19.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.19.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.19.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.19.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.19.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.19.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.20.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.20.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.20.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.20.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.20.mlp.gate_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.20.mlp.up_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.20.mlp.down_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.21.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.21.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.21.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.21.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.21.mlp.gate_proj",
+      "source_arm": "residual",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.21.mlp.up_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.21.mlp.down_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088146
+    },
+    {
+      "name": "model.layers.22.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.22.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.22.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.22.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.22.mlp.gate_proj",
+      "source_arm": "both",
+      "serialized_bytes": 1088154
+    },
+    {
+      "name": "model.layers.22.mlp.up_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088154
+    },
+    {
+      "name": "model.layers.22.mlp.down_proj",
+      "source_arm": "hessian",
+      "serialized_bytes": 1088154
+    },
+    {
+      "name": "model.layers.23.self_attn.q_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.23.self_attn.k_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.23.self_attn.v_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 29714
+    },
+    {
+      "name": "model.layers.23.self_attn.o_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 201746
+    },
+    {
+      "name": "model.layers.23.mlp.gate_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088154
+    },
+    {
+      "name": "model.layers.23.mlp.up_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088154
+    },
+    {
+      "name": "model.layers.23.mlp.down_proj",
+      "source_arm": "pass2",
+      "serialized_bytes": 1088154
+    }
+  ],
+  "accepted_layers": 10,
+  "compressed_payload_bytes": 89456640,
+  "serialized_bpw": 2.0,
+  "whole_model_bpw": 5.859838932789171,
+  "elapsed_seconds": 37.44345736503601
+}
