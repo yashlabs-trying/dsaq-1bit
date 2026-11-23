@@ -1,0 +1,38 @@
+[
+  {
+    "id": "Qwen/Qwen2.5-0.5B",
+    "family": "qwen",
+    "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+    "layers": 24,
+    "chosen": [
+      0,
+      12,
+      23
+    ],
+    "parameters": 494032768
+  },
+  {
+    "id": "facebook/opt-125m",
+    "family": "opt",
+    "revision": "27dcfa74d334bc871f3234de431e71c6eeba5dd6",
+    "layers": 12,
+    "chosen": [
+      0,
+      6,
+      11
+    ],
+    "parameters": 125239296
+  },
+  {
+    "id": "EleutherAI/pythia-70m",
+    "family": "pythia",
+    "revision": "a39f36b100fe8a5377810d56c3f4789b9c53ac42",
+    "layers": 6,
+    "chosen": [
+      0,
+      3,
+      5
+    ],
+    "parameters": 70426624
+  }
+]

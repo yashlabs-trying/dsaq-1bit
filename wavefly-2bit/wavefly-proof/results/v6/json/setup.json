@@ -1,0 +1,60 @@
+{
+  "models": [
+    {
+      "model": "Qwen/Qwen2.5-0.5B",
+      "revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+      "layers": 21
+    },
+    {
+      "model": "facebook/opt-125m",
+      "revision": "27dcfa74d334bc871f3234de431e71c6eeba5dd6",
+      "layers": 6
+    },
+    {
+      "model": "EleutherAI/pythia-70m",
+      "revision": "a39f36b100fe8a5377810d56c3f4789b9c53ac42",
+      "layers": 6
+    }
+  ],
+  "micro_table": [
+    0.72412109375,
+    0.90087890625,
+    1.03125,
+    1.1806640625
+  ],
+  "paths": [
+    "/workspace/wavefly-proof/.v6-cache/00.pt",
+    "/workspace/wavefly-proof/.v6-cache/01.pt",
+    "/workspace/wavefly-proof/.v6-cache/02.pt",
+    "/workspace/wavefly-proof/.v6-cache/03.pt",
+    "/workspace/wavefly-proof/.v6-cache/04.pt",
+    "/workspace/wavefly-proof/.v6-cache/05.pt",
+    "/workspace/wavefly-proof/.v6-cache/06.pt",
+    "/workspace/wavefly-proof/.v6-cache/07.pt",
+    "/workspace/wavefly-proof/.v6-cache/08.pt",
+    "/workspace/wavefly-proof/.v6-cache/09.pt",
+    "/workspace/wavefly-proof/.v6-cache/10.pt",
+    "/workspace/wavefly-proof/.v6-cache/11.pt",
+    "/workspace/wavefly-proof/.v6-cache/12.pt",
+    "/workspace/wavefly-proof/.v6-cache/13.pt",
+    "/workspace/wavefly-proof/.v6-cache/14.pt",
+    "/workspace/wavefly-proof/.v6-cache/15.pt",
+    "/workspace/wavefly-proof/.v6-cache/16.pt",
+    "/workspace/wavefly-proof/.v6-cache/17.pt",
+    "/workspace/wavefly-proof/.v6-cache/18.pt",
+    "/workspace/wavefly-proof/.v6-cache/19.pt",
+    "/workspace/wavefly-proof/.v6-cache/20.pt",
+    "/workspace/wavefly-proof/.v6-cache/21.pt",
+    "/workspace/wavefly-proof/.v6-cache/22.pt",
+    "/workspace/wavefly-proof/.v6-cache/23.pt",
+    "/workspace/wavefly-proof/.v6-cache/24.pt",
+    "/workspace/wavefly-proof/.v6-cache/25.pt",
+    "/workspace/wavefly-proof/.v6-cache/26.pt",
+    "/workspace/wavefly-proof/.v6-cache/27.pt",
+    "/workspace/wavefly-proof/.v6-cache/28.pt",
+    "/workspace/wavefly-proof/.v6-cache/29.pt",
+    "/workspace/wavefly-proof/.v6-cache/30.pt",
+    "/workspace/wavefly-proof/.v6-cache/31.pt",
+    "/workspace/wavefly-proof/.v6-cache/32.pt"
+  ]
+}

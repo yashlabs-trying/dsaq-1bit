@@ -1,0 +1,5 @@
+{
+  "level": 3,
+  "selection_layer": "Qwen/Qwen2.5-0.5B/model.layers.0.self_attn.q_proj@early",
+  "criterion": "calibration output error at K=32 functional selection"
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "file": "fixed_16bit.bin",
+    "bytes": 9376,
+    "bpw": 2.2890625,
+    "decode_max_abs": 0.0,
+    "max_abs": 2.8791883569210768,
+    "weight_error": 0.8918829568459069,
+    "cosine": 0.45226628617514764,
+    "output_error": 0.893103297680462
+  },
+  {
+    "file": "fixed_8bit.bin",
+    "bytes": 5536,
+    "bpw": 1.3515625,
+    "decode_max_abs": 0.0,
+    "max_abs": 2.877475374378264,
+    "weight_error": 0.8918868496606605,
+    "cosine": 0.45225860740855206,
+    "output_error": 0.8931014642298506
+  },
+  {
+    "file": "fixed_4bit.bin",
+    "bytes": 3488,
+    "bpw": 0.8515625,
+    "decode_max_abs": 0.0,
+    "max_abs": 2.8843314480036497,
+    "weight_error": 0.8924781251863586,
+    "cosine": 0.45109979884173224,
+    "output_error": 0.8938897985819867
+  },
+  {
+    "file": "fixed_2bit.bin",
+    "bytes": 2464,
+    "bpw": 0.6015625,
+    "decode_max_abs": 0.0,
+    "max_abs": 2.861569213680923,
+    "weight_error": 0.9042595763352606,
+    "cosine": 0.4300391799583678,
+    "output_error": 0.9054315169200631
+  },
+  {
+    "file": "topk_16bit.bin",
+    "bytes": 13472,
+    "bpw": 3.2890625,
+    "decode_max_abs": 0.0,
+    "max_abs": 2.1911280751228333,
+    "weight_error": 0.6726536189580017,
+    "cosine": 0.7399606350169048,
+    "output_error": 0.6701026318469402
+  },
+  {
+    "file": "topk_8bit.bin",
+    "bytes": 9632,
+    "bpw": 2.3515625,
+    "decode_max_abs": 0.0,
+    "max_abs": 2.189761459827423,
+    "weight_error": 0.6726539198073426,
+    "cosine": 0.7399602684189353,
+    "output_error": 0.6701565556518049
+  },
+  {
+    "file": "topk_4bit.bin",
+    "bytes": 7584,
+    "bpw": 1.8515625,
+    "decode_max_abs": 0.0,
+    "max_abs": 2.109718084335327,
+    "weight_error": 0.6737993916511537,
+    "cosine": 0.7389231802029839,
+    "output_error": 0.6716638741195572
+  },
+  {
+    "file": "topk_2bit.bin",
+    "bytes": 6560,
+    "bpw": 1.6015625,
+    "decode_max_abs": 0.0,
+    "max_abs": 2.303515315055847,
+    "weight_error": 0.7137245484167515,
+    "cosine": 0.7010417261852717,
+    "output_error": 0.7116856796916308
+  }
+]
