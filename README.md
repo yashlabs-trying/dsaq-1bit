@@ -1,5 +1,9 @@
 # Low-bit LLM compression research
 
+[![tests](https://github.com/yashlabs-trying/dsaq-1bit/actions/workflows/ci.yml/badge.svg)](https://github.com/yashlabs-trying/dsaq-1bit/actions/workflows/ci.yml)
+![bits](https://img.shields.io/badge/2.00%20bits%2Fweight-39.3%20PPL%20%28Qwen2.5--0.5B%29-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 How few bits per weight can a transformer keep before it stops working? This
 repository is a research record of three tracks on that question, run on rented
 RTX 3090 / A40 / RTX Ada GPUs and a laptop CPU, with every result tied to code,
